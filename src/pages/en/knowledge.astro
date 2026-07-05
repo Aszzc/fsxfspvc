@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+
+const phoneNumber = '13450853338';
+
+const guides = [
+  { id: 'selection', title: 'How to Select PVC Wire & Cable Compound?', summary: 'Consider four dimensions: usage scenario, temperature, flame retardancy, and processing.' },
+  { id: 'temperature', title: '70℃, 90℃, 105℃ Temperature Ratings — What\'s the Difference?', summary: 'Different working temperatures use different PVC formulations and additives — different price, different application.' },
+  { id: 'cold', title: '-40℃ Cold-resistant vs Standard PVC?', summary: 'Modified plasticizer system prevents brittle cracking at low temperature. Used in northern outdoor and cold-chain.' },
+  { id: 'rohs', title: 'What are ROHS / REACH / NP?', summary: 'Common environmental & restricted substance requirements for export wire & cable — determines which additives can be used.' },
+  { id: 'procurement', title: 'Common Procurement Questions', summary: 'MOQ, sample, batch stability, color shift, packaging — key things to confirm when procuring.' },
+  { id: 'factory', title: 'Why Source Directly from Factory?', summary: 'Differences between factory-direct, trader and finished-compound maker in formulation flexibility and stability.' },
+];
+
+const faqs = [
+  { q: 'How should I select PVC wire & cable compound?', a: 'Four key dimensions: ① Usage scenario (building / electronic / outdoor / appliance); ② Working temperature (70℃ / 90℃ / 105℃); ③ Whether flame retardant and what grade; ④ Processing method (extrusion speed, die specs). If you have a specific standard (GB/T 8815, UL, etc.), follow that.' },
+  { q: 'What\'s the difference between 70℃, 90℃, and 105℃ temperature ratings?', a: 'Mainly the PVC formula and plasticizer choice: ① 70℃ is standard PVC insulation; ② 90℃ uses heat-resistant plasticizer and stabilizer; ③ 105℃ needs modified PVC or special plasticizer system — price increases accordingly. Select based on actual working temperature, not always the highest.' },
+  { q: 'Where can -40℃ cold-resistant PVC be used?', a: 'Main scenarios: northern outdoor wiring, agricultural machinery cables, cold storage / refrigeration equipment wiring, winter construction site cables, northeast / northwest China engineering wiring. Standard PVC becomes brittle below -10℃; cold-resistant compound maintains low-temperature flexibility via modified plasticizer system.' },
+  { q: 'What are ROHS / REACH / NP? What\'s needed for export?', a: 'ROHS is the EU hazardous substances directive (restricts lead, mercury, cadmium, hexavalent chromium, PBB, PBDE). REACH is the EU chemicals regulation (EC 1907/2006) with SVHC list. NP usually refers to Nonylphenol — restricted by some environmental standards. Wires & cables exporting to EU, US, Japan usually require these. OEM customers should specify the target market when inquiring.' },
+  { q: 'What\'s the typical MOQ for PVC wire & cable compound?', a: 'Standard formula usually 500kg - 1 ton, convenient for trial and machine validation. New formula development can start from 100kg, but development cycle and material sourcing cost need consideration. Color custom and special performance customization usually have higher MOQ.' },
+  { q: 'How is color customization and batch color shift controlled?', a: 'For color customization, customer should provide color card (Pantone or physical sample) and we\'ll match. Batch color shift control points: ① Fixed pigment supplier; ② Fixed mixing process; ③ Per-batch retained sample comparison; ④ Key customers can establish color shift acceptance standard.' },
+  { q: 'What\'s the shelf life of PVC compound? Storage notes?', a: 'Standard PVC pellet shelf life is typically 6-12 months (sealed, away from light, cool and dry environment). Storage notes: ① Avoid direct sunlight; ② Keep away from heat sources; ③ Moisture-proof — use quickly after opening; ④ Store separately from other chemicals.' },
+  { q: 'Differences between factory-direct, trader and finished-compound maker?', a: '① Factory-direct: own formulation, own line, adjustable per customer spec, small-batch trial possible, long-term supply stable; ② Trader: buys market finished compound for resale, fixed formulation, limited adjustment space; ③ Finished-compound maker: own formulation but typically mass-produces specific categories, medium customization flexibility.' },
+  { q: 'How does sample trial work? How long does it take?', a: 'Standard flow: Customer provides spec requirements → We quote and sample → Sample sent to customer for machine validation → Customer feedback and adjustment → Confirm for mass production. First sample usually 3-7 working days, express possible. Customer samples can also serve as development input.' },
+  { q: 'How to judge whether a PVC compound factory is reliable?', a: 'Check: ① Whether they have own formulation R&D capability (ask a few formula questions to test); ② Whether willing to do small-batch trial; ③ Stable raw material supply channels; ④ Complete batch retention system; ⑤ Professional and timely communication. Site visit is recommended.' },
+];
+---
+<BaseLayout
+  title="PVC Wire & Cable Compound Knowledge"
+  description="PVC wire & cable compound selection, temperature/cold resistance differences, ROHS/REACH/NP environmental standards, common procurement questions. Practical knowledge from a real factory."
+  locale="en"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }}
+>
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="/en/">Home</a> / Knowledge</div>
+      <h1>Industry Knowledge</h1>
+      <p class="page-header-sub">
+        PVC wire & cable compound selection, temperature / cold resistance differences, environmental standards, common procurement questions — practical knowledge from our factory.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="topic-nav">
+        {guides.map((g) => (
+          <a href={`#${g.id}`} class="topic-nav-card">
+            <h3>{g.title}</h3>
+            <p>{g.summary}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionTitle title="Selection & Differences" subtitle="Decide based on usage scenario and performance requirements" />
+
+      <article class="guide-block" id="selection">
+        <h3>How to Select PVC Wire & Cable Compound?</h3>
+        <p>Recommend evaluating from four dimensions: <strong>Usage scenario</strong>, <strong>Working temperature</strong>, <strong>Flame retardancy</strong>, <strong>Processing method</strong>.</p>
+        <ol>
+          <li><strong>Usage scenario:</strong> Building wiring, electronic wire, outdoor wiring, appliance internal wiring, power plug — different scenarios need different mechanical, weather and appearance performance.</li>
+          <li><strong>Working temperature:</strong> Standard 70℃. For higher temp, choose 90℃ or 105℃. For cold, choose -40℃ modified.</li>
+          <li><strong>Flame retardancy:</strong> Different industries and certifications have different flame retardant grade requirements — clarify if specific certification needed.</li>
+          <li><strong>Processing method:</strong> High-speed or standard extrusion, injection or extrusion, thin-wall or standard thickness — all affect formulation adjustment.</li>
+        </ol>
+        <div class="notice notice-primary">No perfect match? Just call us — we can develop new formulas per your scenario.</div>
+      </article>
+
+      <article class="guide-block" id="temperature">
+        <h3>70℃, 90℃, 105℃ — What's the Difference?</h3>
+        <p>Different working temperatures correspond to different PVC formulations and additive systems:</p>
+        <table class="table">
+          <thead>
+            <tr><th>Temperature</th><th>Typical Application</th><th>Formula Feature</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>70℃</td><td>Standard building wire, electronic wire jacket</td><td>Standard PVC plasticizer & stabilizer</td></tr>
+            <tr><td>90℃</td><td>Some appliance internal wiring</td><td>Heat-resistant plasticizer & stabilizer</td></tr>
+            <tr><td>105℃</td><td>Water heater, oven, transformer leads</td><td>Modified PVC / special plasticizer system</td></tr>
+          </tbody>
+        </table>
+        <p class="guide-note">Price rises with temperature rating. Select based on actual working temperature — no need to always pick the highest.</p>
+      </article>
+
+      <article class="guide-block" id="cold">
+        <h3>-40℃ Cold-resistant vs Standard PVC</h3>
+        <p>Standard PVC hardens and becomes brittle at low temperature — cracks appear below -10℃. -40℃ cold-resistant compound uses <strong>modified plasticizer system</strong> and <strong>adjusted formulation</strong> to maintain flexibility at low temperature.</p>
+        <ul>
+          <li>Applications: Northern outdoor wiring, agricultural machinery cables, cold storage wiring, winter construction cables</li>
+          <li>Performance: No brittle cracking at low temp, passes low-temp impact test, elastic recovery after long cold exposure</li>
+          <li>Cost: Slightly higher than standard PVC</li>
+        </ul>
+      </article>
+
+      <article class="guide-block" id="rohs">
+        <h3>What are ROHS / REACH / NP?</h3>
+        <p>Common environmental and restricted substance requirements for export wire & cable:</p>
+        <dl class="def-list">
+          <dt>ROHS</dt>
+          <dd>EU hazardous substances directive (2011/65/EU), restricts lead, mercury, cadmium, hexavalent chromium, PBB, PBDE in electrical and electronic products.</dd>
+          <dt>REACH</dt>
+          <dd>EU chemicals regulation (EC 1907/2006), full lifecycle chemicals management with SVHC list.</dd>
+          <dt>NP (Nonylphenol)</dt>
+          <dd>Nonylphenol and nonylphenol ethoxylates, common industrial surfactant — restricted by some environmental standards.</dd>
+        </dl>
+        <div class="notice">Export customers should specify target market (EU / US / Japan, etc.) and applicable standards when inquiring — we'll adjust formula accordingly.</div>
+      </article>
+
+      <article class="guide-block" id="procurement">
+        <h3>Common Procurement Questions</h3>
+        <ul>
+          <li><strong>MOQ:</strong> Standard formula 500kg - 1 ton, new formula can start from 100kg.</li>
+          <li><strong>Sample cycle:</strong> First sample usually 3-7 working days, express possible.</li>
+          <li><strong>Color customization:</strong> Provide color card or Pantone number, match per color card.</li>
+          <li><strong>Batch color shift:</strong> Fixed pigment supplier, fixed process, per-batch retained sample comparison.</li>
+          <li><strong>Packaging:</strong> Standard 25kg/bag, ton bag or pallet packing on request.</li>
+          <li><strong>Shelf life:</strong> Standard 6-12 months (sealed, dark, cool and dry).</li>
+          <li><strong>Storage notes:</strong> Avoid direct sunlight, away from heat sources, moisture-proof, separate from other chemicals.</li>
+        </ul>
+      </article>
+
+      <article class="guide-block" id="factory">
+        <h3>Why Source Directly from Factory?</h3>
+        <p>Wire & cable compound isn't generic. Different customers have different conductor structure, extrusion speed, die specs, usage scenarios — if the formula doesn't match you'll see:</p>
+        <ul>
+          <li>Unstable extrusion, uneven plasticization</li>
+          <li>Finished product appearance issues (gels, bubbles, rough surface)</li>
+          <li>Temperature, flame retardant, cold resistance not meeting requirements</li>
+          <li>Batch color shift affecting finished product consistency</li>
+        </ul>
+        <p>Factory-direct allows custom formulation, small-batch trial, retained formula records — and stable batch consistency for long-term supply. This is hard for traders and finished-compound makers to match.</p>
+        <div class="notice notice-primary">If you're evaluating suppliers, feel free to call first to discuss needs — or visit our factory directly.</div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <SectionTitle title="FAQ" subtitle="Common questions from customers" />
+      <div class="faq-list">
+        {faqs.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary>
+              <span class="faq-q">Q.</span>
+              <span>{f.q}</span>
+            </summary>
+            <div class="faq-a">{f.a}</div>
+          </details>
+        ))}
+      </div>
+      <div class="faq-cta">
+        <p>More questions? Calling or messaging us directly is more efficient.</p>
+        <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header { background: var(--color-surface-alt); padding: var(--sp-6) 0 var(--sp-5); border-bottom: 1px solid var(--color-border); }
+  .breadcrumb { font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--sp-3); }
+  .breadcrumb a { color: var(--color-text-muted); }
+  .page-header h1 { font-size: var(--fs-2xl); margin-bottom: var(--sp-2); color: var(--color-primary-dark); }
+  .page-header-sub { color: var(--color-text-soft); margin: 0; max-width: 760px; }
+  .section-alt { background: var(--color-surface-alt); }
+
+  .topic-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); }
+  .topic-nav-card { display: block; background: var(--color-surface); border: 1px solid var(--color-border); border-left: 3px solid var(--color-primary); padding: var(--sp-4); border-radius: 3px; text-decoration: none; color: inherit; transition: all 0.15s ease; }
+  .topic-nav-card:hover { border-color: var(--color-primary); background: #f0f5f1; text-decoration: none; color: inherit; }
+  .topic-nav-card h3 { font-size: var(--fs-base); margin-bottom: var(--sp-2); color: var(--color-primary-dark); }
+  .topic-nav-card p { font-size: var(--fs-sm); color: var(--color-text-soft); margin: 0; }
+
+  .guide-block { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 4px; padding: var(--sp-6); margin-bottom: var(--sp-5); scroll-margin-top: 90px; }
+  .guide-block h3 { color: var(--color-primary-dark); margin-bottom: var(--sp-4); padding-bottom: var(--sp-3); border-bottom: 1px solid var(--color-border); }
+  .guide-block ol, .guide-block ul { color: var(--color-text-soft); line-height: 1.85; }
+  .guide-block li { margin-bottom: 6px; }
+  .guide-note { margin-top: var(--sp-3); font-size: var(--fs-sm); color: var(--color-text-muted); font-style: italic; }
+  .def-list { margin: var(--sp-3) 0; }
+  .def-list dt { font-weight: 600; color: var(--color-primary-dark); margin-top: var(--sp-3); }
+  .def-list dd { margin: 4px 0 0 0; color: var(--color-text-soft); font-size: var(--fs-sm); }
+
+  .faq-list { max-width: 900px; margin: 0 auto; }
+  .faq-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 3px; margin-bottom: var(--sp-2); }
+  .faq-item summary { list-style: none; cursor: pointer; padding: var(--sp-4); display: flex; gap: var(--sp-3); align-items: flex-start; font-weight: 500; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; margin-left: auto; color: var(--color-primary); font-weight: 700; font-size: var(--fs-lg); flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-q { color: var(--color-primary); font-weight: 700; flex-shrink: 0; }
+  .faq-a { padding: 0 var(--sp-4) var(--sp-4) calc(var(--sp-4) + 24px); color: var(--color-text-soft); font-size: var(--fs-sm); line-height: 1.8; }
+  .faq-cta { background: var(--color-primary-dark); color: #e8efe9; padding: var(--sp-5); border-radius: 4px; text-align: center; margin-top: var(--sp-6); }
+  .faq-cta p { color: #d8d6cf; margin-bottom: var(--sp-3); }
+
+  @media (max-width: 900px) { .topic-nav { grid-template-columns: 1fr; } }
+</style>

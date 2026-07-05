@@ -1,0 +1,420 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import ProductCard from '../../components/ProductCard.astro';
+
+const phoneNumber = '13450853338';
+
+const productOverview = [
+  {
+    id: 'insulation-70',
+    name: '70℃ Insulation Compound',
+    category: 'PVC Insulation',
+    description: 'Standard PVC compound for wire conductor insulation. Flame retardancy meets GB/T 8815 requirements.',
+    highlights: ['70℃ working temperature', 'Stable electrical insulation', 'Adjustable flame retardant grade'],
+  },
+  {
+    id: 'sheath',
+    name: 'Sheath Compound',
+    category: 'PVC Sheath',
+    description: 'PVC compound for cable outer sheath. Good mechanical properties, abrasion and weather resistant for various environments.',
+    highlights: ['High flexibility', 'Abrasion & weather resistant', 'Custom colors available'],
+  },
+  {
+    id: 'electronic',
+    name: 'Electronic Wire Compound',
+    category: 'Electronic Wire',
+    description: 'PVC compound for small-gauge electronic wires, USB, signal, DC cables. Easy processing and low odor.',
+    highlights: ['Low odor', 'Stable extrusion', 'Suitable for high-speed extrusion'],
+  },
+  {
+    id: 'plug',
+    name: 'Plug Compound',
+    category: 'Power Plug',
+    description: 'Rigid PVC compound for power plugs, sockets and housings. High strength, flame retardant, easy injection molding.',
+    highlights: ['High hardness', 'Adjustable flame retardant', 'Good flowability'],
+  },
+  {
+    id: 'heat-resistant-105',
+    name: '105℃ Heat-resistant Compound',
+    category: 'Heat-resistant',
+    description: 'Modified PVC compound rated for 105℃ working temperature. Used in appliance internal wiring, transformer leads.',
+    highlights: ['105℃ temperature rating', 'Stable aging performance', 'UL grade available'],
+  },
+  {
+    id: 'cold-resistant',
+    name: '-40℃ Cold-resistant Compound',
+    category: 'Cold-resistant',
+    description: 'PVC modified for -40℃ low temperature. Used in northern outdoor cables, agricultural machinery wiring, cold regions.',
+    highlights: ['No brittle cracking at low temp', 'Maintains flexibility', 'Outdoor rated'],
+  },
+  {
+    id: 'transparent',
+    name: 'High-transparent Compound',
+    category: 'Transparent',
+    description: 'High light transmittance PVC compound for transparent power cords, decorative LED strip cables, visible wiring.',
+    highlights: ['High transmittance', 'Anti-yellowing', 'Adjustable hardness'],
+  },
+  {
+    id: 'frosted',
+    name: 'Frosted / Matte Compound',
+    category: 'Matte Finish',
+    description: 'PVC compound with matte frosted surface finish for premium power cords and decorative wires.',
+    highlights: ['Matte texture', 'Fine touch', 'Fingerprint resistant'],
+  },
+  {
+    id: 'modified',
+    name: 'Modified Compound',
+    category: 'Modified',
+    description: 'PVC modified for custom hardness, flame retardancy, temperature and cold resistance based on client requirements.',
+    highlights: ['Custom formulation', 'Small-batch trial', 'Sample/spec based development'],
+  },
+];
+
+const advantages = [
+  { title: 'In-house Formulation', desc: 'We develop PVC formulas ourselves based on cable structure, extrusion process and performance — not resold finished goods.' },
+  { title: 'Foshan Local Factory', desc: 'Own factory with mixing, extrusion, pelletizing, screening and packaging in one line. Easy for customers to visit.' },
+  { title: 'Stable Batch Supply', desc: 'Fixed raw material supply channels. Each batch has retained samples. Long-term customers get consistent formulation.' },
+  { title: 'Small-batch Customization', desc: 'New formulas and customers can start with small trial batches. Color, hardness, flame retardant grade adjustable.' },
+  { title: 'Simple Process', desc: 'Direct phone & WeChat: usage → specs → sample → mass production. No long commercial process.' },
+  { title: 'Sample-based Development', desc: 'Customer samples, drawings and performance specs all serve as inputs for development.' },
+];
+
+const organizationLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Foshan Xiangfa Shun Plastic Co., Ltd.',
+  alternateName: 'Xiangfa Shun Plastic',
+  url: 'https://xfspvc.com/en/',
+  logo: 'https://xfspvc.com/images/factory-warehouse.jpg',
+  description: 'Foshan PVC wire & cable compound manufacturer. Main products: 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent, matte, modified PVC compounds.',
+  telephone: '+86-13450853338',
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'Guangdong',
+    addressLocality: 'Sanshui District, Foshan',
+    addressCountry: 'CN',
+  },
+  areaServed: ['CN', 'South China', 'East China', 'North China', 'Southwest'],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+86-13450853338',
+    contactType: 'sales',
+    areaServed: 'CN',
+    availableLanguage: ['zh-Hans', 'en'],
+  },
+};
+
+const localBusinessLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://xfspvc.com/en/#business',
+  name: 'Foshan Xiangfa Shun Plastic Co., Ltd.',
+  image: 'https://xfspvc.com/images/factory-warehouse.jpg',
+  url: 'https://xfspvc.com/en/',
+  telephone: '+86-13450853338',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'Guangdong',
+    addressLocality: 'Sanshui District, Foshan',
+    addressCountry: 'CN',
+  },
+  openingHours: 'Mo-Sa 08:00-18:00',
+};
+---
+<BaseLayout
+  title="Foshan PVC Wire & Cable Compound Manufacturer"
+  description="Foshan Xiangfa Shun Plastic Co., Ltd. - PVC wire & cable compound manufacturer in Foshan, Guangdong. In-house formulation, own factory. 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent, matte, modified compounds. Tel/WeChat 13450853338."
+  locale="en"
+  jsonLd={[organizationLd, localBusinessLd]}
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Foshan Factory Direct · In-house Formulation</div>
+        <h1 class="hero-title">
+          Foshan PVC Wire<br />
+          & Cable Compound Manufacturer
+        </h1>
+        <p class="hero-sub">
+          In-house formulation, own production line.<br />
+          70℃ insulation / sheath / heat-resistant / cold-resistant / transparent / modified — matched to your application, performance, and process.
+        </p>
+        <div class="hero-actions">
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
+          <a href="/en/products/" class="btn btn-outline">View Products</a>
+        </div>
+        <ul class="hero-bullets">
+          <li>✓ In-house formulation, Foshan local factory</li>
+          <li>✓ Custom development from customer samples / drawings</li>
+          <li>✓ Small-batch trial, stable long-term supply</li>
+        </ul>
+      </div>
+      <div class="hero-photo" aria-label="Factory / warehouse">
+        <div class="hero-photo-placeholder">
+          <span>Factory / Warehouse Photo</span>
+          <small>Replace with real image: public/images/factory-warehouse.jpg</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="section">
+    <div class="container">
+      <SectionTitle
+        title="Main Products"
+        subtitle="Standard PVC compounds for wire & cable. Formulation & color adjustable per client specs."
+      />
+
+      <div class="grid grid-3">
+        {productOverview.map((p) => (
+          <ProductCard
+            id={p.id}
+            name={p.name}
+            category={p.category}
+            description={p.description}
+            highlights={p.highlights}
+            href={`/en/products/#${p.id}`}
+          />
+        ))}
+      </div>
+
+      <div class="see-more">
+        <a href="/en/products/" class="btn btn-outline">View Full Specifications & Inquiry Points →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advantages -->
+  <section class="section section-alt">
+    <div class="container">
+      <SectionTitle
+        title="Why Source Directly from Factory"
+        subtitle="PVC wire & cable compounds aren't generic — wrong match causes downstream processing issues."
+      />
+
+      <div class="grid grid-3">
+        {advantages.map((a) => (
+          <div class="card advantage-card">
+            <h3 class="card-title">{a.title}</h3>
+            <p>{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry -->
+  <section class="section inquiry-section">
+    <div class="container">
+      <div class="inquiry-box">
+        <div class="inquiry-text">
+          <h2>Need a sample or quote?</h2>
+          <p>
+            Please call or message us on WeChat directly: usage, specifications, estimated volume, processing method.<br />
+            We'll send samples, quote, or invite you to visit the factory.
+          </p>
+          <ul class="inquiry-list">
+            <li>Application scenario (e.g., power cord jacket, UL electronic wire, outdoor wiring…)</li>
+            <li>Key performance (temp / flame retardant / cold-resistant / hardness / color / transparency)</li>
+            <li>Estimated monthly volume, MOQ</li>
+            <li>Processing method (extrusion speed, die specs, etc.)</li>
+          </ul>
+        </div>
+        <div class="inquiry-actions">
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 Tel / WeChat 13450853338</a>
+          <a href="/en/contact/" class="btn btn-outline">Full Contact Info</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e8efe9 0%, #f2f2ee 60%);
+    z-index: 0;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--sp-7);
+    align-items: center;
+    padding: var(--sp-8) var(--container-pad);
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(31, 77, 58, 0.1);
+    color: var(--color-primary-dark);
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: var(--sp-4);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+    line-height: 1.18;
+    color: var(--color-text);
+    margin-bottom: var(--sp-4);
+  }
+
+  .hero-sub {
+    font-size: var(--fs-md);
+    color: var(--color-text-soft);
+    margin-bottom: var(--sp-5);
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--sp-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--sp-5);
+  }
+
+  .hero-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--color-text-soft);
+    font-size: var(--fs-sm);
+  }
+
+  .hero-bullets li {
+    margin-bottom: 4px;
+  }
+
+  .hero-photo {
+    aspect-ratio: 4 / 3;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .hero-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #c2cdb9 0%, #a3b3a0 100%);
+    color: #2a3a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--sp-5);
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .hero-photo-placeholder small {
+    display: block;
+    margin-top: var(--sp-3);
+    font-size: 12px;
+    opacity: 0.7;
+    font-weight: 400;
+  }
+
+  .section-alt {
+    background: var(--color-surface-alt);
+  }
+
+  .see-more {
+    text-align: center;
+    margin-top: var(--sp-6);
+  }
+
+  .advantage-card {
+    height: 100%;
+  }
+
+  .inquiry-section {
+    background: var(--color-primary-dark);
+    color: #e8efe9;
+  }
+
+  .inquiry-box {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--sp-6);
+    align-items: center;
+  }
+
+  .inquiry-text h2 {
+    color: #fff;
+    font-size: 30px;
+  }
+
+  .inquiry-text p {
+    color: #d8d6cf;
+  }
+
+  .inquiry-list {
+    list-style: none;
+    padding: 0;
+    color: #d8d6cf;
+    font-size: 14px;
+  }
+
+  .inquiry-list li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .inquiry-list li::before {
+    content: '•';
+    position: absolute;
+    left: 6px;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .inquiry-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .btn-lg {
+    padding: 14px 26px;
+    font-size: 17px;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner,
+    .inquiry-box {
+      grid-template-columns: 1fr;
+      gap: var(--sp-5);
+    }
+
+    .hero-title {
+      font-size: 32px;
+    }
+
+    .hero-inner {
+      padding: var(--sp-6) var(--container-pad);
+    }
+  }
+</style>

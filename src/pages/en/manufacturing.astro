@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+
+const phoneNumber = '13450853338';
+
+const flow = [
+  { step: '01', title: 'Formulation', desc: 'Customer provides usage scenario and performance specs (temp, flame retardant, hardness, color). Our engineers confirm details and propose initial formula.' },
+  { step: '02', title: 'Sample Trial', desc: 'Small-batch sample produced per formula, sent to customer for extrusion / injection validation. Adjustments based on feedback.' },
+  { step: '03', title: 'Raw Material Mixing', desc: 'High-speed mixer adds PVC resin, plasticizer, stabilizer, flame retardant, filler etc. in process order.' },
+  { step: '04', title: 'Extrusion & Pelletizing', desc: 'PVC-specific extruder for pelletizing. Temperature and screw speed set per formula for uniform plasticization.' },
+  { step: '05', title: 'Cooling & Screening', desc: 'Extruded strands water-cooled / air-cooled, then cut and vibrated to remove overlong, over-fine or off-spec pellets.' },
+  { step: '06', title: 'Packaging & Delivery', desc: '25kg/bag standard or customer-specified packaging with batch ID. Pallet packing on request.' },
+  { step: '07', title: 'Batch Stability', desc: 'Each batch retained for record. Long-term customers get consistent formulation and traceability.' },
+];
+
+const capabilities = [
+  { title: 'PVC Formulation R&D', desc: 'Standard PVC, modified PVC, flame-retardant, heat-resistant, cold-resistant — all customizable.' },
+  { title: 'Raw Material Sourcing', desc: 'PVC resin, plasticizer, stabilizer, flame retardant from fixed channels — batch stability guaranteed.' },
+  { title: 'Mixing Process', desc: 'Multiple high-speed mixers for cold / hot mixing per process requirements.' },
+  { title: 'Extrusion & Pelletizing', desc: 'Twin-screw / single-screw extruders covering stable supply for small-to-mid wire & cable factories.' },
+  { title: 'Cutting & Screening', desc: 'Pellet cutters and vibratory screens for uniform granule size.' },
+  { title: 'Packaging & Warehousing', desc: 'Own warehouse with finished goods area. Packaging specs customizable.' },
+];
+
+const qualityItems = [
+  'Incoming raw material inspection with key additives retained',
+  'Production process records (temp, speed, time)',
+  'Finished product appearance and pellet inspection',
+  'Each batch retained for traceability',
+  'Customer feedback follow-up, continuous formula optimization',
+];
+---
+<BaseLayout
+  title="Manufacturing Capability"
+  description="Foshan Xiangfa Shun Plastic manufacturing capability: full process from PVC formulation, raw material mixing, extrusion & pelletizing, cooling & screening, packaging & delivery, to batch stability. Every batch retained and traceable."
+  locale="en"
+>
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="/en/">Home</a> / Manufacturing</div>
+      <h1>Manufacturing Capability</h1>
+      <p class="page-header-sub">
+        From formulation discussion to stable supply — every step is the advantage of sourcing directly from factory.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionTitle title="Production Flow" subtitle="Full chain from customer requirements to finished goods delivery" />
+      <div class="flow-grid">
+        {flow.map((item) => (
+          <div class="flow-card">
+            <div class="flow-step">{item.step}</div>
+            <h3 class="flow-title">{item.title}</h3>
+            <p>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <SectionTitle title="Equipment & Process" subtitle="Own production line covering mainstream PVC wire & cable compound processes" />
+      <div class="grid grid-3">
+        {capabilities.map((c) => (
+          <div class="card">
+            <h3 class="card-title">{c.title}</h3>
+            <p>{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionTitle title="Batch Stability & Traceability" subtitle="Long-term customers get consistent formulation — the key advantage of factory-direct" />
+      <div class="quality-block">
+        <ul class="quality-list">
+          {qualityItems.map((q) => (
+            <li>
+              <span class="quality-check">✓</span>
+              <span>{q}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="quality-cta">
+          <p>Welcome to visit our factory and see samples.</p>
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 Schedule Visit 13450853338</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: var(--color-surface-alt);
+    padding: var(--sp-6) 0 var(--sp-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .breadcrumb { font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--sp-3); }
+  .breadcrumb a { color: var(--color-text-muted); }
+  .page-header h1 { font-size: var(--fs-2xl); margin-bottom: var(--sp-2); color: var(--color-primary-dark); }
+  .page-header-sub { color: var(--color-text-soft); margin: 0; }
+
+  .section-alt { background: var(--color-surface-alt); }
+
+  .flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); }
+  .flow-card { background: var(--color-surface); border: 1px solid var(--color-border); border-top: 3px solid var(--color-primary); border-radius: 3px; padding: var(--sp-5); }
+  .flow-step { font-size: var(--fs-2xl); font-weight: 700; color: var(--color-primary); margin-bottom: var(--sp-2); line-height: 1; }
+  .flow-title { font-size: var(--fs-md); color: var(--color-primary-dark); margin-bottom: var(--sp-2); }
+  .flow-card p { font-size: var(--fs-sm); color: var(--color-text-soft); margin: 0; }
+
+  .quality-block { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--sp-6); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 4px; padding: var(--sp-6); align-items: center; }
+  .quality-list { list-style: none; padding: 0; margin: 0; }
+  .quality-list li { display: flex; gap: var(--sp-3); padding: var(--sp-3) 0; border-bottom: 1px dashed var(--color-border); color: var(--color-text-soft); }
+  .quality-list li:last-child { border-bottom: none; }
+  .quality-check { color: var(--color-primary); font-weight: 700; font-size: var(--fs-lg); flex-shrink: 0; width: 22px; }
+  .quality-cta { background: var(--color-primary-dark); color: #e8efe9; padding: var(--sp-5); border-radius: 3px; text-align: center; }
+  .quality-cta p { color: #d8d6cf; margin-bottom: var(--sp-4); }
+
+  @media (max-width: 1100px) { .flow-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 720px) { .flow-grid, .quality-block { grid-template-columns: 1fr; } }
+</style>

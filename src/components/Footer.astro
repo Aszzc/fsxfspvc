@@ -1,56 +1,103 @@
 ---
+interface Props {
+  locale?: 'zh-CN' | 'en';
+}
+
+const { locale = 'zh-CN' } = Astro.props;
 const phoneNumber = '13450853338';
 const year = new Date().getFullYear();
+
+const isEn = locale === 'en';
+
+const productLinks = isEn
+  ? [
+      { href: '/en/products/#insulation-70', label: '70℃ Insulation' },
+      { href: '/en/products/#sheath', label: 'Sheath Compound' },
+      { href: '/en/products/#electronic', label: 'Electronic Wire' },
+      { href: '/en/products/#plug', label: 'Plug Compound' },
+      { href: '/en/products/#heat-resistant-105', label: '105℃ Heat-resistant' },
+      { href: '/en/products/#cold-resistant', label: '-40℃ Cold-resistant' },
+      { href: '/en/products/#transparent', label: 'High-transparent' },
+    ]
+  : [
+      { href: '/products/#insulation-70', label: '70℃ 绝缘料' },
+      { href: '/products/#sheath', label: '护套料' },
+      { href: '/products/#electronic', label: '电子料' },
+      { href: '/products/#plug', label: '插头料' },
+      { href: '/products/#heat-resistant-105', label: '105℃ 耐高温料' },
+      { href: '/products/#cold-resistant', label: '-40℃ 耐寒料' },
+      { href: '/products/#transparent', label: '高透明料' },
+    ];
+
+const companyLinks = isEn
+  ? [
+      { href: '/en/manufacturing/', label: 'Manufacturing' },
+      { href: '/en/knowledge/', label: 'Knowledge' },
+      { href: '/en/contact/', label: 'Contact' },
+      { href: '/en/llms.txt', label: 'llms.txt' },
+    ]
+  : [
+      { href: '/manufacturing/', label: '制造能力' },
+      { href: '/knowledge/', label: '行业知识' },
+      { href: '/contact/', label: '联系我们' },
+      { href: '/llms.txt', label: 'llms.txt' },
+    ];
+
+const contactItems = isEn
+  ? [
+      `Tel / WeChat: <a href="tel:${phoneNumber}">${phoneNumber}</a>`,
+      'Xiaohongshu / Douyin: search "Xiangfa Shun Plastic"',
+      'Factory: Sanshui District, Foshan, Guangdong, China',
+      'Hours: Mon - Sat 8:00 - 18:00',
+    ]
+  : [
+      `电话 / 微信：<a href="tel:${phoneNumber}">${phoneNumber}</a>`,
+      '小红书 / 抖音：搜索「湘发顺塑料」',
+      '工厂地址：广东佛山三水',
+      '业务时间：周一至周六 8:00 - 18:00',
+    ];
+
+const desc = isEn
+  ? 'Foshan Xiangfa Shun Plastic Co., Ltd. — PVC wire & cable compound manufacturer in Foshan, Guangdong. In-house formulation, mixing, extrusion, pelletizing, screening and packaging. Main products: 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent compounds.'
+  : '佛山市三水湘发顺塑料有限公司 - 广东佛山 PVC 电线电缆料生产厂家。自有配方研发、混料、挤出造粒、筛分包装，主要供应 70℃ 绝缘料、护套料、电子料、插头料、耐高温料、耐寒料、高透明料等。';
+
+const brandShort = isEn ? 'Xiangfa Shun Plastic' : '湘发顺塑料';
+const fullName = isEn ? 'Foshan Xiangfa Shun Plastic Co., Ltd.' : '佛山市三水湘发顺塑料有限公司';
+const ctaLabel = isEn ? 'Get Quote' : '立即询价';
+const copyrightName = isEn ? fullName : fullName;
 ---
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col">
-        <div class="footer-brand">湘发顺塑料</div>
-        <p class="footer-desc">
-          佛山市三水湘发顺塑料有限公司 - 广东佛山 PVC 电线电缆料生产厂家。自有配方研发、混料、挤出造粒、筛分包装，
-          主要供应 70℃ 绝缘料、护套料、电子料、插头料、耐高温料、耐寒料、高透明料等。
-        </p>
+        <div class="footer-brand">{brandShort}</div>
+        <p class="footer-desc" set:html={desc} />
       </div>
 
       <div class="footer-col">
-        <h4>产品目录</h4>
+        <h4>{isEn ? 'Products' : '产品目录'}</h4>
         <ul>
-          <li><a href="/products/#insulation-70">70℃ 绝缘料</a></li>
-          <li><a href="/products/#sheath">护套料</a></li>
-          <li><a href="/products/#electronic">电子料</a></li>
-          <li><a href="/products/#plug">插头料</a></li>
-          <li><a href="/products/#heat-resistant-105">105℃ 耐高温料</a></li>
-          <li><a href="/products/#cold-resistant">-40℃ 耐寒料</a></li>
-          <li><a href="/products/#transparent">高透明料</a></li>
+          {productLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>了解我们</h4>
+        <h4>{isEn ? 'Company' : '了解我们'}</h4>
         <ul>
-          <li><a href="/manufacturing/">制造能力</a></li>
-          <li><a href="/knowledge/">行业知识</a></li>
-          <li><a href="/contact/">联系我们</a></li>
-          <li><a href="/llms.txt">llms.txt</a></li>
+          {companyLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>联系方式</h4>
-        <ul class="footer-contact">
-          <li>电话 / 微信：<a href={`tel:${phoneNumber}`}>{phoneNumber}</a></li>
-          <li>小红书 / 抖音：搜索「湘发顺塑料」</li>
-          <li>工厂地址：广东佛山三水</li>
-          <li>业务时间：周一至周六 8:00 - 18:00</li>
-        </ul>
-        <a href={`tel:${phoneNumber}`} class="btn btn-phone footer-cta">立即询价</a>
+        <h4>{isEn ? 'Contact' : '联系方式'}</h4>
+        <ul class="footer-contact" set:html={contactItems.map((c) => `<li>${c}</li>`).join('')} />
+        <a href={`tel:${phoneNumber}`} class="btn btn-phone footer-cta">{ctaLabel}</a>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <span>© {year} 佛山市三水湘发顺塑料有限公司 · xfspvc.com</span>
-      <span class="footer-domain">xfspvc.com · 佛山 PVC 电线电缆料厂家</span>
+      <span>© {year} {copyrightName} · xfspvc.com</span>
+      <span class="footer-domain">xfspvc.com · {isEn ? 'Foshan PVC Wire & Cable Compound Manufacturer' : '佛山 PVC 电线电缆料厂家'}</span>
     </div>
   </div>
 </footer>

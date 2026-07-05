@@ -12,7 +12,7 @@
 - 公司类型：LocalBusiness / Manufacturer
 - 工厂地址：中国广东省佛山市三水区
 - 服务区域：全国，可出口
-- 服务语言：中文
+- 服务语言：中文、English
 
 ## 联系方式
 
@@ -58,16 +58,26 @@
 
 ## 站点页面结构
 
+中文版（默认，无前缀）：
 - 首页 / ：厂家定位、主要产品、核心优势、询价入口
 - 产品目录 /products/ ：详细规格型目录，含 9 大产品类别
 - 制造能力 /manufacturing/ ：工艺流程、设备与工序、批次稳定与可追溯
 - 行业知识 /knowledge/ ：选型指南 + FAQ 问答
 - 联系我们 /contact/ ：电话 / 微信 / 小红书 / 抖音 / 二维码 / 地址 / 询价清单
 
+英文版：
+- 首页 /en/ ：Factory positioning, products, advantages, inquiry entry
+- Products /en/products/ ：Detailed catalog with 9 product categories
+- Manufacturing /en/manufacturing/ ：Production flow, equipment, batch stability
+- Knowledge /en/knowledge/ ：Selection guide + FAQ
+- Contact /en/contact/ ：Tel / WeChat / Xiaohongshu / Douyin / QR / address / inquiry list
+
 ## SEO / GEO 说明
 
 - 主域名：https://xfspvc.com/
 - robots.txt：https://xfspvc.com/robots.txt
-- sitemap.xml：https://xfspvc.com/sitemap.xml
+- sitemap.xml：https://xfspvc.com/sitemap.xml（含中英双语 + hreflang）
+- 英文版 llms：https://xfspvc.com/en/llms.txt
 - 每个核心页面有 title / description / canonical
+- 中英页面之间通过 hreflang 互相指向
 - 关键页面有 JSON-LD 结构化数据：Organization、LocalBusiness、ItemList（Product）、FAQPage、ContactPage

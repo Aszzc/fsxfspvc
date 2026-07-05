@@ -1,0 +1,544 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+import ProductDetail from '../../components/ProductDetail.astro';
+
+const phoneNumber = '13450853338';
+
+const products = [
+  {
+    id: 'insulation-70',
+    name: '70℃ Insulation Compound',
+    category: 'PVC Insulation',
+    summary: 'Standard PVC compound for wire conductor insulation. Stable performance with mature formulation — most common PVC insulation grade.',
+    useCases: [
+      'BV / BVR / BVV building wire insulation',
+      'Internal conductor covering for standard power cords',
+      'Electrical equipment internal wiring insulation',
+    ],
+    suitableCustomers: [
+      'Wire & cable manufacturers',
+      'Electronic wire factories',
+      'Electrical equipment makers (in-house wiring)',
+    ],
+    processing: [
+      'Standard PVC extruder',
+      'Extrusion temperature 150-180℃',
+      'Compatible with standard screws',
+    ],
+    specs: [
+      { label: 'Working temperature', value: '70℃' },
+      { label: 'Shore hardness', value: 'A 75-95 (adjustable)' },
+      { label: 'Tensile strength', value: '≥12 MPa (reference)' },
+      { label: 'Elongation at break', value: '≥150% (reference)' },
+      { label: 'Volume resistivity', value: '≥1×10¹³ Ω·cm' },
+      { label: 'Flame retardant', value: 'Adjustable on request' },
+      { label: 'Color', value: 'Standard / custom' },
+    ],
+    concerns: [
+      'Specific flame retardant grade required',
+      'Conductor adhesion per specific standard',
+      'Color and color-shift stability',
+      'Odor requirement (low-odor scenarios)',
+    ],
+    inquiryNeeds: [
+      'Wire spec (conductor cross-section, insulation thickness)',
+      'Applicable standard (GB/T 8815, UL, etc.)',
+      'Flame retardant grade',
+      'Color, estimated monthly volume',
+    ],
+  },
+  {
+    id: 'sheath',
+    name: 'Sheath Compound',
+    category: 'PVC Sheath',
+    summary: 'PVC compound for cable outer sheath. Good mechanical properties, abrasion and weather resistant — the common choice for the outermost cable layer.',
+    useCases: [
+      'RVV / RVVP / YJV cable outer sheath',
+      'Power plug cord outer jacket',
+      'Mechanical equipment cable jacket',
+    ],
+    suitableCustomers: [
+      'Wire & cable finished product factories',
+      'Power cord manufacturers',
+      'Equipment wire harness processors',
+    ],
+    processing: [
+      'PVC extruder',
+      'Extrusion temperature 160-185℃',
+      'Combined with cooling and printing',
+    ],
+    specs: [
+      { label: 'Working temperature', value: '70℃ (standard)' },
+      { label: 'Shore hardness', value: 'A 70-90 (adjustable)' },
+      { label: 'Tensile strength', value: '≥13 MPa (reference)' },
+      { label: 'Elongation at break', value: '≥200% (reference)' },
+      { label: 'Abrasion resistance', value: 'Good' },
+      { label: 'Weather resistance', value: 'Adjustable on request' },
+      { label: 'Color', value: 'Black / gray / white / custom' },
+    ],
+    concerns: [
+      'Abrasion and scratch resistance',
+      'Oil / chemical resistance',
+      'Weather requirements for outdoor use',
+      'Print adhesion on finished product',
+    ],
+    inquiryNeeds: [
+      'Finished cable spec, sheath thickness',
+      'Usage environment (indoor / outdoor / oil-resistant, etc.)',
+      'Flame retardant grade',
+      'Color, surface finish (glossy / matte)',
+    ],
+  },
+  {
+    id: 'electronic',
+    name: 'Electronic Wire Compound',
+    category: 'Electronic Wire',
+    summary: 'PVC compound for small-gauge electronic cables, USB, signal, DC wires. Wide processing window and low odor.',
+    useCases: [
+      'USB data cable jacket',
+      'DC power / signal cables',
+      'Earphone / AV cables',
+      'Small appliance internal wiring',
+    ],
+    suitableCustomers: [
+      'Electronic wire manufacturers',
+      'Small appliance wire harness makers',
+      '3C accessory makers',
+    ],
+    processing: [
+      'High-speed extrusion',
+      'Extrusion temperature 150-175℃',
+      'Compatible with thin-wall extrusion',
+    ],
+    specs: [
+      { label: 'Working temperature', value: '60-80℃' },
+      { label: 'Shore hardness', value: 'A 70-90' },
+      { label: 'Odor', value: 'Low-odor formula available' },
+      { label: 'Extrusion speed', value: 'High-speed compatible' },
+      { label: 'Color', value: 'Black / white / custom' },
+    ],
+    concerns: [
+      'Odor (export to EU/US markets)',
+      'Stability under high-speed extrusion',
+      'Color batch consistency',
+      'ROHS / REACH compliance',
+    ],
+    inquiryNeeds: [
+      'Wire spec and structure',
+      'Export market (affects environmental standards)',
+      'Required extrusion speed',
+      'Estimated monthly volume',
+    ],
+  },
+  {
+    id: 'plug',
+    name: 'Plug Compound',
+    category: 'Power Plug / Socket',
+    summary: 'Rigid PVC compound for power plug, socket and junction box housings. High strength, flame retardant, easy injection molding.',
+    useCases: [
+      'Power plug housing',
+      'Wall socket shell',
+      'Junction box / wiring accessories',
+    ],
+    suitableCustomers: [
+      'Power plug factories',
+      'Switch / socket makers',
+      'Electrical accessory factories',
+    ],
+    processing: [
+      'Injection molding',
+      'Mold temp 40-60℃',
+      'Barrel temp 160-190℃',
+    ],
+    specs: [
+      { label: 'Shore hardness', value: 'D 70-85 (rigid)' },
+      { label: 'Flame retardant', value: 'Adjustable (VW-1 / GB/T 8815)' },
+      { label: 'Flowability', value: 'Good for thin-wall molding' },
+      { label: 'Color', value: 'White / black / custom' },
+      { label: 'Mold shrinkage', value: '0.3-0.6% (reference)' },
+    ],
+    concerns: [
+      'Flame retardant grade and certification',
+      'Appearance (no flow marks, no bubbles)',
+      'Dimensional stability',
+      'Impact resistance',
+    ],
+    inquiryNeeds: [
+      'Finished structure, mold info',
+      'Flame retardant grade',
+      'Appearance requirements (color, gloss)',
+      'Estimated monthly volume',
+    ],
+  },
+  {
+    id: 'heat-resistant-105',
+    name: '105℃ Heat-resistant Compound',
+    category: 'Heat-resistant PVC',
+    summary: 'PVC modified for 105℃ working temperature. Common in appliance internal wiring, transformer leads, heating environment wiring.',
+    useCases: [
+      'Appliance internal wiring (water heater, oven, etc.)',
+      'Transformer lead wires',
+      'Motor lead wires',
+      'Lamp internal wiring',
+    ],
+    suitableCustomers: [
+      'Home appliance manufacturers',
+      'Transformer factories',
+      'Motor factories',
+      'Lamp factories',
+    ],
+    processing: [
+      'Standard PVC extrusion',
+      'Slightly higher extrusion temp than standard insulation',
+      'Watch for uniform plasticization',
+    ],
+    specs: [
+      { label: 'Working temperature', value: '105℃' },
+      { label: 'Aged performance', value: 'Passes high-temp aging tests' },
+      { label: 'Shore hardness', value: 'A 80-95 (adjustable)' },
+      { label: 'Flame retardant', value: 'Adjustable' },
+      { label: 'Certification', value: 'UL grade available' },
+    ],
+    concerns: [
+      'Temperature rating and aging test standard',
+      'Export certification (UL / VDE, etc.)',
+      'Balance between temp resistance and flame retardancy',
+      'Color stability under long-term heat',
+    ],
+    inquiryNeeds: [
+      'Actual working temperature and duration',
+      'Target certification (UL / VDE / GB)',
+      'Flame retardant grade',
+      'Estimated monthly volume',
+    ],
+  },
+  {
+    id: 'cold-resistant',
+    name: '-40℃ Cold-resistant Compound',
+    category: 'Cold-resistant PVC',
+    summary: 'PVC modified for -40℃ low temperature. Common in northern outdoor wiring, agricultural machinery cables, cold-region engineering.',
+    useCases: [
+      'Northern outdoor wire & cable',
+      'Agricultural machinery cables',
+      'Cold storage / refrigeration equipment wiring',
+      'Winter construction site cables',
+    ],
+    suitableCustomers: [
+      'Engineering cable factories',
+      'Agricultural machinery wire harness makers',
+      'Cold chain equipment makers',
+    ],
+    processing: [
+      'Standard PVC extrusion',
+      'Keep material warm in cold environment',
+      'Plasticization temp slightly higher than standard',
+    ],
+    specs: [
+      { label: 'Cold rating', value: 'No brittle cracking at -40℃' },
+      { label: 'Low-temp impact', value: 'Passes low-temp impact test' },
+      { label: 'Shore hardness', value: 'A 65-85 (more flexible)' },
+      { label: 'Flexibility', value: 'Maintained at low temp' },
+      { label: 'Color', value: 'Black / custom' },
+    ],
+    concerns: [
+      'Actual minimum use temperature',
+      'Low-temp impact test standard',
+      'Outdoor use (weather + cold resistance)',
+      'Elastic recovery after prolonged cold',
+    ],
+    inquiryNeeds: [
+      'Use region, minimum temperature',
+      'Low-temp test standard',
+      'Flame retardancy required?',
+      'Estimated monthly volume',
+    ],
+  },
+  {
+    id: 'transparent',
+    name: 'High-transparent Compound',
+    category: 'Transparent PVC',
+    summary: 'High light transmittance PVC for transparent power cords, LED strip cables, visible wiring applications.',
+    useCases: [
+      'Transparent power cord jacket',
+      'LED strip jacket',
+      'Decorative wiring',
+      'Visual instrument wiring',
+    ],
+    suitableCustomers: [
+      'LED strip factories',
+      'Decorative lamp makers',
+      'Transparent power cord makers',
+    ],
+    processing: [
+      'Standard PVC extrusion',
+      'Watch for uniform plasticization to avoid gels',
+      'Avoid prolonged high-temperature residence',
+    ],
+    specs: [
+      { label: 'Light transmittance', value: 'High (adjustable)' },
+      { label: 'Yellowing', value: 'Anti-yellowing grade adjustable' },
+      { label: 'Shore hardness', value: 'A 70-90 (adjustable)' },
+      { label: 'Odor', value: 'Low-odor available' },
+      { label: 'Color', value: 'Natural / transparent tint' },
+    ],
+    concerns: [
+      'Balance of transmittance and haze',
+      'Anti-yellowing (especially outdoor / high temp)',
+      'Surface smoothness',
+      'Gel particle control',
+    ],
+    inquiryNeeds: [
+      'Usage scenario (indoor / outdoor)',
+      'Transmittance requirement',
+      'Hardness preference',
+      'Estimated monthly volume',
+    ],
+  },
+  {
+    id: 'frosted',
+    name: 'Frosted / Matte Compound',
+    category: 'Matte PVC',
+    summary: 'PVC compound with matte frosted surface finish — used for premium power cords, decorative wires, finish-critical products.',
+    useCases: [
+      'Premium power cord outer jacket',
+      'Decorative wires',
+      'Products with appearance / touch requirements',
+    ],
+    suitableCustomers: [
+      'Premium power cord factories',
+      'Decorative lamp makers',
+      'Consumer electronics accessory makers',
+    ],
+    processing: [
+      'Standard PVC extrusion',
+      'Formula adjustment for matte effect',
+      'Mold surface finish affects finished product',
+    ],
+    specs: [
+      { label: 'Surface finish', value: 'Matte / frosted' },
+      { label: 'Touch', value: 'Fine, fingerprint resistant' },
+      { label: 'Shore hardness', value: 'A 70-90 (adjustable)' },
+      { label: 'Color', value: 'Custom' },
+    ],
+    concerns: [
+      'Matte uniformity',
+      'Scratch resistance',
+      'Matte finish & color combination',
+      'Extrusion stability',
+    ],
+    inquiryNeeds: [
+      'Finished appearance requirement (reference sample)',
+      'Target color',
+      'Extrusion process parameters',
+      'Estimated monthly volume',
+    ],
+  },
+  {
+    id: 'modified',
+    name: 'Modified Compound',
+    category: 'Modified PVC',
+    summary: 'PVC modified for custom hardness, flame retardancy, temperature and cold resistance per client requirements.',
+    useCases: [
+      'Customer special performance needs',
+      'Replacing some rubber or specialty plastics',
+      'Special industrial scenarios',
+    ],
+    suitableCustomers: [
+      'Customers with special performance needs',
+      'Import substitution clients',
+      'New project development customers',
+    ],
+    processing: [
+      'Depends on specific formula',
+      'Usually still uses PVC extrusion / injection equipment',
+    ],
+    specs: [
+      { label: 'Hardness range', value: 'Custom (A 50 - D 85)' },
+      { label: 'Flame retardant', value: 'On request' },
+      { label: 'Temperature', value: 'On request (standard / 105℃ / other)' },
+      { label: 'Cold resistance', value: 'On request' },
+      { label: 'Color', value: 'On request' },
+    ],
+    concerns: [
+      'Clear key performance specs',
+      'Customer sample or drawing',
+      'Target cost range',
+      'MOQ and supply cycle',
+    ],
+    inquiryNeeds: [
+      'Customer sample / performance spec sheet',
+      'Target usage scenario',
+      'Estimated monthly volume',
+      'Acceptable development cycle',
+    ],
+  },
+];
+---
+<BaseLayout
+  title="PVC Wire & Cable Compound Products"
+  description="PVC wire & cable compound product catalog: 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent, matte, modified. Each product includes application, target customers, processing method, typical specs, and inquiry points."
+  locale="en"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Xiangfa Shun PVC Wire & Cable Compound Catalog',
+    itemListElement: products.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Product',
+        name: p.name,
+        category: p.category,
+        description: p.summary,
+        url: `https://xfspvc.com/en/products/#${p.id}`,
+      },
+    })),
+  }}
+>
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="/en/">Home</a> / Products</div>
+      <h1>PVC Wire & Cable Compound Catalog</h1>
+      <p class="page-header-sub">
+        Below are typical spec ranges for standard categories. Final formulation, color and performance are confirmed via mutual technical agreement.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="container">
+      <div class="cat-nav">
+        <span class="cat-nav-title">Quick Jump:</span>
+        {products.map((p) => (
+          <a href={`#${p.id}`} class="cat-nav-link">{p.name}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      {products.map((p) => (
+        <ProductDetail
+          id={p.id}
+          name={p.name}
+          category={p.category}
+          summary={p.summary}
+          useCases={p.useCases}
+          suitableCustomers={p.suitableCustomers}
+          processing={p.processing}
+          specs={p.specs}
+          concerns={p.concerns}
+          inquiryNeeds={p.inquiryNeeds}
+        />
+      ))}
+
+      <div class="catalog-cta">
+        <h3>No perfect match?</h3>
+        <p>We can develop new formulas and run small-batch trials based on your requirements. Just call or message us.</p>
+        <div class="catalog-cta-actions">
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
+          <a href="/en/contact/" class="btn btn-outline">View Contact</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: var(--color-surface-alt);
+    padding: var(--sp-6) 0 var(--sp-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .breadcrumb {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--sp-3);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+  }
+
+  .page-header h1 {
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--sp-2);
+    color: var(--color-primary-dark);
+  }
+
+  .page-header-sub {
+    color: var(--color-text-soft);
+    margin: 0;
+    max-width: 760px;
+  }
+
+  .cat-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    align-items: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: 3px;
+  }
+
+  .cat-nav-title {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    font-weight: 600;
+  }
+
+  .cat-nav-link {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+  }
+
+  .cat-nav-link:hover {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .catalog-cta {
+    background: var(--color-primary-dark);
+    color: #e8efe9;
+    padding: var(--sp-6);
+    border-radius: 4px;
+    text-align: center;
+    margin-top: var(--sp-6);
+  }
+
+  .catalog-cta h3 {
+    color: #fff;
+    margin-bottom: var(--sp-3);
+  }
+
+  .catalog-cta p {
+    color: #d8d6cf;
+    margin-bottom: var(--sp-5);
+  }
+
+  .catalog-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--sp-3);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 720px) {
+    .cat-nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

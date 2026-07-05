@@ -9,6 +9,7 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   jsonLd?: object | object[];
+  locale?: 'zh-CN' | 'en';
 }
 
 const {
@@ -17,16 +18,35 @@ const {
   canonical,
   ogImage = 'https://xfspvc.com/images/factory-warehouse.jpg',
   jsonLd,
+  locale = 'zh-CN',
 } = Astro.props;
 
-const siteName = '佛山市三水湘发顺塑料有限公司 - 佛山 PVC 电线电缆料厂家';
-const fullTitle = title.includes('湘发顺') || title.includes('xfspvc') ? title : `${title} | 佛山市三水湘发顺塑料有限公司`;
+// 根据语言生成不同的站点名与标题后缀
+const siteNameZh = '佛山市三水湘发顺塑料有限公司 - 佛山 PVC 电线电缆料厂家';
+const siteNameEn = 'Foshan Xiangfa Shun Plastic Co., Ltd. - PVC Wire & Cable Compound Manufacturer';
+const siteName = locale === 'en' ? siteNameEn : siteNameZh;
+const brandShort = locale === 'en' ? 'Xiangfa Shun' : '湘发顺';
+
+const fullTitle =
+  locale === 'en'
+    ? (title.includes('Xiangfa Shun') || title.includes('xfspvc') ? title : `${title} | Xiangfa Shun Plastic`)
+    : (title.includes('湘发顺') || title.includes('xfspvc') ? title : `${title} | 佛山市三水湘发顺塑料有限公司`);
+
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://xfspvc.com').href;
+
+// hreflang：英文页面指向 /en/，中文页面指向无前缀路径
+const isEnPage = Astro.url.pathname.startsWith('/en/');
+const enHref = isEnPage
+  ? new URL(Astro.url.pathname, Astro.site ?? 'https://xfspvc.com').href
+  : new URL('/en' + (Astro.url.pathname === '/' ? '/' : Astro.url.pathname), Astro.site ?? 'https://xfspvc.com').href;
+const zhHref = isEnPage
+  ? new URL(Astro.url.pathname.replace(/^\/en/, '') || '/', Astro.site ?? 'https://xfspvc.com').href
+  : new URL(Astro.url.pathname, Astro.site ?? 'https://xfspvc.com').href;
 
 const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 ---
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,6 +55,11 @@ const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
 
+    <!-- hreflang -->
+    <link rel="alternate" hreflang="zh-CN" href={zhHref} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="x-default" href={zhHref} />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
@@ -42,18 +67,18 @@ const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'zh_CN'} />
 
     <meta name="format-detection" content="telephone=yes" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <Header />
+    <Header locale={locale} brandShort={brandShort} />
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
 
     {jsonLdArray.map((data) => (
       <script type="application/ld+json" set:html={JSON.stringify(data)} />

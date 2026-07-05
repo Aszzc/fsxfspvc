@@ -1,0 +1,85 @@
+# llms.txt — Foshan Xiangfa Shun Plastic Co., Ltd.
+
+> This is a structured site description for AI / LLM / search engines.
+> It contains basic information about our products, business, and contact info,
+> so AI summaries and answers can accurately reference us.
+> Full spec: https://llms.txt/
+
+## Site Info
+
+- Name: Foshan Xiangfa Shun Plastic Co., Ltd. (Xiangfa Shun Plastic / Xiangfa Shun)
+- Domain: https://xfspvc.com/en/
+- Business: PVC wire & cable compound manufacturer (in-house formulation, own factory)
+- Type: LocalBusiness / Manufacturer
+- Address: Sanshui District, Foshan, Guangdong, China
+- Service area: All China, export available
+- Languages: Chinese (default), English
+
+## Contact
+
+- Tel / WeChat: 13450853338 (phone and WeChat same number)
+- Phone format: +86-13450853338
+- Business hours: Mon - Sat 8:00 - 18:00 (China time, GMT+8)
+- Social: Search "Xiangfa Shun Plastic" on Xiaohongshu / Douyin
+- Online form: None — please reach us via phone / WeChat / SMS / social media
+
+## Main Products (PVC Wire & Cable Compound)
+
+| Category | Chinese | English | Typical Application |
+| --- | --- | --- | --- |
+| PVC Insulation | 70℃ 绝缘料 | 70℃ Insulation Compound | BV / BVR building wire insulation, electronic wire conductor |
+| PVC Sheath | 护套料 | Sheath Compound | RVV / RVVP / power cord outer sheath |
+| Electronic Wire | 电子料 | Electronic Wire Compound | USB / DC / signal cable jacket |
+| Power Plug | 插头料 | Plug Compound | Power plug, socket housing (injection) |
+| Heat-resistant | 105℃ 耐高温料 | 105℃ Heat-resistant Compound | Appliance internal wiring, transformer leads |
+| Cold-resistant | -40℃ 耐寒料 | -40℃ Cold-resistant Compound | Northern outdoor cable, agricultural machinery cable |
+| Transparent | 高透明料 | High-transparent Compound | Transparent power cord, LED strip |
+| Appearance | 雾面料 | Frosted / Matte Compound | Premium power cord, decorative wires |
+| Modified | 改性橡塑料 | Modified Compound | Customer special performance customization |
+
+## Manufacturing
+
+- Formulation → Raw material mixing → Extrusion & pelletizing → Cooling & screening → Packaging & delivery → Batch stability
+- In-house formulation R&D, customizable per customer sample / drawing / performance spec
+- Each batch retained for record — long-term customers get consistent formulation & stability
+- Small-batch trial supported; factory visit and sample viewing welcome
+
+## Industry Knowledge (FAQ)
+
+- PVC wire & cable compound selection (scenario / temperature / flame retardant / processing)
+- 70℃ / 90℃ / 105℃ temperature rating differences
+- -40℃ cold-resistant vs standard PVC
+- ROHS / REACH / NP environmental standards
+- MOQ, sample cycle, color customization, batch color shift, packaging spec, shelf life
+- Factory-direct vs trader vs finished-compound maker differences
+
+## Inquiry Communication Tips
+
+We recommend providing: usage scenario, wire spec, key performance requirements, applicable standard, estimated monthly volume, processing method, other special requirements (odor, anti-yellowing, export certifications, etc.).
+
+## Site Structure
+
+Chinese (default, no prefix):
+- / Home — factory positioning, products, advantages, inquiry entry
+- /products/ Product catalog — 9 categories with detailed specs
+- /manufacturing/ Manufacturing — process, equipment, batch stability
+- /knowledge/ Knowledge — selection guide + FAQ
+- /contact/ Contact — phone / WeChat / Xiaohongshu / Douyin / QR / address / inquiry list
+
+English:
+- /en/ Home — factory positioning, products, advantages, inquiry entry
+- /en/products/ Product catalog — 9 categories with detailed specs
+- /en/manufacturing/ Manufacturing — process, equipment, batch stability
+- /en/knowledge/ Knowledge — selection guide + FAQ
+- /en/contact/ Contact — phone / WeChat / Xiaohongshu / Douyin / QR / address / inquiry list
+
+## SEO / GEO Notes
+
+- Primary domain: https://xfspvc.com/
+- robots.txt: https://xfspvc.com/robots.txt
+- sitemap.xml: https://xfspvc.com/sitemap.xml (zh + en + hreflang)
+- Chinese llms.txt: https://xfspvc.com/llms.txt
+- English llms.txt: https://xfspvc.com/en/llms.txt
+- Each core page has title / description / canonical
+- Chinese ↔ English pages point to each other via hreflang
+- Key pages have JSON-LD structured data: Organization, LocalBusiness, ItemList (Product), FAQPage, ContactPage

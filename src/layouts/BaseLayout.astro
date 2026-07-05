@@ -19,8 +19,8 @@ const {
   jsonLd,
 } = Astro.props;
 
-const siteName = '祥丰盛塑业 - 佛山 PVC 电线电缆料厂家';
-const fullTitle = title.includes('祥丰盛') ? title : `${title} | 祥丰盛塑业`;
+const siteName = '佛山市三水湘发顺塑料有限公司 - 佛山 PVC 电线电缆料厂家';
+const fullTitle = title.includes('湘发顺') || title.includes('xfspvc') ? title : `${title} | 佛山市三水湘发顺塑料有限公司`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? 'https://xfspvc.com').href;
 
 const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];

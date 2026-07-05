@@ -5,22 +5,22 @@ import SectionTitle from '../../components/SectionTitle.astro';
 const phoneNumber = '13450853338';
 
 const flow = [
-  { step: '01', title: 'Formulation', desc: 'Customer provides usage scenario and performance specs (temp, flame retardant, hardness, color). Our engineers confirm details and propose initial formula.' },
-  { step: '02', title: 'Sample Trial', desc: 'Small-batch sample produced per formula, sent to customer for extrusion / injection validation. Adjustments based on feedback.' },
-  { step: '03', title: 'Raw Material Mixing', desc: 'High-speed mixer adds PVC resin, plasticizer, stabilizer, flame retardant, filler etc. in process order.' },
+  { step: '01', title: 'Formulation', desc: 'Customer provides usage scenario and performance specs. Engineers confirm details and propose initial formula.' },
+  { step: '02', title: 'Sample Trial', desc: 'Small-batch sample produced per formula, sent to customer for extrusion / injection validation. Adjust based on feedback.' },
+  { step: '03', title: 'Raw Material Mixing', desc: 'High-speed mixer adds PVC resin, plasticizer, stabilizer, flame retardant, filler in process order.' },
   { step: '04', title: 'Extrusion & Pelletizing', desc: 'PVC-specific extruder for pelletizing. Temperature and screw speed set per formula for uniform plasticization.' },
-  { step: '05', title: 'Cooling & Screening', desc: 'Extruded strands water-cooled / air-cooled, then cut and vibrated to remove overlong, over-fine or off-spec pellets.' },
+  { step: '05', title: 'Cooling & Screening', desc: 'Extruded strands water-cooled / air-cooled, cut and vibrated to remove overlong, over-fine or off-spec pellets.' },
   { step: '06', title: 'Packaging & Delivery', desc: '25kg/bag standard or customer-specified packaging with batch ID. Pallet packing on request.' },
   { step: '07', title: 'Batch Stability', desc: 'Each batch retained for record. Long-term customers get consistent formulation and traceability.' },
 ];
 
 const capabilities = [
-  { title: 'PVC Formulation R&D', desc: 'Standard PVC, modified PVC, flame-retardant, heat-resistant, cold-resistant — all customizable.' },
-  { title: 'Raw Material Sourcing', desc: 'PVC resin, plasticizer, stabilizer, flame retardant from fixed channels — batch stability guaranteed.' },
-  { title: 'Mixing Process', desc: 'Multiple high-speed mixers for cold / hot mixing per process requirements.' },
-  { title: 'Extrusion & Pelletizing', desc: 'Twin-screw / single-screw extruders covering stable supply for small-to-mid wire & cable factories.' },
-  { title: 'Cutting & Screening', desc: 'Pellet cutters and vibratory screens for uniform granule size.' },
-  { title: 'Packaging & Warehousing', desc: 'Own warehouse with finished goods area. Packaging specs customizable.' },
+  { icon: '⚙', title: 'PVC Formulation R&D', desc: 'Standard PVC, modified PVC, flame-retardant, heat-resistant, cold-resistant — all customizable.' },
+  { icon: '⊟', title: 'Raw Material Sourcing', desc: 'PVC resin, plasticizer, stabilizer, flame retardant from fixed channels — batch stability guaranteed.' },
+  { icon: '◐', title: 'Mixing Process', desc: 'Multiple high-speed mixers for cold / hot mixing per process requirements.' },
+  { icon: '⊕', title: 'Extrusion & Pelletizing', desc: 'Twin-screw / single-screw extruders covering stable supply for small-to-mid wire & cable factories.' },
+  { icon: '◈', title: 'Cutting & Screening', desc: 'Pellet cutters and vibratory screens for uniform granule size, no overlong or over-fine.' },
+  { icon: '⊞', title: 'Packaging & Warehousing', desc: 'Own warehouse with finished goods area. Packaging specs customizable.' },
 ];
 
 const qualityItems = [
@@ -30,15 +30,39 @@ const qualityItems = [
   'Each batch retained for traceability',
   'Customer feedback follow-up, continuous formula optimization',
 ];
+
+const howToLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'Custom PVC Wire & Cable Compound Production Flow',
+  description: 'Full 7-step process from requirement to delivery',
+  totalTime: 'P3-7D',
+  step: flow.map((f, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: f.title,
+    text: f.desc,
+  })),
+};
 ---
 <BaseLayout
   title="Manufacturing Capability"
   description="Foshan Xiangfa Shun Plastic manufacturing capability: full process from PVC formulation, raw material mixing, extrusion & pelletizing, cooling & screening, packaging & delivery, to batch stability. Every batch retained and traceable."
   locale="en"
+  breadcrumbs={[
+    { name: 'Home', href: '/en/' },
+    { name: 'Manufacturing', href: '/en/manufacturing/' },
+  ]}
+  jsonLd={howToLd}
 >
   <section class="page-header">
     <div class="container">
-      <div class="breadcrumb"><a href="/en/">Home</a> / Manufacturing</div>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/en/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Manufacturing</span>
+      </nav>
+      <div class="section-eyebrow page-eyebrow">MANUFACTURING · 7 PROCESS STEPS</div>
       <h1>Manufacturing Capability</h1>
       <p class="page-header-sub">
         From formulation discussion to stable supply — every step is the advantage of sourcing directly from factory.
@@ -48,14 +72,15 @@ const qualityItems = [
 
   <section class="section">
     <div class="container">
-      <SectionTitle title="Production Flow" subtitle="Full chain from customer requirements to finished goods delivery" />
+      <SectionTitle eyebrow="PROCESS" title="Seven Production Steps" subtitle="Full chain from customer requirements to finished goods delivery" />
       <div class="flow-grid">
-        {flow.map((item) => (
-          <div class="flow-card">
+        {flow.map((item, i) => (
+          <article class="flow-card" style={`--flow-i:${i}`}>
             <div class="flow-step">{item.step}</div>
             <h3 class="flow-title">{item.title}</h3>
             <p>{item.desc}</p>
-          </div>
+            {i < flow.length - 1 && <span class="flow-arrow" aria-hidden="true">→</span>}
+          </article>
         ))}
       </div>
     </div>
@@ -63,12 +88,13 @@ const qualityItems = [
 
   <section class="section section-alt">
     <div class="container">
-      <SectionTitle title="Equipment & Process" subtitle="Own production line covering mainstream PVC wire & cable compound processes" />
+      <SectionTitle eyebrow="CAPABILITIES" title="Equipment & Process" subtitle="Own production line covering mainstream PVC wire & cable compound processes" />
       <div class="grid grid-3">
         {capabilities.map((c) => (
-          <div class="card">
-            <h3 class="card-title">{c.title}</h3>
-            <p>{c.desc}</p>
+          <div class="capability-card">
+            <div class="capability-icon" aria-hidden="true">{c.icon}</div>
+            <h3 class="capability-title">{c.title}</h3>
+            <p class="capability-desc">{c.desc}</p>
           </div>
         ))}
       </div>
@@ -77,19 +103,22 @@ const qualityItems = [
 
   <section class="section">
     <div class="container">
-      <SectionTitle title="Batch Stability & Traceability" subtitle="Long-term customers get consistent formulation — the key advantage of factory-direct" />
+      <SectionTitle eyebrow="QUALITY" title="Batch Stability & Traceability" subtitle="Long-term customers get consistent formulation — the key advantage of factory-direct" />
       <div class="quality-block">
         <ul class="quality-list">
           {qualityItems.map((q) => (
             <li>
-              <span class="quality-check">✓</span>
+              <span class="quality-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
               <span>{q}</span>
             </li>
           ))}
         </ul>
         <div class="quality-cta">
-          <p>Welcome to visit our factory and see samples.</p>
-          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 Schedule Visit 13450853338</a>
+          <h3>Welcome to visit our factory</h3>
+          <p>Please call ahead to schedule a visit</p>
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 Schedule Visit {phoneNumber}</a>
         </div>
       </div>
     </div>
@@ -97,33 +126,153 @@ const qualityItems = [
 </BaseLayout>
 
 <style>
-  .page-header {
-    background: var(--color-surface-alt);
-    padding: var(--sp-6) 0 var(--sp-5);
-    border-bottom: 1px solid var(--color-border);
+  .page-eyebrow { margin-bottom: var(--sp-3); }
+
+  .flow-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-4);
+    position: relative;
   }
 
-  .breadcrumb { font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--sp-3); }
-  .breadcrumb a { color: var(--color-text-muted); }
-  .page-header h1 { font-size: var(--fs-2xl); margin-bottom: var(--sp-2); color: var(--color-primary-dark); }
-  .page-header-sub { color: var(--color-text-soft); margin: 0; }
+  .flow-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-5);
+    position: relative;
+    transition: all 0.28s var(--ease-out);
+  }
 
-  .section-alt { background: var(--color-surface-alt); }
+  .flow-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+  }
 
-  .flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); }
-  .flow-card { background: var(--color-surface); border: 1px solid var(--color-border); border-top: 3px solid var(--color-primary); border-radius: 3px; padding: var(--sp-5); }
-  .flow-step { font-size: var(--fs-2xl); font-weight: 700; color: var(--color-primary); margin-bottom: var(--sp-2); line-height: 1; }
+  .flow-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: var(--fs-lg);
+    font-weight: 800;
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--sp-3);
+    letter-spacing: 0.05em;
+  }
+
   .flow-title { font-size: var(--fs-md); color: var(--color-primary-dark); margin-bottom: var(--sp-2); }
-  .flow-card p { font-size: var(--fs-sm); color: var(--color-text-soft); margin: 0; }
+  .flow-card p { font-size: var(--fs-sm); color: var(--color-text-soft); margin: 0; line-height: 1.7; }
 
-  .quality-block { display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--sp-6); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 4px; padding: var(--sp-6); align-items: center; }
+  .flow-arrow {
+    position: absolute;
+    right: -22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-accent);
+    font-size: 18px;
+    font-weight: 700;
+    z-index: 1;
+  }
+
+  .capability-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-6);
+    transition: all 0.28s var(--ease-out);
+    height: 100%;
+  }
+
+  .capability-card:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+  }
+
+  .capability-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, var(--color-primary-soft) 0%, #d3e2d8 100%);
+    color: var(--color-primary);
+    border-radius: var(--radius-md);
+    font-size: 24px;
+    margin-bottom: var(--sp-4);
+  }
+
+  .capability-title { font-size: var(--fs-md); color: var(--color-primary-dark); margin-bottom: var(--sp-3); }
+  .capability-desc { font-size: var(--fs-sm); color: var(--color-text-soft); margin: 0; line-height: 1.75; }
+
+  .quality-block {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--sp-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-7);
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+  }
+
   .quality-list { list-style: none; padding: 0; margin: 0; }
-  .quality-list li { display: flex; gap: var(--sp-3); padding: var(--sp-3) 0; border-bottom: 1px dashed var(--color-border); color: var(--color-text-soft); }
+  .quality-list li { display: flex; gap: var(--sp-3); padding: var(--sp-4) 0; border-bottom: 1px dashed var(--color-border); color: var(--color-text-soft); font-size: var(--fs-base); align-items: center; }
   .quality-list li:last-child { border-bottom: none; }
-  .quality-check { color: var(--color-primary); font-weight: 700; font-size: var(--fs-lg); flex-shrink: 0; width: 22px; }
-  .quality-cta { background: var(--color-primary-dark); color: #e8efe9; padding: var(--sp-5); border-radius: 3px; text-align: center; }
-  .quality-cta p { color: #d8d6cf; margin-bottom: var(--sp-4); }
 
-  @media (max-width: 1100px) { .flow-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 720px) { .flow-grid, .quality-block { grid-template-columns: 1fr; } }
+  .quality-check {
+    width: 28px;
+    height: 28px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .quality-check svg { width: 16px; height: 16px; }
+
+  .quality-cta {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #fff;
+    padding: var(--sp-6);
+    border-radius: var(--radius-md);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quality-cta::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(227, 99, 42, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .quality-cta h3 { color: #fff; margin-bottom: var(--sp-2); font-size: var(--fs-lg); }
+  .quality-cta p { color: rgba(255, 255, 255, 0.8); margin-bottom: var(--sp-4); font-size: var(--fs-sm); }
+
+  @media (max-width: 1100px) {
+    .flow-grid { grid-template-columns: repeat(2, 1fr); }
+    .flow-card:nth-child(2) .flow-arrow,
+    .flow-card:nth-child(4) .flow-arrow,
+    .flow-card:nth-child(6) .flow-arrow { display: none; }
+  }
+
+  @media (max-width: 720px) {
+    .flow-grid, .quality-block { grid-template-columns: 1fr; }
+    .flow-arrow { display: none !important; }
+  }
 </style>

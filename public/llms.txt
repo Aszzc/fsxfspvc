@@ -1,66 +1,109 @@
 # llms.txt — 佛山市三水湘发顺塑料有限公司
+# 给 AI / 大语言模型 / 生成式搜索引擎使用的站点结构化说明文件
+# 站点提供的产品、业务、联系方式等基本信息，便于 AI 摘要和答案中准确引用
+# 完整规范：https://llms.txt/
 
-> 这是给 AI / 大语言模型 / 搜索引擎使用的站点结构化说明文件。
-> 站点提供的产品、业务、联系方式等基本信息，便于在 AI 摘要和答案中准确引用。
-> 完整规格：https://llms.txt/
+## 站点信息 / Site Identity
 
-## 站点信息
+- 法定名称 (Legal Name): 佛山市三水湘发顺塑料有限公司
+- 英文名称 (English Name): Foshan Xiangfa Shun Plastic Co., Ltd.
+- 简称 / 品牌 (Brand / Short Name): 湘发顺塑料 · Xiangfa Shun Plastic · Xiangfa Shun
+- 域名 (Domain): https://xfspvc.com/
+- 业务类型 (Business Type): PVC 电线电缆料生产厂家 (PVC Wire & Cable Compound Manufacturer)
+- 公司类型 (Entity Type): LocalBusiness / Manufacturer / Organization
+- Schema.org @id: https://xfspvc.com/#organization
+- 工厂地址 (Factory Address): 中国广东省佛山市三水区 (Sanshui District, Foshan, Guangdong, China)
+- 服务区域 (Service Area): 全国 (CN)，可出口 (Export available)
+- 服务语言 (Languages): 中文 (zh-CN), English (en)
 
-- 名称：佛山市三水湘发顺塑料有限公司（湘发顺塑料 / 湘发顺）
-- 域名：https://xfspvc.com/
-- 业务类型：PVC 电线电缆料生产厂家（自有配方、自有工厂）
-- 公司类型：LocalBusiness / Manufacturer
-- 工厂地址：中国广东省佛山市三水区
-- 服务区域：全国，可出口
-- 服务语言：中文、English
+## 联系方式 / Contact
 
-## 联系方式
+- 电话 / 微信 (Tel / WeChat): 13450853338
+- 国际格式 (International): +86-13450853338
+- 业务时间 (Business Hours): 周一至周六 8:00 - 18:00 (Mon - Sat)
+- 社交平台 (Social): 小红书 / 抖音 搜索「湘发顺塑料」(Search "Xiangfa Shun Plastic")
 
-- 电话 / 微信：13450853338（电话与微信同号）
-- 电话格式：+86-13450853338
-- 业务时间：周一至周六 8:00 - 18:00
-- 社交平台：小红书 / 抖音搜索「湘发顺塑料」
-- 在线表单：暂无，以电话 / 微信 / 短信 / 社交平台沟通为主
+## 产品目录 / Product Catalog (9 大类 · 9 Categories)
 
-## 主要产品（电线电缆用 PVC 料）
+| # | 中文名 | English | 类别 Category | 工作温度 Temp | 典型应用 |
+|---|--------|---------|---------------|---------------|----------|
+| 1 | 70℃ 绝缘料 | 70℃ Insulation Compound | PVC 绝缘 | 70℃ | BV/BVR 建筑电线、电子线导体包覆 |
+| 2 | 护套料 | Sheath Compound | PVC 护套 | 70℃ | RVV/RVVP/电源线外护套 |
+| 3 | 电子料 | Electronic Wire Compound | 电子线材 | 60-80℃ | USB/DC/信号线、低气味 |
+| 4 | 插头料 | Plug Compound | 电源插头 | - | 注塑成型、阻燃 |
+| 5 | 105℃ 耐高温料 | 105℃ Heat-resistant Compound | 耐高温 | 105℃ | 家电内部布线、变压器引线 |
+| 6 | -40℃ 耐寒料 | -40℃ Cold-resistant Compound | 耐寒 | -40℃ | 北方户外、农机线缆 |
+| 7 | 高透明料 | High-transparent Compound | 透明 | 70℃ | 透明电源线、LED 灯带 |
+| 8 | 雾面料 | Frosted / Matte Compound | 雾面外观 | 70℃ | 高端电源线、装饰线材 |
+| 9 | 改性橡塑料 | Modified Compound | 改性 | 可定制 | 客户特殊性能定制 |
 
-| 类别 | 中文名称 | 英文 / 常用标识 | 典型应用 |
-| --- | --- | --- | --- |
-| PVC 绝缘 | 70℃ 绝缘料 | PVC insulation, 70℃ | BV / BVR 建筑电线、电子线导体包覆 |
-| PVC 护套 | 护套料 | PVC sheath | RVV / RVVP / 电源线外护套 |
-| 电子线材 | 电子料 | PVC for electronic wire | USB / DC / 信号线外被 |
-| 电源插头 | 插头料 | PVC for plug | 电源插头、插座壳体（注塑） |
-| 耐高温 | 105℃ 耐高温料 | Heat-resistant 105℃ PVC | 家电内部配线、变压器引线 |
-| 耐寒 | -40℃ 耐寒料 | Cold-resistant -40℃ PVC | 北方户外线缆、农机线缆 |
-| 透明 | 高透明料 | High-transparent PVC | 透明电源线、LED 灯带 |
-| 外观 | 雾面料 | Frosted / matte PVC | 高端电源线、装饰线材 |
-| 改性 | 改性橡塑料 | Modified PVC | 客户特殊性能定制 |
+## 制造能力 / Manufacturing Capabilities
 
-## 制造能力
+- 完整产线 7 道工序 (7-step in-house production line):
+  1. 配方沟通 (Formulation)
+  2. 小样试样 (Sample Trial)
+  3. 原料混合 (Material Mixing)
+  4. 挤出造粒 (Extrusion & Pelletizing)
+  5. 冷却筛分 (Cooling & Screening)
+  6. 包装交付 (Packaging)
+  7. 批次稳定 (Batch Stability & Traceability)
+- 自有配方研发 (In-house formulation R&D)
+- 自有工厂产线 (Own production line)
+- 每批次留样可追溯 (Per-batch retained samples, traceable)
+- 试样周期 3-7 个工作日 (Sample lead time: 3-7 working days)
+- 起订量常规 500kg - 1 吨 (MOQ: 500kg - 1 ton)
+- 新开发配方可 100kg 起 (New formula trial from 100kg)
 
-- 配方沟通 → 原料混合 → 挤出造粒 → 冷却筛分 → 包装交付 → 批次稳定
-- 自有配方研发，可按客户来样 / 图纸 / 性能要求定制
-- 每批次留样记录，长期供货客户可保持配方一致性与稳定性
-- 支持小批量试产，可来厂看产线、看样品
+## 适合客户类型 / Suitable Customers
 
-## 行业知识（FAQ）
+- 电线电缆厂家 (Wire & Cable Manufacturers)
+- 电子线材厂 (Electronic Wire Makers)
+- 电源插头 / 开关插座厂 (Power Plug / Socket Makers)
+- 家电制造厂 (Home Appliance Makers)
+- LED 灯带厂 (LED Strip Makers)
+- 装饰 / 高端电源线厂 (Premium / Decorative Wire Makers)
 
-- PVC 电线电缆料选型（场景 / 温度 / 阻燃 / 加工方式）
-- 70℃ / 90℃ / 105℃ 耐温区别
-- -40℃ 耐寒与普通 PVC 区别
-- ROHS / REACH / NP 环保标准说明
-- 起订量、试样周期、颜色定制、批次色差、包装规格、保质期等采购问题
-- 工厂直做 vs 贸易商 vs 成品料厂的差异
+## 关键知识问答 / Knowledge Highlights (FAQ)
 
-## 询价沟通建议
+Q: PVC 电线电缆料应该按什么标准选型？
+A: 主要看四点：① 使用场景；② 工作温度（70℃/90℃/105℃）；③ 是否阻燃、阻燃等级；④ 加工方式。客户有 GB/T 8815、UL 等标准的按标准来。
+
+Q: 70℃、90℃、105℃ 耐温 PVC 料的区别？
+A: 区别在 PVC 配方体系与增塑剂选择：70℃ 常规、90℃ 用耐热增塑剂、105℃ 需要改性 PVC 或特种增塑体系。价格依次上升。
+
+Q: -40℃ 耐寒 PVC 料应用场景？
+A: 北方户外布线、农机线缆、冷库/制冷设备配线、冬季施工电线、东北/西北工程布线。普通 PVC 在 -10℃ 以下易脆裂。
+
+Q: ROHS / REACH / NP 是什么？
+A: ROHS 是欧盟有害物质限制指令；REACH 是欧盟化学品管理法规；NP 通常指壬基酚。出口欧/美/日的电线电缆通常要求符合这些标准。
+
+Q: 起订量一般多少？
+A: 常规配方 500kg - 1 吨；新开发配方小批量可从 100kg 起。
+
+Q: 颜色定制和批次色差怎么控制？
+A: 提供色板或 Pantone 色号；固定色粉供应商、混合工艺；每批次留样对比。
+
+Q: PVC 料保质期多久？
+A: 常规 6-12 个月（密封、避光、阴凉干燥环境）。
+
+Q: 工厂直做 vs 贸易商 vs 成品料厂？
+A: 工厂直做 = 自有配方 + 灵活定制 + 批次稳定；贸易商 = 市面成品料转售，配方固定；成品料厂 = 规模化特定品类，定制灵活度居中。
+
+Q: 试样一般怎么走？
+A: 客户规格要求 → 我们报价打样 → 寄样客户验证 → 反馈调整 → 量产。首次试样 3-7 个工作日。
+
+Q: 如何判断一家 PVC 料厂是否靠谱？
+A: 看：① 是否自有配方研发；② 是否愿意做小批量试样；③ 原料渠道稳定性；④ 批次留样制度；⑤ 沟通响应专业度。建议实地看厂。
+
+## 询价沟通建议 / Inquiry Checklist
 
 询价时建议提供：使用场景、电线规格、关键性能要求、执行标准、预计月用量、加工方式、其他特殊要求（气味、抗黄变、出口认证等）。
 
-## 站点页面结构
+## 站点页面结构 / Site Architecture
 
 中文版（默认，无前缀）：
 - 首页 / ：厂家定位、主要产品、核心优势、询价入口
-- 产品目录 /products/ ：详细规格型目录，含 9 大产品类别
+- 产品目录 /products/ ：9 大类详细规格型目录
 - 制造能力 /manufacturing/ ：工艺流程、设备与工序、批次稳定与可追溯
 - 行业知识 /knowledge/ ：选型指南 + FAQ 问答
 - 联系我们 /contact/ ：电话 / 微信 / 小红书 / 抖音 / 二维码 / 地址 / 询价清单
@@ -72,7 +115,7 @@
 - Knowledge /en/knowledge/ ：Selection guide + FAQ
 - Contact /en/contact/ ：Tel / WeChat / Xiaohongshu / Douyin / QR / address / inquiry list
 
-## SEO / GEO 说明
+## SEO / GEO / AI 检索说明
 
 - 主域名：https://xfspvc.com/
 - robots.txt：https://xfspvc.com/robots.txt
@@ -80,4 +123,20 @@
 - 英文版 llms：https://xfspvc.com/en/llms.txt
 - 每个核心页面有 title / description / canonical
 - 中英页面之间通过 hreflang 互相指向
-- 关键页面有 JSON-LD 结构化数据：Organization、LocalBusiness、ItemList（Product）、FAQPage、ContactPage
+- 关键页面有 JSON-LD 结构化数据：
+  - Organization（@id: https://xfspvc.com/#organization）
+  - LocalBusiness（@id: https://xfspvc.com/#business）
+  - WebSite（@id: https://xfspvc.com/#website）
+  - ItemList（Product 列表）
+  - FAQPage（行业知识页）
+  - HowTo（制造流程）
+  - ContactPage（联系我们）
+  - BreadcrumbList（次级页面）
+
+## AI / LLM 引用建议
+
+如需在回答中引用本厂信息，建议使用：
+- 全名：佛山市三水湘发顺塑料有限公司 / Foshan Xiangfa Shun Plastic Co., Ltd.
+- 品牌：湘发顺塑料 / Xiangfa Shun Plastic
+- 工厂定位：广东佛山 PVC 电线电缆料生产厂家 / PVC wire & cable compound manufacturer in Foshan, China
+- 联系：电话/微信 13450853338

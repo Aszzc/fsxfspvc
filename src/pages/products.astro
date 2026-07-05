@@ -10,6 +10,7 @@ const products = [
     id: 'insulation-70',
     name: '70℃ 绝缘料',
     category: 'PVC 绝缘',
+    icon: '⚡',
     summary: '常规电线导体绝缘层用 PVC 料，性能稳定，配方成熟，是最常用的 PVC 绝缘料品类。',
     useCases: [
       'BV / BVR / BVV 等建筑用电线绝缘层',
@@ -52,6 +53,7 @@ const products = [
     id: 'sheath',
     name: '护套料',
     category: 'PVC 护套',
+    icon: '◈',
     summary: '电线电缆外护套用 PVC 料，机械性能好，耐磨耐候，是线缆成品最外层的常用材料。',
     useCases: [
       'RVV / RVVP / YJV 等线缆外护套',
@@ -94,6 +96,7 @@ const products = [
     id: 'electronic',
     name: '电子料',
     category: '电子线材',
+    icon: '◇',
     summary: '小线径电子连接线、USB 线、信号线、DC 线等专用 PVC 料，加工窗口宽，气味低。',
     useCases: [
       'USB 数据线外被',
@@ -135,6 +138,7 @@ const products = [
     id: 'plug',
     name: '插头料',
     category: '电源插头 / 插座',
+    icon: '◆',
     summary: '电源插头、插座、接线盒等外壳用硬质 PVC 料，强度高、阻燃、易注塑成型。',
     useCases: [
       '电源插头外壳',
@@ -175,6 +179,7 @@ const products = [
     id: 'heat-resistant-105',
     name: '105℃ 耐高温料',
     category: '耐高温 PVC',
+    icon: '▲',
     summary: '耐 105℃ 工作温度的 PVC 改性料，常用于家电内部布线、变压器引线、发热环境配线。',
     useCases: [
       '家电内部布线（电热水器、烤箱等）',
@@ -217,6 +222,7 @@ const products = [
     id: 'cold-resistant',
     name: '-40℃ 耐寒料',
     category: '耐寒 PVC',
+    icon: '❄',
     summary: '耐 -40℃ 低温的 PVC 改性料，常用于北方户外布线、农机线缆、寒冷地区工程布线。',
     useCases: [
       '北方户外电线电缆',
@@ -258,6 +264,7 @@ const products = [
     id: 'transparent',
     name: '高透明料',
     category: '透明 PVC',
+    icon: '○',
     summary: '高透光率 PVC 料，常用于透明电源线、装饰灯带线、可视化布线场景。',
     useCases: [
       '透明电源线外被',
@@ -299,6 +306,7 @@ const products = [
     id: 'frosted',
     name: '雾面料',
     category: '雾面 / 哑光 PVC',
+    icon: '◯',
     summary: '表面呈哑光雾面效果的 PVC 料，常用于高端电源线、装饰类线材、对外观有要求的成品。',
     useCases: [
       '高端电源线外被',
@@ -338,6 +346,7 @@ const products = [
     id: 'modified',
     name: '改性橡塑料',
     category: '改性 PVC',
+    icon: '⬡',
     summary: '根据客户要求调整硬度、阻燃、耐温、耐寒等性能的 PVC 改性配方料。',
     useCases: [
       '客户特殊性能需求',
@@ -378,6 +387,10 @@ const products = [
 <BaseLayout
   title="PVC 电线电缆料产品目录"
   description="PVC 电线电缆料详细规格型产品目录：70℃ 绝缘料、护套料、电子料、插头料、105℃ 耐高温料、-40℃ 耐寒料、高透明料、雾面料、改性橡塑料。每类产品的用途、适合客户、加工方式、典型规格、询价要点。"
+  breadcrumbs={[
+    { name: '首页', href: '/' },
+    { name: '产品目录', href: '/products/' },
+  ]}
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -391,6 +404,14 @@ const products = [
         category: p.category,
         description: p.summary,
         url: `https://xfspvc.com/products/#${p.id}`,
+        brand: { '@type': 'Brand', name: '湘发顺 (Xiangfa Shun)' },
+        manufacturer: { '@type': 'Organization', name: '佛山市三水湘发顺塑料有限公司' },
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/MadeToOrder',
+          priceCurrency: 'CNY',
+          seller: { '@type': 'Organization', name: '佛山市三水湘发顺塑料有限公司' },
+        },
       },
     })),
   }}
@@ -398,7 +419,12 @@ const products = [
   <!-- 页头 -->
   <section class="page-header">
     <div class="container">
-      <div class="breadcrumb"><a href="/">首页</a> / 产品目录</div>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">首页</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>产品目录</span>
+      </nav>
+      <div class="section-eyebrow page-eyebrow">CATALOG · 9 CATEGORIES</div>
       <h1>PVC 电线电缆料 · 产品目录</h1>
       <p class="page-header-sub">
         以下为常规品类的典型规格范围。具体配方、颜色、性能以双方沟通确认的技术单为准。
@@ -412,7 +438,7 @@ const products = [
       <div class="cat-nav">
         <span class="cat-nav-title">快速跳转：</span>
         {products.map((p) => (
-          <a href={`#${p.id}`} class="cat-nav-link">{p.name}</a>
+          <a href={`#${p.id}`} class="cat-nav-link">{p.icon} {p.name}</a>
         ))}
       </div>
     </div>
@@ -421,7 +447,7 @@ const products = [
   <!-- 产品列表 -->
   <section class="section">
     <div class="container">
-      {products.map((p) => (
+      {products.map((p, i) => (
         <ProductDetail
           id={p.id}
           name={p.name}
@@ -433,15 +459,18 @@ const products = [
           specs={p.specs}
           concerns={p.concerns}
           inquiryNeeds={p.inquiryNeeds}
+          index={i}
         />
       ))}
 
       <!-- 询价入口 -->
-      <div class="catalog-cta">
-        <h3>没有找到完全匹配的产品？</h3>
-        <p>可以按客户要求开发配方、做小批量试样。请直接电话或微信沟通。</p>
+      <div class="cta-box catalog-cta">
+        <div class="catalog-cta-text">
+          <h3>没有找到完全匹配的产品？</h3>
+          <p>可以按客户要求开发配方、做小批量试样。请直接电话或微信沟通。</p>
+        </div>
         <div class="catalog-cta-actions">
-          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 {phoneNumber}</a>
           <a href="/contact/" class="btn btn-outline">查看联系方式</a>
         </div>
       </div>
@@ -450,32 +479,8 @@ const products = [
 </BaseLayout>
 
 <style>
-  .page-header {
-    background: var(--color-surface-alt);
-    padding: var(--sp-6) 0 var(--sp-5);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .breadcrumb {
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
+  .page-eyebrow {
     margin-bottom: var(--sp-3);
-  }
-
-  .breadcrumb a {
-    color: var(--color-text-muted);
-  }
-
-  .page-header h1 {
-    font-size: var(--fs-2xl);
-    margin-bottom: var(--sp-2);
-    color: var(--color-primary-dark);
-  }
-
-  .page-header-sub {
-    color: var(--color-text-soft);
-    margin: 0;
-    max-width: 760px;
   }
 
   .cat-nav {
@@ -486,23 +491,29 @@ const products = [
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     padding: var(--sp-3) var(--sp-4);
-    border-radius: 3px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xs);
   }
 
   .cat-nav-title {
     font-size: var(--fs-sm);
     color: var(--color-text-soft);
-    font-weight: 600;
+    font-weight: 700;
+    margin-right: var(--sp-2);
   }
 
   .cat-nav-link {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 14px;
+    border-radius: 999px;
     background: var(--color-surface-alt);
     border: 1px solid var(--color-border);
     font-size: var(--fs-sm);
     color: var(--color-text);
+    font-weight: 500;
+    transition: all 0.18s var(--ease-out);
   }
 
   .cat-nav-link:hover {
@@ -510,30 +521,31 @@ const products = [
     color: #fff;
     border-color: var(--color-primary);
     text-decoration: none;
+    transform: translateY(-1px);
   }
 
   .catalog-cta {
-    background: var(--color-primary-dark);
-    color: #e8efe9;
-    padding: var(--sp-6);
-    border-radius: 4px;
-    text-align: center;
-    margin-top: var(--sp-6);
+    display: grid;
+    grid-template-columns: 1.5fr auto;
+    align-items: center;
+    gap: var(--sp-5);
+    padding: var(--sp-7);
   }
 
-  .catalog-cta h3 {
+  .catalog-cta-text h3 {
     color: #fff;
-    margin-bottom: var(--sp-3);
+    margin-bottom: var(--sp-2);
+    font-size: var(--fs-xl);
   }
 
-  .catalog-cta p {
-    color: #d8d6cf;
-    margin-bottom: var(--sp-5);
+  .catalog-cta-text p {
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    font-size: var(--fs-md);
   }
 
   .catalog-cta-actions {
     display: flex;
-    justify-content: center;
     gap: var(--sp-3);
     flex-wrap: wrap;
   }
@@ -542,6 +554,15 @@ const products = [
     .cat-nav {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .catalog-cta {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .catalog-cta-actions {
+      justify-content: center;
     }
   }
 </style>

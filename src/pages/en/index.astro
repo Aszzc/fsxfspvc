@@ -10,6 +10,7 @@ const productOverview = [
     id: 'insulation-70',
     name: '70℃ Insulation Compound',
     category: 'PVC Insulation',
+    icon: '⚡',
     description: 'Standard PVC compound for wire conductor insulation. Flame retardancy meets GB/T 8815 requirements.',
     highlights: ['70℃ working temperature', 'Stable electrical insulation', 'Adjustable flame retardant grade'],
   },
@@ -17,27 +18,31 @@ const productOverview = [
     id: 'sheath',
     name: 'Sheath Compound',
     category: 'PVC Sheath',
-    description: 'PVC compound for cable outer sheath. Good mechanical properties, abrasion and weather resistant for various environments.',
+    icon: '◈',
+    description: 'PVC compound for cable outer sheath. Good mechanical properties, abrasion and weather resistant.',
     highlights: ['High flexibility', 'Abrasion & weather resistant', 'Custom colors available'],
   },
   {
     id: 'electronic',
     name: 'Electronic Wire Compound',
     category: 'Electronic Wire',
+    icon: '◇',
     description: 'PVC compound for small-gauge electronic wires, USB, signal, DC cables. Easy processing and low odor.',
-    highlights: ['Low odor', 'Stable extrusion', 'Suitable for high-speed extrusion'],
+    highlights: ['Low odor', 'Stable extrusion', 'High-speed extrusion ready'],
   },
   {
     id: 'plug',
     name: 'Plug Compound',
     category: 'Power Plug',
-    description: 'Rigid PVC compound for power plugs, sockets and housings. High strength, flame retardant, easy injection molding.',
+    icon: '◆',
+    description: 'Rigid PVC compound for power plugs, sockets and housings. High strength, flame retardant, easy injection.',
     highlights: ['High hardness', 'Adjustable flame retardant', 'Good flowability'],
   },
   {
     id: 'heat-resistant-105',
     name: '105℃ Heat-resistant Compound',
     category: 'Heat-resistant',
+    icon: '▲',
     description: 'Modified PVC compound rated for 105℃ working temperature. Used in appliance internal wiring, transformer leads.',
     highlights: ['105℃ temperature rating', 'Stable aging performance', 'UL grade available'],
   },
@@ -45,6 +50,7 @@ const productOverview = [
     id: 'cold-resistant',
     name: '-40℃ Cold-resistant Compound',
     category: 'Cold-resistant',
+    icon: '❄',
     description: 'PVC modified for -40℃ low temperature. Used in northern outdoor cables, agricultural machinery wiring, cold regions.',
     highlights: ['No brittle cracking at low temp', 'Maintains flexibility', 'Outdoor rated'],
   },
@@ -52,6 +58,7 @@ const productOverview = [
     id: 'transparent',
     name: 'High-transparent Compound',
     category: 'Transparent',
+    icon: '○',
     description: 'High light transmittance PVC compound for transparent power cords, decorative LED strip cables, visible wiring.',
     highlights: ['High transmittance', 'Anti-yellowing', 'Adjustable hardness'],
   },
@@ -59,6 +66,7 @@ const productOverview = [
     id: 'frosted',
     name: 'Frosted / Matte Compound',
     category: 'Matte Finish',
+    icon: '◯',
     description: 'PVC compound with matte frosted surface finish for premium power cords and decorative wires.',
     highlights: ['Matte texture', 'Fine touch', 'Fingerprint resistant'],
   },
@@ -66,23 +74,43 @@ const productOverview = [
     id: 'modified',
     name: 'Modified Compound',
     category: 'Modified',
+    icon: '⬡',
     description: 'PVC modified for custom hardness, flame retardancy, temperature and cold resistance based on client requirements.',
     highlights: ['Custom formulation', 'Small-batch trial', 'Sample/spec based development'],
   },
 ];
 
 const advantages = [
-  { title: 'In-house Formulation', desc: 'We develop PVC formulas ourselves based on cable structure, extrusion process and performance — not resold finished goods.' },
-  { title: 'Foshan Local Factory', desc: 'Own factory with mixing, extrusion, pelletizing, screening and packaging in one line. Easy for customers to visit.' },
-  { title: 'Stable Batch Supply', desc: 'Fixed raw material supply channels. Each batch has retained samples. Long-term customers get consistent formulation.' },
-  { title: 'Small-batch Customization', desc: 'New formulas and customers can start with small trial batches. Color, hardness, flame retardant grade adjustable.' },
-  { title: 'Simple Process', desc: 'Direct phone & WeChat: usage → specs → sample → mass production. No long commercial process.' },
-  { title: 'Sample-based Development', desc: 'Customer samples, drawings and performance specs all serve as inputs for development.' },
+  { icon: '①', title: 'In-house Formulation', desc: 'We develop PVC formulas ourselves based on cable structure, extrusion process and performance — not resold finished goods.' },
+  { icon: '②', title: 'Foshan Local Factory', desc: 'Own factory with mixing, extrusion, pelletizing, screening and packaging in one line. Easy for customers to visit.' },
+  { icon: '③', title: 'Stable Batch Supply', desc: 'Fixed raw material supply channels. Each batch has retained samples. Long-term customers get consistent formulation.' },
+  { icon: '④', title: 'Small-batch Customization', desc: 'New formulas and customers can start with small trial batches. Color, hardness, flame retardant grade adjustable.' },
+  { icon: '⑤', title: 'Simple Process', desc: 'Direct phone & WeChat: usage → specs → sample → mass production. No long commercial process.' },
+  { icon: '⑥', title: 'Sample-based Development', desc: 'Customer samples, drawings and performance specs all serve as inputs for development.' },
+];
+
+const processSteps = [
+  { step: '01', label: 'Formula Discussion', desc: 'Requirements · tech align' },
+  { step: '02', label: 'Trial Sample', desc: 'Small batch · client verify' },
+  { step: '03', label: 'Material Mixing', desc: 'High-speed mix · sequence' },
+  { step: '04', label: 'Extrusion Pelletizing', desc: 'Stable melting · output' },
+  { step: '05', label: 'Cooling & Screening', desc: 'Uniform particle size' },
+  { step: '06', label: 'Packaging & Delivery', desc: 'Batch ID · pallet-ready' },
+];
+
+const suitableCustomers = [
+  { icon: '⌬', label: 'Wire & Cable Maker' },
+  { icon: '⌖', label: 'Electronic Wire Maker' },
+  { icon: '⊞', label: 'Power Plug / Socket Maker' },
+  { icon: '⌘', label: 'Home Appliance Maker' },
+  { icon: '☷', label: 'LED Strip Maker' },
+  { icon: '⊕', label: 'Premium / Decorative Wire' },
 ];
 
 const organizationLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://xfspvc.com/en/#org',
   name: 'Foshan Xiangfa Shun Plastic Co., Ltd.',
   alternateName: 'Xiangfa Shun Plastic',
   url: 'https://xfspvc.com/en/',
@@ -95,13 +123,13 @@ const organizationLd = {
     addressLocality: 'Sanshui District, Foshan',
     addressCountry: 'CN',
   },
-  areaServed: ['CN', 'South China', 'East China', 'North China', 'Southwest'],
+  areaServed: ['CN', 'South China', 'East China', 'North China', 'Southwest', 'GLOBAL'],
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+86-13450853338',
     contactType: 'sales',
-    areaServed: 'CN',
-    availableLanguage: ['zh-Hans', 'en'],
+    areaServed: 'GLOBAL',
+    availableLanguage: ['en', 'zh-Hans'],
   },
 };
 
@@ -122,112 +150,327 @@ const localBusinessLd = {
   },
   openingHours: 'Mo-Sa 08:00-18:00',
 };
+
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://xfspvc.com/en/#website',
+  url: 'https://xfspvc.com/en/',
+  name: 'Foshan Xiangfa Shun Plastic Co., Ltd.',
+  inLanguage: ['en', 'zh-CN'],
+  publisher: { '@id': 'https://xfspvc.com/en/#org' },
+};
+
+const productListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Xiangfa Shun PVC Wire & Cable Compound List',
+  itemListElement: productOverview.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://xfspvc.com/en/products/#${p.id}`,
+    name: p.name,
+  })),
+};
 ---
 <BaseLayout
-  title="Foshan PVC Wire & Cable Compound Manufacturer"
-  description="Foshan Xiangfa Shun Plastic Co., Ltd. - PVC wire & cable compound manufacturer in Foshan, Guangdong. In-house formulation, own factory. 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent, matte, modified compounds. Tel/WeChat 13450853338."
+  title="Foshan PVC Wire & Cable Compound Manufacturer - Xiangfa Shun Plastic"
+  description="Foshan Xiangfa Shun Plastic Co., Ltd. — PVC wire & cable compound manufacturer in Foshan, Guangdong. In-house formulation, mixing, extrusion, pelletizing, screening and packaging. Main products: 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent, matte, modified PVC compounds. Tel/WeChat 13450853338."
   locale="en"
-  jsonLd={[organizationLd, localBusinessLd]}
+  jsonLd={[websiteLd, organizationLd, localBusinessLd, productListLd]}
 >
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-grid-pattern"></div>
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+    </div>
     <div class="container hero-inner">
       <div class="hero-text">
-        <div class="hero-eyebrow">Foshan Factory Direct · In-house Formulation</div>
-        <h1 class="hero-title">
-          Foshan PVC Wire<br />
-          & Cable Compound Manufacturer
-        </h1>
-        <p class="hero-sub">
-          In-house formulation, own production line.<br />
-          70℃ insulation / sheath / heat-resistant / cold-resistant / transparent / modified — matched to your application, performance, and process.
-        </p>
-        <div class="hero-actions">
-          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
-          <a href="/en/products/" class="btn btn-outline">View Products</a>
+        <div class="hero-eyebrow fade-up">
+          <span class="eyebrow-dot"></span>
+          Foshan Factory Direct · In-house Formulation
         </div>
-        <ul class="hero-bullets">
-          <li>✓ In-house formulation, Foshan local factory</li>
-          <li>✓ Custom development from customer samples / drawings</li>
-          <li>✓ Small-batch trial, stable long-term supply</li>
+        <h1 class="hero-title fade-up-2">
+          Foshan PVC <br />
+          <span class="hero-title-accent">Wire & Cable</span><br />
+          Compound Manufacturer
+        </h1>
+        <p class="hero-sub fade-up-3">
+          In-house formulation, in-house production line.<br />
+          70℃ Insulation / Sheath / Heat-resistant / Cold-resistant / High-transparent / Modified PVC — matched precisely to usage, performance and process requirements.
+        </p>
+        <div class="hero-actions fade-up-4">
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">
+            <span class="cta-pulse"></span>
+            📞 13450853338
+          </a>
+          <a href="/en/products/" class="btn btn-outline btn-lg">View Products</a>
+        </div>
+        <ul class="hero-bullets fade-up-4">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            In-house formulation, Foshan local factory
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Customizable per client sample, drawing
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            Small-batch trial, long-term stable supply
+          </li>
         </ul>
       </div>
-      <div class="hero-photo" aria-label="Factory / warehouse">
-        <div class="hero-photo-placeholder">
-          <span>Factory / Warehouse Photo</span>
-          <small>Replace with real image: public/images/factory-warehouse.jpg</small>
+      <div class="hero-visual fade-up-3">
+        <div class="hero-card hero-card-main">
+          <div class="hero-card-header">
+            <span class="hero-card-tag">FACTORY</span>
+            <span class="hero-card-tag hero-card-tag-accent">DIRECT</span>
+          </div>
+          <div class="hero-card-image">
+            <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <linearGradient id="skyGradEn" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#e8f0ec" />
+                  <stop offset="100%" stop-color="#d3e2d8" />
+                </linearGradient>
+                <linearGradient id="buildingGradEn" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0f3a32" />
+                  <stop offset="100%" stop-color="#082520" />
+                </linearGradient>
+                <linearGradient id="accentGradEn" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#e3632a" />
+                  <stop offset="100%" stop-color="#bf4f1d" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="280" fill="url(#skyGradEn)" />
+              <path d="M0 180 L60 140 L120 165 L180 130 L240 160 L320 135 L400 165 L400 280 L0 280 Z" fill="#c2d6cb" opacity="0.6" />
+              <rect x="60" y="120" width="180" height="120" fill="url(#buildingGradEn)" />
+              <rect x="60" y="120" width="180" height="6" fill="url(#accentGradEn)" />
+              <g fill="#e8f0ec" opacity="0.85">
+                <rect x="75" y="140" width="20" height="14" />
+                <rect x="105" y="140" width="20" height="14" />
+                <rect x="135" y="140" width="20" height="14" />
+                <rect x="165" y="140" width="20" height="14" />
+                <rect x="195" y="140" width="20" height="14" />
+                <rect x="75" y="170" width="20" height="14" />
+                <rect x="105" y="170" width="20" height="14" />
+                <rect x="135" y="170" width="20" height="14" />
+                <rect x="165" y="170" width="20" height="14" />
+                <rect x="195" y="170" width="20" height="14" />
+                <rect x="75" y="200" width="20" height="14" />
+                <rect x="105" y="200" width="20" height="14" />
+                <rect x="135" y="200" width="50" height="30" />
+                <rect x="195" y="200" width="20" height="14" />
+              </g>
+              <rect x="250" y="80" width="14" height="100" fill="url(#buildingGradEn)" />
+              <rect x="250" y="80" width="14" height="3" fill="url(#accentGradEn)" />
+              <ellipse cx="262" cy="68" rx="12" ry="8" fill="#fff" opacity="0.55" />
+              <ellipse cx="272" cy="58" rx="16" ry="10" fill="#fff" opacity="0.4" />
+              <ellipse cx="258" cy="48" rx="20" ry="12" fill="#fff" opacity="0.3" />
+              <rect x="270" y="150" width="100" height="90" fill="#1a554a" />
+              <rect x="270" y="150" width="100" height="4" fill="url(#accentGradEn)" />
+              <g fill="#e8f0ec" opacity="0.8">
+                <rect x="285" y="170" width="16" height="12" />
+                <rect x="310" y="170" width="16" height="12" />
+                <rect x="335" y="170" width="16" height="12" />
+                <rect x="285" y="195" width="16" height="12" />
+                <rect x="310" y="195" width="16" height="12" />
+                <rect x="335" y="195" width="16" height="12" />
+              </g>
+              <rect x="0" y="240" width="400" height="40" fill="#a3b3a0" />
+              <line x1="0" y1="240" x2="400" y2="240" stroke="#082520" stroke-width="1" opacity="0.3" />
+              <text x="150" y="225" text-anchor="middle" fill="#e3632a" font-family="sans-serif" font-size="14" font-weight="700" letter-spacing="2">XIANGFA SHUN</text>
+            </svg>
+          </div>
+          <div class="hero-card-body">
+            <div class="hero-card-stat">
+              <span class="hero-card-stat-value">9+</span>
+              <span class="hero-card-stat-label">Categories</span>
+            </div>
+            <div class="hero-card-stat">
+              <span class="hero-card-stat-value">7</span>
+              <span class="hero-card-stat-label">Steps</span>
+            </div>
+            <div class="hero-card-stat">
+              <span class="hero-card-stat-value">24h</span>
+              <span class="hero-card-stat-label">Reply</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card hero-card-float">
+          <div class="float-icon">📞</div>
+          <div class="float-text">
+            <div class="float-label">Call Factory</div>
+            <div class="float-value">{phoneNumber}</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Products -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="trust-bar">
+        <span class="trust-item">In-house Formulation</span>
+        <span class="trust-item">Own Production Line</span>
+        <span class="trust-item">Batch Traceable</span>
+        <span class="trust-item">3-7 Day Sample</span>
+        <span class="trust-item">Sample-based Dev</span>
+        <span class="trust-item">Factory Visit Welcome</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight stats-section">
+    <div class="container">
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-value">9<span class="stat-unit">categories</span></div>
+          <div class="stat-label">PVC Wire & Cable Compound</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">7<span class="stat-unit">steps</span></div>
+          <div class="stat-label">Full Production Line</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">3-7<span class="stat-unit">days</span></div>
+          <div class="stat-label">First Sample Lead Time</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">500<span class="stat-unit">kg MOQ</span></div>
+          <div class="stat-label">Standard Formula Trial</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container">
       <SectionTitle
+        eyebrow="PRODUCTS"
         title="Main Products"
-        subtitle="Standard PVC compounds for wire & cable. Formulation & color adjustable per client specs."
+        subtitle="Full range of PVC compounds for wire & cable, formula and color adjustable to customer specs"
       />
 
-      <div class="grid grid-3">
-        {productOverview.map((p) => (
+      <div class="grid grid-3 products-grid">
+        {productOverview.map((p, i) => (
           <ProductCard
             id={p.id}
             name={p.name}
             category={p.category}
+            icon={p.icon}
             description={p.description}
             highlights={p.highlights}
             href={`/en/products/#${p.id}`}
+            index={i}
           />
         ))}
       </div>
 
       <div class="see-more">
-        <a href="/en/products/" class="btn btn-outline">View Full Specifications & Inquiry Points →</a>
+        <a href="/en/products/" class="btn btn-outline btn-lg">
+          View full specs & inquiry guide
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="see-more-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Advantages -->
   <section class="section section-alt">
     <div class="container">
       <SectionTitle
-        title="Why Source Directly from Factory"
-        subtitle="PVC wire & cable compounds aren't generic — wrong match causes downstream processing issues."
+        eyebrow="PROCESS"
+        title="Seven production steps, complete line"
+        subtitle="In-house R&D · In-house extrusion · Batch-traceable"
+      />
+
+      <div class="process-rail">
+        {processSteps.map((s, i) => (
+          <div class="process-step" style={`--step-i:${i}`}>
+            <div class="process-marker">
+              <span class="process-no">{s.step}</span>
+              {i < processSteps.length - 1 && <span class="process-line"></span>}
+            </div>
+            <div class="process-content">
+              <h3>{s.label}</h3>
+              <p>{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="see-more">
+        <a href="/en/manufacturing/" class="btn btn-outline">
+          See manufacturing details
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="see-more-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionTitle
+        eyebrow="ADVANTAGES"
+        title="Why go factory-direct"
+        subtitle="PVC wire & cable compound isn't a generic SKU — wrong specs cause downstream process issues"
       />
 
       <div class="grid grid-3">
         {advantages.map((a) => (
-          <div class="card advantage-card">
-            <h3 class="card-title">{a.title}</h3>
-            <p>{a.desc}</p>
+          <div class="advantage-card card">
+            <div class="advantage-no">{a.icon}</div>
+            <h3 class="advantage-title">{a.title}</h3>
+            <p class="advantage-desc">{a.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Inquiry -->
+  <section class="section section-alt">
+    <div class="container">
+      <SectionTitle
+        eyebrow="WHO WE SERVE"
+        title="Who we work with"
+        subtitle="PVC compound isn't generic — match formulation to structure and process"
+      />
+
+      <div class="customer-grid">
+        {suitableCustomers.map((c) => (
+          <div class="customer-card">
+            <div class="customer-icon">{c.icon}</div>
+            <div class="customer-label">{c.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="section inquiry-section">
     <div class="container">
-      <div class="inquiry-box">
+      <div class="cta-box inquiry-cta">
         <div class="inquiry-text">
+          <div class="section-eyebrow inquiry-eyebrow">GET QUOTE</div>
           <h2>Need a sample or quote?</h2>
           <p>
-            Please call or message us on WeChat directly: usage, specifications, estimated volume, processing method.<br />
-            We'll send samples, quote, or invite you to visit the factory.
+            Call or message WeChat directly. Tell us: usage, specs, expected volume and processing method.<br />
+            We can send samples, quote, or invite you to visit the factory.
           </p>
           <ul class="inquiry-list">
-            <li>Application scenario (e.g., power cord jacket, UL electronic wire, outdoor wiring…)</li>
-            <li>Key performance (temp / flame retardant / cold-resistant / hardness / color / transparency)</li>
-            <li>Estimated monthly volume, MOQ</li>
-            <li>Processing method (extrusion speed, die specs, etc.)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>Usage scenario (power cord jacket / UL wire / outdoor)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>Key performance (temp / flame / cold / hardness / color)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>Estimated monthly volume & MOQ</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>Processing (extrusion speed, die specs)</li>
           </ul>
         </div>
         <div class="inquiry-actions">
           <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 Tel / WeChat 13450853338</a>
-          <a href="/en/contact/" class="btn btn-outline">Full Contact Info</a>
+          <a href="/en/contact/" class="btn btn-outline btn-lg">Full contact info</a>
+          <div class="inquiry-note">Reply within 24 hours</div>
         </div>
       </div>
     </div>
@@ -235,61 +478,127 @@ const localBusinessLd = {
 </BaseLayout>
 
 <style>
-  /* Hero */
   .hero {
     position: relative;
-    background: var(--color-bg);
+    background: linear-gradient(180deg, #f6f4ee 0%, #efebe1 100%);
     overflow: hidden;
   }
 
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #e8efe9 0%, #f2f2ee 60%);
     z-index: 0;
+  }
+
+  .hero-grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(15, 58, 50, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 58, 50, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .hero-glow-1 {
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(227, 99, 42, 0.35) 0%, transparent 70%);
+    top: -120px;
+    right: -120px;
+  }
+
+  .hero-glow-2 {
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(15, 58, 50, 0.18) 0%, transparent 70%);
+    bottom: -100px;
+    left: -80px;
   }
 
   .hero-inner {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns: 1.15fr 1fr;
     gap: var(--sp-7);
     align-items: center;
     padding: var(--sp-8) var(--container-pad);
+    min-height: 640px;
   }
 
   .hero-eyebrow {
-    display: inline-block;
-    background: rgba(31, 77, 58, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-primary-soft);
     color: var(--color-primary-dark);
     font-size: 13px;
-    padding: 4px 12px;
-    border-radius: 2px;
-    margin-bottom: var(--sp-4);
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: var(--sp-5);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border: 1px solid #c2d6cb;
+  }
+
+  .eyebrow-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(227, 99, 42, 0.5); }
+    50% { box-shadow: 0 0 0 8px rgba(227, 99, 42, 0); }
   }
 
   .hero-title {
-    font-size: 44px;
-    line-height: 1.18;
-    color: var(--color-text);
-    margin-bottom: var(--sp-4);
+    font-size: var(--fs-display);
+    line-height: 1.05;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-5);
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+
+  .hero-title-accent {
+    color: var(--color-accent);
   }
 
   .hero-sub {
     font-size: var(--fs-md);
     color: var(--color-text-soft);
-    margin-bottom: var(--sp-5);
-    line-height: 1.75;
+    margin-bottom: var(--sp-6);
+    line-height: 1.85;
+    max-width: 540px;
   }
 
   .hero-actions {
     display: flex;
     gap: var(--sp-3);
     flex-wrap: wrap;
-    margin-bottom: var(--sp-5);
+    margin-bottom: var(--sp-6);
+  }
+
+  .cta-pulse {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+    animation: pulse-dot 2s ease-in-out infinite;
   }
 
   .hero-bullets {
@@ -298,45 +607,166 @@ const localBusinessLd = {
     margin: 0;
     color: var(--color-text-soft);
     font-size: var(--fs-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .hero-bullets li {
-    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  .hero-photo {
-    aspect-ratio: 4 / 3;
-    border-radius: 4px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
+  .bullet-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+    border-radius: 50%;
+    padding: 2px;
+    flex-shrink: 0;
+  }
+
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 4 / 4.4;
+  }
+
+  .hero-card {
     background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
   }
 
-  .hero-photo-placeholder {
-    width: 100%;
+  .hero-card-main {
+    position: relative;
     height: 100%;
-    background: linear-gradient(135deg, #c2cdb9 0%, #a3b3a0 100%);
-    color: #2a3a2e;
     display: flex;
     flex-direction: column;
+  }
+
+  .hero-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--sp-3) var(--sp-4);
+    background: var(--color-primary-dark);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .hero-card-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.18em;
+  }
+
+  .hero-card-tag-accent {
+    color: var(--color-accent);
+  }
+
+  .hero-card-image {
+    flex: 1;
+    background: var(--color-surface-alt);
+    overflow: hidden;
+    display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: var(--sp-5);
-    font-size: 16px;
-    font-weight: 500;
   }
 
-  .hero-photo-placeholder small {
+  .hero-card-image svg {
+    width: 100%;
+    height: 100%;
     display: block;
-    margin-top: var(--sp-3);
-    font-size: 12px;
-    opacity: 0.7;
-    font-weight: 400;
   }
 
-  .section-alt {
-    background: var(--color-surface-alt);
+  .hero-card-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-3);
+    padding: var(--sp-4);
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .hero-card-stat {
+    text-align: center;
+    padding: var(--sp-2);
+  }
+
+  .hero-card-stat-value {
+    display: block;
+    font-size: var(--fs-xl);
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    line-height: 1;
+    margin-bottom: 4px;
+    font-feature-settings: 'tnum';
+  }
+
+  .hero-card-stat-label {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .hero-card-float {
+    position: absolute;
+    bottom: -28px;
+    left: -28px;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius-md);
+    background: var(--color-accent);
+    color: #fff;
+    box-shadow: 0 12px 32px rgba(227, 99, 42, 0.36);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .float-icon {
+    font-size: 24px;
+  }
+
+  .float-label {
+    font-size: 11px;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .float-value {
+    font-size: var(--fs-md);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    font-feature-settings: 'tnum';
+  }
+
+  .trust-section {
+    background: var(--color-surface);
+    padding: var(--sp-5) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .stats-section {
+    background: var(--color-bg);
+  }
+
+  .products-grid {
+    margin-bottom: var(--sp-6);
   }
 
   .see-more {
@@ -344,50 +774,199 @@ const localBusinessLd = {
     margin-top: var(--sp-6);
   }
 
+  .see-more .btn {
+    gap: 8px;
+  }
+
+  .see-more-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s var(--ease-out);
+  }
+
+  .see-more .btn:hover .see-more-icon {
+    transform: translateX(4px);
+  }
+
+  .process-rail {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-7);
+  }
+
+  .process-step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .process-marker {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .process-no {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary-dark);
+    font-weight: 800;
+    font-size: var(--fs-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-feature-settings: 'tnum';
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  .process-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    margin-left: -2px;
+  }
+
+  .process-content h3 {
+    font-size: var(--fs-base);
+    margin-bottom: 4px;
+    color: var(--color-primary-dark);
+  }
+
+  .process-content p {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    margin: 0;
+    line-height: 1.6;
+  }
+
   .advantage-card {
+    padding: var(--sp-6);
     height: 100%;
+    position: relative;
+  }
+
+  .advantage-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-lg);
+    font-weight: 800;
+    margin-bottom: var(--sp-4);
+  }
+
+  .advantage-title {
+    font-size: var(--fs-md);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-3);
+  }
+
+  .advantage-desc {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    margin: 0;
+    line-height: 1.75;
+  }
+
+  .customer-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--sp-3);
+  }
+
+  .customer-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-5) var(--sp-3);
+    text-align: center;
+    transition: all 0.25s var(--ease-out);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+
+  .customer-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-3px);
+  }
+
+  .customer-icon {
+    font-size: 32px;
+    color: var(--color-primary);
+  }
+
+  .customer-label {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--color-text);
   }
 
   .inquiry-section {
-    background: var(--color-primary-dark);
-    color: #e8efe9;
+    padding: var(--sp-8) 0;
   }
 
-  .inquiry-box {
+  .inquiry-cta {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: var(--sp-6);
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--sp-7);
     align-items: center;
+  }
+
+  .inquiry-eyebrow {
+    color: var(--color-accent);
   }
 
   .inquiry-text h2 {
     color: #fff;
-    font-size: 30px;
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--sp-4);
   }
 
   .inquiry-text p {
-    color: #d8d6cf;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--fs-md);
+    margin-bottom: var(--sp-5);
+    line-height: 1.8;
   }
 
   .inquiry-list {
     list-style: none;
     padding: 0;
-    color: #d8d6cf;
-    font-size: 14px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--fs-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .inquiry-list li {
-    padding-left: 20px;
-    position: relative;
-    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  .inquiry-list li::before {
-    content: '•';
-    position: absolute;
-    left: 6px;
+  .inquiry-list .check-icon {
+    width: 18px;
+    height: 18px;
     color: var(--color-accent);
-    font-weight: 700;
+    background: rgba(227, 99, 42, 0.15);
+    border-radius: 50%;
+    padding: 2px;
+    flex-shrink: 0;
   }
 
   .inquiry-actions {
@@ -396,25 +975,85 @@ const localBusinessLd = {
     gap: var(--sp-3);
   }
 
-  .btn-lg {
-    padding: 14px 26px;
-    font-size: 17px;
+  .inquiry-note {
+    margin-top: var(--sp-2);
+    padding-top: var(--sp-4);
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+    font-size: var(--fs-sm);
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
+  }
+
+  @media (max-width: 1100px) {
+    .process-rail {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .process-step:nth-child(3) .process-line,
+    .process-step:nth-child(6) .process-line {
+      display: none;
+    }
+
+    .customer-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   @media (max-width: 900px) {
     .hero-inner,
-    .inquiry-box {
+    .inquiry-cta {
       grid-template-columns: 1fr;
-      gap: var(--sp-5);
+      gap: var(--sp-6);
     }
 
+    .hero-inner {
+      padding: var(--sp-7) var(--container-pad);
+      min-height: auto;
+    }
+
+    .hero-title {
+      font-size: 40px;
+    }
+
+    .hero-visual {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .hero-card-float {
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .process-rail {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-step:nth-child(odd) .process-line {
+      display: none;
+    }
+
+    .customer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
     .hero-title {
       font-size: 32px;
     }
 
-    .hero-inner {
-      padding: var(--sp-6) var(--container-pad);
+    .process-rail {
+      grid-template-columns: 1fr;
+    }
+
+    .process-line {
+      display: none !important;
+    }
+
+    .customer-grid {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>

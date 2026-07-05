@@ -6,28 +6,28 @@ const phoneNumber = '13450853338';
 
 const contactMethods = [
   {
-    icon: '📞',
+    icon: 'phone',
     title: '电话 / 短信',
     primary: phoneNumber,
     href: `tel:${phoneNumber}`,
     desc: '工作时间内直接拨打电话，技术问题、采购问题都可以直接沟通。',
   },
   {
-    icon: '💬',
+    icon: 'chat',
     title: '微信（同号）',
     primary: phoneNumber,
     href: `weixin://`,
     desc: '微信同号，加好友后可发文字、照片、文件、视频、语音。',
   },
   {
-    icon: '📕',
+    icon: 'social',
     title: '小红书',
     primary: '搜索「湘发顺塑料」',
     href: 'https://www.xiaohongshu.com/',
     desc: '关注小红书账号，可以看到工厂日常、产品实拍与客户案例。',
   },
   {
-    icon: '🎵',
+    icon: 'video',
     title: '抖音',
     primary: '搜索「湘发顺塑料」',
     href: 'https://www.douyin.com/',
@@ -45,10 +45,21 @@ const inquiryList = [
   '加工方式（挤出速度、模具规格）',
   '其他特殊要求（气味、抗黄变、ROHS / REACH 等）',
 ];
+
+const svgIcons: Record<string, string> = {
+  phone: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>`,
+  chat: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>`,
+  social: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="3"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg>`,
+  video: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>`,
+};
 ---
 <BaseLayout
   title="联系我们"
   description="佛山市三水湘发顺塑料有限公司联系方式：电话/微信 13450853338，小红书 / 抖音搜索「湘发顺塑料」。位于广东佛山三水，可电话、微信、小红书、抖音沟通。询价需提供使用场景、性能要求、规格用量等信息。"
+  breadcrumbs={[
+    { name: '首页', href: '/' },
+    { name: '联系我们', href: '/contact/' },
+  ]}
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
@@ -71,7 +82,12 @@ const inquiryList = [
   <!-- 页头 -->
   <section class="page-header">
     <div class="container">
-      <div class="breadcrumb"><a href="/">首页</a> / 联系我们</div>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">首页</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>联系我们</span>
+      </nav>
+      <div class="section-eyebrow page-eyebrow">CONTACT · 4 CHANNELS</div>
       <h1>联系我们</h1>
       <p class="page-header-sub">
         微信 / 电话同号，可发文字、照片、文件、视频、语音。
@@ -85,7 +101,7 @@ const inquiryList = [
       <div class="contact-grid">
         {contactMethods.map((m) => (
           <a href={m.href} class="contact-card">
-            <div class="contact-icon">{m.icon}</div>
+            <div class="contact-icon" set:html={svgIcons[m.icon]} />
             <h3 class="contact-title">{m.title}</h3>
             <div class="contact-primary">{m.primary}</div>
             <p class="contact-desc">{m.desc}</p>
@@ -100,31 +116,104 @@ const inquiryList = [
     <div class="container">
       <div class="qr-block">
         <div class="qr-card">
-          <div class="qr-placeholder">
-            <span>微信二维码</span>
+          <div class="qr-placeholder" aria-label="微信二维码占位">
+            <div class="qr-pattern">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect width="100" height="100" fill="#fff"/>
+                <!-- 模拟二维码 -->
+                <g fill="#0f3a32">
+                  <rect x="10" y="10" width="20" height="20"/>
+                  <rect x="14" y="14" width="12" height="12" fill="#fff"/>
+                  <rect x="18" y="18" width="4" height="4"/>
+                  <rect x="70" y="10" width="20" height="20"/>
+                  <rect x="74" y="14" width="12" height="12" fill="#fff"/>
+                  <rect x="78" y="18" width="4" height="4"/>
+                  <rect x="10" y="70" width="20" height="20"/>
+                  <rect x="14" y="74" width="12" height="12" fill="#fff"/>
+                  <rect x="18" y="78" width="4" height="4"/>
+                  <rect x="35" y="10" width="4" height="4"/>
+                  <rect x="42" y="10" width="4" height="4"/>
+                  <rect x="50" y="14" width="4" height="4"/>
+                  <rect x="58" y="10" width="4" height="4"/>
+                  <rect x="38" y="18" width="4" height="4"/>
+                  <rect x="46" y="22" width="4" height="4"/>
+                  <rect x="54" y="18" width="4" height="4"/>
+                  <rect x="62" y="22" width="4" height="4"/>
+                  <rect x="35" y="26" width="4" height="4"/>
+                  <rect x="42" y="30" width="4" height="4"/>
+                  <rect x="50" y="26" width="4" height="4"/>
+                  <rect x="58" y="30" width="4" height="4"/>
+                  <rect x="10" y="35" width="4" height="4"/>
+                  <rect x="18" y="38" width="4" height="4"/>
+                  <rect x="26" y="35" width="4" height="4"/>
+                  <rect x="34" y="38" width="4" height="4"/>
+                  <rect x="42" y="35" width="4" height="4"/>
+                  <rect x="50" y="42" width="4" height="4"/>
+                  <rect x="58" y="38" width="4" height="4"/>
+                  <rect x="66" y="35" width="4" height="4"/>
+                  <rect x="74" y="42" width="4" height="4"/>
+                  <rect x="82" y="38" width="4" height="4"/>
+                  <rect x="90" y="35" width="4" height="4"/>
+                  <rect x="14" y="46" width="4" height="4"/>
+                  <rect x="22" y="50" width="4" height="4"/>
+                  <rect x="30" y="46" width="4" height="4"/>
+                  <rect x="38" y="50" width="4" height="4"/>
+                  <rect x="46" y="46" width="4" height="4"/>
+                  <rect x="54" y="50" width="4" height="4"/>
+                  <rect x="62" y="46" width="4" height="4"/>
+                  <rect x="70" y="50" width="4" height="4"/>
+                  <rect x="78" y="46" width="4" height="4"/>
+                  <rect x="86" y="50" width="4" height="4"/>
+                  <rect x="18" y="58" width="4" height="4"/>
+                  <rect x="26" y="62" width="4" height="4"/>
+                  <rect x="34" y="58" width="4" height="4"/>
+                  <rect x="42" y="62" width="4" height="4"/>
+                  <rect x="50" y="58" width="4" height="4"/>
+                  <rect x="58" y="62" width="4" height="4"/>
+                  <rect x="66" y="58" width="4" height="4"/>
+                  <rect x="74" y="62" width="4" height="4"/>
+                  <rect x="82" y="58" width="4" height="4"/>
+                  <rect x="38" y="70" width="4" height="4"/>
+                  <rect x="46" y="74" width="4" height="4"/>
+                  <rect x="54" y="70" width="4" height="4"/>
+                  <rect x="62" y="74" width="4" height="4"/>
+                  <rect x="70" y="70" width="4" height="4"/>
+                  <rect x="78" y="74" width="4" height="4"/>
+                  <rect x="86" y="70" width="4" height="4"/>
+                  <rect x="42" y="82" width="4" height="4"/>
+                  <rect x="50" y="86" width="4" height="4"/>
+                  <rect x="58" y="82" width="4" height="4"/>
+                  <rect x="66" y="86" width="4" height="4"/>
+                  <rect x="74" y="82" width="4" height="4"/>
+                  <rect x="82" y="86" width="4" height="4"/>
+                  <rect x="90" y="82" width="4" height="4"/>
+                </g>
+              </svg>
+            </div>
+            <span class="qr-label">WeChat QR</span>
             <small>替换为真实二维码：public/images/wechat-qr.jpg</small>
           </div>
           <h3>扫码加微信</h3>
-          <p>微信同号：13450853338</p>
+          <p>微信同号：{phoneNumber}</p>
         </div>
 
         <div class="info-card">
           <h3>工厂地址 / 业务时间</h3>
           <ul class="info-list">
             <li>
-              <strong>工厂地址：</strong>
-              <span>广东佛山</span>
+              <strong>工厂地址</strong>
+              <span>广东佛山三水</span>
             </li>
             <li>
-              <strong>业务时间：</strong>
-              <span>周一至周六 8:00 - 18:00</span>
+              <strong>业务时间</strong>
+              <span>周一至周六 · 8:00 - 18:00</span>
             </li>
             <li>
-              <strong>电话 / 微信：</strong>
+              <strong>电话 / 微信</strong>
               <span><a href={`tel:${phoneNumber}`}>{phoneNumber}</a></span>
             </li>
             <li>
-              <strong>来厂看货：</strong>
+              <strong>来厂看货</strong>
               <span>请提前电话预约，方便安排接待</span>
             </li>
           </ul>
@@ -140,6 +229,7 @@ const inquiryList = [
   <section class="section">
     <div class="container">
       <SectionTitle
+        eyebrow="INQUIRY"
         title="询价前请提供"
         subtitle="信息越完整，沟通越高效，寄样和报价更准确"
       />
@@ -152,7 +242,10 @@ const inquiryList = [
         </ol>
 
         <div class="inquiry-tip">
-          <h4>温馨提示</h4>
+          <h4>
+            <span class="tip-icon">💡</span>
+            温馨提示
+          </h4>
           <ul>
             <li>如果有现成的电线样品，可以拍照片或寄样品给我们，更方便判断配方。</li>
             <li>如果有执行标准的文件（GB / UL / VDE 等），可以一起发过来。</li>
@@ -165,35 +258,8 @@ const inquiryList = [
 </BaseLayout>
 
 <style>
-  .page-header {
-    background: var(--color-surface-alt);
-    padding: var(--sp-6) 0 var(--sp-5);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .breadcrumb {
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
+  .page-eyebrow {
     margin-bottom: var(--sp-3);
-  }
-
-  .breadcrumb a {
-    color: var(--color-text-muted);
-  }
-
-  .page-header h1 {
-    font-size: var(--fs-2xl);
-    margin-bottom: var(--sp-2);
-    color: var(--color-primary-dark);
-  }
-
-  .page-header-sub {
-    color: var(--color-text-soft);
-    margin: 0;
-  }
-
-  .section-alt {
-    background: var(--color-surface-alt);
   }
 
   /* 联系方式卡片 */
@@ -204,28 +270,47 @@ const inquiryList = [
   }
 
   .contact-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: var(--sp-5);
+    border-radius: var(--radius-md);
+    padding: var(--sp-6);
     text-align: center;
     text-decoration: none;
     color: inherit;
-    transition: all 0.15s ease;
+    transition: all 0.28s var(--ease-out);
   }
 
   .contact-card:hover {
     border-color: var(--color-primary);
-    box-shadow: 0 4px 12px rgba(31, 77, 58, 0.08);
+    box-shadow: var(--shadow-md);
     text-decoration: none;
     color: inherit;
-    transform: translateY(-2px);
+    transform: translateY(-4px);
   }
 
   .contact-icon {
-    font-size: 32px;
-    margin-bottom: var(--sp-3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--color-primary-soft) 0%, #d3e2d8 100%);
+    color: var(--color-primary);
+    border-radius: 50%;
+    margin: 0 auto var(--sp-4);
+  }
+
+  .contact-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .contact-card:hover .contact-icon {
+    background: var(--color-accent);
+    color: #fff;
+    transform: rotate(-6deg);
   }
 
   .contact-title {
@@ -236,22 +321,24 @@ const inquiryList = [
 
   .contact-primary {
     font-size: var(--fs-md);
-    color: var(--color-primary);
-    font-weight: 600;
+    color: var(--color-accent);
+    font-weight: 700;
     margin-bottom: var(--sp-3);
+    font-feature-settings: 'tnum';
+    letter-spacing: 0.02em;
   }
 
   .contact-desc {
     font-size: var(--fs-sm);
     color: var(--color-text-soft);
     margin: 0;
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
   /* 二维码区 */
   .qr-block {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
+    grid-template-columns: 1fr 1.5fr;
     gap: var(--sp-6);
     align-items: stretch;
   }
@@ -259,50 +346,73 @@ const inquiryList = [
   .qr-card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: var(--sp-5);
+    border-radius: var(--radius-md);
+    padding: var(--sp-6);
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: var(--shadow-xs);
   }
 
   .qr-placeholder {
-    width: 200px;
-    height: 200px;
-    background:
-      repeating-linear-gradient(
-        45deg,
-        #2a2a26,
-        #2a2a26 8px,
-        #fff 8px,
-        #fff 16px
-      );
+    width: 220px;
+    height: 220px;
     border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
     margin-bottom: var(--sp-4);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .qr-pattern {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .qr-pattern svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .qr-label {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 10px;
+    background: var(--color-primary);
     color: #fff;
-    font-weight: 600;
-    font-size: var(--fs-sm);
-    text-align: center;
-    padding: var(--sp-3);
-    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
   }
 
   .qr-placeholder small {
-    display: block;
-    margin-top: var(--sp-2);
-    font-size: 10px;
-    font-weight: 400;
-    opacity: 0.9;
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    font-size: 9px;
+    color: var(--color-text-muted);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 6px;
+    border-radius: 3px;
+    max-width: 140px;
+    text-align: right;
   }
 
   .qr-card h3 {
     color: var(--color-primary-dark);
     margin-bottom: var(--sp-2);
+    font-size: var(--fs-md);
   }
 
   .qr-card p {
@@ -314,15 +424,17 @@ const inquiryList = [
   .info-card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: var(--sp-6);
+    border-radius: var(--radius-md);
+    padding: var(--sp-7);
+    box-shadow: var(--shadow-xs);
   }
 
   .info-card h3 {
     color: var(--color-primary-dark);
-    margin-bottom: var(--sp-4);
+    margin-bottom: var(--sp-5);
     padding-bottom: var(--sp-3);
-    border-bottom: 1px solid var(--color-border);
+    border-bottom: 2px solid var(--color-accent);
+    font-size: var(--fs-lg);
   }
 
   .info-list {
@@ -333,10 +445,11 @@ const inquiryList = [
 
   .info-list li {
     display: flex;
-    padding: var(--sp-3) 0;
+    padding: var(--sp-4) 0;
     border-bottom: 1px dashed var(--color-border);
     font-size: var(--fs-sm);
     color: var(--color-text-soft);
+    align-items: flex-start;
   }
 
   .info-list li:last-child {
@@ -346,25 +459,27 @@ const inquiryList = [
   .info-list strong {
     width: 130px;
     color: var(--color-text);
-    font-weight: 600;
+    font-weight: 700;
     flex-shrink: 0;
+  }
+
+  .info-list a {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-feature-settings: 'tnum';
   }
 
   .info-cta {
     text-align: center;
   }
 
-  .btn-lg {
-    padding: 14px 26px;
-    font-size: 17px;
-  }
-
   /* 询价清单 */
   .inquiry-list-box {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: var(--sp-6);
+    border-radius: var(--radius-md);
+    padding: var(--sp-7);
+    box-shadow: var(--shadow-xs);
   }
 
   .inquiry-checklist {
@@ -372,6 +487,7 @@ const inquiryList = [
     column-gap: var(--sp-6);
     margin: 0 0 var(--sp-5);
     padding-left: 1.5em;
+    counter-reset: inquiry;
   }
 
   .inquiry-checklist li {
@@ -382,27 +498,36 @@ const inquiryList = [
   }
 
   .inquiry-tip {
-    background: var(--color-surface-alt);
-    border-left: 3px solid var(--color-accent);
-    padding: var(--sp-4) var(--sp-5);
-    border-radius: 3px;
+    background: var(--color-accent-soft);
+    border-left: 4px solid var(--color-accent);
+    padding: var(--sp-5);
+    border-radius: var(--radius-sm);
     margin-top: var(--sp-4);
   }
 
   .inquiry-tip h4 {
-    color: var(--color-primary-dark);
+    color: var(--color-accent-dark);
     margin-bottom: var(--sp-3);
     font-size: var(--fs-base);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tip-icon {
+    font-size: 18px;
   }
 
   .inquiry-tip ul {
     margin: 0;
     color: var(--color-text-soft);
     font-size: var(--fs-sm);
+    padding-left: 1.5em;
   }
 
   .inquiry-tip li {
-    margin-bottom: 4px;
+    margin-bottom: 6px;
+    line-height: 1.75;
   }
 
   @media (max-width: 1000px) {

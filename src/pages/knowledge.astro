@@ -9,31 +9,37 @@ const guides = [
     id: 'selection',
     title: 'PVC 电线电缆料如何选型？',
     summary: '从使用场景、温度要求、阻燃要求、加工方式四个维度来判断。',
+    icon: '⊞',
   },
   {
     id: 'temperature',
     title: '70℃、90℃、105℃ 耐温有什么区别？',
     summary: '工作温度不同对应 PVC 配方和原料体系不同，价格、用途也不同。',
+    icon: '▲',
   },
   {
     id: 'cold',
     title: '-40℃ 耐寒与普通 PVC 区别？',
     summary: '通过增塑剂体系和改性实现低温不脆裂，常用于北方户外和冷链场景。',
+    icon: '❄',
   },
   {
     id: 'rohs',
     title: 'ROHS / REACH / NP 是什么？',
     summary: '出口电线电缆常见的环保与禁用物质要求，决定配方中能否使用某些助剂。',
+    icon: '⊕',
   },
   {
     id: 'procurement',
     title: '采购 PVC 料常见问题',
     summary: '起订量、试样、批次稳定、颜色色差、包装等采购时需要确认的问题。',
+    icon: '⌬',
   },
   {
     id: 'factory',
     title: '为什么建议找工厂直做？',
     summary: '贸易商、成品料厂、工厂直做的差异主要在配方灵活度与稳定性。',
+    icon: '⌘',
   },
 ];
 
@@ -83,6 +89,10 @@ const faqs = [
 <BaseLayout
   title="PVC 电线电缆料行业知识"
   description="PVC 电线电缆料选型、耐温 / 耐寒区别、ROHS / REACH / NP 环保标准、采购常见问题。工厂直说的行业知识，便于电线电缆厂家、电子线材厂、电源插头厂做采购决策。"
+  breadcrumbs={[
+    { name: '首页', href: '/' },
+    { name: '行业知识', href: '/knowledge/' },
+  ]}
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -99,7 +109,12 @@ const faqs = [
   <!-- 页头 -->
   <section class="page-header">
     <div class="container">
-      <div class="breadcrumb"><a href="/">首页</a> / 行业知识</div>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">首页</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>行业知识</span>
+      </nav>
+      <div class="section-eyebrow page-eyebrow">KNOWLEDGE · 6 TOPICS + 10 FAQs</div>
       <h1>行业知识</h1>
       <p class="page-header-sub">
         PVC 电线电缆料选型、耐温 / 耐寒区别、环保标准、采购常见问题，按工厂实操经验整理。
@@ -113,6 +128,7 @@ const faqs = [
       <div class="topic-nav">
         {guides.map((g) => (
           <a href={`#${g.id}`} class="topic-nav-card">
+            <div class="topic-icon" aria-hidden="true">{g.icon}</div>
             <h3>{g.title}</h3>
             <p>{g.summary}</p>
           </a>
@@ -124,10 +140,13 @@ const faqs = [
   <!-- 详细主题 -->
   <section class="section">
     <div class="container">
-      <SectionTitle title="选型与区别" subtitle="按使用场景与性能要求做判断" />
+      <SectionTitle eyebrow="GUIDES" title="选型与区别" subtitle="按使用场景与性能要求做判断" />
 
       <article class="guide-block" id="selection">
-        <h3>PVC 电线电缆料如何选型？</h3>
+        <div class="guide-header">
+          <span class="guide-no">01</span>
+          <h3>PVC 电线电缆料如何选型？</h3>
+        </div>
         <p>
           选型时建议从 <strong>使用场景</strong>、<strong>工作温度</strong>、<strong>阻燃要求</strong>、<strong>加工方式</strong> 四个维度来判断。
         </p>
@@ -143,7 +162,10 @@ const faqs = [
       </article>
 
       <article class="guide-block" id="temperature">
-        <h3>70℃、90℃、105℃ 耐温有什么区别？</h3>
+        <div class="guide-header">
+          <span class="guide-no">02</span>
+          <h3>70℃、90℃、105℃ 耐温有什么区别？</h3>
+        </div>
         <p>工作温度不同对应 PVC 配方与原料体系不同：</p>
         <table class="table">
           <thead>
@@ -155,17 +177,17 @@ const faqs = [
           </thead>
           <tbody>
             <tr>
-              <td>70℃</td>
+              <td><span class="tag tag-primary">70℃</span></td>
               <td>常规建筑线、电子线外被</td>
               <td>常规 PVC 增塑剂与稳定剂</td>
             </tr>
             <tr>
-              <td>90℃</td>
+              <td><span class="tag tag-primary">90℃</span></td>
               <td>部分家电内部配线</td>
               <td>耐热增塑剂与稳定剂</td>
             </tr>
             <tr>
-              <td>105℃</td>
+              <td><span class="tag tag-accent">105℃</span></td>
               <td>电热水器、烤箱、变压器引线</td>
               <td>改性 PVC / 特种增塑体系</td>
             </tr>
@@ -177,7 +199,10 @@ const faqs = [
       </article>
 
       <article class="guide-block" id="cold">
-        <h3>-40℃ 耐寒 PVC 料与普通 PVC 的区别？</h3>
+        <div class="guide-header">
+          <span class="guide-no">03</span>
+          <h3>-40℃ 耐寒 PVC 料与普通 PVC 的区别？</h3>
+        </div>
         <p>
           普通 PVC 在低温下会变硬、变脆，温度到 -10℃ 以下时容易出现开裂现象。
           -40℃ 耐寒料通过 <strong>增塑剂体系调整</strong> 与 <strong>改性配方</strong>，让 PVC 在低温下保持柔韧性。
@@ -190,7 +215,10 @@ const faqs = [
       </article>
 
       <article class="guide-block" id="rohs">
-        <h3>ROHS / REACH / NP 是什么？</h3>
+        <div class="guide-header">
+          <span class="guide-no">04</span>
+          <h3>ROHS / REACH / NP 是什么？</h3>
+        </div>
         <p>出口电线电缆常见的环保与禁用物质要求：</p>
         <dl class="def-list">
           <dt>ROHS</dt>
@@ -208,7 +236,10 @@ const faqs = [
       </article>
 
       <article class="guide-block" id="procurement">
-        <h3>采购 PVC 料常见问题</h3>
+        <div class="guide-header">
+          <span class="guide-no">05</span>
+          <h3>采购 PVC 料常见问题</h3>
+        </div>
         <ul>
           <li><strong>起订量：</strong>常规配方 500kg - 1 吨起，新开发配方可 100kg 起。</li>
           <li><strong>试样周期：</strong>首次试样通常 3-7 个工作日，加急可压缩。</li>
@@ -221,7 +252,10 @@ const faqs = [
       </article>
 
       <article class="guide-block" id="factory">
-        <h3>为什么建议找工厂直做？</h3>
+        <div class="guide-header">
+          <span class="guide-no">06</span>
+          <h3>为什么建议找工厂直做？</h3>
+        </div>
         <p>电线电缆料不是通用件。不同客户的导体结构、挤出速度、模具规格、使用场景都不一样，配方如果不匹配会出现：</p>
         <ul>
           <li>挤出不稳定、塑化不均</li>
@@ -244,7 +278,8 @@ const faqs = [
   <section class="section section-alt">
     <div class="container">
       <SectionTitle
-        title="常见问题 FAQ"
+        eyebrow="FAQ"
+        title="常见问题"
         subtitle="按客户经常问到的问题整理"
       />
 
@@ -252,79 +287,90 @@ const faqs = [
         {faqs.map((f, i) => (
           <details class="faq-item" open={i === 0}>
             <summary>
-              <span class="faq-q">Q.</span>
-              <span>{f.q}</span>
+              <span class="faq-no">Q{(i + 1).toString().padStart(2, '0')}</span>
+              <span class="faq-q-text">{f.q}</span>
+              <span class="faq-toggle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
             </summary>
             <div class="faq-a">{f.a}</div>
           </details>
         ))}
       </div>
 
-      <div class="faq-cta">
-        <p>还有其他问题？直接电话或微信沟通更高效。</p>
-        <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
+      <div class="cta-box faq-cta">
+        <div class="faq-cta-text">
+          <h3>还有其他问题？</h3>
+          <p>直接电话或微信沟通更高效 · 通常 24 小时内响应</p>
+        </div>
+        <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 {phoneNumber}</a>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .page-header {
-    background: var(--color-surface-alt);
-    padding: var(--sp-6) 0 var(--sp-5);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .breadcrumb {
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
+  .page-eyebrow {
     margin-bottom: var(--sp-3);
-  }
-
-  .breadcrumb a {
-    color: var(--color-text-muted);
-  }
-
-  .page-header h1 {
-    font-size: var(--fs-2xl);
-    margin-bottom: var(--sp-2);
-    color: var(--color-primary-dark);
-  }
-
-  .page-header-sub {
-    color: var(--color-text-soft);
-    margin: 0;
-    max-width: 760px;
-  }
-
-  .section-alt {
-    background: var(--color-surface-alt);
   }
 
   /* 主题导航 */
   .topic-nav {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--sp-3);
+    gap: var(--sp-4);
   }
 
   .topic-nav-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-left: 3px solid var(--color-primary);
-    padding: var(--sp-4);
-    border-radius: 3px;
+    border-radius: var(--radius-md);
+    padding: var(--sp-5);
     text-decoration: none;
     color: inherit;
-    transition: all 0.15s ease;
+    transition: all 0.25s var(--ease-out);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .topic-nav-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+    transition: width 0.25s var(--ease-out);
   }
 
   .topic-nav-card:hover {
     border-color: var(--color-primary);
-    background: #f0f5f1;
+    background: var(--color-surface);
     text-decoration: none;
     color: inherit;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .topic-nav-card:hover::before {
+    width: 6px;
+    background: var(--color-accent);
+  }
+
+  .topic-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-size: 22px;
+    margin-bottom: var(--sp-3);
   }
 
   .topic-nav-card h3 {
@@ -337,33 +383,61 @@ const faqs = [
     font-size: var(--fs-sm);
     color: var(--color-text-soft);
     margin: 0;
+    line-height: 1.7;
   }
 
   /* 详细主题 */
   .guide-block {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: var(--sp-6);
+    border-radius: var(--radius-md);
+    padding: var(--sp-7);
     margin-bottom: var(--sp-5);
-    scroll-margin-top: 90px;
+    scroll-margin-top: 100px;
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.25s var(--ease-out);
+  }
+
+  .guide-block:hover {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .guide-header {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding-bottom: var(--sp-4);
+    margin-bottom: var(--sp-5);
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .guide-no {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
   }
 
   .guide-block h3 {
     color: var(--color-primary-dark);
-    margin-bottom: var(--sp-4);
-    padding-bottom: var(--sp-3);
-    border-bottom: 1px solid var(--color-border);
+    margin: 0;
+    font-size: var(--fs-lg);
   }
 
   .guide-block ol,
   .guide-block ul {
     color: var(--color-text-soft);
     line-height: 1.85;
+    padding-left: 1.5em;
   }
 
   .guide-block li {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
 
   .guide-note {
@@ -378,87 +452,137 @@ const faqs = [
   }
 
   .def-list dt {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-primary-dark);
-    margin-top: var(--sp-3);
+    margin-top: var(--sp-4);
+    padding-left: var(--sp-3);
+    border-left: 3px solid var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--fs-base);
+    letter-spacing: 0.05em;
+  }
+
+  .def-list dt:first-child {
+    margin-top: 0;
   }
 
   .def-list dd {
-    margin: 4px 0 0 0;
+    margin: 6px 0 0 0;
     color: var(--color-text-soft);
     font-size: var(--fs-sm);
+    line-height: 1.8;
   }
 
   /* FAQ */
   .faq-list {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 920px;
+    margin: 0 auto var(--sp-6);
   }
 
   .faq-item {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 3px;
-    margin-bottom: var(--sp-2);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--sp-3);
+    transition: all 0.25s var(--ease-out);
+  }
+
+  .faq-item[open] {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-sm);
   }
 
   .faq-item summary {
     list-style: none;
     cursor: pointer;
-    padding: var(--sp-4);
+    padding: var(--sp-5);
     display: flex;
     gap: var(--sp-3);
-    align-items: flex-start;
-    font-weight: 500;
+    align-items: center;
+    font-weight: 600;
+    color: var(--color-text);
   }
 
   .faq-item summary::-webkit-details-marker {
     display: none;
   }
 
-  .faq-item summary::after {
-    content: '+';
-    margin-left: auto;
-    color: var(--color-primary);
-    font-weight: 700;
-    font-size: var(--fs-lg);
+  .faq-no {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: var(--color-accent-dark);
+    background: var(--color-accent-soft);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
     flex-shrink: 0;
+    letter-spacing: 0.05em;
   }
 
-  .faq-item[open] summary::after {
-    content: '−';
+  .faq-q-text {
+    flex: 1;
+    font-size: var(--fs-base);
   }
 
-  .faq-q {
+  .faq-toggle {
+    width: 28px;
+    height: 28px;
+    background: var(--color-primary-soft);
     color: var(--color-primary);
-    font-weight: 700;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
+    transition: all 0.25s var(--ease-out);
+  }
+
+  .faq-item[open] .faq-toggle {
+    background: var(--color-accent);
+    color: #fff;
+    transform: rotate(45deg);
+  }
+
+  .faq-toggle svg {
+    width: 16px;
+    height: 16px;
   }
 
   .faq-a {
-    padding: 0 var(--sp-4) var(--sp-4) calc(var(--sp-4) + 24px);
+    padding: 0 var(--sp-5) var(--sp-5) calc(var(--sp-5) + 50px);
     color: var(--color-text-soft);
     font-size: var(--fs-sm);
-    line-height: 1.8;
+    line-height: 1.85;
   }
 
   .faq-cta {
-    background: var(--color-primary-dark);
-    color: #e8efe9;
-    padding: var(--sp-5);
-    border-radius: 4px;
-    text-align: center;
-    margin-top: var(--sp-6);
+    display: grid;
+    grid-template-columns: 1.5fr auto;
+    align-items: center;
+    gap: var(--sp-5);
+    padding: var(--sp-6) var(--sp-7);
   }
 
-  .faq-cta p {
-    color: #d8d6cf;
-    margin-bottom: var(--sp-3);
+  .faq-cta-text h3 {
+    color: #fff;
+    margin-bottom: 6px;
+    font-size: var(--fs-lg);
+  }
+
+  .faq-cta-text p {
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    font-size: var(--fs-sm);
   }
 
   @media (max-width: 900px) {
     .topic-nav {
       grid-template-columns: 1fr;
+    }
+
+    .faq-cta {
+      grid-template-columns: 1fr;
+      text-align: center;
     }
   }
 </style>

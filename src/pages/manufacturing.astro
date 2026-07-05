@@ -44,26 +44,32 @@ const flow = [
 
 const capabilities = [
   {
+    icon: '⚙',
     title: 'PVC 配方开发',
     desc: '常规 PVC、改性 PVC、阻燃 PVC、耐温 PVC、耐寒 PVC 等均可按客户要求调整。',
   },
   {
+    icon: '⊟',
     title: '原料自主采购',
     desc: 'PVC 树脂粉、增塑剂、稳定剂、阻燃剂等核心原料固定渠道采购，保证批次稳定。',
   },
   {
+    icon: '◐',
     title: '混料工序',
     desc: '高速混合机多台，可按工艺要求做冷混 / 热混。',
   },
   {
+    icon: '⊕',
     title: '挤出造粒',
     desc: '双螺杆 / 单螺杆挤出机多台，日产能可覆盖中小电线电缆厂稳定供货需求。',
   },
   {
+    icon: '◈',
     title: '切粒与筛分',
     desc: '切粒机、振动筛配套，颗粒大小均匀，无过长过细。',
   },
   {
+    icon: '⊞',
     title: '包装与仓储',
     desc: '自有仓库与成品堆放区，可按客户要求做包装规格。',
   },
@@ -76,15 +82,39 @@ const qualityItems = [
   '每批次留样存档，便于追溯',
   '客户反馈跟进，配方持续优化',
 ];
+
+const howToLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'PVC 电线电缆料定制生产流程',
+  description: '从客户需求沟通到成品交付的完整 7 道工序',
+  totalTime: 'P3-7D',
+  step: flow.map((f, i) => ({
+    '@type': 'HowToStep',
+    position: i + 1,
+    name: f.title,
+    text: f.desc,
+  })),
+};
 ---
 <BaseLayout
   title="制造能力"
   description="佛山市三水湘发顺塑料有限公司制造能力：PVC 配方沟通、原料混合、挤出造粒、冷却筛分、包装交付、批次稳定的全流程。从配方开发到稳定供货，每批次留样可追溯。"
+  breadcrumbs={[
+    { name: '首页', href: '/' },
+    { name: '制造能力', href: '/manufacturing/' },
+  ]}
+  jsonLd={howToLd}
 >
   <!-- 页头 -->
   <section class="page-header">
     <div class="container">
-      <div class="breadcrumb"><a href="/">首页</a> / 制造能力</div>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">首页</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>制造能力</span>
+      </nav>
+      <div class="section-eyebrow page-eyebrow">MANUFACTURING · 7 PROCESS STEPS</div>
       <h1>制造能力</h1>
       <p class="page-header-sub">
         从配方沟通到稳定供货，每一个环节都是工厂直做的优势。
@@ -96,17 +126,19 @@ const qualityItems = [
   <section class="section">
     <div class="container">
       <SectionTitle
-        title="工艺流程"
+        eyebrow="PROCESS"
+        title="七道工艺流程"
         subtitle="从客户需求到成品交付的完整链路"
       />
 
       <div class="flow-grid">
-        {flow.map((item) => (
-          <div class="flow-card">
+        {flow.map((item, i) => (
+          <article class="flow-card" style={`--flow-i:${i}`}>
             <div class="flow-step">{item.step}</div>
             <h3 class="flow-title">{item.title}</h3>
             <p>{item.desc}</p>
-          </div>
+            {i < flow.length - 1 && <span class="flow-arrow" aria-hidden="true">→</span>}
+          </article>
         ))}
       </div>
     </div>
@@ -116,15 +148,17 @@ const qualityItems = [
   <section class="section section-alt">
     <div class="container">
       <SectionTitle
+        eyebrow="CAPABILITIES"
         title="设备与工序"
         subtitle="自有产线，覆盖 PVC 电线电缆料主流工艺"
       />
 
       <div class="grid grid-3">
         {capabilities.map((c) => (
-          <div class="card">
-            <h3 class="card-title">{c.title}</h3>
-            <p>{c.desc}</p>
+          <div class="capability-card">
+            <div class="capability-icon" aria-hidden="true">{c.icon}</div>
+            <h3 class="capability-title">{c.title}</h3>
+            <p class="capability-desc">{c.desc}</p>
           </div>
         ))}
       </div>
@@ -135,6 +169,7 @@ const qualityItems = [
   <section class="section">
     <div class="container">
       <SectionTitle
+        eyebrow="QUALITY"
         title="批次稳定与可追溯"
         subtitle="长期供货客户的配方一致性是工厂直做的关键优势"
       />
@@ -143,14 +178,17 @@ const qualityItems = [
         <ul class="quality-list">
           {qualityItems.map((q) => (
             <li>
-              <span class="quality-check">✓</span>
+              <span class="quality-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
               <span>{q}</span>
             </li>
           ))}
         </ul>
         <div class="quality-cta">
-          <p>欢迎来厂看产线、看样品。</p>
-          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 预约看厂 13450853338</a>
+          <h3>欢迎来厂看产线、看样品</h3>
+          <p>提前电话预约，方便安排接待</p>
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 预约看厂 {phoneNumber}</a>
         </div>
       </div>
     </div>
@@ -158,35 +196,8 @@ const qualityItems = [
 </BaseLayout>
 
 <style>
-  .page-header {
-    background: var(--color-surface-alt);
-    padding: var(--sp-6) 0 var(--sp-5);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .breadcrumb {
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
+  .page-eyebrow {
     margin-bottom: var(--sp-3);
-  }
-
-  .breadcrumb a {
-    color: var(--color-text-muted);
-  }
-
-  .page-header h1 {
-    font-size: var(--fs-2xl);
-    margin-bottom: var(--sp-2);
-    color: var(--color-primary-dark);
-  }
-
-  .page-header-sub {
-    color: var(--color-text-soft);
-    margin: 0;
-  }
-
-  .section-alt {
-    background: var(--color-surface-alt);
   }
 
   /* 流程 */
@@ -194,23 +205,37 @@ const qualityItems = [
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: var(--sp-4);
+    position: relative;
   }
 
   .flow-card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-top: 3px solid var(--color-primary);
-    border-radius: 3px;
+    border-radius: var(--radius-md);
     padding: var(--sp-5);
     position: relative;
+    transition: all 0.28s var(--ease-out);
+  }
+
+  .flow-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
   }
 
   .flow-step {
-    font-size: var(--fs-2xl);
-    font-weight: 700;
-    color: var(--color-primary);
-    margin-bottom: var(--sp-2);
-    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: var(--fs-lg);
+    font-weight: 800;
+    color: var(--color-accent);
+    background: var(--color-accent-soft);
+    padding: 4px 12px;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--sp-3);
+    letter-spacing: 0.05em;
   }
 
   .flow-title {
@@ -223,6 +248,60 @@ const qualityItems = [
     font-size: var(--fs-sm);
     color: var(--color-text-soft);
     margin: 0;
+    line-height: 1.7;
+  }
+
+  .flow-arrow {
+    position: absolute;
+    right: -22px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-accent);
+    font-size: 18px;
+    font-weight: 700;
+    z-index: 1;
+  }
+
+  /* 设备能力 */
+  .capability-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-6);
+    transition: all 0.28s var(--ease-out);
+    height: 100%;
+  }
+
+  .capability-card:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+  }
+
+  .capability-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, var(--color-primary-soft) 0%, #d3e2d8 100%);
+    color: var(--color-primary);
+    border-radius: var(--radius-md);
+    font-size: 24px;
+    margin-bottom: var(--sp-4);
+  }
+
+  .capability-title {
+    font-size: var(--fs-md);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-3);
+  }
+
+  .capability-desc {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    margin: 0;
+    line-height: 1.75;
   }
 
   /* 品质保障 */
@@ -232,9 +311,10 @@ const qualityItems = [
     gap: var(--sp-6);
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: var(--sp-6);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-7);
     align-items: center;
+    box-shadow: var(--shadow-sm);
   }
 
   .quality-list {
@@ -246,9 +326,11 @@ const qualityItems = [
   .quality-list li {
     display: flex;
     gap: var(--sp-3);
-    padding: var(--sp-3) 0;
+    padding: var(--sp-4) 0;
     border-bottom: 1px dashed var(--color-border);
     color: var(--color-text-soft);
+    font-size: var(--fs-base);
+    align-items: center;
   }
 
   .quality-list li:last-child {
@@ -256,29 +338,64 @@ const qualityItems = [
   }
 
   .quality-check {
+    width: 28px;
+    height: 28px;
+    background: var(--color-primary-soft);
     color: var(--color-primary);
-    font-weight: 700;
-    font-size: var(--fs-lg);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
-    width: 22px;
+  }
+
+  .quality-check svg {
+    width: 16px;
+    height: 16px;
   }
 
   .quality-cta {
-    background: var(--color-primary-dark);
-    color: #e8efe9;
-    padding: var(--sp-5);
-    border-radius: 3px;
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: #fff;
+    padding: var(--sp-6);
+    border-radius: var(--radius-md);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quality-cta::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(227, 99, 42, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .quality-cta h3 {
+    color: #fff;
+    margin-bottom: var(--sp-2);
+    font-size: var(--fs-lg);
   }
 
   .quality-cta p {
-    color: #d8d6cf;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: var(--sp-4);
+    font-size: var(--fs-sm);
   }
 
   @media (max-width: 1100px) {
     .flow-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .flow-card:nth-child(2) .flow-arrow,
+    .flow-card:nth-child(4) .flow-arrow,
+    .flow-card:nth-child(6) .flow-arrow {
+      display: none;
     }
   }
 
@@ -286,6 +403,10 @@ const qualityItems = [
     .flow-grid,
     .quality-block {
       grid-template-columns: 1fr;
+    }
+
+    .flow-arrow {
+      display: none !important;
     }
   }
 </style>

@@ -379,6 +379,10 @@ const products = [
   title="PVC Wire & Cable Compound Products"
   description="PVC wire & cable compound product catalog: 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent, matte, modified. Each product includes application, target customers, processing method, typical specs, and inquiry points."
   locale="en"
+  breadcrumbs={[
+    { name: 'Home', href: '/en/' },
+    { name: 'Products', href: '/en/products/' },
+  ]}
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -392,13 +396,26 @@ const products = [
         category: p.category,
         description: p.summary,
         url: `https://xfspvc.com/en/products/#${p.id}`,
+        brand: { '@type': 'Brand', name: 'Xiangfa Shun' },
+        manufacturer: { '@type': 'Organization', name: 'Foshan Xiangfa Shun Plastic Co., Ltd.' },
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/MadeToOrder',
+          priceCurrency: 'CNY',
+          seller: { '@type': 'Organization', name: 'Foshan Xiangfa Shun Plastic Co., Ltd.' },
+        },
       },
     })),
   }}
 >
   <section class="page-header">
     <div class="container">
-      <div class="breadcrumb"><a href="/en/">Home</a> / Products</div>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/en/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Products</span>
+      </nav>
+      <div class="section-eyebrow page-eyebrow">CATALOG · 9 CATEGORIES</div>
       <h1>PVC Wire & Cable Compound Catalog</h1>
       <p class="page-header-sub">
         Below are typical spec ranges for standard categories. Final formulation, color and performance are confirmed via mutual technical agreement.
@@ -434,11 +451,13 @@ const products = [
         />
       ))}
 
-      <div class="catalog-cta">
-        <h3>No perfect match?</h3>
-        <p>We can develop new formulas and run small-batch trials based on your requirements. Just call or message us.</p>
+      <div class="cta-box catalog-cta">
+        <div class="catalog-cta-text">
+          <h3>No perfect match?</h3>
+          <p>We can develop new formulas and run small-batch trials based on your requirements. Just call or message us.</p>
+        </div>
         <div class="catalog-cta-actions">
-          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 13450853338</a>
           <a href="/en/contact/" class="btn btn-outline">View Contact</a>
         </div>
       </div>
@@ -447,33 +466,7 @@ const products = [
 </BaseLayout>
 
 <style>
-  .page-header {
-    background: var(--color-surface-alt);
-    padding: var(--sp-6) 0 var(--sp-5);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .breadcrumb {
-    font-size: var(--fs-sm);
-    color: var(--color-text-muted);
-    margin-bottom: var(--sp-3);
-  }
-
-  .breadcrumb a {
-    color: var(--color-text-muted);
-  }
-
-  .page-header h1 {
-    font-size: var(--fs-2xl);
-    margin-bottom: var(--sp-2);
-    color: var(--color-primary-dark);
-  }
-
-  .page-header-sub {
-    color: var(--color-text-soft);
-    margin: 0;
-    max-width: 760px;
-  }
+  .page-eyebrow { margin-bottom: var(--sp-3); }
 
   .cat-nav {
     display: flex;
@@ -483,23 +476,29 @@ const products = [
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     padding: var(--sp-3) var(--sp-4);
-    border-radius: 3px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-xs);
   }
 
   .cat-nav-title {
     font-size: var(--fs-sm);
     color: var(--color-text-soft);
-    font-weight: 600;
+    font-weight: 700;
+    margin-right: var(--sp-2);
   }
 
   .cat-nav-link {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 14px;
+    border-radius: 999px;
     background: var(--color-surface-alt);
     border: 1px solid var(--color-border);
     font-size: var(--fs-sm);
     color: var(--color-text);
+    font-weight: 500;
+    transition: all 0.18s var(--ease-out);
   }
 
   .cat-nav-link:hover {
@@ -507,30 +506,31 @@ const products = [
     color: #fff;
     border-color: var(--color-primary);
     text-decoration: none;
+    transform: translateY(-1px);
   }
 
   .catalog-cta {
-    background: var(--color-primary-dark);
-    color: #e8efe9;
-    padding: var(--sp-6);
-    border-radius: 4px;
-    text-align: center;
-    margin-top: var(--sp-6);
+    display: grid;
+    grid-template-columns: 1.5fr auto;
+    align-items: center;
+    gap: var(--sp-5);
+    padding: var(--sp-7);
   }
 
   .catalog-cta h3 {
     color: #fff;
-    margin-bottom: var(--sp-3);
+    margin-bottom: var(--sp-2);
+    font-size: var(--fs-xl);
   }
 
   .catalog-cta p {
-    color: #d8d6cf;
-    margin-bottom: var(--sp-5);
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    font-size: var(--fs-md);
   }
 
   .catalog-cta-actions {
     display: flex;
-    justify-content: center;
     gap: var(--sp-3);
     flex-wrap: wrap;
   }
@@ -539,6 +539,15 @@ const products = [
     .cat-nav {
       flex-direction: column;
       align-items: flex-start;
+    }
+
+    .catalog-cta {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .catalog-cta-actions {
+      justify-content: center;
     }
   }
 </style>

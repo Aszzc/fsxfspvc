@@ -30,6 +30,10 @@ const faqs = [
   title="PVC Wire & Cable Compound Knowledge"
   description="PVC wire & cable compound selection, temperature/cold resistance differences, ROHS/REACH/NP environmental standards, common procurement questions. Practical knowledge from a real factory."
   locale="en"
+  breadcrumbs={[
+    { name: 'Home', href: '/en/' },
+    { name: 'Knowledge', href: '/en/knowledge/' },
+  ]}
   jsonLd={{
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -42,7 +46,12 @@ const faqs = [
 >
   <section class="page-header">
     <div class="container">
-      <div class="breadcrumb"><a href="/en/">Home</a> / Knowledge</div>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/en/">Home</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Knowledge</span>
+      </nav>
+      <div class="section-eyebrow page-eyebrow">KNOWLEDGE · 6 TOPICS + 10 FAQs</div>
       <h1>Industry Knowledge</h1>
       <p class="page-header-sub">
         PVC wire & cable compound selection, temperature / cold resistance differences, environmental standards, common procurement questions — practical knowledge from our factory.
@@ -68,7 +77,10 @@ const faqs = [
       <SectionTitle title="Selection & Differences" subtitle="Decide based on usage scenario and performance requirements" />
 
       <article class="guide-block" id="selection">
-        <h3>How to Select PVC Wire & Cable Compound?</h3>
+        <div class="guide-header">
+          <span class="guide-no">01</span>
+          <h3>How to Select PVC Wire & Cable Compound?</h3>
+        </div>
         <p>Recommend evaluating from four dimensions: <strong>Usage scenario</strong>, <strong>Working temperature</strong>, <strong>Flame retardancy</strong>, <strong>Processing method</strong>.</p>
         <ol>
           <li><strong>Usage scenario:</strong> Building wiring, electronic wire, outdoor wiring, appliance internal wiring, power plug — different scenarios need different mechanical, weather and appearance performance.</li>
@@ -80,23 +92,29 @@ const faqs = [
       </article>
 
       <article class="guide-block" id="temperature">
-        <h3>70℃, 90℃, 105℃ — What's the Difference?</h3>
+        <div class="guide-header">
+          <span class="guide-no">02</span>
+          <h3>70℃, 90℃, 105℃ — What's the Difference?</h3>
+        </div>
         <p>Different working temperatures correspond to different PVC formulations and additive systems:</p>
         <table class="table">
           <thead>
             <tr><th>Temperature</th><th>Typical Application</th><th>Formula Feature</th></tr>
           </thead>
           <tbody>
-            <tr><td>70℃</td><td>Standard building wire, electronic wire jacket</td><td>Standard PVC plasticizer & stabilizer</td></tr>
-            <tr><td>90℃</td><td>Some appliance internal wiring</td><td>Heat-resistant plasticizer & stabilizer</td></tr>
-            <tr><td>105℃</td><td>Water heater, oven, transformer leads</td><td>Modified PVC / special plasticizer system</td></tr>
+            <tr><td><span class="tag tag-primary">70℃</span></td><td>Standard building wire, electronic wire jacket</td><td>Standard PVC plasticizer & stabilizer</td></tr>
+            <tr><td><span class="tag tag-primary">90℃</span></td><td>Some appliance internal wiring</td><td>Heat-resistant plasticizer & stabilizer</td></tr>
+            <tr><td><span class="tag tag-accent">105℃</span></td><td>Water heater, oven, transformer leads</td><td>Modified PVC / special plasticizer system</td></tr>
           </tbody>
         </table>
         <p class="guide-note">Price rises with temperature rating. Select based on actual working temperature — no need to always pick the highest.</p>
       </article>
 
       <article class="guide-block" id="cold">
-        <h3>-40℃ Cold-resistant vs Standard PVC</h3>
+        <div class="guide-header">
+          <span class="guide-no">03</span>
+          <h3>-40℃ Cold-resistant vs Standard PVC</h3>
+        </div>
         <p>Standard PVC hardens and becomes brittle at low temperature — cracks appear below -10℃. -40℃ cold-resistant compound uses <strong>modified plasticizer system</strong> and <strong>adjusted formulation</strong> to maintain flexibility at low temperature.</p>
         <ul>
           <li>Applications: Northern outdoor wiring, agricultural machinery cables, cold storage wiring, winter construction cables</li>
@@ -106,7 +124,10 @@ const faqs = [
       </article>
 
       <article class="guide-block" id="rohs">
-        <h3>What are ROHS / REACH / NP?</h3>
+        <div class="guide-header">
+          <span class="guide-no">04</span>
+          <h3>What are ROHS / REACH / NP?</h3>
+        </div>
         <p>Common environmental and restricted substance requirements for export wire & cable:</p>
         <dl class="def-list">
           <dt>ROHS</dt>
@@ -120,7 +141,10 @@ const faqs = [
       </article>
 
       <article class="guide-block" id="procurement">
-        <h3>Common Procurement Questions</h3>
+        <div class="guide-header">
+          <span class="guide-no">05</span>
+          <h3>Common Procurement Questions</h3>
+        </div>
         <ul>
           <li><strong>MOQ:</strong> Standard formula 500kg - 1 ton, new formula can start from 100kg.</li>
           <li><strong>Sample cycle:</strong> First sample usually 3-7 working days, express possible.</li>
@@ -133,7 +157,10 @@ const faqs = [
       </article>
 
       <article class="guide-block" id="factory">
-        <h3>Why Source Directly from Factory?</h3>
+        <div class="guide-header">
+          <span class="guide-no">06</span>
+          <h3>Why Source Directly from Factory?</h3>
+        </div>
         <p>Wire & cable compound isn't generic. Different customers have different conductor structure, extrusion speed, die specs, usage scenarios — if the formula doesn't match you'll see:</p>
         <ul>
           <li>Unstable extrusion, uneven plasticization</li>
@@ -149,59 +176,220 @@ const faqs = [
 
   <section class="section section-alt">
     <div class="container">
-      <SectionTitle title="FAQ" subtitle="Common questions from customers" />
+      <SectionTitle eyebrow="FAQ" title="Common Questions" subtitle="Common questions from customers" />
       <div class="faq-list">
         {faqs.map((f, i) => (
           <details class="faq-item" open={i === 0}>
             <summary>
-              <span class="faq-q">Q.</span>
-              <span>{f.q}</span>
+              <span class="faq-no">Q{(i + 1).toString().padStart(2, '0')}</span>
+              <span class="faq-q-text">{f.q}</span>
+              <span class="faq-toggle" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              </span>
             </summary>
             <div class="faq-a">{f.a}</div>
           </details>
         ))}
       </div>
-      <div class="faq-cta">
-        <p>More questions? Calling or messaging us directly is more efficient.</p>
-        <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
+
+      <div class="cta-box faq-cta">
+        <div class="faq-cta-text">
+          <h3>More questions?</h3>
+          <p>Calling or messaging us directly is more efficient · reply within 24 hours</p>
+        </div>
+        <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 {phoneNumber}</a>
       </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .page-header { background: var(--color-surface-alt); padding: var(--sp-6) 0 var(--sp-5); border-bottom: 1px solid var(--color-border); }
-  .breadcrumb { font-size: var(--fs-sm); color: var(--color-text-muted); margin-bottom: var(--sp-3); }
-  .breadcrumb a { color: var(--color-text-muted); }
-  .page-header h1 { font-size: var(--fs-2xl); margin-bottom: var(--sp-2); color: var(--color-primary-dark); }
-  .page-header-sub { color: var(--color-text-soft); margin: 0; max-width: 760px; }
-  .section-alt { background: var(--color-surface-alt); }
+  .page-eyebrow { margin-bottom: var(--sp-3); }
 
-  .topic-nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-3); }
-  .topic-nav-card { display: block; background: var(--color-surface); border: 1px solid var(--color-border); border-left: 3px solid var(--color-primary); padding: var(--sp-4); border-radius: 3px; text-decoration: none; color: inherit; transition: all 0.15s ease; }
-  .topic-nav-card:hover { border-color: var(--color-primary); background: #f0f5f1; text-decoration: none; color: inherit; }
+  .topic-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-4);
+  }
+
+  .topic-nav-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-5);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s var(--ease-out);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .topic-nav-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--color-primary);
+    transition: width 0.25s var(--ease-out);
+  }
+
+  .topic-nav-card:hover {
+    border-color: var(--color-primary);
+    background: var(--color-surface);
+    text-decoration: none;
+    color: inherit;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .topic-nav-card:hover::before {
+    width: 6px;
+    background: var(--color-accent);
+  }
+
+  .topic-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    border-radius: var(--radius-sm);
+    font-size: 22px;
+    margin-bottom: var(--sp-3);
+  }
+
   .topic-nav-card h3 { font-size: var(--fs-base); margin-bottom: var(--sp-2); color: var(--color-primary-dark); }
-  .topic-nav-card p { font-size: var(--fs-sm); color: var(--color-text-soft); margin: 0; }
+  .topic-nav-card p { font-size: var(--fs-sm); color: var(--color-text-soft); margin: 0; line-height: 1.7; }
 
-  .guide-block { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 4px; padding: var(--sp-6); margin-bottom: var(--sp-5); scroll-margin-top: 90px; }
-  .guide-block h3 { color: var(--color-primary-dark); margin-bottom: var(--sp-4); padding-bottom: var(--sp-3); border-bottom: 1px solid var(--color-border); }
-  .guide-block ol, .guide-block ul { color: var(--color-text-soft); line-height: 1.85; }
-  .guide-block li { margin-bottom: 6px; }
+  .guide-block {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-7);
+    margin-bottom: var(--sp-5);
+    scroll-margin-top: 100px;
+    box-shadow: var(--shadow-xs);
+    transition: box-shadow 0.25s var(--ease-out);
+  }
+
+  .guide-block:hover { box-shadow: var(--shadow-sm); }
+
+  .guide-header {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding-bottom: var(--sp-4);
+    margin-bottom: var(--sp-5);
+    border-bottom: 2px solid var(--color-accent);
+  }
+
+  .guide-no {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .guide-block h3 { color: var(--color-primary-dark); margin: 0; font-size: var(--fs-lg); }
+  .guide-block ol, .guide-block ul { color: var(--color-text-soft); line-height: 1.85; padding-left: 1.5em; }
+  .guide-block li { margin-bottom: 8px; }
   .guide-note { margin-top: var(--sp-3); font-size: var(--fs-sm); color: var(--color-text-muted); font-style: italic; }
+
   .def-list { margin: var(--sp-3) 0; }
-  .def-list dt { font-weight: 600; color: var(--color-primary-dark); margin-top: var(--sp-3); }
-  .def-list dd { margin: 4px 0 0 0; color: var(--color-text-soft); font-size: var(--fs-sm); }
+  .def-list dt {
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-top: var(--sp-4);
+    padding-left: var(--sp-3);
+    border-left: 3px solid var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: var(--fs-base);
+    letter-spacing: 0.05em;
+  }
+  .def-list dt:first-child { margin-top: 0; }
+  .def-list dd { margin: 6px 0 0 0; color: var(--color-text-soft); font-size: var(--fs-sm); line-height: 1.8; }
 
-  .faq-list { max-width: 900px; margin: 0 auto; }
-  .faq-item { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 3px; margin-bottom: var(--sp-2); }
-  .faq-item summary { list-style: none; cursor: pointer; padding: var(--sp-4); display: flex; gap: var(--sp-3); align-items: flex-start; font-weight: 500; }
+  .faq-list { max-width: 920px; margin: 0 auto var(--sp-6); }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--sp-3);
+    transition: all 0.25s var(--ease-out);
+  }
+
+  .faq-item[open] { border-color: var(--color-primary); box-shadow: var(--shadow-sm); }
+
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: var(--sp-5);
+    display: flex;
+    gap: var(--sp-3);
+    align-items: center;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
   .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary::after { content: '+'; margin-left: auto; color: var(--color-primary); font-weight: 700; font-size: var(--fs-lg); flex-shrink: 0; }
-  .faq-item[open] summary::after { content: '−'; }
-  .faq-q { color: var(--color-primary); font-weight: 700; flex-shrink: 0; }
-  .faq-a { padding: 0 var(--sp-4) var(--sp-4) calc(var(--sp-4) + 24px); color: var(--color-text-soft); font-size: var(--fs-sm); line-height: 1.8; }
-  .faq-cta { background: var(--color-primary-dark); color: #e8efe9; padding: var(--sp-5); border-radius: 4px; text-align: center; margin-top: var(--sp-6); }
-  .faq-cta p { color: #d8d6cf; margin-bottom: var(--sp-3); }
 
-  @media (max-width: 900px) { .topic-nav { grid-template-columns: 1fr; } }
+  .faq-no {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    font-weight: 800;
+    color: var(--color-accent-dark);
+    background: var(--color-accent-soft);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+    letter-spacing: 0.05em;
+  }
+
+  .faq-q-text { flex: 1; font-size: var(--fs-base); }
+
+  .faq-toggle {
+    width: 28px;
+    height: 28px;
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s var(--ease-out);
+  }
+
+  .faq-item[open] .faq-toggle { background: var(--color-accent); color: #fff; transform: rotate(45deg); }
+  .faq-toggle svg { width: 16px; height: 16px; }
+
+  .faq-a { padding: 0 var(--sp-5) var(--sp-5) calc(var(--sp-5) + 50px); color: var(--color-text-soft); font-size: var(--fs-sm); line-height: 1.85; }
+
+  .faq-cta {
+    display: grid;
+    grid-template-columns: 1.5fr auto;
+    align-items: center;
+    gap: var(--sp-5);
+    padding: var(--sp-6) var(--sp-7);
+  }
+
+  .faq-cta-text h3 { color: #fff; margin-bottom: 6px; font-size: var(--fs-lg); }
+  .faq-cta-text p { color: rgba(255, 255, 255, 0.85); margin: 0; font-size: var(--fs-sm); }
+
+  @media (max-width: 900px) {
+    .topic-nav { grid-template-columns: 1fr; }
+    .faq-cta { grid-template-columns: 1fr; text-align: center; }
+  }
 </style>

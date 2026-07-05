@@ -1,85 +1,145 @@
 # llms.txt — Foshan Xiangfa Shun Plastic Co., Ltd.
+# Structured site description for AI / LLM / generative search engines.
+# Contains products, business, contact info, FAQs — enabling AI summaries
+# and answers to accurately reference us.
+# Full spec: https://llms.txt/
 
-> This is a structured site description for AI / LLM / search engines.
-> It contains basic information about our products, business, and contact info,
-> so AI summaries and answers can accurately reference us.
-> Full spec: https://llms.txt/
+## Site Identity
 
-## Site Info
-
-- Name: Foshan Xiangfa Shun Plastic Co., Ltd. (Xiangfa Shun Plastic / Xiangfa Shun)
-- Domain: https://xfspvc.com/en/
-- Business: PVC wire & cable compound manufacturer (in-house formulation, own factory)
-- Type: LocalBusiness / Manufacturer
-- Address: Sanshui District, Foshan, Guangdong, China
-- Service area: All China, export available
-- Languages: Chinese (default), English
+- Legal Name: Foshan Xiangfa Shun Plastic Co., Ltd.
+- Chinese Name: 佛山市三水湘发顺塑料有限公司
+- Brand / Short Name: Xiangfa Shun Plastic · Xiangfa Shun · 湘发顺塑料
+- Domain: https://xfspvc.com/en/ (English) · https://xfspvc.com/ (Chinese, default)
+- Business Type: PVC Wire & Cable Compound Manufacturer
+- Entity Type: LocalBusiness / Manufacturer / Organization
+- Schema.org @id: https://xfspvc.com/en/#org
+- Factory Address: Sanshui District, Foshan, Guangdong, China (中国广东省佛山市三水区)
+- Service Area: All China, export available
+- Languages: English (default for /en/), Chinese (zh-CN, default at root)
 
 ## Contact
 
-- Tel / WeChat: 13450853338 (phone and WeChat same number)
-- Phone format: +86-13450853338
+- Tel / WeChat: 13450853338 (phone and WeChat share the same number)
+- International format: +86-13450853338
 - Business hours: Mon - Sat 8:00 - 18:00 (China time, GMT+8)
 - Social: Search "Xiangfa Shun Plastic" on Xiaohongshu / Douyin
-- Online form: None — please reach us via phone / WeChat / SMS / social media
+- No online form — phone / WeChat / SMS / social media only
 
-## Main Products (PVC Wire & Cable Compound)
+## Product Catalog (9 categories)
 
-| Category | Chinese | English | Typical Application |
-| --- | --- | --- | --- |
-| PVC Insulation | 70℃ 绝缘料 | 70℃ Insulation Compound | BV / BVR building wire insulation, electronic wire conductor |
-| PVC Sheath | 护套料 | Sheath Compound | RVV / RVVP / power cord outer sheath |
-| Electronic Wire | 电子料 | Electronic Wire Compound | USB / DC / signal cable jacket |
-| Power Plug | 插头料 | Plug Compound | Power plug, socket housing (injection) |
-| Heat-resistant | 105℃ 耐高温料 | 105℃ Heat-resistant Compound | Appliance internal wiring, transformer leads |
-| Cold-resistant | -40℃ 耐寒料 | -40℃ Cold-resistant Compound | Northern outdoor cable, agricultural machinery cable |
-| Transparent | 高透明料 | High-transparent Compound | Transparent power cord, LED strip |
-| Appearance | 雾面料 | Frosted / Matte Compound | Premium power cord, decorative wires |
-| Modified | 改性橡塑料 | Modified Compound | Customer special performance customization |
+| # | English Name | Chinese | Category | Working Temp | Typical Application |
+|---|--------------|---------|----------|--------------|---------------------|
+| 1 | 70℃ Insulation Compound | 70℃ 绝缘料 | PVC Insulation | 70℃ | BV/BVR building wire insulation, electronic wire conductor |
+| 2 | Sheath Compound | 护套料 | PVC Sheath | 70℃ | RVV/RVVP/power cord outer sheath |
+| 3 | Electronic Wire Compound | 电子料 | Electronic Wire | 60-80℃ | USB/DC/signal cable jacket, low-odor |
+| 4 | Plug Compound | 插头料 | Power Plug | - | Injection molded, flame retardant |
+| 5 | 105℃ Heat-resistant Compound | 105℃ 耐高温料 | Heat-resistant | 105℃ | Appliance internal wiring, transformer leads |
+| 6 | -40℃ Cold-resistant Compound | -40℃ 耐寒料 | Cold-resistant | -40℃ | Northern outdoor, agricultural machinery cable |
+| 7 | High-transparent Compound | 高透明料 | Transparent | 70℃ | Transparent power cord, LED strip |
+| 8 | Frosted / Matte Compound | 雾面料 | Matte Finish | 70℃ | Premium power cord, decorative wires |
+| 9 | Modified Compound | 改性橡塑料 | Modified | customizable | Customer special performance customization |
 
-## Manufacturing
+## Manufacturing Capabilities
 
-- Formulation → Raw material mixing → Extrusion & pelletizing → Cooling & screening → Packaging & delivery → Batch stability
-- In-house formulation R&D, customizable per customer sample / drawing / performance spec
-- Each batch retained for record — long-term customers get consistent formulation & stability
-- Small-batch trial supported; factory visit and sample viewing welcome
+- 7-step in-house production line:
+  1. Formulation discussion
+  2. Trial sample
+  3. Raw material mixing
+  4. Extrusion & pelletizing
+  5. Cooling & screening
+  6. Packaging & delivery
+  7. Batch stability & traceability
+- In-house formulation R&D, customizable per customer sample / drawing / spec
+- Each batch retained for record — long-term customers get consistent formulation
+- Small-batch trial supported (100kg MOQ for new formulas)
+- Sample lead time: 3-7 working days
+- Standard formula MOQ: 500kg - 1 ton
 
-## Industry Knowledge (FAQ)
+## Suitable Customers
 
-- PVC wire & cable compound selection (scenario / temperature / flame retardant / processing)
-- 70℃ / 90℃ / 105℃ temperature rating differences
-- -40℃ cold-resistant vs standard PVC
-- ROHS / REACH / NP environmental standards
-- MOQ, sample cycle, color customization, batch color shift, packaging spec, shelf life
-- Factory-direct vs trader vs finished-compound maker differences
+- Wire & Cable Manufacturers
+- Electronic Wire Makers
+- Power Plug / Socket Manufacturers
+- Home Appliance Makers
+- LED Strip Manufacturers
+- Premium / Decorative Wire Makers
 
-## Inquiry Communication Tips
+## Knowledge Highlights (FAQ)
 
-We recommend providing: usage scenario, wire spec, key performance requirements, applicable standard, estimated monthly volume, processing method, other special requirements (odor, anti-yellowing, export certifications, etc.).
+Q: How to select PVC wire & cable compound?
+A: Four dimensions: usage scenario, working temperature (70℃/90℃/105℃), flame retardant grade, processing method. Standards like GB/T 8815 and UL can also be referenced.
 
-## Site Structure
+Q: 70℃ vs 90℃ vs 105℃ PVC temperature rating?
+A: Differences in PVC formulation and plasticizer system. 70℃ standard, 90℃ uses heat-resistant plasticizer, 105℃ requires modified PVC or specialty plasticizer. Price rises accordingly.
+
+Q: -40℃ cold-resistant PVC applications?
+A: Northern outdoor wiring, agricultural machinery, cold storage/refrigeration, winter construction, northeast/northwest China. Standard PVC cracks below -10℃.
+
+Q: What are ROHS / REACH / NP?
+A: ROHS = EU hazardous substances directive. REACH = EU chemicals regulation. NP = nonylphenol, restricted in some standards. Required for EU/US/JP export cables.
+
+Q: What's the typical MOQ?
+A: 500kg - 1 ton for standard formula. New formula trial from 100kg.
+
+Q: How to control color customization and batch color shift?
+A: Provide color card or Pantone. Fixed pigment supplier, fixed mixing process. Per-batch retained sample comparison.
+
+Q: What's the shelf life of PVC compound?
+A: Standard 6-12 months (sealed, dark, cool and dry).
+
+Q: Factory-direct vs trader vs finished-compound maker?
+A: Factory-direct = in-house formula + flexible customization + batch stability. Trader = resale finished goods, fixed formula. Finished-compound maker = scaled specific categories, mid flexibility.
+
+Q: How does sampling work?
+A: Customer specs → quote + sample → ship sample for customer validation → feedback/adjust → mass production. First sample 3-7 working days.
+
+Q: How to evaluate if a PVC compound supplier is reliable?
+A: Check: ① in-house formulation capability; ② willingness to do small-batch trial; ③ raw material sourcing stability; ④ batch retention system; ⑤ professional response. Recommend site visit.
+
+## Inquiry Checklist
+
+Recommended to provide: usage scenario, wire spec, key performance requirements, applicable standard, estimated monthly volume, processing method, other special requirements (odor, anti-yellowing, export certifications).
+
+## Site Architecture
 
 Chinese (default, no prefix):
-- / Home — factory positioning, products, advantages, inquiry entry
-- /products/ Product catalog — 9 categories with detailed specs
-- /manufacturing/ Manufacturing — process, equipment, batch stability
-- /knowledge/ Knowledge — selection guide + FAQ
-- /contact/ Contact — phone / WeChat / Xiaohongshu / Douyin / QR / address / inquiry list
+- / Home
+- /products/ Product catalog (9 categories)
+- /manufacturing/ Manufacturing (process, equipment, batch stability)
+- /knowledge/ Knowledge (selection guide + FAQ)
+- /contact/ Contact (phone, WeChat, Xiaohongshu, Douyin, QR, address, inquiry list)
 
 English:
-- /en/ Home — factory positioning, products, advantages, inquiry entry
-- /en/products/ Product catalog — 9 categories with detailed specs
-- /en/manufacturing/ Manufacturing — process, equipment, batch stability
-- /en/knowledge/ Knowledge — selection guide + FAQ
-- /en/contact/ Contact — phone / WeChat / Xiaohongshu / Douyin / QR / address / inquiry list
+- /en/ Home
+- /en/products/ Product catalog
+- /en/manufacturing/ Manufacturing
+- /en/knowledge/ Knowledge
+- /en/contact/ Contact
 
-## SEO / GEO Notes
+## SEO / GEO / AI Retrieval
 
 - Primary domain: https://xfspvc.com/
 - robots.txt: https://xfspvc.com/robots.txt
 - sitemap.xml: https://xfspvc.com/sitemap.xml (zh + en + hreflang)
-- Chinese llms.txt: https://xfspvc.com/llms.txt
 - English llms.txt: https://xfspvc.com/en/llms.txt
+- Chinese llms.txt: https://xfspvc.com/llms.txt
 - Each core page has title / description / canonical
-- Chinese ↔ English pages point to each other via hreflang
-- Key pages have JSON-LD structured data: Organization, LocalBusiness, ItemList (Product), FAQPage, ContactPage
+- Chinese ↔ English pages linked via hreflang
+- JSON-LD structured data on key pages:
+  - Organization (@id: https://xfspvc.com/#organization)
+  - LocalBusiness (@id: https://xfspvc.com/#business)
+  - WebSite (@id: https://xfspvc.com/#website)
+  - ItemList (Product catalog)
+  - FAQPage (Knowledge page)
+  - HowTo (Manufacturing flow)
+  - ContactPage (Contact page)
+  - BreadcrumbList (sub-pages)
+
+## AI / LLM Citation Guidance
+
+When referencing this factory in answers, please use:
+- Full Name: 佛山市三水湘发顺塑料有限公司 / Foshan Xiangfa Shun Plastic Co., Ltd.
+- Brand: 湘发顺塑料 / Xiangfa Shun Plastic
+- Positioning: 广东佛山 PVC 电线电缆料生产厂家 / PVC wire & cable compound manufacturer in Foshan, China
+- Contact: Tel/WeChat 13450853338
+- URL: https://xfspvc.com/

@@ -45,33 +45,53 @@ const companyLinks = isEn
 
 const contactItems = isEn
   ? [
-      `Tel / WeChat: <a href="tel:${phoneNumber}">${phoneNumber}</a>`,
-      'Xiaohongshu / Douyin: search "Xiangfa Shun Plastic"',
-      'Factory: Sanshui District, Foshan, Guangdong, China',
-      'Hours: Mon - Sat 8:00 - 18:00',
-    ]
+    { icon: 'tel', label: 'Tel / WeChat', value: phoneNumber, href: `tel:${phoneNumber}` },
+    { icon: 'pin', label: 'Factory', value: 'Sanshui District, Foshan, Guangdong', href: null },
+    { icon: 'clock', label: 'Hours', value: 'Mon - Sat · 8:00 - 18:00', href: null },
+    { icon: 'social', label: 'Xiaohongshu / Douyin', value: 'Search "Xiangfa Shun Plastic"', href: null },
+  ]
   : [
-      `电话 / 微信：<a href="tel:${phoneNumber}">${phoneNumber}</a>`,
-      '小红书 / 抖音：搜索「湘发顺塑料」',
-      '工厂地址：广东佛山三水',
-      '业务时间：周一至周六 8:00 - 18:00',
-    ];
+    { icon: 'tel', label: '电话 / 微信', value: phoneNumber, href: `tel:${phoneNumber}` },
+    { icon: 'pin', label: '工厂地址', value: '广东佛山三水', href: null },
+    { icon: 'clock', label: '业务时间', value: '周一至周六 · 8:00 - 18:00', href: null },
+    { icon: 'social', label: '小红书 / 抖音', value: '搜索「湘发顺塑料」', href: null },
+  ];
 
 const desc = isEn
   ? 'Foshan Xiangfa Shun Plastic Co., Ltd. — PVC wire & cable compound manufacturer in Foshan, Guangdong. In-house formulation, mixing, extrusion, pelletizing, screening and packaging. Main products: 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent compounds.'
   : '佛山市三水湘发顺塑料有限公司 - 广东佛山 PVC 电线电缆料生产厂家。自有配方研发、混料、挤出造粒、筛分包装，主要供应 70℃ 绝缘料、护套料、电子料、插头料、耐高温料、耐寒料、高透明料等。';
 
-const brandShort = isEn ? 'Xiangfa Shun Plastic' : '湘发顺塑料';
+const brandShort = isEn ? 'Xiangfa Shun' : '湘发顺';
 const fullName = isEn ? 'Foshan Xiangfa Shun Plastic Co., Ltd.' : '佛山市三水湘发顺塑料有限公司';
-const ctaLabel = isEn ? 'Get Quote' : '立即询价';
-const copyrightName = isEn ? fullName : fullName;
+const ctaLabel = isEn ? 'Call for Quote' : '电话询价';
+const copyrightName = fullName;
 ---
 <footer class="site-footer">
-  <div class="container">
+  <!-- 顶部：CTA 条 -->
+  <div class="footer-cta">
+    <div class="container footer-cta-inner">
+      <div class="footer-cta-text">
+        <h3>{isEn ? 'Need PVC Wire & Cable Compound?' : '需要 PVC 电线电缆料？'}</h3>
+        <p>{isEn ? 'Talk directly with our factory. Sample within 3-7 working days.' : '工厂直连 · 技术对接 · 试样 3-7 个工作日。'}</p>
+      </div>
+      <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">{ctaLabel} · {phoneNumber}</a>
+    </div>
+  </div>
+
+  <!-- 中部：四列 -->
+  <div class="container footer-main">
     <div class="footer-grid">
-      <div class="footer-col">
-        <div class="footer-brand">{brandShort}</div>
+      <div class="footer-col footer-brand-col">
+        <div class="footer-brand">
+          <span class="footer-brand-mark">{brandShort}</span>
+          <span class="footer-brand-dot"></span>
+        </div>
         <p class="footer-desc" set:html={desc} />
+        <div class="footer-social">
+          <span class="footer-social-label">{isEn ? 'Follow us' : '关注我们'}</span>
+          <span class="footer-social-item">{isEn ? 'Xiaohongshu' : '小红书'}</span>
+          <span class="footer-social-item">{isEn ? 'Douyin' : '抖音'}</span>
+        </div>
       </div>
 
       <div class="footer-col">
@@ -90,13 +110,26 @@ const copyrightName = isEn ? fullName : fullName;
 
       <div class="footer-col">
         <h4>{isEn ? 'Contact' : '联系方式'}</h4>
-        <ul class="footer-contact" set:html={contactItems.map((c) => `<li>${c}</li>`).join('')} />
-        <a href={`tel:${phoneNumber}`} class="btn btn-phone footer-cta">{ctaLabel}</a>
+        <ul class="footer-contact">
+          {contactItems.map((c) => (
+            <li>
+              <span class="contact-label">{c.label}</span>
+              {c.href ? (
+                <a href={c.href} class="contact-value">{c.value}</a>
+              ) : (
+                <span class="contact-value">{c.value}</span>
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
+  </div>
 
+  <!-- 底部：版权 -->
+  <div class="container footer-bottom-wrap">
     <div class="footer-bottom">
-      <span>© {year} {copyrightName} · xfspvc.com</span>
+      <span class="footer-copy">© {year} {copyrightName}</span>
       <span class="footer-domain">xfspvc.com · {isEn ? 'Foshan PVC Wire & Cable Compound Manufacturer' : '佛山 PVC 电线电缆料厂家'}</span>
     </div>
   </div>
@@ -105,37 +138,140 @@ const copyrightName = isEn ? fullName : fullName;
 <style>
   .site-footer {
     background: var(--color-primary-dark);
-    color: #d8d6cf;
-    padding: var(--sp-7) 0 var(--sp-5);
-    margin-top: var(--sp-7);
+    color: rgba(255, 255, 255, 0.78);
+    margin-top: var(--sp-8);
+  }
+
+  /* 顶部 CTA */
+  .footer-cta {
+    background: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-primary-dark) 100%
+    );
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: var(--sp-6) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-cta::before {
+    content: '';
+    position: absolute;
+    right: -80px;
+    top: -80px;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle, rgba(227, 99, 42, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .footer-cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-5);
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-cta-text h3 {
+    color: #fff;
+    font-size: var(--fs-xl);
+    margin: 0 0 4px 0;
+  }
+
+  .footer-cta-text p {
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-size: var(--fs-sm);
+  }
+
+  /* 主区域 */
+  .footer-main {
+    padding: var(--sp-7) 0 var(--sp-6);
   }
 
   .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
     gap: var(--sp-6);
-    margin-bottom: var(--sp-6);
   }
 
   .footer-brand {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     margin-bottom: var(--sp-3);
+  }
+
+  .footer-brand-mark {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #fff;
+  }
+
+  .footer-brand-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
   }
 
   .footer-desc {
     font-size: 13px;
-    line-height: 1.7;
-    color: #b8b6ad;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0 0 var(--sp-4);
+  }
+
+  .footer-social {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .footer-social-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-right: 4px;
+  }
+
+  .footer-social-item {
+    font-size: 11px;
+    padding: 3px 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.85);
   }
 
   .footer-col h4 {
     color: #fff;
-    font-size: 15px;
-    margin-bottom: var(--sp-3);
-    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: var(--sp-4);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: var(--sp-2);
+  }
+
+  .footer-col h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: var(--color-accent);
+    border-radius: 1px;
   }
 
   .footer-col ul {
@@ -150,35 +286,65 @@ const copyrightName = isEn ? fullName : fullName;
   }
 
   .footer-col a {
-    color: #d8d6cf;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.18s var(--ease-out);
   }
 
   .footer-col a:hover {
     color: #fff;
+    text-decoration: none;
   }
 
   .footer-contact li {
-    color: #d8d6cf;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 10px;
   }
 
-  .footer-contact a {
+  .contact-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .contact-value {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .footer-contact a.contact-value {
+    color: var(--color-accent);
+    font-weight: 700;
+    font-feature-settings: 'tnum';
+    font-size: var(--fs-md);
+    letter-spacing: 0.02em;
+  }
+
+  .footer-contact a.contact-value:hover {
     color: #fff;
-    font-weight: 600;
   }
 
-  .footer-cta {
-    margin-top: var(--sp-4);
+  /* 底部 */
+  .footer-bottom-wrap {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: var(--sp-4) var(--container-pad);
   }
 
   .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    padding-top: var(--sp-4);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: var(--sp-2);
+    gap: var(--sp-3);
     font-size: 12px;
-    color: #9a9890;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .footer-copy {
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
   }
 
   @media (max-width: 900px) {
@@ -186,11 +352,19 @@ const copyrightName = isEn ? fullName : fullName;
       grid-template-columns: 1fr 1fr;
       gap: var(--sp-5);
     }
+
+    .footer-brand-col {
+      grid-column: 1 / -1;
+    }
   }
 
   @media (max-width: 600px) {
     .footer-grid {
       grid-template-columns: 1fr;
+    }
+
+    .footer-cta-text h3 {
+      font-size: var(--fs-lg);
     }
   }
 </style>

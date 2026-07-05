@@ -1,33 +1,46 @@
 ---
 interface Props {
+  eyebrow?: string;
   title: string;
   subtitle?: string;
   align?: 'center' | 'left';
   id?: string;
 }
 
-const { title, subtitle, align = 'center', id } = Astro.props;
+const { eyebrow, title, subtitle, align = 'center', id } = Astro.props;
 ---
 <div class={`section-heading section-heading-${align}`} id={id}>
-  <div class="section-divider"></div>
+  {eyebrow && <div class="section-eyebrow">{eyebrow}</div>}
   <h2 class="section-title">{title}</h2>
   {subtitle && <p class="section-subtitle">{subtitle}</p>}
 </div>
 
 <style>
   .section-heading {
-    margin-bottom: var(--sp-6);
+    margin-bottom: var(--sp-7);
   }
 
   .section-heading-left {
     text-align: left;
   }
 
-  .section-heading-left .section-divider {
+  .section-heading-left .section-subtitle {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .section-heading-left .section-eyebrow {
     margin-left: 0;
   }
 
-  .section-heading-left .section-subtitle {
-    text-align: left;
+  .section-eyebrow {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .section-heading .section-title {
+    position: relative;
+    margin-bottom: var(--sp-3);
   }
 </style>

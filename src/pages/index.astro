@@ -10,6 +10,7 @@ const productOverview = [
     id: 'insulation-70',
     name: '70℃ 绝缘料',
     category: 'PVC 绝缘',
+    icon: '⚡',
     description: '常规电线导体绝缘层用 PVC 料，阻燃性能满足 GB/T 8815 标准。',
     highlights: ['70℃ 工作温度', '电气绝缘稳定', '可按需调整阻燃等级'],
   },
@@ -17,6 +18,7 @@ const productOverview = [
     id: 'sheath',
     name: '护套料',
     category: 'PVC 护套',
+    icon: '◈',
     description: '电线电缆外护套用 PVC 料，机械性能好，耐磨耐候，适合多种环境。',
     highlights: ['柔韧性好', '耐磨耐候', '可定制颜色'],
   },
@@ -24,6 +26,7 @@ const productOverview = [
     id: 'electronic',
     name: '电子料',
     category: '电子线材',
+    icon: '◇',
     description: '电子连接线、USB 线、信号线等小线径线材用 PVC 料，加工性好。',
     highlights: ['低气味', '挤出稳定', '适配高速挤出'],
   },
@@ -31,6 +34,7 @@ const productOverview = [
     id: 'plug',
     name: '插头料',
     category: '电源插头',
+    icon: '◆',
     description: '电源插头、插座外壳用硬质 PVC 料，强度高、阻燃、易注塑成型。',
     highlights: ['高硬度', '阻燃等级可调', '流动性好'],
   },
@@ -38,6 +42,7 @@ const productOverview = [
     id: 'heat-resistant-105',
     name: '105℃ 耐高温料',
     category: '耐高温',
+    icon: '▲',
     description: '耐 105℃ 工作温度的 PVC 改性料，常见于家电内部布线、变压器引线。',
     highlights: ['耐温 105℃', '老化性能稳定', '可做 UL 等级'],
   },
@@ -45,6 +50,7 @@ const productOverview = [
     id: 'cold-resistant',
     name: '-40℃ 耐寒料',
     category: '耐寒',
+    icon: '❄',
     description: '耐 -40℃ 低温的 PVC 改性料，常用于北方户外电线、农机线缆、寒冷地区布线。',
     highlights: ['低温不脆裂', '保持柔韧', '适合户外使用'],
   },
@@ -52,6 +58,7 @@ const productOverview = [
     id: 'transparent',
     name: '高透明料',
     category: '透明线材',
+    icon: '○',
     description: '高透光率 PVC 料，常用于透明电源线、装饰灯带线、可视化布线场景。',
     highlights: ['透光率高', '不易黄变', '可定制软硬度'],
   },
@@ -59,6 +66,7 @@ const productOverview = [
     id: 'frosted',
     name: '雾面料',
     category: '雾面外观',
+    icon: '◯',
     description: '表面呈哑光雾面效果的 PVC 料，常用于高端电源线、装饰类线材。',
     highlights: ['哑光质感', '触感细腻', '不易留指纹'],
   },
@@ -66,6 +74,7 @@ const productOverview = [
     id: 'modified',
     name: '改性橡塑料',
     category: '改性料',
+    icon: '⬡',
     description: '根据客户要求调整硬度、阻燃、耐温、耐寒等性能的 PVC 改性配方料。',
     highlights: ['可定制配方', '小批量试产', '来样来图定制'],
   },
@@ -73,34 +82,59 @@ const productOverview = [
 
 const advantages = [
   {
+    icon: '①',
     title: '自有配方研发',
     desc: '根据客户电线电缆结构、挤出工艺、性能要求，自主调试 PVC 配方，不依赖外采成品料。',
   },
   {
+    icon: '②',
     title: '佛山本地工厂',
     desc: '自有厂房、混料、挤出造粒、冷却筛分、包装一条线，便于客户来厂看货、看产线。',
   },
   {
+    icon: '③',
     title: '稳定批次供货',
     desc: '原料固定供应渠道，每批次留样记录，长期供货客户可保持配方一致性与稳定性。',
   },
   {
+    icon: '④',
     title: '可定制小批量',
     desc: '新客户、新配方可做小批量试产，颜色、硬度、阻燃等级按需调整。',
   },
   {
+    icon: '⑤',
     title: '服务流程简单',
     desc: '电话、微信直接沟通：用途 → 规格 → 试样 → 量产，省去冗长商务流程。',
   },
   {
+    icon: '⑥',
     title: '支持来样定制',
     desc: '客户寄样、客户图纸、客户性能指标都可以作为开发输入，按样做料。',
   },
 ];
 
+const processSteps = [
+  { step: '01', label: '配方沟通', desc: '客户需求 · 技术对接' },
+  { step: '02', label: '小样试样', desc: '小批量试样 · 客户验证' },
+  { step: '03', label: '原料混合', desc: '高速混合 · 工艺顺序' },
+  { step: '04', label: '挤出造粒', desc: '塑化均匀 · 出料稳定' },
+  { step: '05', label: '冷却筛分', desc: '粒型均匀 · 颗粒一致' },
+  { step: '06', label: '包装交付', desc: '批次标识 · 可托盘' },
+];
+
+const suitableCustomers = [
+  { icon: '⌬', label: '电线电缆厂家' },
+  { icon: '⌖', label: '电子线材厂' },
+  { icon: '⊞', label: '电源插头 / 开关厂' },
+  { icon: '⌘', label: '家电制造厂' },
+  { icon: '☷', label: 'LED 灯带厂' },
+  { icon: '⊕', label: '装饰 / 高端电源线厂' },
+];
+
 const organizationLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://xfspvc.com/#org',
   name: '佛山市三水湘发顺塑料有限公司',
   alternateName: '湘发顺塑料',
   url: 'https://xfspvc.com/',
@@ -120,7 +154,7 @@ const organizationLd = {
     telephone: '+86-13450853338',
     contactType: 'sales',
     areaServed: 'CN',
-    availableLanguage: ['zh-Hans'],
+    availableLanguage: ['zh-Hans', 'en'],
   },
 };
 
@@ -141,111 +175,357 @@ const localBusinessLd = {
   },
   openingHours: 'Mo-Sa 08:00-18:00',
 };
+
+const websiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://xfspvc.com/#website',
+  url: 'https://xfspvc.com/',
+  name: '佛山市三水湘发顺塑料有限公司',
+  inLanguage: ['zh-CN', 'en'],
+  publisher: { '@id': 'https://xfspvc.com/#org' },
+};
+
+const productListLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: '湘发顺 PVC 电线电缆料产品列表',
+  itemListElement: productOverview.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: `https://xfspvc.com/products/#${p.id}`,
+    name: p.name,
+  })),
+};
 ---
 <BaseLayout
   title="佛山 PVC 电线电缆料厂家 - 佛山市三水湘发顺塑料有限公司"
   description="佛山市三水湘发顺塑料有限公司 - 广东佛山 PVC 电线电缆料生产厂家，自有配方、自有工厂。主要供应 70℃ 绝缘料、护套料、电子料、插头料、105℃ 耐高温料、-40℃ 耐寒料、高透明料、雾面料、改性橡塑料。电话/微信 13450853338。"
-  jsonLd={[organizationLd, localBusinessLd]}
+  jsonLd={[websiteLd, organizationLd, localBusinessLd, productListLd]}
 >
-  <!-- Hero -->
+  <!-- ============== Hero ============== -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-grid-pattern"></div>
+      <div class="hero-glow hero-glow-1"></div>
+      <div class="hero-glow hero-glow-2"></div>
+    </div>
     <div class="container hero-inner">
       <div class="hero-text">
-        <div class="hero-eyebrow">佛山工厂直供 · 自有配方研发</div>
-        <h1 class="hero-title">
-          佛山 PVC<br />
-          电线电缆料生产厂家
-        </h1>
-        <p class="hero-sub">
-          自有配方、自有产线。<br />
-          70℃ 绝缘料 / 护套料 / 耐高温 / 耐寒 / 高透明 / 改性橡塑 —— 按用途、按性能、按工艺要求匹配。
-        </p>
-        <div class="hero-actions">
-          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
-          <a href="/products/" class="btn btn-outline">查看产品目录</a>
+        <div class="hero-eyebrow fade-up">
+          <span class="eyebrow-dot"></span>
+          佛山工厂直供 · 自有配方研发
         </div>
-        <ul class="hero-bullets">
-          <li>✓ 自有配方，佛山本地工厂</li>
-          <li>✓ 可按客户来样、图纸定制</li>
-          <li>✓ 支持小批量试产，长期稳定供货</li>
+        <h1 class="hero-title fade-up-2">
+          佛山 PVC <br />
+          <span class="hero-title-accent">电线电缆料</span><br />
+          生产厂家
+        </h1>
+        <p class="hero-sub fade-up-3">
+          自有配方、自有产线。<br />
+          70℃ 绝缘料 / 护套料 / 耐高温 / 耐寒 / 高透明 / 改性橡塑<br />
+          按用途、按性能、按工艺要求精准匹配。
+        </p>
+        <div class="hero-actions fade-up-4">
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">
+            <span class="cta-pulse"></span>
+            📞 13450853338
+          </a>
+          <a href="/products/" class="btn btn-outline btn-lg">查看产品目录</a>
+        </div>
+        <ul class="hero-bullets fade-up-4">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            自有配方，佛山本地工厂
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            可按客户来样、图纸定制
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="bullet-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            支持小批量试产，长期稳定供货
+          </li>
         </ul>
       </div>
-      <div class="hero-photo" aria-label="工厂仓库实拍">
-        <div class="hero-photo-placeholder">
-          <span>工厂 / 仓库实拍图</span>
-          <small>替换为真实图片：public/images/factory-warehouse.jpg</small>
+      <div class="hero-visual fade-up-3">
+        <div class="hero-card hero-card-main">
+          <div class="hero-card-header">
+            <span class="hero-card-tag">FACTORY</span>
+            <span class="hero-card-tag hero-card-tag-accent">DIRECT</span>
+          </div>
+          <div class="hero-card-image">
+            <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <!-- 工厂建筑示意 -->
+              <defs>
+                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#e8f0ec" />
+                  <stop offset="100%" stop-color="#d3e2d8" />
+                </linearGradient>
+                <linearGradient id="buildingGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0f3a32" />
+                  <stop offset="100%" stop-color="#082520" />
+                </linearGradient>
+                <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#e3632a" />
+                  <stop offset="100%" stop-color="#bf4f1d" />
+                </linearGradient>
+              </defs>
+              <rect width="400" height="280" fill="url(#skyGrad)" />
+              <!-- 远山 -->
+              <path d="M0 180 L60 140 L120 165 L180 130 L240 160 L320 135 L400 165 L400 280 L0 280 Z" fill="#c2d6cb" opacity="0.6" />
+              <!-- 主厂房 -->
+              <rect x="60" y="120" width="180" height="120" fill="url(#buildingGrad)" />
+              <rect x="60" y="120" width="180" height="6" fill="url(#accentGrad)" />
+              <!-- 厂房窗户 -->
+              <g fill="#e8f0ec" opacity="0.85">
+                <rect x="75" y="140" width="20" height="14" />
+                <rect x="105" y="140" width="20" height="14" />
+                <rect x="135" y="140" width="20" height="14" />
+                <rect x="165" y="140" width="20" height="14" />
+                <rect x="195" y="140" width="20" height="14" />
+                <rect x="75" y="170" width="20" height="14" />
+                <rect x="105" y="170" width="20" height="14" />
+                <rect x="135" y="170" width="20" height="14" />
+                <rect x="165" y="170" width="20" height="14" />
+                <rect x="195" y="170" width="20" height="14" />
+                <rect x="75" y="200" width="20" height="14" />
+                <rect x="105" y="200" width="20" height="14" />
+                <rect x="135" y="200" width="50" height="30" />
+                <rect x="195" y="200" width="20" height="14" />
+              </g>
+              <!-- 烟囱 -->
+              <rect x="250" y="80" width="14" height="100" fill="url(#buildingGrad)" />
+              <rect x="250" y="80" width="14" height="3" fill="url(#accentGrad)" />
+              <!-- 烟 -->
+              <ellipse cx="262" cy="68" rx="12" ry="8" fill="#fff" opacity="0.55" />
+              <ellipse cx="272" cy="58" rx="16" ry="10" fill="#fff" opacity="0.4" />
+              <ellipse cx="258" cy="48" rx="20" ry="12" fill="#fff" opacity="0.3" />
+              <!-- 副厂房 -->
+              <rect x="270" y="150" width="100" height="90" fill="#1a554a" />
+              <rect x="270" y="150" width="100" height="4" fill="url(#accentGrad)" />
+              <g fill="#e8f0ec" opacity="0.8">
+                <rect x="285" y="170" width="16" height="12" />
+                <rect x="310" y="170" width="16" height="12" />
+                <rect x="335" y="170" width="16" height="12" />
+                <rect x="285" y="195" width="16" height="12" />
+                <rect x="310" y="195" width="16" height="12" />
+                <rect x="335" y="195" width="16" height="12" />
+              </g>
+              <!-- 地面 -->
+              <rect x="0" y="240" width="400" height="40" fill="#a3b3a0" />
+              <line x1="0" y1="240" x2="400" y2="240" stroke="#082520" stroke-width="1" opacity="0.3" />
+              <!-- 厂房标识 -->
+              <text x="150" y="225" text-anchor="middle" fill="#e3632a" font-family="sans-serif" font-size="14" font-weight="700" letter-spacing="2">XIANGFA SHUN</text>
+            </svg>
+          </div>
+          <div class="hero-card-body">
+            <div class="hero-card-stat">
+              <span class="hero-card-stat-value">9+</span>
+              <span class="hero-card-stat-label">产品类别</span>
+            </div>
+            <div class="hero-card-stat">
+              <span class="hero-card-stat-value">7</span>
+              <span class="hero-card-stat-label">工序</span>
+            </div>
+            <div class="hero-card-stat">
+              <span class="hero-card-stat-value">24h</span>
+              <span class="hero-card-stat-label">响应</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card hero-card-float">
+          <div class="float-icon">📞</div>
+          <div class="float-text">
+            <div class="float-label">直拨工厂</div>
+            <div class="float-value">{phoneNumber}</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 产品总览 -->
+  <!-- ============== 信任标识 ============== -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="trust-bar">
+        <span class="trust-item">自有配方研发</span>
+        <span class="trust-item">自有工厂产线</span>
+        <span class="trust-item">批次留样可追溯</span>
+        <span class="trust-item">试样 3-7 天</span>
+        <span class="trust-item">支持来样定制</span>
+        <span class="trust-item">可来厂看货</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 关键指标 ============== -->
+  <section class="section-tight stats-section">
+    <div class="container">
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-value">9<span class="stat-unit">大品类</span></div>
+          <div class="stat-label">PVC 电线电缆料</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">7<span class="stat-unit">道工序</span></div>
+          <div class="stat-label">完整产线 · 工厂直做</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">3-7<span class="stat-unit">工作日</span></div>
+          <div class="stat-label">首次试样交付</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">500<span class="stat-unit">kg 起</span></div>
+          <div class="stat-label">常规配方起订量</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 产品总览 ============== -->
   <section class="section">
     <div class="container">
       <SectionTitle
+        eyebrow="PRODUCTS"
         title="主要产品"
         subtitle="覆盖电线电缆常用 PVC 料，可按客户规格调整配方与颜色"
       />
 
-      <div class="grid grid-3">
-        {productOverview.map((p) => (
+      <div class="grid grid-3 products-grid">
+        {productOverview.map((p, i) => (
           <ProductCard
             id={p.id}
             name={p.name}
             category={p.category}
+            icon={p.icon}
             description={p.description}
             highlights={p.highlights}
             href={`/products/#${p.id}`}
+            index={i}
           />
         ))}
       </div>
 
       <div class="see-more">
-        <a href="/products/" class="btn btn-outline">查看完整规格与询价要点 →</a>
+        <a href="/products/" class="btn btn-outline btn-lg">
+          查看完整规格与询价要点
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="see-more-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- 核心优势 -->
+  <!-- ============== 工艺流程 ============== -->
   <section class="section section-alt">
     <div class="container">
       <SectionTitle
+        eyebrow="PROCESS"
+        title="从配方到成品，七道工序完整产线"
+        subtitle="自有配方研发 · 自有产线挤出造粒 · 批次留样可追溯"
+      />
+
+      <div class="process-rail">
+        {processSteps.map((s, i) => (
+          <div class="process-step" style={`--step-i:${i}`}>
+            <div class="process-marker">
+              <span class="process-no">{s.step}</span>
+              {i < processSteps.length - 1 && <span class="process-line"></span>}
+            </div>
+            <div class="process-content">
+              <h3>{s.label}</h3>
+              <p>{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="see-more">
+        <a href="/manufacturing/" class="btn btn-outline">
+          查看制造能力详情
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="see-more-icon"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 核心优势 ============== -->
+  <section class="section">
+    <div class="container">
+      <SectionTitle
+        eyebrow="ADVANTAGES"
         title="为什么找工厂直做"
         subtitle="PVC 电线电缆料不是通用件，性能匹配错容易导致后续工艺问题"
       />
 
       <div class="grid grid-3">
         {advantages.map((a) => (
-          <div class="card advantage-card">
-            <h3 class="card-title">{a.title}</h3>
-            <p>{a.desc}</p>
+          <div class="advantage-card card">
+            <div class="advantage-no">{a.icon}</div>
+            <h3 class="advantage-title">{a.title}</h3>
+            <p class="advantage-desc">{a.desc}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- 询价入口 -->
+  <!-- ============== 适合客户 ============== -->
+  <section class="section section-alt">
+    <div class="container">
+      <SectionTitle
+        eyebrow="WHO WE SERVE"
+        title="适合客户类型"
+        subtitle="电线电缆料不是通用件 · 按客户结构与工艺精准匹配配方"
+      />
+
+      <div class="customer-grid">
+        {suitableCustomers.map((c) => (
+          <div class="customer-card">
+            <div class="customer-icon">{c.icon}</div>
+            <div class="customer-label">{c.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 询价入口 ============== -->
   <section class="section inquiry-section">
     <div class="container">
-      <div class="inquiry-box">
+      <div class="cta-box inquiry-cta">
         <div class="inquiry-text">
+          <div class="section-eyebrow inquiry-eyebrow">GET QUOTE</div>
           <h2>需要试样或询价？</h2>
           <p>
             请直接电话或微信沟通：用途、规格要求、预计用量、加工方式。<br />
             我们会按要求寄样、报价，或邀请来厂看产线。
           </p>
           <ul class="inquiry-list">
-            <li>使用场景（如：电源线外被、UL 电子线、户外布线…）</li>
-            <li>关键性能（耐温 / 阻燃 / 耐寒 / 硬度 / 颜色 / 透明度）</li>
-            <li>预计月用量、起订量</li>
-            <li>加工方式（挤出速度、模具规格等）</li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              使用场景（电源线外被、UL 电子线、户外布线…）
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              关键性能（耐温 / 阻燃 / 耐寒 / 硬度 / 颜色 / 透明度）
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              预计月用量、起订量
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              加工方式（挤出速度、模具规格等）
+            </li>
           </ul>
         </div>
         <div class="inquiry-actions">
-          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 电话 / 微信 13450853338</a>
-          <a href="/contact/" class="btn btn-outline">查看完整联系方式</a>
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">
+            📞 电话 / 微信 13450853338
+          </a>
+          <a href="/contact/" class="btn btn-outline btn-lg">查看完整联系方式</a>
+          <div class="inquiry-note">响应时长 · 通常 24 小时内</div>
         </div>
       </div>
     </div>
@@ -253,61 +533,129 @@ const localBusinessLd = {
 </BaseLayout>
 
 <style>
-  /* Hero */
+  /* ============== Hero ============== */
   .hero {
     position: relative;
-    background: var(--color-bg);
+    background: linear-gradient(180deg, #f6f4ee 0%, #efebe1 100%);
     overflow: hidden;
   }
 
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #e8efe9 0%, #f2f2ee 60%);
     z-index: 0;
+  }
+
+  .hero-grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(15, 58, 50, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 58, 50, 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .hero-glow-1 {
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle, rgba(227, 99, 42, 0.35) 0%, transparent 70%);
+    top: -120px;
+    right: -120px;
+  }
+
+  .hero-glow-2 {
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(15, 58, 50, 0.18) 0%, transparent 70%);
+    bottom: -100px;
+    left: -80px;
   }
 
   .hero-inner {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns: 1.15fr 1fr;
     gap: var(--sp-7);
     align-items: center;
     padding: var(--sp-8) var(--container-pad);
+    min-height: 640px;
   }
 
   .hero-eyebrow {
-    display: inline-block;
-    background: rgba(31, 77, 58, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-primary-soft);
     color: var(--color-primary-dark);
     font-size: 13px;
-    padding: 4px 12px;
-    border-radius: 2px;
-    margin-bottom: var(--sp-4);
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: var(--sp-5);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border: 1px solid #c2d6cb;
+  }
+
+  .eyebrow-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--color-accent);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(227, 99, 42, 0.5); }
+    50% { box-shadow: 0 0 0 8px rgba(227, 99, 42, 0); }
   }
 
   .hero-title {
-    font-size: 44px;
-    line-height: 1.18;
-    color: var(--color-text);
-    margin-bottom: var(--sp-4);
+    font-size: var(--fs-display);
+    line-height: 1.05;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-5);
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+
+  .hero-title-accent {
+    color: var(--color-accent);
+    position: relative;
   }
 
   .hero-sub {
     font-size: var(--fs-md);
     color: var(--color-text-soft);
-    margin-bottom: var(--sp-5);
-    line-height: 1.75;
+    margin-bottom: var(--sp-6);
+    line-height: 1.85;
+    max-width: 540px;
   }
 
   .hero-actions {
     display: flex;
     gap: var(--sp-3);
     flex-wrap: wrap;
-    margin-bottom: var(--sp-5);
+    margin-bottom: var(--sp-6);
+  }
+
+  .cta-pulse {
+    width: 8px;
+    height: 8px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+    animation: pulse-dot 2s ease-in-out infinite;
   }
 
   .hero-bullets {
@@ -316,47 +664,170 @@ const localBusinessLd = {
     margin: 0;
     color: var(--color-text-soft);
     font-size: var(--fs-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
   }
 
   .hero-bullets li {
-    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  .hero-photo {
-    aspect-ratio: 4 / 3;
-    border-radius: 4px;
-    overflow: hidden;
-    border: 1px solid var(--color-border);
+  .bullet-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--color-primary);
+    background: var(--color-primary-soft);
+    border-radius: 50%;
+    padding: 2px;
+    flex-shrink: 0;
+  }
+
+  /* Hero Visual */
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 4 / 4.4;
+  }
+
+  .hero-card {
     background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
   }
 
-  .hero-photo-placeholder {
-    width: 100%;
+  .hero-card-main {
+    position: relative;
     height: 100%;
-    background:
-      linear-gradient(135deg, #c2cdb9 0%, #a3b3a0 100%);
-    color: #2a3a2e;
     display: flex;
     flex-direction: column;
+  }
+
+  .hero-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--sp-3) var(--sp-4);
+    background: var(--color-primary-dark);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .hero-card-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.18em;
+  }
+
+  .hero-card-tag-accent {
+    color: var(--color-accent);
+  }
+
+  .hero-card-image {
+    flex: 1;
+    background: var(--color-surface-alt);
+    overflow: hidden;
+    display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: var(--sp-5);
-    font-size: 16px;
-    font-weight: 500;
   }
 
-  .hero-photo-placeholder small {
+  .hero-card-image svg {
+    width: 100%;
+    height: 100%;
     display: block;
-    margin-top: var(--sp-3);
-    font-size: 12px;
-    opacity: 0.7;
-    font-weight: 400;
   }
 
-  /* 区块风格 */
-  .section-alt {
-    background: var(--color-surface-alt);
+  .hero-card-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-3);
+    padding: var(--sp-4);
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .hero-card-stat {
+    text-align: center;
+    padding: var(--sp-2);
+  }
+
+  .hero-card-stat-value {
+    display: block;
+    font-size: var(--fs-xl);
+    font-weight: 800;
+    color: var(--color-primary-dark);
+    line-height: 1;
+    margin-bottom: 4px;
+    font-feature-settings: 'tnum';
+  }
+
+  .hero-card-stat-label {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+
+  .hero-card-float {
+    position: absolute;
+    bottom: -28px;
+    left: -28px;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: var(--radius-md);
+    background: var(--color-accent);
+    color: #fff;
+    box-shadow: 0 12px 32px rgba(227, 99, 42, 0.36);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .float-icon {
+    font-size: 24px;
+  }
+
+  .float-label {
+    font-size: 11px;
+    opacity: 0.85;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .float-value {
+    font-size: var(--fs-md);
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    font-feature-settings: 'tnum';
+  }
+
+  /* ============== Trust Bar ============== */
+  .trust-section {
+    background: var(--color-surface);
+    padding: var(--sp-5) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* ============== Stats Section ============== */
+  .stats-section {
+    background: var(--color-bg);
+  }
+
+  /* ============== Products Grid ============== */
+  .products-grid {
+    margin-bottom: var(--sp-6);
   }
 
   .see-more {
@@ -364,51 +835,205 @@ const localBusinessLd = {
     margin-top: var(--sp-6);
   }
 
-  .advantage-card {
-    height: 100%;
+  .see-more .btn {
+    gap: 8px;
   }
 
-  /* 询价区 */
-  .inquiry-section {
-    background: var(--color-primary-dark);
-    color: #e8efe9;
+  .see-more-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s var(--ease-out);
   }
 
-  .inquiry-box {
+  .see-more .btn:hover .see-more-icon {
+    transform: translateX(4px);
+  }
+
+  /* ============== Process Rail ============== */
+  .process-rail {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: var(--sp-6);
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--sp-3);
+    margin-bottom: var(--sp-7);
+  }
+
+  .process-step {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .process-marker {
+    position: relative;
+    display: flex;
     align-items: center;
+  }
+
+  .process-no {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary-dark);
+    font-weight: 800;
+    font-size: var(--fs-base);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-feature-settings: 'tnum';
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  .process-line {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    margin-left: -2px;
+  }
+
+  .process-content h3 {
+    font-size: var(--fs-base);
+    margin-bottom: 4px;
+    color: var(--color-primary-dark);
+  }
+
+  .process-content p {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ============== Advantage Cards ============== */
+  .advantage-card {
+    padding: var(--sp-6);
+    height: 100%;
+    position: relative;
+  }
+
+  .advantage-no {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    font-size: var(--fs-lg);
+    font-weight: 800;
+    margin-bottom: var(--sp-4);
+  }
+
+  .advantage-title {
+    font-size: var(--fs-md);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-3);
+  }
+
+  .advantage-desc {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    margin: 0;
+    line-height: 1.75;
+  }
+
+  /* ============== Customer Grid ============== */
+  .customer-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--sp-3);
+  }
+
+  .customer-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-5) var(--sp-3);
+    text-align: center;
+    transition: all 0.25s var(--ease-out);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-3);
+  }
+
+  .customer-card:hover {
+    border-color: var(--color-accent);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-3px);
+  }
+
+  .customer-icon {
+    font-size: 32px;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  .customer-label {
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  /* ============== Inquiry Section ============== */
+  .inquiry-section {
+    padding: var(--sp-8) 0;
+  }
+
+  .inquiry-cta {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--sp-7);
+    align-items: center;
+  }
+
+  .inquiry-eyebrow {
+    color: var(--color-accent);
   }
 
   .inquiry-text h2 {
     color: #fff;
-    font-size: 30px;
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--sp-4);
   }
 
   .inquiry-text p {
-    color: #d8d6cf;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--fs-md);
+    margin-bottom: var(--sp-5);
+    line-height: 1.8;
   }
 
   .inquiry-list {
     list-style: none;
     padding: 0;
-    color: #d8d6cf;
-    font-size: 14px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: var(--fs-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .inquiry-list li {
-    padding-left: 20px;
-    position: relative;
-    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
-  .inquiry-list li::before {
-    content: '•';
-    position: absolute;
-    left: 6px;
+  .inquiry-list .check-icon {
+    width: 18px;
+    height: 18px;
     color: var(--color-accent);
-    font-weight: 700;
+    background: rgba(227, 99, 42, 0.15);
+    border-radius: 50%;
+    padding: 2px;
+    flex-shrink: 0;
   }
 
   .inquiry-actions {
@@ -417,26 +1042,86 @@ const localBusinessLd = {
     gap: var(--sp-3);
   }
 
-  .btn-lg {
-    padding: 14px 26px;
-    font-size: 17px;
+  .inquiry-note {
+    margin-top: var(--sp-2);
+    padding-top: var(--sp-4);
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+    font-size: var(--fs-sm);
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
   }
 
-  /* 响应式 */
-  @media (max-width: 900px) {
-    .hero-inner,
-    .inquiry-box {
-      grid-template-columns: 1fr;
-      gap: var(--sp-5);
+  /* ============== Responsive ============== */
+  @media (max-width: 1100px) {
+    .process-rail {
+      grid-template-columns: repeat(3, 1fr);
     }
 
+    .process-step:nth-child(3) .process-line,
+    .process-step:nth-child(6) .process-line {
+      display: none;
+    }
+
+    .customer-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-inner,
+    .inquiry-cta {
+      grid-template-columns: 1fr;
+      gap: var(--sp-6);
+    }
+
+    .hero-inner {
+      padding: var(--sp-7) var(--container-pad);
+      min-height: auto;
+    }
+
+    .hero-title {
+      font-size: 40px;
+    }
+
+    .hero-visual {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .hero-card-float {
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .process-rail {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-step:nth-child(odd) .process-line {
+      display: none;
+    }
+
+    .customer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
     .hero-title {
       font-size: 32px;
     }
 
-    .hero-inner {
-      padding: var(--sp-6) var(--container-pad);
+    .process-rail {
+      grid-template-columns: 1fr;
+    }
+
+    .process-line {
+      display: none !important;
+    }
+
+    .customer-grid {
+      grid-template-columns: 1fr 1fr;
     }
   }
 </style>

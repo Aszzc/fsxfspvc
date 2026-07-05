@@ -1,0 +1,547 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import ProductDetail from '../components/ProductDetail.astro';
+
+const phoneNumber = '13450853338';
+
+const products = [
+  {
+    id: 'insulation-70',
+    name: '70℃ 绝缘料',
+    category: 'PVC 绝缘',
+    summary: '常规电线导体绝缘层用 PVC 料，性能稳定，配方成熟，是最常用的 PVC 绝缘料品类。',
+    useCases: [
+      'BV / BVR / BVV 等建筑用电线绝缘层',
+      '常规电源线内部导体包覆',
+      '电气设备内部配线绝缘',
+    ],
+    suitableCustomers: [
+      '电线电缆生产厂家（自用绝缘）',
+      '电子线材厂',
+      '电气设备厂（自配线）',
+    ],
+    processing: [
+      '常规 PVC 挤出机',
+      '挤出温度 150-180℃ 区间',
+      '适配常规螺杆',
+    ],
+    specs: [
+      { label: '工作温度', value: '70℃' },
+      { label: '邵氏硬度', value: 'A 75-95（可调）' },
+      { label: '拉伸强度', value: '≥12 MPa（参考）' },
+      { label: '断裂伸长率', value: '≥150%（参考）' },
+      { label: '体积电阻率', value: '≥1×10¹³ Ω·cm' },
+      { label: '阻燃', value: '可按需调整' },
+      { label: '颜色', value: '常规 / 可定制' },
+    ],
+    concerns: [
+      '是否需要通过特定阻燃等级',
+      '导体粘附力是否要满足特定标准',
+      '颜色与色差稳定性',
+      '气味要求（低气味场景）',
+    ],
+    inquiryNeeds: [
+      '电线规格（导体截面积、绝缘厚度）',
+      '执行标准（GB/T 8815、UL 等）',
+      '阻燃等级要求',
+      '颜色、预计月用量',
+    ],
+  },
+  {
+    id: 'sheath',
+    name: '护套料',
+    category: 'PVC 护套',
+    summary: '电线电缆外护套用 PVC 料，机械性能好，耐磨耐候，是线缆成品最外层的常用材料。',
+    useCases: [
+      'RVV / RVVP / YJV 等线缆外护套',
+      '电源插头线外被',
+      '机械设备配线外护套',
+    ],
+    suitableCustomers: [
+      '电线电缆成品厂',
+      '电源线生产厂家',
+      '设备线束加工厂',
+    ],
+    processing: [
+      'PVC 挤出机',
+      '挤出温度 160-185℃ 区间',
+      '配合冷却与印字工序',
+    ],
+    specs: [
+      { label: '工作温度', value: '70℃（常规）' },
+      { label: '邵氏硬度', value: 'A 70-90（可调）' },
+      { label: '拉伸强度', value: '≥13 MPa（参考）' },
+      { label: '断裂伸长率', value: '≥200%（参考）' },
+      { label: '耐磨性', value: '良好' },
+      { label: '耐候性', value: '可按需调整' },
+      { label: '颜色', value: '黑 / 灰 / 白 / 可定制' },
+    ],
+    concerns: [
+      '耐磨与耐刮性能',
+      '耐油 / 耐化学介质性能',
+      '户外使用时的耐候要求',
+      '成品印字附着力',
+    ],
+    inquiryNeeds: [
+      '线缆成品规格、外护套厚度',
+      '使用环境（室内 / 户外 / 耐油等）',
+      '阻燃等级要求',
+      '颜色、表面效果（亮面 / 雾面）',
+    ],
+  },
+  {
+    id: 'electronic',
+    name: '电子料',
+    category: '电子线材',
+    summary: '小线径电子连接线、USB 线、信号线、DC 线等专用 PVC 料，加工窗口宽，气味低。',
+    useCases: [
+      'USB 数据线外被',
+      'DC 电源线 / 信号线',
+      '耳机线 / 音视频线',
+      '小家电内部配线',
+    ],
+    suitableCustomers: [
+      '电子线材厂',
+      '小家电线束厂',
+      '3C 配件厂家',
+    ],
+    processing: [
+      '高速挤出',
+      '挤出温度 150-175℃',
+      '适配薄壁挤出',
+    ],
+    specs: [
+      { label: '工作温度', value: '60-80℃' },
+      { label: '邵氏硬度', value: 'A 70-90' },
+      { label: '气味', value: '低气味配方可选' },
+      { label: '挤出速度', value: '可适配高速挤出' },
+      { label: '颜色', value: '黑 / 白 / 可定制' },
+    ],
+    concerns: [
+      '气味（出口 / 出口欧美产品）',
+      '高速挤出下的稳定性',
+      '颜色批次一致性',
+      'ROHS / REACH 符合性',
+    ],
+    inquiryNeeds: [
+      '线材规格、成品结构',
+      '是否出口、目标市场（影响环保标准）',
+      '挤出速度要求',
+      '预计月用量',
+    ],
+  },
+  {
+    id: 'plug',
+    name: '插头料',
+    category: '电源插头 / 插座',
+    summary: '电源插头、插座、接线盒等外壳用硬质 PVC 料，强度高、阻燃、易注塑成型。',
+    useCases: [
+      '电源插头外壳',
+      '墙壁插座壳体',
+      '接线盒 / 配电附件',
+    ],
+    suitableCustomers: [
+      '电源插头厂',
+      '开关插座厂',
+      '电气附件厂',
+    ],
+    processing: [
+      '注塑成型',
+      '模具温度 40-60℃',
+      '料筒温度 160-190℃',
+    ],
+    specs: [
+      { label: '邵氏硬度', value: 'D 70-85（硬质）' },
+      { label: '阻燃', value: '可调（VW-1 / GB/T 8815）' },
+      { label: '流动性', value: '良好，可薄壁注塑' },
+      { label: '颜色', value: '白 / 黑 / 可定制' },
+      { label: '成型收缩率', value: '0.3-0.6%（参考）' },
+    ],
+    concerns: [
+      '阻燃等级与认证',
+      '成型外观（无流痕、无气泡）',
+      '尺寸稳定性',
+      '抗冲击性能',
+    ],
+    inquiryNeeds: [
+      '成品结构、模具信息',
+      '阻燃等级要求',
+      '外观要求（颜色、光泽）',
+      '预计月用量',
+    ],
+  },
+  {
+    id: 'heat-resistant-105',
+    name: '105℃ 耐高温料',
+    category: '耐高温 PVC',
+    summary: '耐 105℃ 工作温度的 PVC 改性料，常用于家电内部布线、变压器引线、发热环境配线。',
+    useCases: [
+      '家电内部布线（电热水器、烤箱等）',
+      '变压器引出线',
+      '电机引接线',
+      '灯具内部配线',
+    ],
+    suitableCustomers: [
+      '家电制造厂',
+      '变压器厂',
+      '电机厂',
+      '灯具厂',
+    ],
+    processing: [
+      '常规 PVC 挤出',
+      '挤出温度略高于普通绝缘料',
+      '注意塑化均匀',
+    ],
+    specs: [
+      { label: '工作温度', value: '105℃' },
+      { label: '老化后性能', value: '满足高温老化测试' },
+      { label: '邵氏硬度', value: 'A 80-95（可调）' },
+      { label: '阻燃', value: '可调' },
+      { label: '认证', value: '可做 UL 等等级' },
+    ],
+    concerns: [
+      '耐温等级与老化测试标准',
+      '是否需要出口认证（UL / VDE 等）',
+      '耐温与阻燃的平衡',
+      '长期高温下的颜色稳定性',
+    ],
+    inquiryNeeds: [
+      '实际工作温度与持续时间',
+      '目标认证（UL / VDE / 国标）',
+      '阻燃等级要求',
+      '预计月用量',
+    ],
+  },
+  {
+    id: 'cold-resistant',
+    name: '-40℃ 耐寒料',
+    category: '耐寒 PVC',
+    summary: '耐 -40℃ 低温的 PVC 改性料，常用于北方户外布线、农机线缆、寒冷地区工程布线。',
+    useCases: [
+      '北方户外电线电缆',
+      '农机线缆',
+      '冷库、制冷设备配线',
+      '冬季施工用电线',
+    ],
+    suitableCustomers: [
+      '工程线缆厂',
+      '农机线束厂',
+      '冷链设备厂',
+    ],
+    processing: [
+      '常规 PVC 挤出',
+      '注意低温环境下的物料保温',
+      '塑化温度略高于常规绝缘',
+    ],
+    specs: [
+      { label: '耐寒温度', value: '-40℃ 不脆裂' },
+      { label: '低温冲击', value: '满足低温冲击测试' },
+      { label: '邵氏硬度', value: 'A 65-85（偏柔韧）' },
+      { label: '柔韧性', value: '低温下保持' },
+      { label: '颜色', value: '黑 / 可定制' },
+    ],
+    concerns: [
+      '实际使用最低温度',
+      '低温冲击测试要求',
+      '是否户外使用（耐候 + 耐寒）',
+      '长期低温后的弹性恢复',
+    ],
+    inquiryNeeds: [
+      '使用地区、最低温度',
+      '低温测试标准',
+      '是否需要同时阻燃',
+      '预计月用量',
+    ],
+  },
+  {
+    id: 'transparent',
+    name: '高透明料',
+    category: '透明 PVC',
+    summary: '高透光率 PVC 料，常用于透明电源线、装饰灯带线、可视化布线场景。',
+    useCases: [
+      '透明电源线外被',
+      'LED 灯带外被',
+      '装饰布线',
+      '可视化仪表配线',
+    ],
+    suitableCustomers: [
+      'LED 灯带厂',
+      '装饰灯具厂',
+      '透明电源线厂',
+    ],
+    processing: [
+      '常规 PVC 挤出',
+      '注意塑化均匀避免晶点',
+      '避免高温长时间停留',
+    ],
+    specs: [
+      { label: '透光率', value: '高（按需可调）' },
+      { label: '黄变性', value: '可按需调整抗黄变等级' },
+      { label: '邵氏硬度', value: 'A 70-90（可调）' },
+      { label: '气味', value: '低气味可选' },
+      { label: '颜色', value: '本色 / 透明色' },
+    ],
+    concerns: [
+      '透光率与雾度的平衡',
+      '抗黄变性能（特别是户外 / 高温使用）',
+      '表面光洁度',
+      '塑化晶点控制',
+    ],
+    inquiryNeeds: [
+      '使用场景（室内 / 户外）',
+      '透光率要求',
+      '软硬度偏好',
+      '预计月用量',
+    ],
+  },
+  {
+    id: 'frosted',
+    name: '雾面料',
+    category: '雾面 / 哑光 PVC',
+    summary: '表面呈哑光雾面效果的 PVC 料，常用于高端电源线、装饰类线材、对外观有要求的成品。',
+    useCases: [
+      '高端电源线外被',
+      '装饰线材',
+      '对外观触感有要求的成品',
+    ],
+    suitableCustomers: [
+      '高端电源线厂',
+      '装饰灯具厂',
+      '消费电子配件厂',
+    ],
+    processing: [
+      '常规 PVC 挤出',
+      '可调整配方实现雾面效果',
+      '模具表面光洁度对成品有影响',
+    ],
+    specs: [
+      { label: '表面效果', value: '哑光雾面' },
+      { label: '触感', value: '细腻、不易留指纹' },
+      { label: '邵氏硬度', value: 'A 70-90（可调）' },
+      { label: '颜色', value: '可定制' },
+    ],
+    concerns: [
+      '雾面均匀性',
+      '耐刮擦性能',
+      '雾面与颜色的搭配',
+      '挤出稳定性',
+    ],
+    inquiryNeeds: [
+      '成品外观要求（参考样品）',
+      '目标颜色',
+      '挤出工艺参数',
+      '预计月用量',
+    ],
+  },
+  {
+    id: 'modified',
+    name: '改性橡塑料',
+    category: '改性 PVC',
+    summary: '根据客户要求调整硬度、阻燃、耐温、耐寒等性能的 PVC 改性配方料。',
+    useCases: [
+      '客户特殊性能需求',
+      '替代部分橡胶或特种塑料',
+      '特殊工业场景',
+    ],
+    suitableCustomers: [
+      '有特殊性能需求的厂家',
+      '进口替代客户',
+      '新项目研发阶段客户',
+    ],
+    processing: [
+      '按具体配方而定',
+      '通常仍使用 PVC 挤出 / 注塑设备',
+    ],
+    specs: [
+      { label: '硬度范围', value: '可定制（A 50 - D 85）' },
+      { label: '阻燃', value: '按需' },
+      { label: '耐温', value: '按需（常温 / 105℃ / 其他）' },
+      { label: '耐寒', value: '按需' },
+      { label: '颜色', value: '按需' },
+    ],
+    concerns: [
+      '明确的关键性能指标',
+      '客户来样或图纸',
+      '目标成本区间',
+      '起订量与供货周期',
+    ],
+    inquiryNeeds: [
+      '客户来样 / 性能指标单',
+      '目标使用场景',
+      '预计月用量',
+      '接受的开发周期',
+    ],
+  },
+];
+---
+<BaseLayout
+  title="PVC 电线电缆料产品目录"
+  description="PVC 电线电缆料详细规格型产品目录：70℃ 绝缘料、护套料、电子料、插头料、105℃ 耐高温料、-40℃ 耐寒料、高透明料、雾面料、改性橡塑料。每类产品的用途、适合客户、加工方式、典型规格、询价要点。"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: '祥丰盛 PVC 电线电缆料产品目录',
+    itemListElement: products.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Product',
+        name: p.name,
+        category: p.category,
+        description: p.summary,
+        url: `https://xfspvc.com/products/#${p.id}`,
+      },
+    })),
+  }}
+>
+  <!-- 页头 -->
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">首页</a> / 产品目录</div>
+      <h1>PVC 电线电缆料 · 产品目录</h1>
+      <p class="page-header-sub">
+        以下为常规品类的典型规格范围。具体配方、颜色、性能以双方沟通确认的技术单为准。
+      </p>
+    </div>
+  </section>
+
+  <!-- 目录导航 -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="cat-nav">
+        <span class="cat-nav-title">快速跳转：</span>
+        {products.map((p) => (
+          <a href={`#${p.id}`} class="cat-nav-link">{p.name}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 产品列表 -->
+  <section class="section">
+    <div class="container">
+      {products.map((p) => (
+        <ProductDetail
+          id={p.id}
+          name={p.name}
+          category={p.category}
+          summary={p.summary}
+          useCases={p.useCases}
+          suitableCustomers={p.suitableCustomers}
+          processing={p.processing}
+          specs={p.specs}
+          concerns={p.concerns}
+          inquiryNeeds={p.inquiryNeeds}
+        />
+      ))}
+
+      <!-- 询价入口 -->
+      <div class="catalog-cta">
+        <h3>没有找到完全匹配的产品？</h3>
+        <p>可以按客户要求开发配方、做小批量试样。请直接电话或微信沟通。</p>
+        <div class="catalog-cta-actions">
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
+          <a href="/contact/" class="btn btn-outline">查看联系方式</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: var(--color-surface-alt);
+    padding: var(--sp-6) 0 var(--sp-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .breadcrumb {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--sp-3);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+  }
+
+  .page-header h1 {
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--sp-2);
+    color: var(--color-primary-dark);
+  }
+
+  .page-header-sub {
+    color: var(--color-text-soft);
+    margin: 0;
+    max-width: 760px;
+  }
+
+  .cat-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    align-items: center;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: var(--sp-3) var(--sp-4);
+    border-radius: 3px;
+  }
+
+  .cat-nav-title {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    font-weight: 600;
+  }
+
+  .cat-nav-link {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    background: var(--color-surface-alt);
+    border: 1px solid var(--color-border);
+    font-size: var(--fs-sm);
+    color: var(--color-text);
+  }
+
+  .cat-nav-link:hover {
+    background: var(--color-primary);
+    color: #fff;
+    border-color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .catalog-cta {
+    background: var(--color-primary-dark);
+    color: #e8efe9;
+    padding: var(--sp-6);
+    border-radius: 4px;
+    text-align: center;
+    margin-top: var(--sp-6);
+  }
+
+  .catalog-cta h3 {
+    color: #fff;
+    margin-bottom: var(--sp-3);
+  }
+
+  .catalog-cta p {
+    color: #d8d6cf;
+    margin-bottom: var(--sp-5);
+  }
+
+  .catalog-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--sp-3);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 720px) {
+    .cat-nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

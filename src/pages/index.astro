@@ -1,0 +1,442 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import ProductCard from '../components/ProductCard.astro';
+
+const phoneNumber = '13450853338';
+
+const productOverview = [
+  {
+    id: 'insulation-70',
+    name: '70℃ 绝缘料',
+    category: 'PVC 绝缘',
+    description: '常规电线导体绝缘层用 PVC 料，阻燃性能满足 GB/T 8815 标准。',
+    highlights: ['70℃ 工作温度', '电气绝缘稳定', '可按需调整阻燃等级'],
+  },
+  {
+    id: 'sheath',
+    name: '护套料',
+    category: 'PVC 护套',
+    description: '电线电缆外护套用 PVC 料，机械性能好，耐磨耐候，适合多种环境。',
+    highlights: ['柔韧性好', '耐磨耐候', '可定制颜色'],
+  },
+  {
+    id: 'electronic',
+    name: '电子料',
+    category: '电子线材',
+    description: '电子连接线、USB 线、信号线等小线径线材用 PVC 料，加工性好。',
+    highlights: ['低气味', '挤出稳定', '适配高速挤出'],
+  },
+  {
+    id: 'plug',
+    name: '插头料',
+    category: '电源插头',
+    description: '电源插头、插座外壳用硬质 PVC 料，强度高、阻燃、易注塑成型。',
+    highlights: ['高硬度', '阻燃等级可调', '流动性好'],
+  },
+  {
+    id: 'heat-resistant-105',
+    name: '105℃ 耐高温料',
+    category: '耐高温',
+    description: '耐 105℃ 工作温度的 PVC 改性料，常见于家电内部布线、变压器引线。',
+    highlights: ['耐温 105℃', '老化性能稳定', '可做 UL 等级'],
+  },
+  {
+    id: 'cold-resistant',
+    name: '-40℃ 耐寒料',
+    category: '耐寒',
+    description: '耐 -40℃ 低温的 PVC 改性料，常用于北方户外电线、农机线缆、寒冷地区布线。',
+    highlights: ['低温不脆裂', '保持柔韧', '适合户外使用'],
+  },
+  {
+    id: 'transparent',
+    name: '高透明料',
+    category: '透明线材',
+    description: '高透光率 PVC 料，常用于透明电源线、装饰灯带线、可视化布线场景。',
+    highlights: ['透光率高', '不易黄变', '可定制软硬度'],
+  },
+  {
+    id: 'frosted',
+    name: '雾面料',
+    category: '雾面外观',
+    description: '表面呈哑光雾面效果的 PVC 料，常用于高端电源线、装饰类线材。',
+    highlights: ['哑光质感', '触感细腻', '不易留指纹'],
+  },
+  {
+    id: 'modified',
+    name: '改性橡塑料',
+    category: '改性料',
+    description: '根据客户要求调整硬度、阻燃、耐温、耐寒等性能的 PVC 改性配方料。',
+    highlights: ['可定制配方', '小批量试产', '来样来图定制'],
+  },
+];
+
+const advantages = [
+  {
+    title: '自有配方研发',
+    desc: '根据客户电线电缆结构、挤出工艺、性能要求，自主调试 PVC 配方，不依赖外采成品料。',
+  },
+  {
+    title: '佛山本地工厂',
+    desc: '自有厂房、混料、挤出造粒、冷却筛分、包装一条线，便于客户来厂看货、看产线。',
+  },
+  {
+    title: '稳定批次供货',
+    desc: '原料固定供应渠道，每批次留样记录，长期供货客户可保持配方一致性与稳定性。',
+  },
+  {
+    title: '可定制小批量',
+    desc: '新客户、新配方可做小批量试产，颜色、硬度、阻燃等级按需调整。',
+  },
+  {
+    title: '服务流程简单',
+    desc: '电话、微信直接沟通：用途 → 规格 → 试样 → 量产，省去冗长商务流程。',
+  },
+  {
+    title: '支持来样定制',
+    desc: '客户寄样、客户图纸、客户性能指标都可以作为开发输入，按样做料。',
+  },
+];
+
+const organizationLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: '祥丰盛塑业',
+  alternateName: '佛山祥丰盛 PVC 电线电缆料厂家',
+  url: 'https://xfspvc.com/',
+  logo: 'https://xfspvc.com/images/factory-warehouse.jpg',
+  description:
+    '广东佛山 PVC 电线电缆料生产厂家，主要供应 70℃ 绝缘料、护套料、电子料、插头料、105℃ 耐高温料、-40℃ 耐寒料、高透明料、雾面料、改性橡塑料。',
+  telephone: '+86-13450853338',
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: '广东省',
+    addressLocality: '佛山市',
+    addressCountry: 'CN',
+  },
+  areaServed: ['CN', '华南', '华东', '华北', '西南'],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+86-13450853338',
+    contactType: 'sales',
+    areaServed: 'CN',
+    availableLanguage: ['zh-Hans'],
+  },
+};
+
+const localBusinessLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://xfspvc.com/#business',
+  name: '祥丰盛塑业',
+  image: 'https://xfspvc.com/images/factory-warehouse.jpg',
+  url: 'https://xfspvc.com/',
+  telephone: '+86-13450853338',
+  priceRange: '￥￥',
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: '广东省',
+    addressLocality: '佛山市',
+    addressCountry: 'CN',
+  },
+  openingHours: 'Mo-Sa 08:00-18:00',
+};
+---
+<BaseLayout
+  title="佛山 PVC 电线电缆料厂家 - 祥丰盛塑业"
+  description="祥丰盛塑业 - 广东佛山 PVC 电线电缆料生产厂家，自有配方、自有工厂。主要供应 70℃ 绝缘料、护套料、电子料、插头料、105℃ 耐高温料、-40℃ 耐寒料、高透明料、雾面料、改性橡塑料。电话/微信 13450853338。"
+  jsonLd={[organizationLd, localBusinessLd]}
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">佛山工厂直供 · 自有配方研发</div>
+        <h1 class="hero-title">
+          佛山 PVC<br />
+          电线电缆料生产厂家
+        </h1>
+        <p class="hero-sub">
+          自有配方、自有产线。<br />
+          70℃ 绝缘料 / 护套料 / 耐高温 / 耐寒 / 高透明 / 改性橡塑 —— 按用途、按性能、按工艺要求匹配。
+        </p>
+        <div class="hero-actions">
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
+          <a href="/products/" class="btn btn-outline">查看产品目录</a>
+        </div>
+        <ul class="hero-bullets">
+          <li>✓ 自有配方，佛山本地工厂</li>
+          <li>✓ 可按客户来样、图纸定制</li>
+          <li>✓ 支持小批量试产，长期稳定供货</li>
+        </ul>
+      </div>
+      <div class="hero-photo" aria-label="工厂仓库实拍">
+        <div class="hero-photo-placeholder">
+          <span>工厂 / 仓库实拍图</span>
+          <small>替换为真实图片：public/images/factory-warehouse.jpg</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 产品总览 -->
+  <section class="section">
+    <div class="container">
+      <SectionTitle
+        title="主要产品"
+        subtitle="覆盖电线电缆常用 PVC 料，可按客户规格调整配方与颜色"
+      />
+
+      <div class="grid grid-3">
+        {productOverview.map((p) => (
+          <ProductCard
+            id={p.id}
+            name={p.name}
+            category={p.category}
+            description={p.description}
+            highlights={p.highlights}
+            href={`/products/#${p.id}`}
+          />
+        ))}
+      </div>
+
+      <div class="see-more">
+        <a href="/products/" class="btn btn-outline">查看完整规格与询价要点 →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心优势 -->
+  <section class="section section-alt">
+    <div class="container">
+      <SectionTitle
+        title="为什么找工厂直做"
+        subtitle="PVC 电线电缆料不是通用件，性能匹配错容易导致后续工艺问题"
+      />
+
+      <div class="grid grid-3">
+        {advantages.map((a) => (
+          <div class="card advantage-card">
+            <h3 class="card-title">{a.title}</h3>
+            <p>{a.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 询价入口 -->
+  <section class="section inquiry-section">
+    <div class="container">
+      <div class="inquiry-box">
+        <div class="inquiry-text">
+          <h2>需要试样或询价？</h2>
+          <p>
+            请直接电话或微信沟通：用途、规格要求、预计用量、加工方式。<br />
+            我们会按要求寄样、报价，或邀请来厂看产线。
+          </p>
+          <ul class="inquiry-list">
+            <li>使用场景（如：电源线外被、UL 电子线、户外布线…）</li>
+            <li>关键性能（耐温 / 阻燃 / 耐寒 / 硬度 / 颜色 / 透明度）</li>
+            <li>预计月用量、起订量</li>
+            <li>加工方式（挤出速度、模具规格等）</li>
+          </ul>
+        </div>
+        <div class="inquiry-actions">
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 电话 / 微信 13450853338</a>
+          <a href="/contact/" class="btn btn-outline">查看完整联系方式</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .hero {
+    position: relative;
+    background: var(--color-bg);
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e8efe9 0%, #f2f2ee 60%);
+    z-index: 0;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--sp-7);
+    align-items: center;
+    padding: var(--sp-8) var(--container-pad);
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(31, 77, 58, 0.1);
+    color: var(--color-primary-dark);
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: var(--sp-4);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-title {
+    font-size: 44px;
+    line-height: 1.18;
+    color: var(--color-text);
+    margin-bottom: var(--sp-4);
+  }
+
+  .hero-sub {
+    font-size: var(--fs-md);
+    color: var(--color-text-soft);
+    margin-bottom: var(--sp-5);
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--sp-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--sp-5);
+  }
+
+  .hero-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--color-text-soft);
+    font-size: var(--fs-sm);
+  }
+
+  .hero-bullets li {
+    margin-bottom: 4px;
+  }
+
+  .hero-photo {
+    aspect-ratio: 4 / 3;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .hero-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background:
+      linear-gradient(135deg, #c2cdb9 0%, #a3b3a0 100%);
+    color: #2a3a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--sp-5);
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .hero-photo-placeholder small {
+    display: block;
+    margin-top: var(--sp-3);
+    font-size: 12px;
+    opacity: 0.7;
+    font-weight: 400;
+  }
+
+  /* 区块风格 */
+  .section-alt {
+    background: var(--color-surface-alt);
+  }
+
+  .see-more {
+    text-align: center;
+    margin-top: var(--sp-6);
+  }
+
+  .advantage-card {
+    height: 100%;
+  }
+
+  /* 询价区 */
+  .inquiry-section {
+    background: var(--color-primary-dark);
+    color: #e8efe9;
+  }
+
+  .inquiry-box {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--sp-6);
+    align-items: center;
+  }
+
+  .inquiry-text h2 {
+    color: #fff;
+    font-size: 30px;
+  }
+
+  .inquiry-text p {
+    color: #d8d6cf;
+  }
+
+  .inquiry-list {
+    list-style: none;
+    padding: 0;
+    color: #d8d6cf;
+    font-size: 14px;
+  }
+
+  .inquiry-list li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .inquiry-list li::before {
+    content: '•';
+    position: absolute;
+    left: 6px;
+    color: var(--color-accent);
+    font-weight: 700;
+  }
+
+  .inquiry-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+  }
+
+  .btn-lg {
+    padding: 14px 26px;
+    font-size: 17px;
+    text-align: center;
+  }
+
+  /* 响应式 */
+  @media (max-width: 900px) {
+    .hero-inner,
+    .inquiry-box {
+      grid-template-columns: 1fr;
+      gap: var(--sp-5);
+    }
+
+    .hero-title {
+      font-size: 32px;
+    }
+
+    .hero-inner {
+      padding: var(--sp-6) var(--container-pad);
+    }
+  }
+</style>

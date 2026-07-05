@@ -1,0 +1,204 @@
+---
+const navItems = [
+  { href: '/', label: '首页' },
+  { href: '/products/', label: '产品目录' },
+  { href: '/manufacturing/', label: '制造能力' },
+  { href: '/knowledge/', label: '行业知识' },
+  { href: '/contact/', label: '联系我们' },
+];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const phoneNumber = '13450853338';
+---
+<header class="site-header">
+  <div class="header-top">
+    <div class="container header-top-inner">
+      <span class="header-tagline">佛山 PVC 电线电缆料生产厂家 · 自有配方 · 稳定供货</span>
+      <a href={`tel:${phoneNumber}`} class="header-phone" aria-label="拨打电话">
+        <span class="phone-icon" aria-hidden="true">☎</span>
+        13450853338
+      </a>
+    </div>
+  </div>
+
+  <div class="header-main">
+    <div class="container header-main-inner">
+      <a href="/" class="brand" aria-label="祥丰盛塑业 首页">
+        <span class="brand-mark">祥丰盛</span>
+        <span class="brand-sub">PVC 电线电缆料 · 工厂直供</span>
+      </a>
+
+      <nav class="primary-nav" aria-label="主导航">
+        <ul>
+          {navItems.map((item) => {
+            const itemPath = item.href.replace(/\/$/, '') || '/';
+            const isActive = currentPath === itemPath;
+            return (
+              <li>
+                <a href={item.href} class={isActive ? 'is-active' : ''}>
+                  {item.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      <a href={`tel:${phoneNumber}`} class="btn btn-phone header-cta">
+        立即询价
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    background: var(--color-primary-dark);
+    color: #e8efe9;
+    font-size: var(--fs-sm);
+  }
+
+  .header-top-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    gap: var(--sp-3);
+  }
+
+  .header-tagline {
+    opacity: 0.92;
+  }
+
+  .header-phone {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .header-phone:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .phone-icon {
+    font-size: 14px;
+  }
+
+  .header-main-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    gap: var(--sp-4);
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--color-text);
+    line-height: 1.1;
+  }
+
+  .brand:hover {
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+
+  .brand-mark {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-primary-dark);
+  }
+
+  .brand-sub {
+    font-size: 12px;
+    color: var(--color-text-muted);
+    margin-top: 2px;
+  }
+
+  .primary-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--sp-2);
+  }
+
+  .primary-nav a {
+    display: block;
+    padding: 8px 16px;
+    color: var(--color-text);
+    font-weight: 500;
+    border-radius: 2px;
+    transition: all 0.15s ease;
+  }
+
+  .primary-nav a:hover {
+    background: var(--color-surface-alt);
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .primary-nav a.is-active {
+    color: var(--color-primary);
+    background: #e8f0ec;
+  }
+
+  .header-cta {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .header-top-inner {
+      flex-direction: column;
+      gap: 4px;
+      text-align: center;
+    }
+
+    .header-main-inner {
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+    }
+
+    .brand-sub {
+      display: none;
+    }
+
+    .primary-nav {
+      order: 3;
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .primary-nav ul {
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    .primary-nav a {
+      padding: 6px 10px;
+      font-size: 14px;
+    }
+
+    .header-cta {
+      font-size: 14px;
+      padding: 8px 14px;
+    }
+  }
+</style>

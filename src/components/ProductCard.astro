@@ -1,0 +1,95 @@
+---
+interface Props {
+  id?: string;
+  name: string;
+  category: string;
+  description: string;
+  highlights?: string[];
+  href?: string;
+}
+
+const { id, name, category, description, highlights = [], href = '/products/' } = Astro.props;
+---
+<a href={href} class="product-card" id={id}>
+  <div class="product-card-category">{category}</div>
+  <h3 class="product-card-name">{name}</h3>
+  <p class="product-card-desc">{description}</p>
+  {highlights.length > 0 && (
+    <ul class="product-card-list">
+      {highlights.map((h) => <li>{h}</li>)}
+    </ul>
+  )}
+  <span class="product-card-link">查看规格 →</span>
+</a>
+
+<style>
+  .product-card {
+    display: block;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--sp-5);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.18s ease;
+    height: 100%;
+  }
+
+  .product-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 16px rgba(31, 77, 58, 0.08);
+    text-decoration: none;
+    color: inherit;
+    transform: translateY(-2px);
+  }
+
+  .product-card-category {
+    font-size: var(--fs-xs);
+    color: var(--color-primary);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: var(--sp-2);
+    text-transform: uppercase;
+  }
+
+  .product-card-name {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--sp-3);
+    color: var(--color-primary-dark);
+  }
+
+  .product-card-desc {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    line-height: 1.65;
+    margin-bottom: var(--sp-3);
+  }
+
+  .product-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--sp-4);
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+  }
+
+  .product-card-list li {
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .product-card-list li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--color-primary);
+    font-weight: 700;
+  }
+
+  .product-card-link {
+    color: var(--color-primary);
+    font-size: var(--fs-sm);
+    font-weight: 500;
+  }
+</style>

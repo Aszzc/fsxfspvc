@@ -1,0 +1,291 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+const phoneNumber = '13450853338';
+
+const flow = [
+  {
+    step: '01',
+    title: '配方沟通',
+    desc: '客户提供使用场景、性能要求（耐温、阻燃、硬度、颜色等），技术人员与客户对接技术细节，给出初步配方建议。',
+  },
+  {
+    step: '02',
+    title: '小样试样',
+    desc: '按配方先做小批量试样，寄样给客户做挤出、注塑验证。客户反馈后再做配方微调。',
+  },
+  {
+    step: '03',
+    title: '原料混合',
+    desc: '按确认配方投料，高速混合机按工艺顺序加入 PVC 树脂、增塑剂、稳定剂、阻燃剂、填充剂等。',
+  },
+  {
+    step: '04',
+    title: '挤出造粒',
+    desc: '使用 PVC 专用挤出机进行造粒，温度与螺杆转速按配方设定，保证塑化均匀、出料稳定。',
+  },
+  {
+    step: '05',
+    title: '冷却筛分',
+    desc: '挤出后的料条经水冷 / 风冷、切粒机切粒，再经过振动筛去除过长、过细、异型颗粒，保证粒型均匀。',
+  },
+  {
+    step: '06',
+    title: '包装交付',
+    desc: '按 25kg / 袋或客户指定规格包装，附批次标识，可按客户要求做托盘打包。',
+  },
+  {
+    step: '07',
+    title: '批次稳定',
+    desc: '每批次留样记录，长期供货客户可保持配方一致性与稳定性，方便追溯。',
+  },
+];
+
+const capabilities = [
+  {
+    title: 'PVC 配方开发',
+    desc: '常规 PVC、改性 PVC、阻燃 PVC、耐温 PVC、耐寒 PVC 等均可按客户要求调整。',
+  },
+  {
+    title: '原料自主采购',
+    desc: 'PVC 树脂粉、增塑剂、稳定剂、阻燃剂等核心原料固定渠道采购，保证批次稳定。',
+  },
+  {
+    title: '混料工序',
+    desc: '高速混合机多台，可按工艺要求做冷混 / 热混。',
+  },
+  {
+    title: '挤出造粒',
+    desc: '双螺杆 / 单螺杆挤出机多台，日产能可覆盖中小电线电缆厂稳定供货需求。',
+  },
+  {
+    title: '切粒与筛分',
+    desc: '切粒机、振动筛配套，颗粒大小均匀，无过长过细。',
+  },
+  {
+    title: '包装与仓储',
+    desc: '自有仓库与成品堆放区，可按客户要求做包装规格。',
+  },
+];
+
+const qualityItems = [
+  '原料入厂检验，关键助剂留样',
+  '生产过程记录（温度、转速、时间）',
+  '成品外观与颗粒检验',
+  '每批次留样存档，便于追溯',
+  '客户反馈跟进，配方持续优化',
+];
+---
+<BaseLayout
+  title="制造能力"
+  description="祥丰盛塑业制造能力：PVC 配方沟通、原料混合、挤出造粒、冷却筛分、包装交付、批次稳定的全流程。从配方开发到稳定供货，每批次留样可追溯。"
+>
+  <!-- 页头 -->
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">首页</a> / 制造能力</div>
+      <h1>制造能力</h1>
+      <p class="page-header-sub">
+        从配方沟通到稳定供货，每一个环节都是工厂直做的优势。
+      </p>
+    </div>
+  </section>
+
+  <!-- 工艺流程 -->
+  <section class="section">
+    <div class="container">
+      <SectionTitle
+        title="工艺流程"
+        subtitle="从客户需求到成品交付的完整链路"
+      />
+
+      <div class="flow-grid">
+        {flow.map((item) => (
+          <div class="flow-card">
+            <div class="flow-step">{item.step}</div>
+            <h3 class="flow-title">{item.title}</h3>
+            <p>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 制造能力 -->
+  <section class="section section-alt">
+    <div class="container">
+      <SectionTitle
+        title="设备与工序"
+        subtitle="自有产线，覆盖 PVC 电线电缆料主流工艺"
+      />
+
+      <div class="grid grid-3">
+        {capabilities.map((c) => (
+          <div class="card">
+            <h3 class="card-title">{c.title}</h3>
+            <p>{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 品质保障 -->
+  <section class="section">
+    <div class="container">
+      <SectionTitle
+        title="批次稳定与可追溯"
+        subtitle="长期供货客户的配方一致性是工厂直做的关键优势"
+      />
+
+      <div class="quality-block">
+        <ul class="quality-list">
+          {qualityItems.map((q) => (
+            <li>
+              <span class="quality-check">✓</span>
+              <span>{q}</span>
+            </li>
+          ))}
+        </ul>
+        <div class="quality-cta">
+          <p>欢迎来厂看产线、看样品。</p>
+          <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 预约看厂 13450853338</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: var(--color-surface-alt);
+    padding: var(--sp-6) 0 var(--sp-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .breadcrumb {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--sp-3);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+  }
+
+  .page-header h1 {
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--sp-2);
+    color: var(--color-primary-dark);
+  }
+
+  .page-header-sub {
+    color: var(--color-text-soft);
+    margin: 0;
+  }
+
+  .section-alt {
+    background: var(--color-surface-alt);
+  }
+
+  /* 流程 */
+  .flow-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-4);
+  }
+
+  .flow-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
+    border-radius: 3px;
+    padding: var(--sp-5);
+    position: relative;
+  }
+
+  .flow-step {
+    font-size: var(--fs-2xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--sp-2);
+    line-height: 1;
+  }
+
+  .flow-title {
+    font-size: var(--fs-md);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-2);
+  }
+
+  .flow-card p {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    margin: 0;
+  }
+
+  /* 品质保障 */
+  .quality-block {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--sp-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--sp-6);
+    align-items: center;
+  }
+
+  .quality-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .quality-list li {
+    display: flex;
+    gap: var(--sp-3);
+    padding: var(--sp-3) 0;
+    border-bottom: 1px dashed var(--color-border);
+    color: var(--color-text-soft);
+  }
+
+  .quality-list li:last-child {
+    border-bottom: none;
+  }
+
+  .quality-check {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: var(--fs-lg);
+    flex-shrink: 0;
+    width: 22px;
+  }
+
+  .quality-cta {
+    background: var(--color-primary-dark);
+    color: #e8efe9;
+    padding: var(--sp-5);
+    border-radius: 3px;
+    text-align: center;
+  }
+
+  .quality-cta p {
+    color: #d8d6cf;
+    margin-bottom: var(--sp-4);
+  }
+
+  @media (max-width: 1100px) {
+    .flow-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .flow-grid,
+    .quality-block {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

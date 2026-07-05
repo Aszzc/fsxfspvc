@@ -1,0 +1,149 @@
+---
+const phoneNumber = '13450853338';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">祥丰盛塑业</div>
+        <p class="footer-desc">
+          广东佛山 PVC 电线电缆料生产厂家。自有配方研发、混料、挤出造粒、筛分包装，
+          主要供应 70℃ 绝缘料、护套料、电子料、插头料、耐高温料、耐寒料、高透明料等。
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>产品目录</h4>
+        <ul>
+          <li><a href="/products/#insulation-70">70℃ 绝缘料</a></li>
+          <li><a href="/products/#sheath">护套料</a></li>
+          <li><a href="/products/#electronic">电子料</a></li>
+          <li><a href="/products/#plug">插头料</a></li>
+          <li><a href="/products/#heat-resistant-105">105℃ 耐高温料</a></li>
+          <li><a href="/products/#cold-resistant">-40℃ 耐寒料</a></li>
+          <li><a href="/products/#transparent">高透明料</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>了解我们</h4>
+        <ul>
+          <li><a href="/manufacturing/">制造能力</a></li>
+          <li><a href="/knowledge/">行业知识</a></li>
+          <li><a href="/contact/">联系我们</a></li>
+          <li><a href="/llms.txt">llms.txt</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>联系方式</h4>
+        <ul class="footer-contact">
+          <li>电话 / 微信：<a href={`tel:${phoneNumber}`}>{phoneNumber}</a></li>
+          <li>小红书 / 抖音：搜索「祥丰盛塑业」</li>
+          <li>工厂地址：广东佛山</li>
+          <li>业务时间：周一至周六 8:00 - 18:00</li>
+        </ul>
+        <a href={`tel:${phoneNumber}`} class="btn btn-phone footer-cta">立即询价</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {year} 祥丰盛塑业 · xfspvc.com</span>
+      <span class="footer-domain">xfspvc.com · 佛山 PVC 电线电缆料厂家</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-primary-dark);
+    color: #d8d6cf;
+    padding: var(--sp-7) 0 var(--sp-5);
+    margin-top: var(--sp-7);
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: var(--sp-6);
+    margin-bottom: var(--sp-6);
+  }
+
+  .footer-brand {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: var(--sp-3);
+  }
+
+  .footer-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #b8b6ad;
+  }
+
+  .footer-col h4 {
+    color: #fff;
+    font-size: 15px;
+    margin-bottom: var(--sp-3);
+    font-weight: 600;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-col li {
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  .footer-col a {
+    color: #d8d6cf;
+  }
+
+  .footer-col a:hover {
+    color: #fff;
+  }
+
+  .footer-contact li {
+    color: #d8d6cf;
+  }
+
+  .footer-contact a {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .footer-cta {
+    margin-top: var(--sp-4);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: var(--sp-4);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--sp-2);
+    font-size: 12px;
+    color: #9a9890;
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-5);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,464 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+const phoneNumber = '13450853338';
+
+const guides = [
+  {
+    id: 'selection',
+    title: 'PVC 电线电缆料如何选型？',
+    summary: '从使用场景、温度要求、阻燃要求、加工方式四个维度来判断。',
+  },
+  {
+    id: 'temperature',
+    title: '70℃、90℃、105℃ 耐温有什么区别？',
+    summary: '工作温度不同对应 PVC 配方和原料体系不同，价格、用途也不同。',
+  },
+  {
+    id: 'cold',
+    title: '-40℃ 耐寒与普通 PVC 区别？',
+    summary: '通过增塑剂体系和改性实现低温不脆裂，常用于北方户外和冷链场景。',
+  },
+  {
+    id: 'rohs',
+    title: 'ROHS / REACH / NP 是什么？',
+    summary: '出口电线电缆常见的环保与禁用物质要求，决定配方中能否使用某些助剂。',
+  },
+  {
+    id: 'procurement',
+    title: '采购 PVC 料常见问题',
+    summary: '起订量、试样、批次稳定、颜色色差、包装等采购时需要确认的问题。',
+  },
+  {
+    id: 'factory',
+    title: '为什么建议找工厂直做？',
+    summary: '贸易商、成品料厂、工厂直做的差异主要在配方灵活度与稳定性。',
+  },
+];
+
+const faqs = [
+  {
+    q: 'PVC 电线电缆料应该按什么标准选型？',
+    a: '主要看四点：① 使用场景（建筑 / 电子 / 户外 / 家电）；② 工作温度（70℃ / 90℃ / 105℃）；③ 是否阻燃、阻燃等级；④ 加工方式（挤出速度、模具规格）。客户有明确执行标准（如 GB/T 8815、UL 标准）的按标准来。',
+  },
+  {
+    q: '70℃、90℃、105℃ 耐温 PVC 料的区别是什么？',
+    a: '区别主要在 PVC 配方体系与增塑剂选择：① 70℃ 是常规 PVC 绝缘料；② 90℃ 用耐热增塑剂与稳定剂；③ 105℃ 需要改性 PVC 或特种增塑体系，价格依次上升。客户应根据实际工作温度选择，不一定要选最高的。',
+  },
+  {
+    q: '-40℃ 耐寒 PVC 料能用在哪些场景？',
+    a: '主要场景：北方户外布线、农机线缆、冷库 / 制冷设备配线、冬季施工用电线、东北 / 西北地区的工程布线。普通 PVC 在 -10℃ 以下就容易出现脆裂，耐寒料通过改性增塑剂体系保持低温柔韧性。',
+  },
+  {
+    q: 'ROHS / REACH / NP 是什么？出口要做什么？',
+    a: 'ROHS 是欧盟有害物质限制指令；REACH 是欧盟化学品注册、评估、授权和限制法规；NP 通常指壬基酚（Nonylphenol）等特定限制物质。出口欧洲、美国、日本的电线电缆通常要求符合这些标准，做 OEM 的客户应在询价时明确目标市场。',
+  },
+  {
+    q: '采购 PVC 电线电缆料时，起订量一般多少？',
+    a: '常规配方起订量通常为 500kg - 1 吨，方便试产与上机验证；新开发配方小批量可从 100kg 起，但需评估开发周期与原料采购成本。颜色定制、特殊性能定制通常起订量会更高一些。',
+  },
+  {
+    q: '颜色定制和批次色差怎么控制？',
+    a: '颜色定制前建议客户提供色板（Pantone 色号或实物），我们会按色板打样。批次色差控制要点：① 固定色粉供应商；② 固定混合工艺；③ 每批次留样对比；④ 关键客户可建立色差接收标准。',
+  },
+  {
+    q: 'PVC 料保质期多久？储存要注意什么？',
+    a: '常规 PVC 颗粒料保质期通常为 6-12 个月（密封、避光、阴凉干燥环境）。储存注意：① 避免阳光直射；② 远离热源；③ 防潮，开封后尽快使用；④ 与其他化学品隔离存放。',
+  },
+  {
+    q: '工厂直做、贸易商、成品料厂有什么不同？',
+    a: '① 工厂直做：自有配方、自有产线，可按客户要求调整配方与小批量试产，长期供货配方稳定；② 贸易商：采购市面成品料转售，配方固定，调整空间小；③ 成品料厂：自有配方但通常规模化生产特定品类，定制灵活度居中。',
+  },
+  {
+    q: '试样一般怎么走？需要多长时间？',
+    a: '常规流程：客户提供规格要求 → 我们报价并打样 → 寄样给客户上机验证 → 客户反馈调整 → 确认后量产。首次试样一般 3-7 个工作日，加急可压缩。客户寄来的样品也可作为开发输入。',
+  },
+  {
+    q: '如何判断一家 PVC 料厂是否靠谱？',
+    a: '建议关注：① 是否自有配方研发能力（问几个配方问题判断）；② 是否愿意做小批量试样；③ 是否有稳定的原料渠道；④ 是否有完整的批次留样制度；⑤ 沟通响应是否专业及时。建议实地看厂。',
+  },
+];
+---
+<BaseLayout
+  title="PVC 电线电缆料行业知识"
+  description="PVC 电线电缆料选型、耐温 / 耐寒区别、ROHS / REACH / NP 环保标准、采购常见问题。工厂直说的行业知识，便于电线电缆厂家、电子线材厂、电源插头厂做采购决策。"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: f.a,
+      },
+    })),
+  }}
+>
+  <!-- 页头 -->
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">首页</a> / 行业知识</div>
+      <h1>行业知识</h1>
+      <p class="page-header-sub">
+        PVC 电线电缆料选型、耐温 / 耐寒区别、环保标准、采购常见问题，按工厂实操经验整理。
+      </p>
+    </div>
+  </section>
+
+  <!-- 主题导航 -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="topic-nav">
+        {guides.map((g) => (
+          <a href={`#${g.id}`} class="topic-nav-card">
+            <h3>{g.title}</h3>
+            <p>{g.summary}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 详细主题 -->
+  <section class="section">
+    <div class="container">
+      <SectionTitle title="选型与区别" subtitle="按使用场景与性能要求做判断" />
+
+      <article class="guide-block" id="selection">
+        <h3>PVC 电线电缆料如何选型？</h3>
+        <p>
+          选型时建议从 <strong>使用场景</strong>、<strong>工作温度</strong>、<strong>阻燃要求</strong>、<strong>加工方式</strong> 四个维度来判断。
+        </p>
+        <ol>
+          <li><strong>使用场景：</strong>建筑布线、电子线、户外布线、家电内部布线、电源插头等，不同场景对机械性能、耐候性、外观要求不同。</li>
+          <li><strong>工作温度：</strong>常规 70℃，耐温场景选 90℃ 或 105℃，耐寒场景选 -40℃ 改性料。</li>
+          <li><strong>阻燃要求：</strong>不同行业、不同认证对阻燃等级要求不同，需明确是否需要特定认证。</li>
+          <li><strong>加工方式：</strong>高速挤出还是常规挤出、注塑还是挤出、薄壁还是常规厚度，都会影响配方调整。</li>
+        </ol>
+        <div class="notice notice-primary">
+          没有完全匹配的产品？直接电话沟通，我们可以按场景开发新配方。
+        </div>
+      </article>
+
+      <article class="guide-block" id="temperature">
+        <h3>70℃、90℃、105℃ 耐温有什么区别？</h3>
+        <p>工作温度不同对应 PVC 配方与原料体系不同：</p>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>耐温等级</th>
+              <th>典型应用</th>
+              <th>配方特点</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>70℃</td>
+              <td>常规建筑线、电子线外被</td>
+              <td>常规 PVC 增塑剂与稳定剂</td>
+            </tr>
+            <tr>
+              <td>90℃</td>
+              <td>部分家电内部配线</td>
+              <td>耐热增塑剂与稳定剂</td>
+            </tr>
+            <tr>
+              <td>105℃</td>
+              <td>电热水器、烤箱、变压器引线</td>
+              <td>改性 PVC / 特种增塑体系</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="guide-note">
+          价格随耐温等级上升。客户应根据实际工作温度选择，不需要一味追求最高耐温。
+        </p>
+      </article>
+
+      <article class="guide-block" id="cold">
+        <h3>-40℃ 耐寒 PVC 料与普通 PVC 的区别？</h3>
+        <p>
+          普通 PVC 在低温下会变硬、变脆，温度到 -10℃ 以下时容易出现开裂现象。
+          -40℃ 耐寒料通过 <strong>增塑剂体系调整</strong> 与 <strong>改性配方</strong>，让 PVC 在低温下保持柔韧性。
+        </p>
+        <ul>
+          <li>应用场景：北方户外布线、农机线缆、冷库配线、冬季施工用电线</li>
+          <li>性能特点：低温不脆裂、低温冲击合格、长期低温弹性恢复</li>
+          <li>配方成本：相比常规 PVC，耐寒料成本略高</li>
+        </ul>
+      </article>
+
+      <article class="guide-block" id="rohs">
+        <h3>ROHS / REACH / NP 是什么？</h3>
+        <p>出口电线电缆常见的环保与禁用物质要求：</p>
+        <dl class="def-list">
+          <dt>ROHS</dt>
+          <dd>欧盟有害物质限制指令（2011/65/EU），限制铅、汞、镉、六价铬、PBB、PBDE 等物质在电子电气产品中的使用。</dd>
+
+          <dt>REACH</dt>
+          <dd>欧盟化学品注册、评估、授权和限制法规（EC 1907/2006），对化学品进行全生命周期管理，含高度关注物质（SVHC）清单。</dd>
+
+          <dt>NP（壬基酚）</dt>
+          <dd>壬基酚及壬基酚聚氧乙烯醚，常作为工业表面活性剂使用，部分环保标准对其有限制要求。</dd>
+        </dl>
+        <div class="notice">
+          出口客户应在询价时明确目标市场（欧盟 / 美国 / 日本等）与具体执行标准，我们按要求调整配方。
+        </div>
+      </article>
+
+      <article class="guide-block" id="procurement">
+        <h3>采购 PVC 料常见问题</h3>
+        <ul>
+          <li><strong>起订量：</strong>常规配方 500kg - 1 吨起，新开发配方可 100kg 起。</li>
+          <li><strong>试样周期：</strong>首次试样通常 3-7 个工作日，加急可压缩。</li>
+          <li><strong>颜色定制：</strong>提供色板或 Pantone 色号，按色板打样。</li>
+          <li><strong>批次色差：</strong>固定色粉供应商、固定工艺、每批次留样对比。</li>
+          <li><strong>包装规格：</strong>常规 25kg / 袋，可按客户要求做吨袋或托盘打包。</li>
+          <li><strong>保质期：</strong>常规 6-12 个月（密封、避光、阴凉干燥环境）。</li>
+          <li><strong>储存注意：</strong>避免阳光直射、远离热源、防潮、与其他化学品隔离。</li>
+        </ul>
+      </article>
+
+      <article class="guide-block" id="factory">
+        <h3>为什么建议找工厂直做？</h3>
+        <p>电线电缆料不是通用件。不同客户的导体结构、挤出速度、模具规格、使用场景都不一样，配方如果不匹配会出现：</p>
+        <ul>
+          <li>挤出不稳定、塑化不均</li>
+          <li>成品外观异常（晶点、起泡、表面粗糙）</li>
+          <li>耐温、阻燃、耐寒性能不达标</li>
+          <li>批次色差影响成品一致性</li>
+        </ul>
+        <p>
+          工厂直做可以按客户要求调整配方、做小批量试产、保留配方记录，长期供货批次稳定。
+          这是贸易商和成品料厂难以替代的优势。
+        </p>
+        <div class="notice notice-primary">
+          如果您正在评估供应商，欢迎先打电话沟通需求，或者直接来厂看产线、看样品。
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt">
+    <div class="container">
+      <SectionTitle
+        title="常见问题 FAQ"
+        subtitle="按客户经常问到的问题整理"
+      />
+
+      <div class="faq-list">
+        {faqs.map((f, i) => (
+          <details class="faq-item" open={i === 0}>
+            <summary>
+              <span class="faq-q">Q.</span>
+              <span>{f.q}</span>
+            </summary>
+            <div class="faq-a">{f.a}</div>
+          </details>
+        ))}
+      </div>
+
+      <div class="faq-cta">
+        <p>还有其他问题？直接电话或微信沟通更高效。</p>
+        <a href={`tel:${phoneNumber}`} class="btn btn-phone">📞 13450853338</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: var(--color-surface-alt);
+    padding: var(--sp-6) 0 var(--sp-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .breadcrumb {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--sp-3);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+  }
+
+  .page-header h1 {
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--sp-2);
+    color: var(--color-primary-dark);
+  }
+
+  .page-header-sub {
+    color: var(--color-text-soft);
+    margin: 0;
+    max-width: 760px;
+  }
+
+  .section-alt {
+    background: var(--color-surface-alt);
+  }
+
+  /* 主题导航 */
+  .topic-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-3);
+  }
+
+  .topic-nav-card {
+    display: block;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-primary);
+    padding: var(--sp-4);
+    border-radius: 3px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.15s ease;
+  }
+
+  .topic-nav-card:hover {
+    border-color: var(--color-primary);
+    background: #f0f5f1;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .topic-nav-card h3 {
+    font-size: var(--fs-base);
+    margin-bottom: var(--sp-2);
+    color: var(--color-primary-dark);
+  }
+
+  .topic-nav-card p {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    margin: 0;
+  }
+
+  /* 详细主题 */
+  .guide-block {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--sp-6);
+    margin-bottom: var(--sp-5);
+    scroll-margin-top: 90px;
+  }
+
+  .guide-block h3 {
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-4);
+    padding-bottom: var(--sp-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .guide-block ol,
+  .guide-block ul {
+    color: var(--color-text-soft);
+    line-height: 1.85;
+  }
+
+  .guide-block li {
+    margin-bottom: 6px;
+  }
+
+  .guide-note {
+    margin-top: var(--sp-3);
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  .def-list {
+    margin: var(--sp-3) 0;
+  }
+
+  .def-list dt {
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin-top: var(--sp-3);
+  }
+
+  .def-list dd {
+    margin: 4px 0 0 0;
+    color: var(--color-text-soft);
+    font-size: var(--fs-sm);
+  }
+
+  /* FAQ */
+  .faq-list {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 3px;
+    margin-bottom: var(--sp-2);
+  }
+
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: var(--sp-4);
+    display: flex;
+    gap: var(--sp-3);
+    align-items: flex-start;
+    font-weight: 500;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    margin-left: auto;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: var(--fs-lg);
+    flex-shrink: 0;
+  }
+
+  .faq-item[open] summary::after {
+    content: '−';
+  }
+
+  .faq-q {
+    color: var(--color-primary);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .faq-a {
+    padding: 0 var(--sp-4) var(--sp-4) calc(var(--sp-4) + 24px);
+    color: var(--color-text-soft);
+    font-size: var(--fs-sm);
+    line-height: 1.8;
+  }
+
+  .faq-cta {
+    background: var(--color-primary-dark);
+    color: #e8efe9;
+    padding: var(--sp-5);
+    border-radius: 4px;
+    text-align: center;
+    margin-top: var(--sp-6);
+  }
+
+  .faq-cta p {
+    color: #d8d6cf;
+    margin-bottom: var(--sp-3);
+  }
+
+  @media (max-width: 900px) {
+    .topic-nav {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

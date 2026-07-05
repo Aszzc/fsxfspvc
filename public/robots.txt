@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+# Sitemap
+Sitemap: https://xfspvc.com/sitemap.xml
+
+# LLM / AI 摘要指引
+# llms.txt 用于声明站点对 AI 抓取的可用信息，详见 https://llms.txt/
+Allow: /llms.txt

@@ -1,0 +1,428 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+const phoneNumber = '13450853338';
+
+const contactMethods = [
+  {
+    icon: '📞',
+    title: '电话 / 短信',
+    primary: phoneNumber,
+    href: `tel:${phoneNumber}`,
+    desc: '工作时间内直接拨打电话，技术问题、采购问题都可以直接沟通。',
+  },
+  {
+    icon: '💬',
+    title: '微信（同号）',
+    primary: phoneNumber,
+    href: `weixin://`,
+    desc: '微信同号，加好友后可发文字、照片、文件、视频、语音。',
+  },
+  {
+    icon: '📕',
+    title: '小红书',
+    primary: '搜索「祥丰盛塑业」',
+    href: 'https://www.xiaohongshu.com/',
+    desc: '关注小红书账号，可以看到工厂日常、产品实拍与客户案例。',
+  },
+  {
+    icon: '🎵',
+    title: '抖音',
+    primary: '搜索「祥丰盛塑业」',
+    href: 'https://www.douyin.com/',
+    desc: '关注抖音账号，可以看到生产过程、车间实拍。',
+  },
+];
+
+const inquiryList = [
+  '公司名称 / 联系人 / 联系方式',
+  '使用场景（如：建筑电线、电源线外被、电子线、户外布线…）',
+  '电线规格（导体截面积、绝缘厚度、外被厚度）',
+  '关键性能要求（耐温 / 阻燃 / 耐寒 / 硬度 / 颜色 / 透明度）',
+  '执行标准（GB / UL / VDE / 其他）',
+  '预计月用量 / 年用量',
+  '加工方式（挤出速度、模具规格）',
+  '其他特殊要求（气味、抗黄变、ROHS / REACH 等）',
+];
+---
+<BaseLayout
+  title="联系我们"
+  description="祥丰盛塑业联系方式：电话/微信 13450853338，小红书 / 抖音搜索「祥丰盛塑业」。位于广东佛山，可电话、微信、小红书、抖音沟通。询价需提供使用场景、性能要求、规格用量等信息。"
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: '联系祥丰盛塑业',
+    description: '佛山 PVC 电线电缆料厂家联系方式',
+    mainEntity: {
+      '@type': 'LocalBusiness',
+      name: '祥丰盛塑业',
+      telephone: '+86-13450853338',
+      url: 'https://xfspvc.com/',
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: '广东省',
+        addressLocality: '佛山市',
+        addressCountry: 'CN',
+      },
+    },
+  }}
+>
+  <!-- 页头 -->
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb"><a href="/">首页</a> / 联系我们</div>
+      <h1>联系我们</h1>
+      <p class="page-header-sub">
+        微信 / 电话同号，可发文字、照片、文件、视频、语音。
+      </p>
+    </div>
+  </section>
+
+  <!-- 主要联系方式 -->
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+        {contactMethods.map((m) => (
+          <a href={m.href} class="contact-card">
+            <div class="contact-icon">{m.icon}</div>
+            <h3 class="contact-title">{m.title}</h3>
+            <div class="contact-primary">{m.primary}</div>
+            <p class="contact-desc">{m.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 二维码 + 地址 -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="qr-block">
+        <div class="qr-card">
+          <div class="qr-placeholder">
+            <span>微信二维码</span>
+            <small>替换为真实二维码：public/images/wechat-qr.jpg</small>
+          </div>
+          <h3>扫码加微信</h3>
+          <p>微信同号：13450853338</p>
+        </div>
+
+        <div class="info-card">
+          <h3>工厂地址 / 业务时间</h3>
+          <ul class="info-list">
+            <li>
+              <strong>工厂地址：</strong>
+              <span>广东佛山</span>
+            </li>
+            <li>
+              <strong>业务时间：</strong>
+              <span>周一至周六 8:00 - 18:00</span>
+            </li>
+            <li>
+              <strong>电话 / 微信：</strong>
+              <span><a href={`tel:${phoneNumber}`}>{phoneNumber}</a></span>
+            </li>
+            <li>
+              <strong>来厂看货：</strong>
+              <span>请提前电话预约，方便安排接待</span>
+            </li>
+          </ul>
+          <div class="info-cta">
+            <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 立即联系</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 询价清单 -->
+  <section class="section">
+    <div class="container">
+      <SectionTitle
+        title="询价前请提供"
+        subtitle="信息越完整，沟通越高效，寄样和报价更准确"
+      />
+
+      <div class="inquiry-list-box">
+        <ol class="inquiry-checklist">
+          {inquiryList.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ol>
+
+        <div class="inquiry-tip">
+          <h4>温馨提示</h4>
+          <ul>
+            <li>如果有现成的电线样品，可以拍照片或寄样品给我们，更方便判断配方。</li>
+            <li>如果有执行标准的文件（GB / UL / VDE 等），可以一起发过来。</li>
+            <li>颜色要求尽量提供色板或 Pantone 色号，避免颜色描述偏差。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: var(--color-surface-alt);
+    padding: var(--sp-6) 0 var(--sp-5);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .breadcrumb {
+    font-size: var(--fs-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--sp-3);
+  }
+
+  .breadcrumb a {
+    color: var(--color-text-muted);
+  }
+
+  .page-header h1 {
+    font-size: var(--fs-2xl);
+    margin-bottom: var(--sp-2);
+    color: var(--color-primary-dark);
+  }
+
+  .page-header-sub {
+    color: var(--color-text-soft);
+    margin: 0;
+  }
+
+  .section-alt {
+    background: var(--color-surface-alt);
+  }
+
+  /* 联系方式卡片 */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-4);
+  }
+
+  .contact-card {
+    display: block;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--sp-5);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.15s ease;
+  }
+
+  .contact-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(31, 77, 58, 0.08);
+    text-decoration: none;
+    color: inherit;
+    transform: translateY(-2px);
+  }
+
+  .contact-icon {
+    font-size: 32px;
+    margin-bottom: var(--sp-3);
+  }
+
+  .contact-title {
+    font-size: var(--fs-md);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-2);
+  }
+
+  .contact-primary {
+    font-size: var(--fs-md);
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: var(--sp-3);
+  }
+
+  .contact-desc {
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* 二维码区 */
+  .qr-block {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: var(--sp-6);
+    align-items: stretch;
+  }
+
+  .qr-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--sp-5);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .qr-placeholder {
+    width: 200px;
+    height: 200px;
+    background:
+      repeating-linear-gradient(
+        45deg,
+        #2a2a26,
+        #2a2a26 8px,
+        #fff 8px,
+        #fff 16px
+      );
+    border: 1px solid var(--color-border);
+    margin-bottom: var(--sp-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: var(--fs-sm);
+    text-align: center;
+    padding: var(--sp-3);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  }
+
+  .qr-placeholder small {
+    display: block;
+    margin-top: var(--sp-2);
+    font-size: 10px;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  .qr-card h3 {
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-2);
+  }
+
+  .qr-card p {
+    color: var(--color-text-soft);
+    font-size: var(--fs-sm);
+    margin: 0;
+  }
+
+  .info-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--sp-6);
+  }
+
+  .info-card h3 {
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-4);
+    padding-bottom: var(--sp-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--sp-5);
+  }
+
+  .info-list li {
+    display: flex;
+    padding: var(--sp-3) 0;
+    border-bottom: 1px dashed var(--color-border);
+    font-size: var(--fs-sm);
+    color: var(--color-text-soft);
+  }
+
+  .info-list li:last-child {
+    border-bottom: none;
+  }
+
+  .info-list strong {
+    width: 130px;
+    color: var(--color-text);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .info-cta {
+    text-align: center;
+  }
+
+  .btn-lg {
+    padding: 14px 26px;
+    font-size: 17px;
+  }
+
+  /* 询价清单 */
+  .inquiry-list-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: var(--sp-6);
+  }
+
+  .inquiry-checklist {
+    columns: 2;
+    column-gap: var(--sp-6);
+    margin: 0 0 var(--sp-5);
+    padding-left: 1.5em;
+  }
+
+  .inquiry-checklist li {
+    margin-bottom: var(--sp-3);
+    color: var(--color-text-soft);
+    line-height: 1.7;
+    break-inside: avoid;
+  }
+
+  .inquiry-tip {
+    background: var(--color-surface-alt);
+    border-left: 3px solid var(--color-accent);
+    padding: var(--sp-4) var(--sp-5);
+    border-radius: 3px;
+    margin-top: var(--sp-4);
+  }
+
+  .inquiry-tip h4 {
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-3);
+    font-size: var(--fs-base);
+  }
+
+  .inquiry-tip ul {
+    margin: 0;
+    color: var(--color-text-soft);
+    font-size: var(--fs-sm);
+  }
+
+  .inquiry-tip li {
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 1000px) {
+    .contact-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .contact-grid,
+    .qr-block {
+      grid-template-columns: 1fr;
+    }
+
+    .inquiry-checklist {
+      columns: 1;
+    }
+
+    .info-list strong {
+      width: 110px;
+    }
+  }
+</style>

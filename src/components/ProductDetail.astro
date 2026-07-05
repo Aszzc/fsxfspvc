@@ -1,0 +1,196 @@
+---
+interface Props {
+  id: string;
+  name: string;
+  category: string;
+  summary: string;
+  useCases: string[];
+  suitableCustomers: string[];
+  processing: string[];
+  specs: Array<{ label: string; value: string }>;
+  concerns: string[];
+  inquiryNeeds: string[];
+}
+
+const {
+  id,
+  name,
+  category,
+  summary,
+  useCases,
+  suitableCustomers,
+  processing,
+  specs,
+  concerns,
+  inquiryNeeds,
+} = Astro.props;
+---
+<article class="product-detail" id={id}>
+  <header class="product-detail-header">
+    <div class="product-detail-meta">{category}</div>
+    <h3 class="product-detail-name">{name}</h3>
+    <p class="product-detail-summary">{summary}</p>
+  </header>
+
+  <div class="product-detail-grid">
+    <div class="product-detail-block">
+      <h4>主要用途</h4>
+      <ul>{useCases.map((u) => <li>{u}</li>)}</ul>
+    </div>
+
+    <div class="product-detail-block">
+      <h4>适合客户</h4>
+      <ul>{suitableCustomers.map((u) => <li>{u}</li>)}</ul>
+    </div>
+
+    <div class="product-detail-block">
+      <h4>加工方式</h4>
+      <ul>{processing.map((u) => <li>{u}</li>)}</ul>
+    </div>
+
+    <div class="product-detail-block">
+      <h4>常见关注指标</h4>
+      <ul>{concerns.map((u) => <li>{u}</li>)}</ul>
+    </div>
+  </div>
+
+  <div class="product-detail-specs">
+    <h4>典型规格范围（参考）</h4>
+    <table class="table">
+      <tbody>
+        {specs.map((s) => (
+          <tr>
+            <th>{s.label}</th>
+            <td>{s.value}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="specs-note">* 实际规格以双方沟通确认的技术单为准，可按客户要求调整。</p>
+  </div>
+
+  <div class="product-detail-inquiry">
+    <h4>询价需提供</h4>
+    <ol>{inquiryNeeds.map((u) => <li>{u}</li>)}</ol>
+  </div>
+</article>
+
+<style>
+  .product-detail {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 4px;
+    padding: var(--sp-5) var(--sp-6);
+    margin-bottom: var(--sp-6);
+    scroll-margin-top: 90px;
+  }
+
+  .product-detail-header {
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: var(--sp-4);
+    margin-bottom: var(--sp-4);
+  }
+
+  .product-detail-meta {
+    font-size: var(--fs-xs);
+    color: var(--color-primary);
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: var(--sp-2);
+  }
+
+  .product-detail-name {
+    font-size: var(--fs-xl);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-3);
+  }
+
+  .product-detail-summary {
+    font-size: var(--fs-md);
+    color: var(--color-text-soft);
+    margin: 0;
+  }
+
+  .product-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--sp-5);
+    margin-bottom: var(--sp-5);
+  }
+
+  .product-detail-block h4 {
+    font-size: var(--fs-base);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-2);
+    padding-left: 10px;
+    border-left: 3px solid var(--color-primary);
+  }
+
+  .product-detail-block ul {
+    margin: 0;
+    padding-left: 1.2em;
+    color: var(--color-text-soft);
+    font-size: var(--fs-sm);
+  }
+
+  .product-detail-block li {
+    margin-bottom: 3px;
+  }
+
+  .product-detail-specs {
+    margin-bottom: var(--sp-5);
+  }
+
+  .product-detail-specs h4 {
+    font-size: var(--fs-base);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-3);
+  }
+
+  .product-detail-specs th {
+    width: 30%;
+    background: var(--color-surface-alt);
+  }
+
+  .specs-note {
+    font-size: var(--fs-xs);
+    color: var(--color-text-muted);
+    margin: var(--sp-3) 0 0;
+  }
+
+  .product-detail-inquiry {
+    background: var(--color-surface-alt);
+    padding: var(--sp-4);
+    border-radius: 3px;
+  }
+
+  .product-detail-inquiry h4 {
+    font-size: var(--fs-base);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--sp-3);
+  }
+
+  .product-detail-inquiry ol {
+    margin: 0;
+    padding-left: 1.5em;
+    color: var(--color-text-soft);
+    font-size: var(--fs-sm);
+  }
+
+  .product-detail-inquiry li {
+    margin-bottom: 3px;
+  }
+
+  @media (max-width: 720px) {
+    .product-detail {
+      padding: var(--sp-4);
+    }
+
+    .product-detail-grid {
+      grid-template-columns: 1fr;
+      gap: var(--sp-4);
+    }
+  }
+</style>

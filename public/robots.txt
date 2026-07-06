@@ -2,10 +2,77 @@ User-agent: *
 Allow: /
 Disallow: /404.html
 
-# Sitemap
-Sitemap: https://xfspvc.com/sitemap.xml
+# Major search engines
+User-agent: Googlebot
+Allow: /
 
-# LLM / AI 摘要指引
-# llms.txt 用于声明站点对 AI 抓取的可用信息，详见 https://llms.txt/
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: Sogou web spider
+Allow: /
+
+User-agent: 360Spider
+Allow: /
+
+User-agent: YisouSpider
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# AI / LLM crawlers for GEO and generative search retrieval
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# LLM-friendly summaries
 Allow: /llms.txt
 Allow: /en/llms.txt
+
+Sitemap: https://xfspvc.com/sitemap.xml
+Host: https://xfspvc.com

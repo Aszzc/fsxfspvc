@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { dailyUpdates } from '../../data/updates';
+
+export function getStaticPaths() {
+  return dailyUpdates.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+---
+<BaseLayout
+  title={item.title}
+  description={item.summary}
+  canonical={`https://xfspvc.com/updates/${item.slug}/`}
+  breadcrumbs={[
+    { name: '首页', href: '/' },
+    { name: '每日更新', href: '/updates/' },
+    { name: item.title, href: `/updates/${item.slug}/` },
+  ]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: item.title,
+    description: item.summary,
+    datePublished: item.date,
+    dateModified: item.date,
+    inLanguage: 'zh-CN',
+    url: `https://xfspvc.com/updates/${item.slug}/`,
+    mainEntityOfPage: `https://xfspvc.com/updates/${item.slug}/`,
+    author: {
+      '@type': 'Organization',
+      name: '佛山市三水湘发顺塑料有限公司',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: '佛山市三水湘发顺塑料有限公司',
+      '@id': 'https://xfspvc.com/#organization',
+    },
+    keywords: item.tags.join(', '),
+  }}
+>
+  <article class="update-article">
+    <header class="update-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">首页</a>
+          <span class="breadcrumb-sep">/</span>
+          <a href="/updates/">每日更新</a>
+          <span class="breadcrumb-sep">/</span>
+          <span>{item.category}</span>
+        </nav>
+        <div class="update-meta">
+          <time datetime={item.date}>{item.date}</time>
+          <span>{item.category}</span>
+        </div>
+        <h1>{item.title}</h1>
+        <p>{item.summary}</p>
+        <div class="tag-list">
+          {item.tags.map((tag) => <span>{tag}</span>)}
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container narrow">
+        {item.body.map((paragraph) => <p>{paragraph}</p>)}
+
+        <div class="tip-box">
+          <h2>询价时建议提供</h2>
+          <ul>
+            {item.inquiryTips.map((tip) => <li>{tip}</li>)}
+          </ul>
+        </div>
+
+        <div class="article-cta">
+          <a href="tel:13450853338" class="btn btn-phone btn-lg">电话 / 微信 13450853338</a>
+          <a href="/contact/" class="btn btn-outline">查看联系方式</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .update-hero {
+    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    color: #fff;
+    padding: var(--sp-7) 0;
+  }
+  .update-hero .breadcrumb,
+  .update-hero .breadcrumb a {
+    color: rgba(255, 255, 255, 0.78);
+  }
+  .update-meta {
+    display: flex;
+    gap: var(--sp-3);
+    margin: var(--sp-5) 0 var(--sp-3);
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+  }
+  .update-hero h1 {
+    color: #fff;
+    max-width: 880px;
+  }
+  .update-hero p {
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 760px;
+    font-size: var(--fs-md);
+    line-height: 1.8;
+  }
+  .narrow {
+    max-width: 860px;
+  }
+  .narrow p {
+    font-size: var(--fs-md);
+    line-height: 1.9;
+    color: var(--color-text-soft);
+  }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: var(--sp-5);
+  }
+  .tag-list span {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-size: var(--fs-xs);
+    font-weight: 700;
+  }
+  .tip-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-md);
+    padding: var(--sp-5);
+    margin-top: var(--sp-6);
+  }
+  .tip-box h2 {
+    font-size: var(--fs-lg);
+    color: var(--color-primary-dark);
+  }
+  .tip-box li {
+    margin-bottom: 8px;
+    color: var(--color-text-soft);
+  }
+  .article-cta {
+    display: flex;
+    gap: var(--sp-3);
+    flex-wrap: wrap;
+    margin-top: var(--sp-6);
+  }
+</style>

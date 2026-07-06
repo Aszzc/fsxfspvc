@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import { sortedDailyUpdates } from '../data/updates';
+
+const latest = sortedDailyUpdates[0];
+---
+<BaseLayout
+  title="PVC 电线电缆料每日更新"
+  description="湘发顺塑料每日更新 PVC 电线电缆料选型、询价、试样、批次稳定、耐寒耐温和工厂生产相关内容，方便搜索引擎和 AI 持续检索。"
+  canonical="https://xfspvc.com/updates/"
+  breadcrumbs={[
+    { name: '首页', href: '/' },
+    { name: '每日更新', href: '/updates/' },
+  ]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': 'https://xfspvc.com/updates/#blog',
+    name: 'PVC 电线电缆料每日更新',
+    description: 'PVC 电线电缆料选型、询价、试样和工厂生产相关内容更新。',
+    url: 'https://xfspvc.com/updates/',
+    inLanguage: 'zh-CN',
+    dateModified: latest.date,
+    blogPost: sortedDailyUpdates.map((item) => ({
+      '@type': 'BlogPosting',
+      headline: item.title,
+      datePublished: item.date,
+      dateModified: item.date,
+      url: `https://xfspvc.com/updates/${item.slug}/`,
+      description: item.summary,
+    })),
+  }}
+>
+  <section class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">首页</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>每日更新</span>
+      </nav>
+      <div class="section-eyebrow page-eyebrow">DAILY UPDATES</div>
+      <h1>PVC 电线电缆料每日更新</h1>
+      <p class="page-header-sub">
+        用短内容持续更新工厂经验、材料选型、询价试样和生产注意事项。适合搜索引擎收录，也适合 AI 检索引用。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionTitle
+        eyebrow="LATEST"
+        title="近期更新"
+        subtitle="建议每天新增 1 条真实、有用、可验证的工厂知识，而不是低质量堆关键词"
+      />
+
+      <div class="updates-grid">
+        {sortedDailyUpdates.map((item) => (
+          <article class="update-card">
+            <div class="update-meta">
+              <time datetime={item.date}>{item.date}</time>
+              <span>{item.category}</span>
+            </div>
+            <h2><a href={`/updates/${item.slug}/`}>{item.title}</a></h2>
+            <p>{item.summary}</p>
+            <div class="tag-list">
+              {item.tags.map((tag) => <span>{tag}</span>)}
+            </div>
+            <a class="read-more" href={`/updates/${item.slug}/`}>查看详情</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-eyebrow { margin-bottom: var(--sp-3); }
+  .updates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-4);
+  }
+  .update-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--sp-5);
+    box-shadow: var(--shadow-xs);
+    transition: all 0.22s var(--ease-out);
+  }
+  .update-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--color-primary);
+  }
+  .update-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--sp-3);
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    margin-bottom: var(--sp-3);
+  }
+  .update-card h2 {
+    font-size: var(--fs-lg);
+    margin-bottom: var(--sp-3);
+    color: var(--color-primary-dark);
+  }
+  .update-card p {
+    color: var(--color-text-soft);
+    font-size: var(--fs-sm);
+    line-height: 1.75;
+  }
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: var(--sp-4) 0;
+  }
+  .tag-list span {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+  }
+  .read-more {
+    font-weight: 700;
+    color: var(--color-accent-dark);
+  }
+  @media (max-width: 900px) {
+    .updates-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { products } from '../../data/products';
+import { siteConfig } from '../../config/site';
+
+export function getStaticPaths() {
+  return products.zh.map((product) => ({ params: { slug: product.slug }, props: { product } }));
+}
+const { product } = Astro.props;
+---
+<BaseLayout title={product.name} description={product.summary} breadcrumbs={[{ name: '首页', href: '/' }, { name: '产品目录', href: '/products/' }, { name: product.name, href: `/products/${product.slug}/` }]} jsonLd={{ '@context': 'https://schema.org', '@type': 'Product', name: product.name, description: product.summary, brand: { '@type': 'Brand', name: '湘发顺' }, manufacturer: { '@id': `${siteConfig.url}/#organization` }, url: `${siteConfig.url}/products/${product.slug}/` }}>
+  <section class="page-header"><div class="container"><nav class="breadcrumb" aria-label="面包屑"><a href="/">首页</a><span class="breadcrumb-sep">/</span><a href="/products/">产品目录</a><span class="breadcrumb-sep">/</span><span>{product.name}</span></nav><div class="section-eyebrow page-eyebrow">{product.category}</div><h1>{product.name}</h1><p class="page-header-sub">{product.summary}</p></div></section>
+  <section class="section"><div class="container product-page-grid"><article><h2>适用场景</h2><ul>{product.applications.map((item: string) => <li>{item}</li>)}</ul><h2>产品特点</h2><ul>{product.highlights.map((item: string) => <li>{item}</li>)}</ul></article><aside class="inquiry-panel"><span class="section-eyebrow">INQUIRY</span><h2>获取针对性方案</h2><p>请准备以下信息，我们会据此确认配方与打样方向。</p><ol>{product.inquiry.map((item: string) => <li>{item}</li>)}</ol><a class="btn btn-primary" href={`/tools/inquiry/?product=${product.slug}`}>填写询价需求</a><a class="contact-link" href={`tel:${siteConfig.phone}`}>或致电 {siteConfig.phone}</a></aside></div></section>
+</BaseLayout>
+<style>.page-eyebrow{margin-bottom:var(--sp-3)}.product-page-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--sp-7);align-items:start}.product-page-grid article{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6)}h2{color:var(--color-primary-dark);font-size:var(--fs-lg)}li{margin-bottom:var(--sp-2);color:var(--color-text-soft)}.inquiry-panel{background:var(--color-primary-soft);padding:var(--sp-6);border-radius:var(--radius-md);border:1px solid var(--color-border)}.inquiry-panel .btn{width:100%;margin-top:var(--sp-3)}.contact-link{display:block;text-align:center;margin-top:var(--sp-3);font-weight:700}@media(max-width:720px){.product-page-grid,.product-page-grid article{grid-template-columns:1fr}}</style>
+

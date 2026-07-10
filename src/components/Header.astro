@@ -7,6 +7,7 @@ interface Props {
 const { locale = 'zh-CN', brandShort = '湘发顺' } = Astro.props;
 
 const navItemsZh = [
+  { href: '/about/', label: '关于我们' },
   { href: '/', label: '首页' },
   { href: '/products/', label: '产品目录' },
   { href: '/manufacturing/', label: '制造能力' },
@@ -16,6 +17,7 @@ const navItemsZh = [
 ];
 
 const navItemsEn = [
+  { href: '/en/about/', label: 'About' },
   { href: '/en/', label: 'Home' },
   { href: '/en/products/', label: 'Products' },
   { href: '/en/manufacturing/', label: 'Manufacturing' },
@@ -101,7 +103,7 @@ const brandSub = locale === 'en'
           </span>
           {altLabel}
         </a>
-        <a href={`tel:${phoneNumber}`} class="btn btn-phone header-cta">
+        <a href={locale === 'en' ? '/en/tools/inquiry/' : '/tools/inquiry/'} class="btn btn-phone header-cta">
           <span class="cta-dot"></span>
           {locale === 'en' ? 'Get Quote' : '立即询价'}
         </a>

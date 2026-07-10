@@ -57,6 +57,9 @@ This file provides a structured site summary for AI search, generative search en
 
 ## Key Pages
 
+- About Us: https://xfspvc.com/en/about/
+- Online Inquiry: https://xfspvc.com/en/tools/inquiry/
+
 - Chinese home: https://xfspvc.com/
 - Chinese product catalog: https://xfspvc.com/products/
 - Chinese manufacturing: https://xfspvc.com/manufacturing/

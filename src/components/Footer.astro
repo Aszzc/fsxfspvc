@@ -31,6 +31,7 @@ const productLinks = isEn
 
 const companyLinks = isEn
   ? [
+      { href: '/en/about/', label: 'About' },
       { href: '/en/manufacturing/', label: 'Manufacturing' },
       { href: '/en/knowledge/', label: 'Knowledge' },
       { href: '/en/updates/', label: 'Updates' },
@@ -38,6 +39,7 @@ const companyLinks = isEn
       { href: '/en/llms.txt', label: 'llms.txt' },
     ]
   : [
+      { href: '/about/', label: '关于我们' },
       { href: '/manufacturing/', label: '制造能力' },
       { href: '/knowledge/', label: '行业知识' },
       { href: '/updates/', label: '每日更新' },
@@ -99,7 +101,7 @@ const copyrightName = fullName;
       <div class="footer-col">
         <h4>{isEn ? 'Products' : '产品目录'}</h4>
         <ul>
-          {productLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+          {productLinks.map((l) => <li><a href={`${l.href.replace('/products/#', '/products/').replace('/en/products/#', '/en/products/')}/`}>{l.label}</a></li>)}
         </ul>
       </div>
 

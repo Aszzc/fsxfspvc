@@ -57,6 +57,9 @@
 
 ## 核心页面
 
+- 关于我们：https://xfspvc.com/about/
+- 在线询价：https://xfspvc.com/tools/inquiry/
+
 - 首页：https://xfspvc.com/
 - 产品目录：https://xfspvc.com/products/
 - 制造能力：https://xfspvc.com/manufacturing/

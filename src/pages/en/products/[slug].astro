@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { products } from '../../../data/products';
+import { siteConfig } from '../../../config/site';
+export function getStaticPaths() { return products.en.map((product) => ({ params: { slug: product.slug }, props: { product } })); }
+const { product } = Astro.props;
+---
+<BaseLayout locale="en" title={product.name} description={product.summary} breadcrumbs={[{ name: 'Home', href: '/en/' }, { name: 'Products', href: '/en/products/' }, { name: product.name, href: `/en/products/${product.slug}/` }]} jsonLd={{ '@context': 'https://schema.org', '@type': 'Product', name: product.name, description: product.summary, brand: { '@type': 'Brand', name: 'Xiangfa Shun' }, manufacturer: { '@id': `${siteConfig.url}/#organization` }, url: `${siteConfig.url}/en/products/${product.slug}/` }}>
+  <section class="page-header"><div class="container"><nav class="breadcrumb" aria-label="Breadcrumb"><a href="/en/">Home</a><span class="breadcrumb-sep">/</span><a href="/en/products/">Products</a><span class="breadcrumb-sep">/</span><span>{product.name}</span></nav><div class="section-eyebrow page-eyebrow">{product.category}</div><h1>{product.name}</h1><p class="page-header-sub">{product.summary}</p></div></section>
+  <section class="section"><div class="container product-page-grid"><article><h2>Applications</h2><ul>{product.applications.map((item: string) => <li>{item}</li>)}</ul><h2>Highlights</h2><ul>{product.highlights.map((item: string) => <li>{item}</li>)}</ul></article><aside class="inquiry-panel"><span class="section-eyebrow">INQUIRY</span><h2>Request a tailored recommendation</h2><p>Share the following details so we can confirm the formulation and trial direction.</p><ol>{product.inquiry.map((item: string) => <li>{item}</li>)}</ol><a class="btn btn-primary" href={`/en/tools/inquiry/?product=${product.slug}`}>Send inquiry details</a><a class="contact-link" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></aside></div></section>
+</BaseLayout>
+<style>.page-eyebrow{margin-bottom:var(--sp-3)}.product-page-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--sp-7);align-items:start}.product-page-grid article{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6)}h2{color:var(--color-primary-dark);font-size:var(--fs-lg)}li{margin-bottom:var(--sp-2);color:var(--color-text-soft)}.inquiry-panel{background:var(--color-primary-soft);padding:var(--sp-6);border-radius:var(--radius-md);border:1px solid var(--color-border)}.inquiry-panel .btn{width:100%;margin-top:var(--sp-3)}.contact-link{display:block;text-align:center;margin-top:var(--sp-3);font-weight:700}@media(max-width:720px){.product-page-grid,.product-page-grid article{grid-template-columns:1fr}}</style>
+

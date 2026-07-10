@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { aboutContent } from '../data/about';
+import { siteConfig } from '../config/site';
+const t = aboutContent.zh;
+---
+<BaseLayout title={t.title} description={t.summary} breadcrumbs={[{ name: t.title, href: '/about/' }]} jsonLd={{ '@context': 'https://schema.org', '@type': 'AboutPage', name: t.title, description: t.summary, about: { '@id': `${siteConfig.url}/#organization` } }}>
+  <section class="page-header"><div class="container"><div class="section-eyebrow page-eyebrow">ABOUT</div><h1>{t.title}</h1><p class="page-header-sub">{t.summary}</p></div></section>
+  <section class="section"><div class="container"><div class="section-eyebrow">HOW WE WORK</div><div class="value-grid">{t.values.map(([title, body], i) => (<article><span>0{i + 1}</span><h2>{title}</h2><p>{body}</p></article>))}</div></div></section>
+  <section class="section section-alt"><div class="container trust-note"><p>Company documents, test reports and certifications are provided only when valid public copies are available.</p><a class="btn btn-primary" href="/contact/">Contact us</a></div></section>
+</BaseLayout>
+<style>.page-eyebrow{margin-bottom:var(--sp-3)}.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);margin-top:var(--sp-6)}.value-grid article{padding:var(--sp-6);border:1px solid var(--color-border);border-radius:var(--radius-md)}.value-grid span{color:var(--color-accent);font-weight:800}.trust-note{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-6)}@media(max-width:720px){.value-grid{grid-template-columns:1fr}.trust-note{align-items:flex-start;flex-direction:column}}</style>

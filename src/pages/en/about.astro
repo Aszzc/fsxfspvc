@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { aboutContent } from '../../data/about';
+import { siteConfig } from '../../config/site';
+const t = aboutContent.en;
+---
+<BaseLayout
+  locale="en"
+  title={t.title}
+  description={t.summary}
+  breadcrumbs={[{ name: 'Home', href: '/en/' }, { name: t.title, href: '/en/about/' }]}
+  jsonLd={{ '@context': 'https://schema.org', '@type': 'AboutPage', name: t.title, description: t.summary, about: { '@id': `${siteConfig.url}/#organization` } }}
+>
+  <section class="page-header">
+    <div class="container">
+      <div class="section-eyebrow page-eyebrow">ABOUT</div>
+      <h1>{t.title}</h1>
+      <p class="page-header-sub">{t.summary}</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-eyebrow">HOW WE WORK</div>
+      <h2>From requirement to repeatable supply</h2>
+      <div class="value-grid">
+        {t.values.map(([title, body], i) => (
+          <article><span>{String(i + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{body}</p></article>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section section-alt">
+    <div class="container trust-note">
+      <div><div class="section-eyebrow">TRANSPARENCY</div><h2>Evidence-led company information</h2><p>We publish licenses, reports and certifications only after approved public copies are available.</p></div>
+      <a class="btn btn-primary" href="/en/contact/">Request documents</a>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .page-eyebrow{margin-bottom:var(--sp-3)}.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);margin-top:var(--sp-6)}.value-grid article{padding:var(--sp-6);border:1px solid var(--color-border);border-radius:var(--radius-md)}.value-grid span{color:var(--color-accent);font-weight:800}.trust-note{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-6)}@media(max-width:720px){.value-grid{grid-template-columns:1fr}.trust-note{align-items:flex-start;flex-direction:column}}
+</style>

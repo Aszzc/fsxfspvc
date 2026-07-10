@@ -1,4 +1,5 @@
 import { dailyUpdates } from '../data/updates';
+import { products } from '../data/products';
 
 const site = 'https://xfspvc.com';
 
@@ -19,6 +20,15 @@ const updatePages = dailyUpdates.map((item) => ({
   priority: '0.7',
 }));
 
+const addedCorePages = [
+  { path: '/about/', enPath: '/en/about/', lastmod: '2026-07-11', changefreq: 'monthly', priority: '0.8' },
+  { path: '/tools/inquiry/', enPath: '/en/tools/inquiry/', lastmod: '2026-07-11', changefreq: 'monthly', priority: '0.8' },
+];
+
+const productPages = products.zh.map((item) => ({
+  path: `/products/${item.slug}/`, enPath: `/en/products/${item.slug}/`, lastmod: '2026-07-11', changefreq: 'monthly', priority: '0.8',
+}));
+
 function absolute(path: string) {
   return `${site}${path}`;
 }
@@ -36,7 +46,7 @@ function renderUrl(loc: string, zhHref: string, enHref: string, lastmod: string,
 }
 
 export function GET() {
-  const pairedPages = [...corePages, ...updatePages];
+  const pairedPages = [...corePages, ...addedCorePages, ...productPages, ...updatePages];
   const urls = pairedPages.flatMap((page) => [
     renderUrl(page.path, page.path, page.enPath, page.lastmod, page.changefreq, page.priority),
     renderUrl(page.enPath, page.path, page.enPath, page.lastmod, page.changefreq, page.priority),

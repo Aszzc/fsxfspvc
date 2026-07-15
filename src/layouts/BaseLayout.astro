@@ -17,27 +17,22 @@ const {
   title,
   description,
   canonical,
-  ogImage = 'https://xfspvc.com/images/factory-warehouse.jpg',
+  ogImage = 'https://xfspvc.com/images/manufacturing-hero.png',
   jsonLd,
   locale = 'zh-CN',
   breadcrumbs,
 } = Astro.props;
 
-// 根据语言生成不同的站点名与标题后缀
-const siteNameZh = '佛山市三水湘发顺塑料有限公司 - 佛山 PVC 电线电缆料厂家';
-const siteNameEn = 'Foshan Xiangfa Shun Plastic Co., Ltd. - PVC Wire & Cable Compound Manufacturer';
-const siteName = locale === 'en' ? siteNameEn : siteNameZh;
-const brandShort = locale === 'en' ? 'Xiangfa Shun' : '湘发顺';
+const isEn = locale === 'en';
 const siteUrl = Astro.site?.href ?? 'https://xfspvc.com/';
-
-const fullTitle =
-  locale === 'en'
-    ? (title.includes('Xiangfa Shun') || title.includes('xfspvc') ? title : `${title} | Xiangfa Shun Plastic`)
-    : (title.includes('湘发顺') || title.includes('xfspvc') ? title : `${title} | 佛山市三水湘发顺塑料有限公司`);
-
+const siteName = isEn
+  ? 'Foshan Xiangfa Shun Plastic Co., Ltd.'
+  : '佛山市三水湘发顺塑料有限公司';
+const brandShort = isEn ? 'Xiangfa Shun' : '湘发顺塑料';
+const fullTitle = title.includes(siteName) || title.includes('Xiangfa Shun')
+  ? title
+  : `${title} | ${brandShort}`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
-
-// hreflang：英文页面指向 /en/，中文页面指向无前缀路径
 const isEnPage = Astro.url.pathname.startsWith('/en/');
 const enHref = isEnPage
   ? new URL(Astro.url.pathname, siteUrl).href
@@ -46,22 +41,12 @@ const zhHref = isEnPage
   ? new URL(Astro.url.pathname.replace(/^\/en/, '') || '/', siteUrl).href
   : new URL(Astro.url.pathname, siteUrl).href;
 
-const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
-
-// 站点级别的固定结构化数据：Organization + WebSite + LocalBusiness
 const orgLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  '@id': `${siteUrl}#organization`,
   name: '佛山市三水湘发顺塑料有限公司',
-  alternateName: ['湘发顺塑料', '湘发顺', 'Xiangfa Shun Plastic'],
+  alternateName: ['湘发顺塑料', 'Xiangfa Shun Plastic'],
   url: siteUrl,
-  logo: {
-    '@type': 'ImageObject',
-    url: `${siteUrl}images/factory-warehouse.jpg`,
-  },
-  description:
-    '广东佛山 PVC 电线电缆料生产厂家，自有配方、自有工厂。主要供应 70℃ 绝缘料、护套料、电子料、插头料、105℃ 耐高温料、-40℃ 耐寒料、高透明料、雾面料、改性橡塑料。',
   telephone: '+86-13450853338',
   address: {
     '@type': 'PostalAddress',
@@ -69,55 +54,25 @@ const orgLd = {
     addressLocality: '佛山市三水区',
     addressCountry: 'CN',
   },
-  areaServed: [
-    { '@type': 'Country', name: 'CN' },
-    { '@type': 'AdministrativeArea', name: '华南' },
-    { '@type': 'AdministrativeArea', name: '华东' },
-    { '@type': 'AdministrativeArea', name: '华北' },
-  ],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+86-13450853338',
-    contactType: 'sales',
-    areaServed: ['CN', 'GLOBAL'],
-    availableLanguage: ['zh-Hans', 'English'],
-  },
-  knowsAbout: [
-    'PVC Compound',
-    'PVC Wire & Cable Compound',
-    'PVC Insulation',
-    'PVC Sheath',
-    'PVC Heat-resistant Compound',
-    'PVC Cold-resistant Compound',
-    '电线电缆料',
-    'PVC 配方',
-    'PVC 挤出造粒',
-  ],
-  sameAs: [
-    `${siteUrl}llms.txt`,
-  ],
 };
 
-// 面包屑结构化数据
-const breadcrumbLd = breadcrumbs && breadcrumbs.length > 0
+const breadcrumbLd = breadcrumbs?.length
   ? {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
-      itemListElement: breadcrumbs.map((b, i) => ({
+      itemListElement: breadcrumbs.map((item, index) => ({
         '@type': 'ListItem',
-        position: i + 1,
-        name: b.name,
-        item: new URL(b.href, siteUrl).href,
+        position: index + 1,
+        name: item.name,
+        item: new URL(item.href, siteUrl).href,
       })),
     }
   : null;
 
-const allJsonLd = [
-  orgLd,
-  ...(breadcrumbLd ? [breadcrumbLd] : []),
-  ...jsonLdArray,
-];
+const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const allJsonLd = [orgLd, ...(breadcrumbLd ? [breadcrumbLd] : []), ...jsonLdArray];
 ---
+
 <!DOCTYPE html>
 <html lang={locale}>
   <head>
@@ -126,39 +81,24 @@ const allJsonLd = [
     <meta name="theme-color" content="#0f3a32" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content={locale === 'en'
-      ? 'PVC compound, PVC wire cable compound, PVC insulation, PVC sheath, 70℃ insulation, 105℃ heat-resistant PVC, -40℃ cold-resistant PVC, transparent PVC, Foshan PVC manufacturer, Xiangfa Shun Plastic'
-      : 'PVC 电线电缆料, PVC 绝缘料, PVC 护套料, 70℃ 绝缘料, 105℃ 耐高温 PVC, -40℃ 耐寒 PVC, 高透明 PVC, 佛山 PVC 厂家, 湘发顺塑料, 改性 PVC'} />
-    <meta name="author" content="佛山市三水湘发顺塑料有限公司" />
+    <meta name="author" content={siteName} />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="canonical" href={canonicalUrl} />
-
-    <!-- hreflang -->
     <link rel="alternate" hreflang="zh-CN" href={zhHref} />
     <link rel="alternate" hreflang="en" href={enHref} />
     <link rel="alternate" hreflang="x-default" href={zhHref} />
-
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'zh_CN'} />
-    <meta property="og:locale:alternate" content={locale === 'en' ? 'zh_CN' : 'en_US'} />
-
-    <!-- Twitter Card -->
+    <meta property="og:locale" content={isEn ? 'en_US' : 'zh_CN'} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
-
     <meta name="format-detection" content="telephone=yes" />
-
-    <!-- AI GEO hint -->
-    <link rel="alternate" type="text/plain" href={locale === 'en' ? `${siteUrl}en/llms.txt` : `${siteUrl}llms.txt`} title="LLM-friendly site summary" />
-
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
@@ -167,9 +107,6 @@ const allJsonLd = [
       <slot />
     </main>
     <Footer locale={locale} />
-
-    {allJsonLd.map((data) => (
-      <script type="application/ld+json" set:html={JSON.stringify(data)} />
-    ))}
+    {allJsonLd.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
   </body>
 </html>

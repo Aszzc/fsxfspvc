@@ -4,425 +4,189 @@ interface Props {
   brandShort?: string;
 }
 
-const { locale = 'zh-CN', brandShort = '湘发顺' } = Astro.props;
-
-const navItemsZh = [
-  { href: '/about/', label: '关于我们' },
-  { href: '/', label: '首页' },
-  { href: '/products/', label: '产品目录' },
-  { href: '/manufacturing/', label: '制造能力' },
-  { href: '/knowledge/', label: '行业知识' },
-  { href: '/updates/', label: '每日更新' },
-  { href: '/contact/', label: '联系我们' },
-];
-
-const navItemsEn = [
-  { href: '/en/about/', label: 'About' },
-  { href: '/en/', label: 'Home' },
-  { href: '/en/products/', label: 'Products' },
-  { href: '/en/manufacturing/', label: 'Manufacturing' },
-  { href: '/en/knowledge/', label: 'Knowledge' },
-  { href: '/en/updates/', label: 'Updates' },
-  { href: '/en/contact/', label: 'Contact' },
-];
-
-const navItems = locale === 'en' ? navItemsEn : navItemsZh;
-
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const { locale = 'zh-CN', brandShort = '湘发顺塑料' } = Astro.props;
+const isEn = locale === 'en';
 const phoneNumber = '13450853338';
 
-// 推断对方语言版本对应的同路径
+const navItems = isEn
+  ? [
+      { href: '/en/', label: 'Home' },
+      { href: '/en/products/', label: 'Products' },
+      { href: '/en/manufacturing/', label: 'Manufacturing' },
+      { href: '/en/about/', label: 'About' },
+      { href: '/en/contact/', label: 'Contact' },
+    ]
+  : [
+      { href: '/', label: '首页' },
+      { href: '/products/', label: '产品目录' },
+      { href: '/manufacturing/', label: '制造能力' },
+      { href: '/about/', label: '关于我们' },
+      { href: '/contact/', label: '联系我们' },
+    ];
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const altPath = currentPath.startsWith('/en')
   ? (currentPath === '/en' ? '/' : currentPath.replace(/^\/en/, '') || '/')
   : (currentPath === '/' ? '/en/' : '/en' + currentPath);
-const altLabel = locale === 'en' ? '中文' : 'EN';
-
-// 站点结构化 Logo / 标识
-const brandSub = locale === 'en'
-  ? 'PVC Wire & Cable Compound'
-  : 'PVC 电线电缆料 · 工厂直供';
+const altLabel = isEn ? '中文' : 'EN';
 ---
+
 <header class="site-header">
   <div class="header-top">
     <div class="container header-top-inner">
-      <span class="header-tagline">
-        {locale === 'en'
-          ? 'Foshan PVC Wire & Cable Compound Manufacturer · In-house Formulation · Stable Supply'
-          : '佛山 PVC 电线电缆料生产厂家 · 自有配方研发 · 稳定批次供货'}
-      </span>
-      <a href={`tel:${phoneNumber}`} class="header-phone" aria-label="Call us">
-        <span class="phone-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-          </svg>
-        </span>
-        <span class="phone-text">{phoneNumber}</span>
-      </a>
+      <span>{isEn ? 'Foshan PVC wire and cable compound manufacturer' : '佛山 PVC 电线电缆料生产厂家 · 自有配方 · 工厂直供'}</span>
+      <a href={`tel:${phoneNumber}`}>电话 / 微信 {phoneNumber}</a>
     </div>
   </div>
-
   <div class="header-main">
     <div class="container header-main-inner">
-      <a href={locale === 'en' ? '/en/' : '/'} class="brand" aria-label={`${brandShort} Home`}>
-        <span class="brand-mark">
-          <span class="brand-mark-text">{brandShort}</span>
-          <span class="brand-mark-dot"></span>
-        </span>
-        <span class="brand-sub">{brandSub}</span>
+      <a class="brand" href={isEn ? '/en/' : '/'} aria-label={isEn ? 'Xiangfa Shun Home' : '湘发顺塑料首页'}>
+        <span class="brand-name">{isEn ? 'Xiangfa Shun' : brandShort}</span>
+        <span class="brand-sub">{isEn ? 'PVC Wire & Cable Compound' : 'PVC 电线电缆料 · 改性配方'}</span>
       </a>
-
-      <nav class="primary-nav" aria-label="Primary">
-        <ul>
-          {navItems.map((item) => {
-            const itemPath = item.href.replace(/\/$/, '') || '/';
-            const isActive = currentPath === itemPath;
-            return (
-              <li>
-                <a href={item.href} class={isActive ? 'is-active' : ''} aria-current={isActive ? 'page' : undefined}>
-                  {item.label}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+      <nav class="primary-nav" aria-label="Primary navigation">
+        {navItems.map((item) => {
+          const itemPath = item.href.replace(/\/$/, '') || '/';
+          const isActive = currentPath === itemPath;
+          return <a href={item.href} class={isActive ? 'is-active' : ''}>{item.label}</a>;
+        })}
       </nav>
-
       <div class="header-actions">
-        <a
-          href={altPath}
-          class="lang-switch"
-          aria-label={`Switch to ${altLabel}`}
-          hreflang={locale === 'en' ? 'zh-CN' : 'en'}
-        >
-          <span class="lang-globe" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
-          </span>
-          {altLabel}
-        </a>
-        <a href={locale === 'en' ? '/en/tools/inquiry/' : '/tools/inquiry/'} class="btn btn-phone header-cta">
-          <span class="cta-dot"></span>
-          {locale === 'en' ? 'Get Quote' : '立即询价'}
-        </a>
+        <a class="lang-switch" href={altPath}>{altLabel}</a>
+        <a class="btn btn-phone" href={isEn ? '/en/tools/inquiry/' : '/tools/inquiry/'}>{isEn ? 'Get Quote' : '立即询价'}</a>
       </div>
-
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" type="button">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </div>
 </header>
 
 <style>
   .site-header {
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: saturate(180%) blur(12px);
-    -webkit-backdrop-filter: saturate(180%) blur(12px);
-    border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
     z-index: 100;
-    transition: box-shadow 0.25s var(--ease-out);
-  }
-
-  .site-header:hover {
-    box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border);
   }
 
   .header-top {
     background: var(--color-primary-dark);
-    color: rgba(255, 255, 255, 0.92);
-    font-size: var(--fs-xs);
-    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 12px;
   }
 
-  .header-top-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    gap: var(--sp-3);
-  }
-
-  .header-tagline {
-    opacity: 0.92;
-    font-weight: 500;
-  }
-
-  .header-phone {
-    color: #fff;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: opacity 0.18s var(--ease-out);
-  }
-
-  .header-phone:hover {
-    color: #fff;
-    opacity: 0.85;
-    text-decoration: none;
-  }
-
-  .phone-icon {
-    width: 14px;
-    height: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .phone-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .phone-text {
-    font-feature-settings: 'tnum';
-    letter-spacing: 0.02em;
-  }
-
+  .header-top-inner,
   .header-main-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: var(--sp-4);
+  }
+
+  .header-top-inner {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .header-top a {
+    color: #fff;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .header-main-inner {
     padding-top: 16px;
     padding-bottom: 16px;
-    gap: var(--sp-5);
   }
 
   .brand {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    gap: 3px;
+    color: var(--color-primary-dark);
     text-decoration: none;
-    color: var(--color-text);
-    line-height: 1.1;
+    min-width: 190px;
   }
 
   .brand:hover {
-    text-decoration: none;
-    color: var(--color-text);
-  }
-
-  .brand-mark {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 24px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
     color: var(--color-primary-dark);
+    text-decoration: none;
   }
 
-  .brand-mark-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--color-accent);
-    border-radius: 50%;
+  .brand-name {
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: 0.04em;
   }
 
   .brand-sub {
-    font-size: 11px;
     color: var(--color-text-muted);
-    margin-top: 4px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 700;
   }
 
-  .primary-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  .primary-nav {
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 4px;
+    flex: 1;
   }
 
-  .primary-nav a {
-    display: block;
-    padding: 9px 16px;
+  .primary-nav a,
+  .lang-switch {
     color: var(--color-text);
-    font-weight: 600;
-    font-size: var(--fs-sm);
-    border-radius: var(--radius-sm);
-    transition: all 0.18s var(--ease-out);
-    position: relative;
-  }
-
-  .primary-nav a:hover {
-    background: var(--color-surface-alt);
-    color: var(--color-primary);
+    padding: 9px 13px;
+    font-weight: 700;
+    font-size: 14px;
     text-decoration: none;
   }
 
+  .primary-nav a:hover,
   .primary-nav a.is-active {
-    color: var(--color-primary-dark);
     background: var(--color-primary-soft);
-  }
-
-  .primary-nav a.is-active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 2px;
-    background: var(--color-accent);
-    border-radius: 1px;
+    color: var(--color-primary-dark);
+    text-decoration: none;
   }
 
   .header-actions {
     display: flex;
     align-items: center;
-    gap: var(--sp-3);
+    gap: var(--sp-2);
   }
 
   .lang-switch {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 7px 12px;
-    border: 1px solid var(--color-border-strong);
-    border-radius: var(--radius-sm);
-    font-size: var(--fs-xs);
-    font-weight: 600;
-    color: var(--color-text-soft);
-    background: var(--color-surface);
-    text-decoration: none;
-    transition: all 0.18s var(--ease-out);
-    letter-spacing: 0.05em;
-  }
-
-  .lang-globe {
-    width: 13px;
-    height: 13px;
-    display: inline-flex;
-  }
-
-  .lang-globe svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .lang-switch:hover {
-    background: var(--color-primary);
-    color: #fff;
-    border-color: var(--color-primary);
-    text-decoration: none;
-  }
-
-  .header-cta {
-    white-space: nowrap;
-    font-size: var(--fs-sm);
-    padding: 9px 18px;
-  }
-
-  .cta-dot {
-    width: 6px;
-    height: 6px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25);
-    animation: pulse 1.8s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25); }
-    50% { box-shadow: 0 0 0 8px rgba(255, 255, 255, 0); }
-  }
-
-  .nav-toggle {
-    display: none;
-    width: 40px;
-    height: 40px;
-    background: transparent;
     border: 1px solid var(--color-border);
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    padding: 0;
-  }
-
-  .nav-toggle span {
-    display: block;
-    width: 18px;
-    height: 2px;
-    background: var(--color-text);
-    border-radius: 1px;
-    transition: all 0.2s var(--ease-out);
+    background: var(--color-surface);
   }
 
   @media (max-width: 980px) {
     .header-top-inner {
-      flex-direction: column;
-      gap: 4px;
+      justify-content: center;
       text-align: center;
+      flex-wrap: wrap;
     }
 
     .header-main-inner {
       flex-wrap: wrap;
-      gap: var(--sp-3);
+    }
+
+    .primary-nav {
+      order: 3;
+      flex-basis: 100%;
+      overflow-x: auto;
+      justify-content: flex-start;
+      padding-bottom: 2px;
     }
 
     .brand-sub {
       display: none;
     }
+  }
 
-    .primary-nav {
-      order: 4;
-      width: 100%;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .primary-nav::-webkit-scrollbar {
+  @media (max-width: 560px) {
+    .header-actions .btn {
       display: none;
-    }
-
-    .primary-nav ul {
-      flex-wrap: nowrap;
-      white-space: nowrap;
-    }
-
-    .primary-nav a {
-      padding: 6px 10px;
-      font-size: 13px;
-    }
-
-    .header-cta {
-      font-size: 13px;
-      padding: 8px 14px;
-    }
-
-    .lang-switch {
-      font-size: 11px;
-      padding: 6px 9px;
     }
   }
 </style>
-
-<script>
-  // 平滑滚动到锚点时考虑 sticky 头高度
-  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((a) => {
-    a.addEventListener('click', (e) => {
-      const href = a.getAttribute('href');
-      if (!href || href === '#') return;
-      const target = document.querySelector(href);
-      if (!target) return;
-      e.preventDefault();
-      const headerH = document.querySelector('.site-header')?.clientHeight ?? 80;
-      const top = (target as HTMLElement).getBoundingClientRect().top + window.pageYOffset - headerH - 8;
-      window.scrollTo({ top, behavior: 'smooth' });
-      history.pushState(null, '', href);
-    });
-  });
-</script>

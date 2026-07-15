@@ -447,6 +447,26 @@ const products = [
   <!-- 产品列表 -->
   <section class="section">
     <div class="container">
+      <div class="catalog-layout">
+        <aside class="catalog-sidebar" aria-label="产品目录">
+          <div class="catalog-sidebar-inner">
+            <div class="catalog-sidebar-title">产品目录</div>
+            <nav class="catalog-toc">
+              {products.map((p, i) => (
+                <a href={`#${p.id}`} class={i === 0 ? 'is-active' : ''} data-toc-link={p.id}>
+                  <span class="toc-no">{String(i + 1).padStart(2, '0')}</span>
+                  <span class="toc-text">
+                    <strong>{p.name}</strong>
+                    <small>{p.category}</small>
+                  </span>
+                </a>
+              ))}
+            </nav>
+            <a href="/tools/inquiry/" class="catalog-sidebar-cta">提交询盘</a>
+          </div>
+        </aside>
+
+        <div class="catalog-content">
       {products.map((p, i) => (
         <ProductDetail
           id={p.id}
@@ -464,6 +484,9 @@ const products = [
       ))}
 
       <!-- 询价入口 -->
+        </div>
+      </div>
+
       <div class="cta-box catalog-cta">
         <div class="catalog-cta-text">
           <h3>没有找到完全匹配的产品？</h3>
@@ -477,6 +500,38 @@ const products = [
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]'));
+  const sections = tocLinks
+    .map((link) => {
+      const id = link.dataset.tocLink;
+      const section = id ? document.getElementById(id) : null;
+      return section ? { id, section } : null;
+    })
+    .filter(Boolean) as Array<{ id: string; section: HTMLElement }>;
+
+  const setActive = (id: string) => {
+    tocLinks.forEach((link) => {
+      link.classList.toggle('is-active', link.dataset.tocLink === id);
+    });
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (visible?.target?.id) setActive(visible.target.id);
+    },
+    {
+      rootMargin: '-24% 0px -58% 0px',
+      threshold: [0.08, 0.18, 0.32, 0.5],
+    }
+  );
+
+  sections.forEach(({ section }) => observer.observe(section));
+</script>
 
 <style>
   .page-eyebrow {
@@ -524,6 +579,109 @@ const products = [
     transform: translateY(-1px);
   }
 
+  .catalog-layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: var(--sp-6);
+    align-items: start;
+  }
+
+  .catalog-sidebar {
+    position: sticky;
+    top: 112px;
+  }
+
+  .catalog-sidebar-inner {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .catalog-sidebar-title {
+    padding: var(--sp-4) var(--sp-4) var(--sp-3);
+    color: var(--color-primary-dark);
+    font-size: var(--fs-sm);
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .catalog-toc {
+    display: grid;
+    max-height: calc(100vh - 240px);
+    overflow: auto;
+  }
+
+  .catalog-toc a {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: var(--sp-3);
+    padding: 13px var(--sp-4);
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    text-decoration: none;
+    transition: background 0.18s var(--ease-out), color 0.18s var(--ease-out);
+  }
+
+  .catalog-toc a:hover,
+  .catalog-toc a.is-active {
+    background: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+  }
+
+  .catalog-toc a.is-active {
+    box-shadow: inset 4px 0 0 var(--color-accent);
+  }
+
+  .toc-no {
+    color: var(--color-accent);
+    font-size: var(--fs-xs);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    padding-top: 2px;
+  }
+
+  .toc-text {
+    display: grid;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .toc-text strong,
+  .toc-text small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .toc-text strong {
+    color: inherit;
+    font-size: var(--fs-sm);
+    line-height: 1.35;
+  }
+
+  .toc-text small {
+    color: var(--color-text-muted);
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  .catalog-sidebar-cta {
+    display: block;
+    margin: var(--sp-4);
+    padding: 12px 16px;
+    background: var(--color-accent);
+    color: #fff;
+    font-weight: 900;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .catalog-sidebar-cta:hover {
+    background: var(--color-accent-dark);
+    color: #fff;
+  }
+
   .catalog-cta {
     display: grid;
     grid-template-columns: 1.5fr auto;
@@ -548,6 +706,43 @@ const products = [
     display: flex;
     gap: var(--sp-3);
     flex-wrap: wrap;
+  }
+
+  @media (max-width: 980px) {
+    .catalog-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .catalog-sidebar {
+      top: 96px;
+      z-index: 20;
+    }
+
+    .catalog-sidebar-title,
+    .catalog-sidebar-cta {
+      display: none;
+    }
+
+    .catalog-toc {
+      display: flex;
+      max-height: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .catalog-toc::-webkit-scrollbar {
+      display: none;
+    }
+
+    .catalog-toc a {
+      min-width: 190px;
+      border-bottom: 0;
+      border-right: 1px solid var(--color-border);
+    }
+
+    .catalog-toc a.is-active {
+      box-shadow: inset 0 -4px 0 var(--color-accent);
+    }
   }
 
   @media (max-width: 720px) {

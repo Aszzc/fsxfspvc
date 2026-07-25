@@ -17,7 +17,7 @@ const { item } = Astro.props;
   canonical={`https://xfspvc.com/updates/${item.slug}/`}
   breadcrumbs={[
     { name: '首页', href: '/' },
-    { name: '每日更新', href: '/updates/' },
+    { name: '每周更新', href: '/updates/' },
     { name: item.title, href: `/updates/${item.slug}/` },
   ]}
   jsonLd={{
@@ -48,7 +48,7 @@ const { item } = Astro.props;
         <nav class="breadcrumb" aria-label="Breadcrumb">
           <a href="/">首页</a>
           <span class="breadcrumb-sep">/</span>
-          <a href="/updates/">每日更新</a>
+          <a href="/updates/">每周更新</a>
           <span class="breadcrumb-sep">/</span>
           <span>{item.category}</span>
         </nav>

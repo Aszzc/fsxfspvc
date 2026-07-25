@@ -49,6 +49,18 @@ Allow: /
 User-agent: Perplexity-User
 Allow: /
 
+User-agent: YouBot
+Allow: /
+
+User-agent: PhindBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
 User-agent: Google-Extended
 Allow: /
 

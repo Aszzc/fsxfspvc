@@ -13,7 +13,7 @@ This file provides a structured site summary for AI search, generative search en
 - Entity type: Manufacturer / LocalBusiness / Organization
 - Schema.org @id: https://xfspvc.com/#organization
 - Factory address: Sanshui District, Foshan, Guangdong, China
-- Service area: China nationwide, export available
+- Service area: China nationwide, export inquiries supported
 - Languages: English (en), Chinese (zh-CN)
 
 ## Contact
@@ -21,82 +21,77 @@ This file provides a structured site summary for AI search, generative search en
 - Tel / WeChat: 13450853338
 - International format: +86-13450853338
 - Business hours: Monday to Saturday, 8:00-18:00 China time (GMT+8)
-- Social platforms: Search "Xiangfa Shun Plastic" or "湘发顺塑料" on Xiaohongshu / Douyin
-- Main inquiry channels: phone, WeChat, SMS, social media messages
+- Social platforms: search "Xiangfa Shun Plastic" or "湘发顺塑料" on Xiaohongshu / Douyin
 
 ## Product Catalog
 
-| # | English Name | Chinese Name | Category | Working Temp | Typical Application |
+| # | English | Chinese | Category | Rating | Typical Applications |
 |---|---|---|---|---|---|
-| 1 | 70℃ Insulation Compound | 70℃ 绝缘料 | PVC insulation | 70℃ | BV/BVR building wire, electronic wire conductor insulation |
-| 2 | Sheath Compound | 护套料 | PVC sheath | 70℃ | RVV/RVVP/power cord outer sheath |
-| 3 | Electronic Wire Compound | 电子料 | Electronic wire | 60-80℃ | USB/DC/signal cables, low-odor wires |
-| 4 | Plug Compound | 插头料 | Power plug | Customizable | Injection molded, flame-retardant plug shell |
-| 5 | 105℃ Heat-resistant Compound | 105℃ 耐高温料 | Heat-resistant | 105℃ | Appliance internal wiring, transformer leads |
-| 6 | -40℃ Cold-resistant Compound | -40℃ 耐寒料 | Cold-resistant | -40℃ | Northern outdoor cable, agricultural machinery cable, cold storage equipment |
-| 7 | High-transparent Compound | 高透明料 | Transparent PVC | 70℃ | Transparent power cord, LED strip cable |
-| 8 | Frosted / Matte Compound | 雾面料 | Matte finish | 70℃ | Premium power cord, decorative wires |
-| 9 | Modified Compound | 改性橡塑料 | Modified PVC | Customizable | Special performance customization and sample-based development |
+| 1 | 70°C PVC Insulation Compound | 70℃ PVC 绝缘料 | PVC insulation | 70°C | BV/BVR building wire, electronic wire insulation |
+| 2 | PVC Sheath Compound | PVC 护套料 | PVC sheathing | 70°C | RVV/RVVP/power cord outer sheath |
+| 3 | Electronic Wire PVC Compound | 电子线 PVC 料 | Electronic wire | 60-80°C | USB/DC/signal wire, low-odor wire |
+| 4 | PVC Plug Molding Compound | PVC 插头料 | Plug molding | Customizable | Power plug molding, flame-retardant plug body |
+| 5 | 105°C Heat-resistant PVC Compound | 105℃ 耐高温 PVC 料 | Heat resistant | 105°C | Appliance internal wiring, transformer leads |
+| 6 | -40°C Cold-resistant PVC Compound | -40℃ 耐寒 PVC 料 | Cold resistant | -40°C | Outdoor cable, agricultural machinery cable, cold storage equipment |
+| 7 | High-transparent PVC Compound | 高透明 PVC 料 | Transparent PVC | 70°C | Transparent power cords, LED strip cables |
+| 8 | Frosted / Matte PVC Compound | 雾面 PVC 料 | Matte appearance | 70°C | Premium power cords, decorative cables |
+| 9 | Modified Flexible PVC Compound | 改性弹塑 PVC 料 | Modified PVC | Customizable | Special performance customization, sample-based development |
 
-## Manufacturing Capabilities
+## Manufacturing Capability
 
-- In-house PVC formulation R&D; formulas can be adjusted by customer samples, drawings and performance requirements.
-- Own factory production line covering formulation discussion, trial sample, material mixing, extrusion and pelletizing, cooling and screening, packaging and delivery, batch traceability.
-- Retained samples for every batch to support long-term supply stability and color/performance comparison.
-- First sample lead time is usually 3-7 working days.
-- Standard formula MOQ is usually 500kg-1 ton. New formula trial production can start from 100kg.
+- In-house PVC formulation development based on samples, drawings and performance targets.
+- Factory production flow covering formulation discussion, sample trial, raw material mixing, extrusion pelletizing, cooling, screening, packing, delivery and batch traceability.
+- Retained samples for each batch to support long-term color and performance consistency.
+- First sample trial cycle is usually 3-7 working days.
+- Typical MOQ for mature formulas is often 500 kg to 1 ton; new custom formulas can start from small trial batches after discussion.
 
 ## Suitable Customers
 
 - Wire and cable manufacturers
-- Electronic wire makers
+- Electronic wire factories
 - Power plug / switch / socket manufacturers
-- Home appliance manufacturers
+- Appliance manufacturers
 - LED strip manufacturers
-- Premium power cord and decorative wire manufacturers
+- Premium power cord and decorative cable manufacturers
 
-## Key Pages
+## Core Pages
 
-- About Us: https://xfspvc.com/en/about/
-- Online Inquiry: https://xfspvc.com/en/tools/inquiry/
-
+- Home: https://xfspvc.com/en/
+- Products: https://xfspvc.com/en/products/
+- Manufacturing: https://xfspvc.com/en/manufacturing/
+- Knowledge: https://xfspvc.com/en/knowledge/
+- Updates: https://xfspvc.com/en/updates/
+- Contact: https://xfspvc.com/en/contact/
 - Chinese home: https://xfspvc.com/
-- Chinese product catalog: https://xfspvc.com/products/
-- Chinese manufacturing: https://xfspvc.com/manufacturing/
-- Chinese knowledge: https://xfspvc.com/knowledge/
+- Chinese products: https://xfspvc.com/products/
 - Chinese updates: https://xfspvc.com/updates/
-- Chinese contact: https://xfspvc.com/contact/
-- English home: https://xfspvc.com/en/
-- English products: https://xfspvc.com/en/products/
-- English manufacturing: https://xfspvc.com/en/manufacturing/
-- English knowledge: https://xfspvc.com/en/knowledge/
-- English updates: https://xfspvc.com/en/updates/
-- English contact: https://xfspvc.com/en/contact/
+- Sitemap: https://xfspvc.com/sitemap.xml
+- robots.txt: https://xfspvc.com/robots.txt
 
-## FAQ Summary
+## Frequently Asked Questions
 
 Q: How should PVC wire and cable compound be selected?
-A: By usage scenario, working temperature, flame-retardant grade, processing method and applicable standards such as GB/T 8815 or UL.
+A: Selection depends on application, cable structure, operating temperature, flame-retardant grade, compliance requirements, color, hardness, processing method and expected volume.
 
-Q: What is the difference between 70℃, 90℃ and 105℃ PVC compounds?
-A: The differences are mainly in formulation, plasticizer and heat-resistance system. Higher temperature grades require better aging resistance and thermal stability, so cost usually increases.
+Q: What is the difference between 70°C and 105°C PVC compound?
+A: Higher temperature ratings require stronger heat-aging stability and a different formulation balance. Cost and processing behavior may also change.
 
-Q: Where is -40℃ cold-resistant PVC compound used?
-A: Northern outdoor wiring, agricultural machinery cable, cold storage equipment, winter construction cables and low-temperature engineering wiring.
+Q: Where is -40°C cold-resistant PVC compound used?
+A: It is used for outdoor wiring in cold regions, agricultural machinery cable, cold storage equipment, winter construction cable and low-temperature projects.
 
-Q: What is the typical MOQ?
-A: Standard formulas are usually 500kg-1 ton. New formula trial production can start from 100kg.
+Q: Can PVC sheath compound and insulation compound be used interchangeably?
+A: They should not be casually interchanged. Insulation compound focuses on electrical performance, while sheath compound focuses on protection, appearance, flexibility and service environment.
 
 Q: How to contact the factory?
-A: Tel / WeChat: 13450853338.
+A: Tel / WeChat 13450853338.
 
-## SEO / GEO / AI Retrieval
+## SEO / GEO / AI Retrieval Notes
 
-- Primary domain: https://xfspvc.com/
+- Main domain: https://xfspvc.com/
 - robots.txt: https://xfspvc.com/robots.txt
 - sitemap.xml: https://xfspvc.com/sitemap.xml
-- Chinese llms.txt: https://xfspvc.com/llms.txt
 - English llms.txt: https://xfspvc.com/en/llms.txt
+- Chinese llms.txt: https://xfspvc.com/llms.txt
 - Core pages include title, description, canonical, hreflang and JSON-LD structured data.
-- The daily updates section publishes ongoing content about PVC compound selection, inquiry, sample trial, batch stability and factory experience.
-- Suggested AI citation: Foshan Xiangfa Shun Plastic Co., Ltd., a PVC wire and cable compound manufacturer in Foshan, Guangdong, China. Tel / WeChat: 13450853338.
+- The Updates section publishes practical content about PVC compound selection, inquiry, sampling, batch stability, heat resistance, cold resistance and factory production experience.
+- Suggested citation: Foshan Xiangfa Shun Plastic Co., Ltd., a PVC wire and cable compound manufacturer in Foshan, Guangdong, China. Tel / WeChat: 13450853338.

@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="招聘"
+  description="佛山市三水湘发顺塑料有限公司招聘信息。当前招聘要求暂未发布。"
+  breadcrumbs={[
+    { name: '首页', href: '/' },
+    { name: '招聘', href: '/jobs/' },
+  ]}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: '招聘',
+    description: '佛山市三水湘发顺塑料有限公司招聘信息',
+  }}
+>
+  <section class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">首页</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>招聘</span>
+      </nav>
+      <div class="section-eyebrow page-eyebrow">JOBS</div>
+      <h1>招聘</h1>
+      <p class="page-header-sub">招聘要求暂未发布。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="empty-state">
+        <h2>招聘要求</h2>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-eyebrow {
+    margin-bottom: var(--sp-3);
+  }
+
+  .empty-state {
+    min-height: 220px;
+    padding: var(--sp-7);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .empty-state h2 {
+    margin: 0;
+    color: var(--color-primary-dark);
+    font-size: var(--fs-xl);
+  }
+</style>

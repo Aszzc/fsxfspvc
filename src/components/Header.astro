@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from '../config/site';
 interface Props {
   locale?: 'zh-CN' | 'en';
   brandShort?: string;
@@ -28,16 +29,16 @@ const navItems = isEn
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const altPath = currentPath.startsWith('/en')
-  ? (currentPath === '/en' ? '/' : currentPath.replace(/^\/en/, '') || '/')
-  : (currentPath === '/' ? '/en/' : '/en' + currentPath);
+  ? (currentPath === '/en' ? '/' : currentPath === '/en/404' ? '/404.html' : currentPath.replace(/^\/en/, '') || '/')
+  : (currentPath === '/' ? '/en/' : currentPath === '/404.html' ? '/en/404/' : '/en' + currentPath);
 const altLabel = isEn ? '中文' : 'EN';
 ---
 
 <header class="site-header">
   <div class="header-top">
     <div class="container header-top-inner">
-      <span>{isEn ? 'Foshan PVC wire and cable compound manufacturer' : '佛山 PVC 电线电缆料生产厂家 · 自有配方 · 工厂直供'}</span>
-      <a href={`tel:${phoneNumber}`}>电话 / 微信 {phoneNumber}</a>
+      <span>{isEn ? 'Foshan PVC wire and cable compounds' : '佛山 PVC 电线电缆料 · 产品与定制需求沟通'}</span>
+      <a href={isEn ? `mailto:${siteConfig.email}` : `tel:${phoneNumber}`}>{isEn ? `Email: ${siteConfig.email}` : `电话 / 微信 ${phoneNumber}`}</a>
     </div>
   </div>
   <div class="header-main">
@@ -142,6 +143,8 @@ const altLabel = isEn ? '中文' : 'EN';
     font-weight: 700;
     font-size: 14px;
     text-decoration: none;
+    white-space: nowrap;
+    flex: 0 0 auto;
   }
 
   .primary-nav a:hover,

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { aboutContent } from '../../data/about';
 import { siteConfig } from '../../config/site';
+import EvidenceGallery from '../../components/EvidenceGallery.astro';
 const t = aboutContent.en;
 ---
 <BaseLayout
@@ -29,6 +30,19 @@ const t = aboutContent.en;
       </div>
     </div>
   </section>
+  <EvidenceGallery area="factory" locale="en" />
+  <section class="section">
+    <div class="container company-facts">
+      <h2>Company details</h2>
+      <dl>
+        <div><dt>Company</dt><dd>{siteConfig.companyEn}</dd></div>
+        <div><dt>Location</dt><dd>{siteConfig.addressEn}</dd></div>
+        <div><dt>Email</dt><dd><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></dd></div>
+        <div><dt>Phone / WeChat</dt><dd><a href={`tel:${siteConfig.phoneInternational}`}>{siteConfig.phoneInternational}</a></dd></div>
+      </dl>
+      <p>For a site visit, request the full address and appointment details before travel. Product documents are shared after the applicable formulation and disclosure scope are confirmed.</p>
+    </div>
+  </section>
   <section class="section section-alt">
     <div class="container trust-note">
       <div><div class="section-eyebrow">TRANSPARENCY</div><h2>Evidence-led company information</h2><p>We publish licenses, reports and certifications only after approved public copies are available.</p></div>
@@ -38,4 +52,11 @@ const t = aboutContent.en;
 </BaseLayout>
 <style>
   .page-eyebrow{margin-bottom:var(--sp-3)}.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);margin-top:var(--sp-6)}.value-grid article{padding:var(--sp-6);border:1px solid var(--color-border);border-radius:var(--radius-md)}.value-grid span{color:var(--color-accent);font-weight:800}.trust-note{display:flex;justify-content:space-between;align-items:center;gap:var(--sp-6)}@media(max-width:720px){.value-grid{grid-template-columns:1fr}.trust-note{align-items:flex-start;flex-direction:column}}
+  .company-facts { max-width: 900px; }
+  .company-facts h2 { color: var(--color-primary-dark); }
+  .company-facts dl { margin: 0 0 var(--sp-5); }
+  .company-facts dl div { display: grid; grid-template-columns: 180px 1fr; gap: var(--sp-4); padding: var(--sp-3) 0; border-bottom: 1px solid var(--color-border); }
+  .company-facts dt { font-weight: 700; }
+  .company-facts dd { margin: 0; overflow-wrap: anywhere; }
+  @media(max-width:600px) { .company-facts dl div { grid-template-columns: 1fr; gap: 2px; } }
 </style>

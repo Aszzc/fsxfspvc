@@ -22,20 +22,6 @@ const products = [
       '电子线材厂',
       '电气设备厂（自配线）',
     ],
-    processing: [
-      '常规 PVC 挤出机',
-      '挤出温度 150-180℃ 区间',
-      '适配常规螺杆',
-    ],
-    specs: [
-      { label: '工作温度', value: '70℃' },
-      { label: '邵氏硬度', value: 'A 75-95（可调）' },
-      { label: '拉伸强度', value: '≥12 MPa（参考）' },
-      { label: '断裂伸长率', value: '≥150%（参考）' },
-      { label: '体积电阻率', value: '≥1×10¹³ Ω·cm' },
-      { label: '阻燃', value: '可按需调整' },
-      { label: '颜色', value: '常规 / 可定制' },
-    ],
     concerns: [
       '是否需要通过特定阻燃等级',
       '导体粘附力是否要满足特定标准',
@@ -64,20 +50,6 @@ const products = [
       '电线电缆成品厂',
       '电源线生产厂家',
       '设备线束加工厂',
-    ],
-    processing: [
-      'PVC 挤出机',
-      '挤出温度 160-185℃ 区间',
-      '配合冷却与印字工序',
-    ],
-    specs: [
-      { label: '工作温度', value: '70℃（常规）' },
-      { label: '邵氏硬度', value: 'A 70-90（可调）' },
-      { label: '拉伸强度', value: '≥13 MPa（参考）' },
-      { label: '断裂伸长率', value: '≥200%（参考）' },
-      { label: '耐磨性', value: '良好' },
-      { label: '耐候性', value: '可按需调整' },
-      { label: '颜色', value: '黑 / 灰 / 白 / 可定制' },
     ],
     concerns: [
       '耐磨与耐刮性能',
@@ -109,18 +81,6 @@ const products = [
       '小家电线束厂',
       '3C 配件厂家',
     ],
-    processing: [
-      '高速挤出',
-      '挤出温度 150-175℃',
-      '适配薄壁挤出',
-    ],
-    specs: [
-      { label: '工作温度', value: '60-80℃' },
-      { label: '邵氏硬度', value: 'A 70-90' },
-      { label: '气味', value: '低气味配方可选' },
-      { label: '挤出速度', value: '可适配高速挤出' },
-      { label: '颜色', value: '黑 / 白 / 可定制' },
-    ],
     concerns: [
       '气味（出口 / 出口欧美产品）',
       '高速挤出下的稳定性',
@@ -150,18 +110,6 @@ const products = [
       '开关插座厂',
       '电气附件厂',
     ],
-    processing: [
-      '注塑成型',
-      '模具温度 40-60℃',
-      '料筒温度 160-190℃',
-    ],
-    specs: [
-      { label: '邵氏硬度', value: 'D 70-85（硬质）' },
-      { label: '阻燃', value: '可调（VW-1 / GB/T 8815）' },
-      { label: '流动性', value: '良好，可薄壁注塑' },
-      { label: '颜色', value: '白 / 黑 / 可定制' },
-      { label: '成型收缩率', value: '0.3-0.6%（参考）' },
-    ],
     concerns: [
       '阻燃等级与认证',
       '成型外观（无流痕、无气泡）',
@@ -180,7 +128,7 @@ const products = [
     name: '105℃ 耐高温料',
     category: '耐高温 PVC',
     icon: '▲',
-    summary: '耐 105℃ 工作温度的 PVC 改性料，常用于家电内部布线、变压器引线、发热环境配线。',
+    summary: '面向 105℃ 目标等级应用的 PVC 改性料，适用标准与老化测试条件需针对产品确认。',
     useCases: [
       '家电内部布线（电热水器、烤箱等）',
       '变压器引出线',
@@ -192,18 +140,6 @@ const products = [
       '变压器厂',
       '电机厂',
       '灯具厂',
-    ],
-    processing: [
-      '常规 PVC 挤出',
-      '挤出温度略高于普通绝缘料',
-      '注意塑化均匀',
-    ],
-    specs: [
-      { label: '工作温度', value: '105℃' },
-      { label: '老化后性能', value: '满足高温老化测试' },
-      { label: '邵氏硬度', value: 'A 80-95（可调）' },
-      { label: '阻燃', value: '可调' },
-      { label: '认证', value: '可做 UL 等等级' },
     ],
     concerns: [
       '耐温等级与老化测试标准',
@@ -235,18 +171,6 @@ const products = [
       '农机线束厂',
       '冷链设备厂',
     ],
-    processing: [
-      '常规 PVC 挤出',
-      '注意低温环境下的物料保温',
-      '塑化温度略高于常规绝缘',
-    ],
-    specs: [
-      { label: '耐寒温度', value: '-40℃ 不脆裂' },
-      { label: '低温冲击', value: '满足低温冲击测试' },
-      { label: '邵氏硬度', value: 'A 65-85（偏柔韧）' },
-      { label: '柔韧性', value: '低温下保持' },
-      { label: '颜色', value: '黑 / 可定制' },
-    ],
     concerns: [
       '实际使用最低温度',
       '低温冲击测试要求',
@@ -277,18 +201,6 @@ const products = [
       '装饰灯具厂',
       '透明电源线厂',
     ],
-    processing: [
-      '常规 PVC 挤出',
-      '注意塑化均匀避免晶点',
-      '避免高温长时间停留',
-    ],
-    specs: [
-      { label: '透光率', value: '高（按需可调）' },
-      { label: '黄变性', value: '可按需调整抗黄变等级' },
-      { label: '邵氏硬度', value: 'A 70-90（可调）' },
-      { label: '气味', value: '低气味可选' },
-      { label: '颜色', value: '本色 / 透明色' },
-    ],
     concerns: [
       '透光率与雾度的平衡',
       '抗黄变性能（特别是户外 / 高温使用）',
@@ -318,17 +230,6 @@ const products = [
       '装饰灯具厂',
       '消费电子配件厂',
     ],
-    processing: [
-      '常规 PVC 挤出',
-      '可调整配方实现雾面效果',
-      '模具表面光洁度对成品有影响',
-    ],
-    specs: [
-      { label: '表面效果', value: '哑光雾面' },
-      { label: '触感', value: '细腻、不易留指纹' },
-      { label: '邵氏硬度', value: 'A 70-90（可调）' },
-      { label: '颜色', value: '可定制' },
-    ],
     concerns: [
       '雾面均匀性',
       '耐刮擦性能',
@@ -357,17 +258,6 @@ const products = [
       '有特殊性能需求的厂家',
       '进口替代客户',
       '新项目研发阶段客户',
-    ],
-    processing: [
-      '按具体配方而定',
-      '通常仍使用 PVC 挤出 / 注塑设备',
-    ],
-    specs: [
-      { label: '硬度范围', value: '可定制（A 50 - D 85）' },
-      { label: '阻燃', value: '按需' },
-      { label: '耐温', value: '按需（常温 / 105℃ / 其他）' },
-      { label: '耐寒', value: '按需' },
-      { label: '颜色', value: '按需' },
     ],
     concerns: [
       '明确的关键性能指标',
@@ -406,12 +296,6 @@ const products = [
         url: `https://xfspvc.com/products/#${p.id}`,
         brand: { '@type': 'Brand', name: '湘发顺 (Xiangfa Shun)' },
         manufacturer: { '@type': 'Organization', name: '佛山市三水湘发顺塑料有限公司' },
-        offers: {
-          '@type': 'Offer',
-          availability: 'https://schema.org/MadeToOrder',
-          priceCurrency: 'CNY',
-          seller: { '@type': 'Organization', name: '佛山市三水湘发顺塑料有限公司' },
-        },
       },
     })),
   }}
@@ -427,7 +311,7 @@ const products = [
       <div class="section-eyebrow page-eyebrow">CATALOG · 9 CATEGORIES</div>
       <h1>PVC 电线电缆料 · 产品目录</h1>
       <p class="page-header-sub">
-        以下为常规品类的典型规格范围。具体配方、颜色、性能以双方沟通确认的技术单为准。
+        以下是产品用途与询价要点。具体规格、测试方法和性能以双方确认的技术单为准。
       </p>
     </div>
   </section>
@@ -475,8 +359,6 @@ const products = [
           summary={p.summary}
           useCases={p.useCases}
           suitableCustomers={p.suitableCustomers}
-          processing={p.processing}
-          specs={p.specs}
           concerns={p.concerns}
           inquiryNeeds={p.inquiryNeeds}
           index={i}

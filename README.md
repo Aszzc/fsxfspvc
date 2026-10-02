@@ -20,16 +20,16 @@ npm run preview  # 预览构建结果
 
 ```
 src/
-  layouts/      # 全局布局（含站点级 JSON-LD、Organization、LocalBusiness、WebSite 结构化数据）
+  layouts/      # 全局布局（含站点级 Organization 与面包屑结构化数据）
   components/   # 公共组件（Header / Footer / SectionTitle / ProductCard / ProductDetail）
   pages/        # 路由页面（含中文与 /en 英文双版本）
   styles/       # 全局样式（设计系统：色彩 / 字号 / 阴影 / 动效）
 public/
-  images/       # 工厂图、生产图、二维码
+  images/       # 现场实拍（核实后发布）与现有示意主图
   llms.txt      # AI / LLM 站点结构化说明（中文）
   en/llms.txt   # AI / LLM 站点结构化说明（英文）
   robots.txt    # 搜索引擎 + AI 爬虫指引
-  sitemap.xml   # 站点地图（含中英双语 + hreflang）
+  sitemap.xml   # 由 src/pages/sitemap.xml.ts 生成的双语站点地图
 ```
 
 ## 设计语言
@@ -41,10 +41,10 @@ public/
 
 ## AI GEO / SEO 优化
 
-本站面向 AI 生成式引擎 (ChatGPT、Claude、Perplexity、Gemini 等) 做了以下优化：
+本站采用便于访客阅读、搜索引擎抓取与引用的基础结构。可收录和可引用不保证排名或 AI 推荐：
 
-- **结构化数据 (JSON-LD)**：Organization / LocalBusiness / WebSite / ItemList (Product) / FAQPage / HowTo / ContactPage / BreadcrumbList
-- **双语文档**：`llms.txt` 与 `en/llms.txt` 完整声明站点信息、产品目录、FAQ、询价清单
+- **结构化数据 (JSON-LD)**：与可见内容一致的企业、产品类别、文章、问答、流程和面包屑信息
+- **双语摘要**：`llms.txt` 与 `en/llms.txt` 帮助定位页面，不作为排名保证
 - **hreflang**：中英页面通过 `<link rel="alternate" hreflang>` 互相指向
 - **canonical**：每页有独立 canonical URL
 - **Open Graph + Twitter Card**：完整社交分享元数据
@@ -52,8 +52,11 @@ public/
 - **语义化 HTML**：使用 `<article>` / `<section>` / `<nav>` / `<details>` 等语义标签
 - **可访问性 (a11y)**：`aria-label` / `aria-current` / `prefers-reduced-motion` / 焦点态
 
+实拍、报告和匿名案例的接入流程见 [CONTENT-INTAKE.md](CONTENT-INTAKE.md)。仓库目前没有可公开实拍或检测文件，因此图库不会显示未核实素材。
+
 ## 联系方式
 
 - 电话 / 微信：13450853338
+- 邮箱：17751261024@163.com
 - 地址：广东佛山三水区
 - 业务时间：周一至周六 8:00 - 18:00

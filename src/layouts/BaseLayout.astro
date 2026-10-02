@@ -11,6 +11,7 @@ interface Props {
   jsonLd?: object | object[];
   locale?: 'zh-CN' | 'en';
   breadcrumbs?: Array<{ name: string; href: string }>;
+  noindex?: boolean;
 }
 
 const {
@@ -21,12 +22,13 @@ const {
   jsonLd,
   locale = 'zh-CN',
   breadcrumbs,
+  noindex = false,
 } = Astro.props;
 
 const isEn = locale === 'en';
 const siteUrl = Astro.site?.href ?? 'https://xfspvc.com/';
 const siteName = isEn
-  ? 'Foshan Xiangfa Shun Plastic Co., Ltd.'
+  ? 'Foshan Sanshui Xiangfa Shun Plastic Co., Ltd.'
   : '佛山市三水湘发顺塑料有限公司';
 const brandShort = isEn ? 'Xiangfa Shun' : '湘发顺塑料';
 const fullTitle = title.includes(siteName) || title.includes('Xiangfa Shun')
@@ -34,20 +36,27 @@ const fullTitle = title.includes(siteName) || title.includes('Xiangfa Shun')
   : `${title} | ${brandShort}`;
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).href;
 const isEnPage = Astro.url.pathname.startsWith('/en/');
-const enHref = isEnPage
+const isNotFoundPage = Astro.url.pathname === '/404.html' || Astro.url.pathname === '/en/404/';
+const enHref = isNotFoundPage
+  ? new URL('/en/404/', siteUrl).href
+  : isEnPage
   ? new URL(Astro.url.pathname, siteUrl).href
   : new URL('/en' + (Astro.url.pathname === '/' ? '/' : Astro.url.pathname), siteUrl).href;
-const zhHref = isEnPage
+const zhHref = isNotFoundPage
+  ? new URL('/404.html', siteUrl).href
+  : isEnPage
   ? new URL(Astro.url.pathname.replace(/^\/en/, '') || '/', siteUrl).href
   : new URL(Astro.url.pathname, siteUrl).href;
 
 const orgLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://xfspvc.com/#organization',
   name: '佛山市三水湘发顺塑料有限公司',
   alternateName: ['湘发顺塑料', 'Xiangfa Shun Plastic'],
   url: siteUrl,
   telephone: '+86-13450853338',
+  email: '17751261024@163.com',
   address: {
     '@type': 'PostalAddress',
     addressRegion: '广东省',
@@ -82,7 +91,7 @@ const allJsonLd = [orgLd, ...(breadcrumbLd ? [breadcrumbLd] : []), ...jsonLdArra
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="author" content={siteName} />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="robots" content={noindex ? 'noindex,follow' : 'index,follow,max-image-preview:large'} />
     <meta name="baidu-site-verification" content="codeva-4kdLVBJT0i" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" hreflang="zh-CN" href={zhHref} />

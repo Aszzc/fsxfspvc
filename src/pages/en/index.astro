@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionTitle from '../../components/SectionTitle.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import { siteConfig } from '../../config/site';
 
 const phoneNumber = '13450853338';
 
@@ -11,8 +12,8 @@ const productOverview = [
     name: '70℃ Insulation Compound',
     category: 'PVC Insulation',
     icon: '⚡',
-    description: 'Standard PVC compound for wire conductor insulation. Flame retardancy meets GB/T 8815 requirements.',
-    highlights: ['70℃ working temperature', 'Stable electrical insulation', 'Adjustable flame retardant grade'],
+    description: 'PVC compound for wire conductor insulation. Confirm the target standard and performance with us before sampling.',
+    highlights: ['70℃ category', 'Application-led selection', 'Color options to discuss'],
   },
   {
     id: 'sheath',
@@ -43,8 +44,8 @@ const productOverview = [
     name: '105℃ Heat-resistant Compound',
     category: 'Heat-resistant',
     icon: '▲',
-    description: 'Modified PVC compound rated for 105℃ working temperature. Used in appliance internal wiring, transformer leads.',
-    highlights: ['105℃ temperature rating', 'Stable aging performance', 'UL grade available'],
+    description: 'PVC compound category for applications targeting 105℃ performance. Confirm the standard and test conditions before selection.',
+    highlights: ['105℃ target category', 'Aging test conditions to confirm', 'Standard-specific development'],
   },
   {
     id: 'cold-resistant',
@@ -52,7 +53,7 @@ const productOverview = [
     category: 'Cold-resistant',
     icon: '❄',
     description: 'PVC modified for -40℃ low temperature. Used in northern outdoor cables, agricultural machinery wiring, cold regions.',
-    highlights: ['No brittle cracking at low temp', 'Maintains flexibility', 'Outdoor rated'],
+    highlights: ['Low-temperature target to confirm', 'Flexibility requirements', 'Application-specific trial'],
   },
   {
     id: 'transparent',
@@ -83,7 +84,7 @@ const productOverview = [
 const advantages = [
   { icon: '①', title: 'In-house Formulation', desc: 'We develop PVC formulas ourselves based on cable structure, extrusion process and performance — not resold finished goods.' },
   { icon: '②', title: 'Foshan Local Factory', desc: 'Own factory with mixing, extrusion, pelletizing, screening and packaging in one line. Easy for customers to visit.' },
-  { icon: '③', title: 'Stable Batch Supply', desc: 'Fixed raw material supply channels. Each batch has retained samples. Long-term customers get consistent formulation.' },
+  { icon: '③', title: 'Stable Batch Supply', desc: 'Repeat orders can reference an agreed formulation and acceptance criteria. Ask which records and retained samples apply to your order.' },
   { icon: '④', title: 'Small-batch Customization', desc: 'New formulas and customers can start with small trial batches. Color, hardness, flame retardant grade adjustable.' },
   { icon: '⑤', title: 'Simple Process', desc: 'Direct phone & WeChat: usage → specs → sample → mass production. No long commercial process.' },
   { icon: '⑥', title: 'Sample-based Development', desc: 'Customer samples, drawings and performance specs all serve as inputs for development.' },
@@ -96,6 +97,7 @@ const processSteps = [
   { step: '04', label: 'Extrusion Pelletizing', desc: 'Stable melting · output' },
   { step: '05', label: 'Cooling & Screening', desc: 'Uniform particle size' },
   { step: '06', label: 'Packaging & Delivery', desc: 'Batch ID · pallet-ready' },
+  { step: '07', label: 'Order Records', desc: 'Testing · documents to agree' },
 ];
 
 const suitableCustomers = [
@@ -107,58 +109,14 @@ const suitableCustomers = [
   { icon: '⊕', label: 'Premium / Decorative Wire' },
 ];
 
-const organizationLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  '@id': 'https://xfspvc.com/en/#org',
-  name: 'Foshan Xiangfa Shun Plastic Co., Ltd.',
-  alternateName: 'Xiangfa Shun Plastic',
-  url: 'https://xfspvc.com/en/',
-  logo: 'https://xfspvc.com/images/factory-warehouse.jpg',
-  description: 'Foshan PVC wire & cable compound manufacturer. Main products: 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent, matte, modified PVC compounds.',
-  telephone: '+86-13450853338',
-  address: {
-    '@type': 'PostalAddress',
-    addressRegion: 'Guangdong',
-    addressLocality: 'Sanshui District, Foshan',
-    addressCountry: 'CN',
-  },
-  areaServed: ['CN', 'South China', 'East China', 'North China', 'Southwest', 'GLOBAL'],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+86-13450853338',
-    contactType: 'sales',
-    areaServed: 'GLOBAL',
-    availableLanguage: ['en', 'zh-Hans'],
-  },
-};
-
-const localBusinessLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': 'https://xfspvc.com/en/#business',
-  name: 'Foshan Xiangfa Shun Plastic Co., Ltd.',
-  image: 'https://xfspvc.com/images/factory-warehouse.jpg',
-  url: 'https://xfspvc.com/en/',
-  telephone: '+86-13450853338',
-  priceRange: '$$',
-  address: {
-    '@type': 'PostalAddress',
-    addressRegion: 'Guangdong',
-    addressLocality: 'Sanshui District, Foshan',
-    addressCountry: 'CN',
-  },
-  openingHours: 'Mo-Sa 08:00-18:00',
-};
-
 const websiteLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   '@id': 'https://xfspvc.com/en/#website',
   url: 'https://xfspvc.com/en/',
-  name: 'Foshan Xiangfa Shun Plastic Co., Ltd.',
+  name: 'Foshan Sanshui Xiangfa Shun Plastic Co., Ltd.',
   inLanguage: ['en', 'zh-CN'],
-  publisher: { '@id': 'https://xfspvc.com/en/#org' },
+  publisher: { '@id': 'https://xfspvc.com/#organization' },
 };
 
 const productListLd = {
@@ -175,9 +133,9 @@ const productListLd = {
 ---
 <BaseLayout
   title="Foshan PVC Wire & Cable Compound Manufacturer - Xiangfa Shun Plastic"
-  description="Foshan Xiangfa Shun Plastic Co., Ltd. — PVC wire & cable compound manufacturer in Foshan, Guangdong. In-house formulation, mixing, extrusion, pelletizing, screening and packaging. Main products: 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent, matte, modified PVC compounds. Tel/WeChat 13450853338."
+  description="Foshan Sanshui Xiangfa Shun Plastic Co., Ltd. — PVC wire & cable compound manufacturer in Foshan, Guangdong. In-house formulation, mixing, extrusion, pelletizing, screening and packaging. Main products: 70℃ insulation, sheath, electronic wire, plug, 105℃ heat-resistant, -40℃ cold-resistant, high-transparent, matte, modified PVC compounds. Tel/WeChat 13450853338."
   locale="en"
-  jsonLd={[websiteLd, organizationLd, localBusinessLd, productListLd]}
+  jsonLd={[websiteLd, productListLd]}
 >
   <!-- Hero -->
   <section class="hero">
@@ -198,13 +156,13 @@ const productListLd = {
           Compound Manufacturer
         </h1>
         <p class="hero-sub fade-up-3">
-          In-house formulation, in-house production line.<br />
+          Discuss formulation and production requirements directly with the factory team.<br />
           70℃ Insulation / Sheath / Heat-resistant / Cold-resistant / High-transparent / Modified PVC — matched precisely to usage, performance and process requirements.
         </p>
         <div class="hero-actions fade-up-4">
-          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">
+          <a href={`mailto:${siteConfig.email}`} class="btn btn-phone btn-lg">
             <span class="cta-pulse"></span>
-            📞 13450853338
+            Email us
           </a>
           <a href="/en/products/" class="btn btn-outline btn-lg">View Products</a>
         </div>
@@ -226,7 +184,7 @@ const productListLd = {
       <div class="hero-visual fade-up-3">
         <div class="hero-card hero-card-main">
           <div class="hero-card-header">
-            <span class="hero-card-tag">FACTORY</span>
+            <span class="hero-card-tag">ILLUSTRATION</span>
             <span class="hero-card-tag hero-card-tag-accent">DIRECT</span>
           </div>
           <div class="hero-card-image">
@@ -287,7 +245,7 @@ const productListLd = {
           </div>
           <div class="hero-card-body">
             <div class="hero-card-stat">
-              <span class="hero-card-stat-value">9+</span>
+              <span class="hero-card-stat-value">9</span>
               <span class="hero-card-stat-label">Categories</span>
             </div>
             <div class="hero-card-stat">
@@ -295,16 +253,16 @@ const productListLd = {
               <span class="hero-card-stat-label">Steps</span>
             </div>
             <div class="hero-card-stat">
-              <span class="hero-card-stat-value">24h</span>
-              <span class="hero-card-stat-label">Reply</span>
+              <span class="hero-card-stat-value">Email</span>
+              <span class="hero-card-stat-label">For inquiries</span>
             </div>
           </div>
         </div>
         <div class="hero-card hero-card-float">
-          <div class="float-icon">📞</div>
+          <div class="float-icon">✉</div>
           <div class="float-text">
-            <div class="float-label">Call Factory</div>
-            <div class="float-value">{phoneNumber}</div>
+            <div class="float-label">Send requirements</div>
+            <div class="float-value">{siteConfig.email}</div>
           </div>
         </div>
       </div>
@@ -317,7 +275,7 @@ const productListLd = {
         <span class="trust-item">In-house Formulation</span>
         <span class="trust-item">Own Production Line</span>
         <span class="trust-item">Batch Traceable</span>
-        <span class="trust-item">3-7 Day Sample</span>
+        <span class="trust-item">Sample timing confirmed per request</span>
         <span class="trust-item">Sample-based Dev</span>
         <span class="trust-item">Factory Visit Welcome</span>
       </div>
@@ -336,12 +294,12 @@ const productListLd = {
           <div class="stat-label">Full Production Line</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value">3-7<span class="stat-unit">days</span></div>
-          <div class="stat-label">First Sample Lead Time</div>
+          <div class="stat-value">Trial</div>
+          <div class="stat-label">Sampling plan confirmed together</div>
         </div>
         <div class="stat-item">
-          <div class="stat-value">500<span class="stat-unit">kg MOQ</span></div>
-          <div class="stat-label">Standard Formula Trial</div>
+          <div class="stat-value">Quote</div>
+          <div class="stat-label">MOQ confirmed per formulation</div>
         </div>
       </div>
     </div>
@@ -366,6 +324,7 @@ const productListLd = {
             highlights={p.highlights}
             href={`/en/products/#${p.id}`}
             index={i}
+            locale="en"
           />
         ))}
       </div>
@@ -456,10 +415,7 @@ const productListLd = {
         <div class="inquiry-text">
           <div class="section-eyebrow inquiry-eyebrow">GET QUOTE</div>
           <h2>Need a sample or quote?</h2>
-          <p>
-            Call or message WeChat directly. Tell us: usage, specs, expected volume and processing method.<br />
-            We can send samples, quote, or invite you to visit the factory.
-          </p>
+          <p>Email your application, target specification, volume and processing method. We will confirm a suitable product, trial scope and quotation with you.</p>
           <ul class="inquiry-list">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>Usage scenario (power cord jacket / UL wire / outdoor)</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="check-icon"><polyline points="20 6 9 17 4 12"></polyline></svg>Key performance (temp / flame / cold / hardness / color)</li>
@@ -468,9 +424,9 @@ const productListLd = {
           </ul>
         </div>
         <div class="inquiry-actions">
-          <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 Tel / WeChat 13450853338</a>
+          <a href={`mailto:${siteConfig.email}`} class="btn btn-phone btn-lg">Email {siteConfig.email}</a>
           <a href="/en/contact/" class="btn btn-outline btn-lg">Full contact info</a>
-          <div class="inquiry-note">Reply within 24 hours</div>
+          <div class="inquiry-note">Tel / WeChat: +86 134 5085 3338</div>
         </div>
       </div>
     </div>

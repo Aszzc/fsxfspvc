@@ -12,7 +12,7 @@ const products = [
     category: 'PVC 绝缘',
     icon: '70',
     description: '适用于 BV、BVR、BVV 等常规电线导体绝缘层，配方成熟，挤出稳定。',
-    highlights: ['工作温度 70°C', '电气绝缘稳定', '阻燃等级可调'],
+    highlights: ['70°C 目标类别', '先确认适用标准', '颜色可沟通'],
   },
   {
     id: 'sheath',
@@ -44,7 +44,7 @@ const products = [
     category: '耐高温',
     icon: '105',
     description: '用于家电内部线、变压器引线、灯具线等高温场景，兼顾老化稳定性。',
-    highlights: ['耐温 105°C', '老化性能稳定', '可做 UL 等级'],
+    highlights: ['105°C 目标类别', '老化条件需确认', '按目标标准沟通'],
   },
   {
     id: 'modified',
@@ -61,7 +61,7 @@ const processSteps = [
   ['02', '配方设计', '根据性能目标调整树脂、增塑、阻燃和稳定体系'],
   ['03', '小样试制', '小批量造粒，客户上机验证挤出或注塑表现'],
   ['04', '批量生产', '混料、塑化、挤出、冷却、筛分和包装'],
-  ['05', '留样追溯', '每批次记录配方、外观、粒型和关键指标'],
+  ['05', '订单记录', '检验与留样安排按具体产品及订单确认'],
 ];
 
 const qualityItems = [
@@ -73,36 +73,22 @@ const qualityItems = [
 
 const customers = ['电线电缆厂', '电子线材厂', '电源插头厂', '家电制造厂', 'LED 灯带厂', '设备线束厂'];
 
-const organizationLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: '佛山市三水湘发顺塑料有限公司',
-  alternateName: '湘发顺塑料',
-  url: 'https://xfspvc.com/',
-  telephone: '+86-13450853338',
-  address: {
-    '@type': 'PostalAddress',
-    addressRegion: '广东省',
-    addressLocality: '佛山市三水区',
-    addressCountry: 'CN',
-  },
-};
 ---
 
 <BaseLayout
   title="佛山 PVC 电线电缆料生产厂家"
   description="佛山市三水湘发顺塑料有限公司是广东佛山 PVC 电线电缆料生产厂家，提供 70°C 绝缘料、护套料、电子线料、插头料、105°C 耐温料、耐寒料、透明料及改性 PVC 定制配方。"
-  jsonLd={organizationLd}
 >
   <section class="hero">
-    <img class="hero-media" src="/images/manufacturing-hero.png" alt="PVC 电线电缆料造粒生产线" loading="eager" />
+    <img class="hero-media" src="/images/manufacturing-hero.png" alt="PVC 电线电缆料生产场景示意图" loading="eager" />
     <div class="hero-shade" aria-hidden="true"></div>
+    <span class="hero-image-note">生产场景示意图 · 待替换为工厂实拍</span>
     <div class="container hero-inner">
       <div class="hero-copy">
         <div class="hero-kicker">佛山工厂直供 · PVC 线缆料定制配方</div>
         <h1>为电线电缆企业提供稳定的 PVC 改性料</h1>
         <p>
-          自有配方研发与造粒产线，覆盖绝缘料、护套料、电子线料、插头料、耐温耐寒与透明雾面系列。按用途、标准、加工设备和成本目标匹配配方。
+          提供 PVC 绝缘料、护套料、电子线料和插头料等产品，并可沟通耐温、耐寒、透明及雾面需求。请提供用途、标准和加工条件，我们先确认是否适配，再安排试样或报价。
         </p>
         <div class="hero-actions">
           <a class="btn btn-phone btn-lg" href={`tel:${phoneNumber}`}>电话 / 微信 {phoneNumber}</a>
@@ -110,9 +96,9 @@ const organizationLd = {
         </div>
       </div>
       <div class="hero-panel" aria-label="核心制造能力">
-        <div><strong>9+</strong><span>产品品类</span></div>
-        <div><strong>3-7 天</strong><span>常规试样</span></div>
-        <div><strong>500kg</strong><span>常规起订</span></div>
+        <div><strong>多类</strong><span>线缆用 PVC 料</span></div>
+        <div><strong>先试样</strong><span>上机验证后再沟通量产</span></div>
+        <div><strong>按需</strong><span>规格与起订量逐单确认</span></div>
       </div>
     </div>
   </section>
@@ -121,7 +107,7 @@ const organizationLd = {
     <div class="container strip-grid">
       <span>自有配方研发</span>
       <span>混料挤出造粒</span>
-      <span>批次留样追溯</span>
+      <span>批次文件按订单确认</span>
       <span>来样来图定制</span>
       <span>可来厂看产线</span>
     </div>
@@ -134,7 +120,7 @@ const organizationLd = {
         <h2>不是卖通用料，而是帮你把线材工艺跑稳</h2>
       </div>
       <p>
-        线缆料的关键不只在指标表，还在客户设备上的挤出速度、表面状态、色差、气味、韧性和长期供货一致性。湘发顺以“试样验证 + 配方管理 + 批次追溯”的方式服务制造客户。
+        选线缆料时，除了看指标，还要看材料在实际设备上的挤出表现、表面、颜色和柔韧度。我们建议先明确线材用途和加工条件，再安排样品验证。
       </p>
     </div>
     <div class="container feature-grid">
@@ -176,7 +162,7 @@ const organizationLd = {
       <div class="process-copy">
         <p class="section-eyebrow">PROCESS</p>
         <h2>从配方到交付，每一步围绕量产稳定</h2>
-        <p>制造型客户关心的是材料在自己设备上的表现。我们把需求沟通、试样验证、批量生产和留样追溯串成闭环，减少后续沟通成本。</p>
+        <p>先沟通用途与要求，再确认是否需要试样。样品经客户设备验证、双方确认要求后，再沟通批量生产和交付安排。</p>
         <a class="btn btn-outline" href="/manufacturing/">查看制造能力</a>
       </div>
       <div class="process-list">
@@ -247,6 +233,16 @@ const organizationLd = {
 
   .hero-media {
     object-fit: cover;
+  }
+  .hero-image-note {
+    position: absolute;
+    right: 24px;
+    bottom: 16px;
+    z-index: 2;
+    color: #fff;
+    background: rgba(8, 16, 22, 0.75);
+    padding: 4px 9px;
+    font-size: 12px;
   }
 
   .hero-shade {

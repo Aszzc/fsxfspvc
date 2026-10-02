@@ -1,4 +1,5 @@
 ---
+import { siteConfig } from '../config/site';
 interface Props {
   locale?: 'zh-CN' | 'en';
 }
@@ -46,7 +47,7 @@ const pages = isEn
         <h2>{isEn ? 'Need PVC compound samples or quotation?' : '需要 PVC 线缆料试样或报价？'}</h2>
         <p>{isEn ? 'Talk directly with the factory team.' : '直接联系工厂，沟通用途、指标、颜色和预计用量。'}</p>
       </div>
-      <a class="btn btn-phone btn-lg" href={`tel:${phoneNumber}`}>{phoneNumber}</a>
+      <a class="btn btn-phone btn-lg" href={isEn ? `mailto:${siteConfig.email}` : `tel:${phoneNumber}`}>{isEn ? `Email ${siteConfig.email}` : phoneNumber}</a>
     </div>
   </div>
   <div class="container footer-main">
@@ -70,6 +71,7 @@ const pages = isEn
       <section>
         <h4>{isEn ? 'Contact' : '联系方式'}</h4>
         <p>{isEn ? 'Tel / WeChat' : '电话 / 微信'}：<a href={`tel:${phoneNumber}`}>{phoneNumber}</a></p>
+        <p>{isEn ? 'Email' : '邮箱'}：<a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
         <p>{isEn ? 'Factory' : '工厂地址'}：{isEn ? 'Sanshui District, Foshan, Guangdong' : '广东佛山三水区'}</p>
         <p>{isEn ? 'Hours' : '业务时间'}：{isEn ? 'Mon-Sat 8:00-18:00' : '周一至周六 8:00-18:00'}</p>
       </section>

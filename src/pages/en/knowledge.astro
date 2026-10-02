@@ -16,13 +16,13 @@ const guides = [
 const faqs = [
   { q: 'How should I select PVC wire & cable compound?', a: 'Four key dimensions: ① Usage scenario (building / electronic / outdoor / appliance); ② Working temperature (70℃ / 90℃ / 105℃); ③ Whether flame retardant and what grade; ④ Processing method (extrusion speed, die specs). If you have a specific standard (GB/T 8815, UL, etc.), follow that.' },
   { q: 'What\'s the difference between 70℃, 90℃, and 105℃ temperature ratings?', a: 'Mainly the PVC formula and plasticizer choice: ① 70℃ is standard PVC insulation; ② 90℃ uses heat-resistant plasticizer and stabilizer; ③ 105℃ needs modified PVC or special plasticizer system — price increases accordingly. Select based on actual working temperature, not always the highest.' },
-  { q: 'Where can -40℃ cold-resistant PVC be used?', a: 'Main scenarios: northern outdoor wiring, agricultural machinery cables, cold storage / refrigeration equipment wiring, winter construction site cables, northeast / northwest China engineering wiring. Standard PVC becomes brittle below -10℃; cold-resistant compound maintains low-temperature flexibility via modified plasticizer system.' },
+  { q: 'Where can -40℃ cold-resistant PVC be used?', a: 'Main scenarios: northern outdoor wiring, agricultural machinery cables, cold storage / refrigeration equipment wiring, winter construction site cables, northeast / northwest China engineering wiring. Low-temperature performance varies by formulation and test method; specify the required bend or impact test and target temperature.' },
   { q: 'What are ROHS / REACH / NP? What\'s needed for export?', a: 'ROHS is the EU hazardous substances directive (restricts lead, mercury, cadmium, hexavalent chromium, PBB, PBDE). REACH is the EU chemicals regulation (EC 1907/2006) with SVHC list. NP usually refers to Nonylphenol — restricted by some environmental standards. Wires & cables exporting to EU, US, Japan usually require these. OEM customers should specify the target market when inquiring.' },
-  { q: 'What\'s the typical MOQ for PVC wire & cable compound?', a: 'Standard formula usually 500kg - 1 ton, convenient for trial and machine validation. New formula development can start from 100kg, but development cycle and material sourcing cost need consideration. Color custom and special performance customization usually have higher MOQ.' },
+  { q: 'What\'s the typical MOQ for PVC wire & cable compound?', a: 'MOQ depends on the formulation, color, raw material sourcing and required trial work. Please share the product and expected volume so a feasible trial and order quantity can be confirmed.' },
   { q: 'How is color customization and batch color shift controlled?', a: 'For color customization, customer should provide color card (Pantone or physical sample) and we\'ll match. Batch color shift control points: ① Fixed pigment supplier; ② Fixed mixing process; ③ Per-batch retained sample comparison; ④ Key customers can establish color shift acceptance standard.' },
-  { q: 'What\'s the shelf life of PVC compound? Storage notes?', a: 'Standard PVC pellet shelf life is typically 6-12 months (sealed, away from light, cool and dry environment). Storage notes: ① Avoid direct sunlight; ② Keep away from heat sources; ③ Moisture-proof — use quickly after opening; ④ Store separately from other chemicals.' },
+  { q: 'What\'s the shelf life of PVC compound? Storage notes?', a: 'Storage period depends on the formulation and packaging. Request the product-specific storage guidance; generally keep bags sealed, dry and away from direct sunlight and heat.' },
   { q: 'Differences between factory-direct, trader and finished-compound maker?', a: '① Factory-direct: own formulation, own line, adjustable per customer spec, small-batch trial possible, long-term supply stable; ② Trader: buys market finished compound for resale, fixed formulation, limited adjustment space; ③ Finished-compound maker: own formulation but typically mass-produces specific categories, medium customization flexibility.' },
-  { q: 'How does sample trial work? How long does it take?', a: 'Standard flow: Customer provides spec requirements → We quote and sample → Sample sent to customer for machine validation → Customer feedback and adjustment → Confirm for mass production. First sample usually 3-7 working days, express possible. Customer samples can also serve as development input.' },
+  { q: 'How does sample trial work? How long does it take?', a: 'Standard flow: Customer provides spec requirements → We quote and sample → Sample sent to customer for machine validation → Customer feedback and adjustment → Confirm for mass production. Trial timing is confirmed after requirements review. Customer samples can also serve as development input.' },
   { q: 'How to judge whether a PVC compound factory is reliable?', a: 'Check: ① Whether they have own formulation R&D capability (ask a few formula questions to test); ② Whether willing to do small-batch trial; ③ Stable raw material supply channels; ④ Complete batch retention system; ⑤ Professional and timely communication. Site visit is recommended.' },
 ];
 ---
@@ -115,7 +115,7 @@ const faqs = [
           <span class="guide-no">03</span>
           <h3>-40℃ Cold-resistant vs Standard PVC</h3>
         </div>
-        <p>Standard PVC hardens and becomes brittle at low temperature — cracks appear below -10℃. -40℃ cold-resistant compound uses <strong>modified plasticizer system</strong> and <strong>adjusted formulation</strong> to maintain flexibility at low temperature.</p>
+        <p>Low-temperature behavior depends on the formulation and test method. Specify the target temperature, bend or impact test and finished-cable conditions before selecting a cold-resistant compound.</p>
         <ul>
           <li>Applications: Northern outdoor wiring, agricultural machinery cables, cold storage wiring, winter construction cables</li>
           <li>Performance: No brittle cracking at low temp, passes low-temp impact test, elastic recovery after long cold exposure</li>
@@ -146,12 +146,12 @@ const faqs = [
           <h3>Common Procurement Questions</h3>
         </div>
         <ul>
-          <li><strong>MOQ:</strong> Standard formula 500kg - 1 ton, new formula can start from 100kg.</li>
-          <li><strong>Sample cycle:</strong> First sample usually 3-7 working days, express possible.</li>
+          <li><strong>MOQ:</strong> MOQ is confirmed for each product and order.</li>
+          <li><strong>Sample cycle:</strong> Trial timing is confirmed after requirements review.</li>
           <li><strong>Color customization:</strong> Provide color card or Pantone number, match per color card.</li>
           <li><strong>Batch color shift:</strong> Fixed pigment supplier, fixed process, per-batch retained sample comparison.</li>
           <li><strong>Packaging:</strong> Standard 25kg/bag, ton bag or pallet packing on request.</li>
-          <li><strong>Shelf life:</strong> Standard 6-12 months (sealed, dark, cool and dry).</li>
+          <li><strong>Shelf life:</strong> Confirm the product-specific storage period and keep bags sealed, dry and away from heat.</li>
           <li><strong>Storage notes:</strong> Avoid direct sunlight, away from heat sources, moisture-proof, separate from other chemicals.</li>
         </ul>
       </article>
@@ -195,7 +195,7 @@ const faqs = [
       <div class="cta-box faq-cta">
         <div class="faq-cta-text">
           <h3>More questions?</h3>
-          <p>Calling or messaging us directly is more efficient · reply within 24 hours</p>
+          <p>Email your application and target specification for a tailored response.</p>
         </div>
         <a href={`tel:${phoneNumber}`} class="btn btn-phone btn-lg">📞 {phoneNumber}</a>
       </div>

@@ -6,11 +6,10 @@ interface Props {
   summary: string;
   useCases: string[];
   suitableCustomers: string[];
-  processing: string[];
-  specs: Array<{ label: string; value: string }>;
   concerns: string[];
   inquiryNeeds: string[];
   index?: number;
+  locale?: 'zh-CN' | 'en';
 }
 
 const {
@@ -20,13 +19,13 @@ const {
   summary,
   useCases,
   suitableCustomers,
-  processing,
-  specs,
   concerns,
   inquiryNeeds,
   index = 0,
+  locale = 'zh-CN',
 } = Astro.props;
-const phoneNumber = '13450853338';
+const isEn = locale === 'en';
+const email = '17751261024@163.com';
 ---
 <article class="product-detail" id={id} style={`--pd-i:${index}`}>
   <header class="product-detail-header">
@@ -42,7 +41,7 @@ const phoneNumber = '13450853338';
     <div class="product-detail-block">
       <h4>
         <span class="block-icon">◆</span>
-        主要用途
+        {isEn ? 'Typical applications' : '主要用途'}
       </h4>
       <ul>{useCases.map((u) => <li>{u}</li>)}</ul>
     </div>
@@ -50,7 +49,7 @@ const phoneNumber = '13450853338';
     <div class="product-detail-block">
       <h4>
         <span class="block-icon">◆</span>
-        适合客户
+        {isEn ? 'Buyer types' : '适合客户'}
       </h4>
       <ul>{suitableCustomers.map((u) => <li>{u}</li>)}</ul>
     </div>
@@ -58,43 +57,33 @@ const phoneNumber = '13450853338';
     <div class="product-detail-block">
       <h4>
         <span class="block-icon">◆</span>
-        加工方式
+        {isEn ? 'Processing details to confirm' : '需确认的加工条件'}
       </h4>
-      <ul>{processing.map((u) => <li>{u}</li>)}</ul>
+      <ul>{(isEn ? ['Extrusion or molding equipment', 'Temperature and line speed', 'Current sample and acceptance criteria'] : ['挤出或注塑设备', '温度与生产速度', '现用样品与验收条件']).map((u) => <li>{u}</li>)}</ul>
     </div>
 
     <div class="product-detail-block">
       <h4>
         <span class="block-icon">◆</span>
-        常见关注指标
+        {isEn ? 'Performance questions' : '常见关注指标'}
       </h4>
       <ul>{concerns.map((u) => <li>{u}</li>)}</ul>
     </div>
   </div>
 
   <div class="product-detail-specs">
-    <h4>典型规格范围（参考）</h4>
-    <table class="table">
-      <tbody>
-        {specs.map((s) => (
-          <tr>
-            <th>{s.label}</th>
-            <td>{s.value}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    <p class="specs-note">* 实际规格以双方沟通确认的技术单为准，可按客户要求调整。</p>
+    <h4>{isEn ? 'Specification and test confirmation' : '规格与测试确认'}</h4>
+    <p>{isEn ? 'Target values, test methods and applicable standards depend on the formulation and end use. Ask for a product-specific technical sheet or agreed test report before placing an order.' : '目标数值、测试方法和适用标准取决于配方及最终用途。下单前请索取对应产品技术单，确认测试项目与验收条件。'}</p>
   </div>
 
   <div class="product-detail-inquiry">
     <div class="inquiry-content">
-      <h4>询价需提供</h4>
+      <h4>{isEn ? 'Include with your inquiry' : '询价需提供'}</h4>
       <ol>{inquiryNeeds.map((u) => <li>{u}</li>)}</ol>
     </div>
-    <a href={`tel:${phoneNumber}`} class="btn btn-phone product-cta">
-      <span>立即咨询</span>
-      <span class="cta-phone">{phoneNumber}</span>
+    <a href={isEn ? `mailto:${email}` : `tel:13450853338`} class="btn btn-phone product-cta">
+      <span>{isEn ? 'Email inquiry' : '立即咨询'}</span>
+      <span class="cta-phone">{isEn ? email : '13450853338'}</span>
     </a>
   </div>
 </article>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
+import EvidenceGallery from '../components/EvidenceGallery.astro';
 
 const phoneNumber = '13450853338';
 
@@ -23,12 +24,12 @@ const flow = [
   {
     step: '04',
     title: '挤出造粒',
-    desc: '使用 PVC 专用挤出机进行造粒，温度与螺杆转速按配方设定，保证塑化均匀、出料稳定。',
+    desc: '按配方和产品要求设定工艺并造粒，设备与参数以实际生产安排为准。',
   },
   {
     step: '05',
     title: '冷却筛分',
-    desc: '挤出后的料条经水冷 / 风冷、切粒机切粒，再经过振动筛去除过长、过细、异型颗粒，保证粒型均匀。',
+    desc: '按产品工艺完成冷却、切粒与筛分，并检查颗粒外观和粒型。',
   },
   {
     step: '06',
@@ -38,7 +39,7 @@ const flow = [
   {
     step: '07',
     title: '批次稳定',
-    desc: '每批次留样记录，长期供货客户可保持配方一致性与稳定性，方便追溯。',
+    desc: '留样、检验和批次记录范围按产品及订单要求确认，便于后续核对。',
   },
 ];
 
@@ -51,35 +52,35 @@ const capabilities = [
   {
     icon: '⊟',
     title: '原料自主采购',
-    desc: 'PVC 树脂粉、增塑剂、稳定剂、阻燃剂等核心原料固定渠道采购，保证批次稳定。',
+    desc: '根据具体配方和订单确认 PVC 树脂及所需助剂，原料安排以订单为准。',
   },
   {
     icon: '◐',
     title: '混料工序',
-    desc: '高速混合机多台，可按工艺要求做冷混 / 热混。',
+    desc: '按配方及工艺要求混合原料；设备配置可在看厂时确认。',
   },
   {
     icon: '⊕',
     title: '挤出造粒',
-    desc: '双螺杆 / 单螺杆挤出机多台，日产能可覆盖中小电线电缆厂稳定供货需求。',
+    desc: '按产品和订单安排挤出造粒；设备型号、产能与交期需逐单确认。',
   },
   {
     icon: '◈',
     title: '切粒与筛分',
-    desc: '切粒机、振动筛配套，颗粒大小均匀，无过长过细。',
+    desc: '按产品要求完成切粒与筛分，颗粒验收条件逐单确认。',
   },
   {
     icon: '⊞',
     title: '包装与仓储',
-    desc: '自有仓库与成品堆放区，可按客户要求做包装规格。',
+    desc: '包装规格、标签与发货方式可在下单前确认。',
   },
 ];
 
 const qualityItems = [
-  '原料入厂检验，关键助剂留样',
-  '生产过程记录（温度、转速、时间）',
-  '成品外观与颗粒检验',
-  '每批次留样存档，便于追溯',
+  '询样前明确适用标准、测试方法与目标值',
+  '根据产品和订单确认生产记录范围',
+  '根据约定项目检查成品与颗粒外观',
+  '留样与批次记录按订单约定执行',
   '客户反馈跟进，配方持续优化',
 ];
 
@@ -88,7 +89,6 @@ const howToLd = {
   '@type': 'HowTo',
   name: 'PVC 电线电缆料定制生产流程',
   description: '从客户需求沟通到成品交付的完整 7 道工序',
-  totalTime: 'P3-7D',
   step: flow.map((f, i) => ({
     '@type': 'HowToStep',
     position: i + 1,
@@ -99,7 +99,7 @@ const howToLd = {
 ---
 <BaseLayout
   title="制造能力"
-  description="佛山市三水湘发顺塑料有限公司制造能力：PVC 配方沟通、原料混合、挤出造粒、冷却筛分、包装交付、批次稳定的全流程。从配方开发到稳定供货，每批次留样可追溯。"
+  description="佛山市三水湘发顺塑料有限公司制造能力：PVC 配方沟通、原料混合、挤出造粒、冷却筛分、包装交付、批次稳定的全流程。从配方开发到稳定供货，批次文件按订单确认。"
   breadcrumbs={[
     { name: '首页', href: '/' },
     { name: '制造能力', href: '/manufacturing/' },
@@ -117,7 +117,7 @@ const howToLd = {
       <div class="section-eyebrow page-eyebrow">MANUFACTURING · 7 PROCESS STEPS</div>
       <h1>制造能力</h1>
       <p class="page-header-sub">
-        从配方沟通到稳定供货，每一个环节都是工厂直做的优势。
+        了解从需求沟通、试样到生产交付的主要环节。
       </p>
     </div>
   </section>
@@ -144,13 +144,22 @@ const howToLd = {
     </div>
   </section>
 
+  <EvidenceGallery area="factory" />
+  <section class="section"><div class="container">
+    <SectionTitle eyebrow="采购流程" title="从试样到批量订单" subtitle="先确认用途和验收条件，再沟通试样与交付" />
+    <div class="grid grid-3">
+      <article class="capability-card"><h3>提供需求</h3><p>说明线材用途、目标标准、设备、颜色和预计用量。</p></article>
+      <article class="capability-card"><h3>样品验证</h3><p>确认试样数量和检查项目，记录上机结果与调整意见。</p></article>
+      <article class="capability-card"><h3>确认订单</h3><p>在报价中明确规格、包装、批次文件、交期与付款条款。</p></article>
+    </div>
+  </div></section>
   <!-- 制造能力 -->
   <section class="section section-alt">
     <div class="container">
       <SectionTitle
         eyebrow="CAPABILITIES"
         title="设备与工序"
-        subtitle="自有产线，覆盖 PVC 电线电缆料主流工艺"
+        subtitle="具体设备与生产安排可在询价或看厂时确认"
       />
 
       <div class="grid grid-3">
@@ -165,13 +174,14 @@ const howToLd = {
     </div>
   </section>
 
+  <EvidenceGallery area="quality" />
   <!-- 品质保障 -->
   <section class="section">
     <div class="container">
       <SectionTitle
         eyebrow="QUALITY"
         title="批次稳定与可追溯"
-        subtitle="长期供货客户的配方一致性是工厂直做的关键优势"
+        subtitle="检验项目、批次记录和留样安排请按产品及订单确认"
       />
 
       <div class="quality-block">

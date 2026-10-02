@@ -1,34 +1,35 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionTitle from '../../components/SectionTitle.astro';
+import EvidenceGallery from '../../components/EvidenceGallery.astro';
 
 const phoneNumber = '13450853338';
 
 const flow = [
   { step: '01', title: 'Formulation', desc: 'Customer provides usage scenario and performance specs. Engineers confirm details and propose initial formula.' },
-  { step: '02', title: 'Sample Trial', desc: 'Small-batch sample produced per formula, sent to customer for extrusion / injection validation. Adjust based on feedback.' },
-  { step: '03', title: 'Raw Material Mixing', desc: 'High-speed mixer adds PVC resin, plasticizer, stabilizer, flame retardant, filler in process order.' },
-  { step: '04', title: 'Extrusion & Pelletizing', desc: 'PVC-specific extruder for pelletizing. Temperature and screw speed set per formula for uniform plasticization.' },
-  { step: '05', title: 'Cooling & Screening', desc: 'Extruded strands water-cooled / air-cooled, cut and vibrated to remove overlong, over-fine or off-spec pellets.' },
-  { step: '06', title: 'Packaging & Delivery', desc: '25kg/bag standard or customer-specified packaging with batch ID. Pallet packing on request.' },
-  { step: '07', title: 'Batch Stability', desc: 'Each batch retained for record. Long-term customers get consistent formulation and traceability.' },
+  { step: '02', title: 'Sample Trial', desc: 'Agree on trial scope and timing. The buyer checks performance on its own extrusion or molding equipment.' },
+  { step: '03', title: 'Raw Material Mixing', desc: 'Prepare and mix the materials required by the agreed formulation.' },
+  { step: '04', title: 'Extrusion & Pelletizing', desc: 'Set the process for the formulation and produce pellets for the agreed product.' },
+  { step: '05', title: 'Cooling & Screening', desc: 'Cool, cut and inspect pellets according to the production plan.' },
+  { step: '06', title: 'Packaging & Delivery', desc: 'Confirm bag size, identification and shipping arrangements before the order.' },
+  { step: '07', title: 'Order Records', desc: 'Agree on inspection, retained samples and batch documents for the specific order.' },
 ];
 
 const capabilities = [
   { icon: '⚙', title: 'PVC Formulation R&D', desc: 'Standard PVC, modified PVC, flame-retardant, heat-resistant, cold-resistant — all customizable.' },
-  { icon: '⊟', title: 'Raw Material Sourcing', desc: 'PVC resin, plasticizer, stabilizer, flame retardant from fixed channels — batch stability guaranteed.' },
-  { icon: '◐', title: 'Mixing Process', desc: 'Multiple high-speed mixers for cold / hot mixing per process requirements.' },
-  { icon: '⊕', title: 'Extrusion & Pelletizing', desc: 'Twin-screw / single-screw extruders covering stable supply for small-to-mid wire & cable factories.' },
-  { icon: '◈', title: 'Cutting & Screening', desc: 'Pellet cutters and vibratory screens for uniform granule size, no overlong or over-fine.' },
-  { icon: '⊞', title: 'Packaging & Warehousing', desc: 'Own warehouse with finished goods area. Packaging specs customizable.' },
+  { icon: '⊟', title: 'Raw Material Sourcing', desc: 'Confirm the required PVC resin and additives for each formulation and order.' },
+  { icon: '◐', title: 'Mixing Process', desc: 'Materials are mixed according to the agreed process. Equipment details can be discussed during a factory visit.' },
+  { icon: '⊕', title: 'Extrusion & Pelletizing', desc: 'Confirm equipment suitability, capacity and timing for the requested product before ordering.' },
+  { icon: '◈', title: 'Cutting & Screening', desc: 'Pellet appearance and size requirements are confirmed for each product.' },
+  { icon: '⊞', title: 'Packaging & Warehousing', desc: 'Confirm bag size, labeling and shipment preparation with your quotation.' },
 ];
 
 const qualityItems = [
-  'Incoming raw material inspection with key additives retained',
-  'Production process records (temp, speed, time)',
-  'Finished product appearance and pellet inspection',
-  'Each batch retained for traceability',
-  'Customer feedback follow-up, continuous formula optimization',
+  'Specify the applicable standard and test methods before sampling',
+  'Agree on acceptance values and documentation for each product',
+  'Review pellet appearance and processing feedback during trials',
+  'Confirm any batch records or retained samples in the purchase terms',
+  'Discuss changes before repeat orders',
 ];
 
 const howToLd = {
@@ -36,7 +37,6 @@ const howToLd = {
   '@type': 'HowTo',
   name: 'Custom PVC Wire & Cable Compound Production Flow',
   description: 'Full 7-step process from requirement to delivery',
-  totalTime: 'P3-7D',
   step: flow.map((f, i) => ({
     '@type': 'HowToStep',
     position: i + 1,
@@ -47,7 +47,7 @@ const howToLd = {
 ---
 <BaseLayout
   title="Manufacturing Capability"
-  description="Foshan Xiangfa Shun Plastic manufacturing capability: full process from PVC formulation, raw material mixing, extrusion & pelletizing, cooling & screening, packaging & delivery, to batch stability. Every batch retained and traceable."
+  description="Explore the PVC compound inquiry, sampling, production and delivery workflow. Equipment, testing and batch documentation are confirmed for each product and order."
   locale="en"
   breadcrumbs={[
     { name: 'Home', href: '/en/' },
@@ -65,7 +65,7 @@ const howToLd = {
       <div class="section-eyebrow page-eyebrow">MANUFACTURING · 7 PROCESS STEPS</div>
       <h1>Manufacturing Capability</h1>
       <p class="page-header-sub">
-        From formulation discussion to stable supply — every step is the advantage of sourcing directly from factory.
+        From application review to sampling and delivery, confirm each step for your product and order.
       </p>
     </div>
   </section>
@@ -88,7 +88,18 @@ const howToLd = {
 
   <section class="section section-alt">
     <div class="container">
-      <SectionTitle eyebrow="CAPABILITIES" title="Equipment & Process" subtitle="Own production line covering mainstream PVC wire & cable compound processes" />
+      <SectionTitle eyebrow="BUYER GUIDE" title="From trial to repeat order" subtitle="Confirm the product and acceptance criteria before committing to volume" />
+      <div class="grid grid-3">
+        <article class="capability-card"><h3>1. Share requirements</h3><p>Send the cable application, target standard, processing equipment, color and expected monthly volume.</p></article>
+        <article class="capability-card"><h3>2. Validate a sample</h3><p>Agree on trial quantity and checks. Record extrusion or molding results and any changes needed.</p></article>
+        <article class="capability-card"><h3>3. Confirm an order</h3><p>Approve the specification, packaging, batch documents, lead time and payment terms in the quotation.</p></article>
+      </div>
+    </div>
+  </section>
+  <EvidenceGallery area="factory" locale="en" />
+  <section class="section section-alt">
+    <div class="container">
+      <SectionTitle eyebrow="CAPABILITIES" title="Equipment & Process" subtitle="Ask for current equipment details and arrange a site visit when evaluating supply" />
       <div class="grid grid-3">
         {capabilities.map((c) => (
           <div class="capability-card">
@@ -103,7 +114,19 @@ const howToLd = {
 
   <section class="section">
     <div class="container">
-      <SectionTitle eyebrow="QUALITY" title="Batch Stability & Traceability" subtitle="Long-term customers get consistent formulation — the key advantage of factory-direct" />
+      <EvidenceGallery area="quality" locale="en" />
+  <section class="section">
+    <div class="container">
+      <SectionTitle eyebrow="INTERNATIONAL INQUIRY" title="Packaging and export details to discuss" subtitle="Share your destination and required documents early so availability can be checked" />
+      <div class="grid grid-3">
+        <article class="capability-card"><h3>Packaging</h3><p>State preferred bag weight, pallet needs, label language and any storage requirements.</p></article>
+        <article class="capability-card"><h3>Shipment</h3><p>Provide destination, desired shipment date and delivery terms for a tailored quotation.</p></article>
+        <article class="capability-card"><h3>Documents</h3><p>List the technical sheet, test reports or customs documents you require. Availability and scope are confirmed before order.</p></article>
+      </div>
+      <p style="margin-top:var(--sp-5)"><a class="btn btn-phone" href="mailto:17751261024@163.com">Email procurement requirements</a></p>
+    </div>
+  </section>
+      <SectionTitle eyebrow="QUALITY" title="Quality & Order Records" subtitle="Agree on testing, acceptance conditions and documentation before ordering" />
       <div class="quality-block">
         <ul class="quality-list">
           {qualityItems.map((q) => (

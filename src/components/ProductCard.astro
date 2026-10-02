@@ -8,9 +8,10 @@ interface Props {
   href?: string;
   icon?: string;
   index?: number;
+  locale?: 'zh-CN' | 'en';
 }
 
-const { id, name, category, description, highlights = [], href = '/products/', icon = 'PVC', index = 0 } = Astro.props;
+const { id, name, category, description, highlights = [], href = '/products/', icon = 'PVC', index = 0, locale = 'zh-CN' } = Astro.props;
 ---
 
 <a href={href} class="product-card" id={id} style={`--card-i:${index}`}>
@@ -25,7 +26,7 @@ const { id, name, category, description, highlights = [], href = '/products/', i
       {highlights.map((item) => <li>{item}</li>)}
     </ul>
   )}
-  <span class="product-card-link">查看规格</span>
+  <span class="product-card-link">{locale === 'en' ? 'View details' : '查看详情'}</span>
 </a>
 
 <style>

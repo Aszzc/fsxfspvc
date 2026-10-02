@@ -2,66 +2,36 @@ import { dailyUpdates } from '../data/updates';
 import { products } from '../data/products';
 
 const site = 'https://xfspvc.com';
-
-const corePages = [
-  { path: '/', enPath: '/en/', lastmod: '2026-07-06', changefreq: 'weekly', priority: '1.0' },
-  { path: '/products/', enPath: '/en/products/', lastmod: '2026-07-06', changefreq: 'weekly', priority: '0.9' },
-  { path: '/manufacturing/', enPath: '/en/manufacturing/', lastmod: '2026-07-06', changefreq: 'monthly', priority: '0.8' },
-  { path: '/knowledge/', enPath: '/en/knowledge/', lastmod: '2026-07-06', changefreq: 'monthly', priority: '0.8' },
-  { path: '/updates/', enPath: '/en/updates/', lastmod: dailyUpdates[0]?.date ?? '2026-07-06', changefreq: 'daily', priority: '0.8' },
-  { path: '/contact/', enPath: '/en/contact/', lastmod: '2026-07-06', changefreq: 'monthly', priority: '0.7' },
+const pages = [
+  ['/', '/en/'], ['/products/', '/en/products/'],
+  ['/manufacturing/', '/en/manufacturing/'], ['/knowledge/', '/en/knowledge/'],
+  ['/updates/', '/en/updates/'], ['/contact/', '/en/contact/'],
+  ['/about/', '/en/about/'], ['/jobs/', '/en/jobs/'],
+  ['/tools/inquiry/', '/en/tools/inquiry/'],
+  ...products.zh.map((item) => [`/products/${item.slug}/`, `/en/products/${item.slug}/`]),
 ];
-
-const updatePages = dailyUpdates.map((item) => ({
-  path: `/updates/${item.slug}/`,
-  enPath: `/en/updates/${item.slug}/`,
-  lastmod: item.date,
-  changefreq: 'monthly',
-  priority: '0.7',
+const articles = dailyUpdates.map((item) => ({
+  zh: `/updates/${item.slug}/`, en: `/en/updates/${item.slug}/`, published: item.date,
 }));
+const escapeXml = (value: string) => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
-const addedCorePages = [
-  { path: '/about/', enPath: '/en/about/', lastmod: '2026-07-11', changefreq: 'monthly', priority: '0.8' },
-  { path: '/jobs/', enPath: '/en/jobs/', lastmod: '2026-08-08', changefreq: 'monthly', priority: '0.7' },
-  { path: '/tools/inquiry/', enPath: '/en/tools/inquiry/', lastmod: '2026-07-11', changefreq: 'monthly', priority: '0.8' },
-];
-
-const productPages = products.zh.map((item) => ({
-  path: `/products/${item.slug}/`, enPath: `/en/products/${item.slug}/`, lastmod: '2026-07-11', changefreq: 'monthly', priority: '0.8',
-}));
-
-function absolute(path: string) {
-  return `${site}${path}`;
-}
-
-function renderUrl(loc: string, zhHref: string, enHref: string, lastmod: string, changefreq: string, priority: string) {
+function renderUrl(path: string, zh: string, en: string, lastmod?: string) {
   return `  <url>
-    <loc>${absolute(loc)}</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
-    <xhtml:link rel="alternate" hreflang="zh-CN" href="${absolute(zhHref)}" />
-    <xhtml:link rel="alternate" hreflang="en" href="${absolute(enHref)}" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="${absolute(zhHref)}" />
+    <loc>${escapeXml(site + path)}</loc>
+    ${lastmod ? `<lastmod>${lastmod}</lastmod>` : ''}
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="${escapeXml(site + zh)}" />
+    <xhtml:link rel="alternate" hreflang="en" href="${escapeXml(site + en)}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${escapeXml(site + zh)}" />
   </url>`;
 }
 
 export function GET() {
-  const pairedPages = [...corePages, ...addedCorePages, ...productPages, ...updatePages];
-  const urls = pairedPages.flatMap((page) => [
-    renderUrl(page.path, page.path, page.enPath, page.lastmod, page.changefreq, page.priority),
-    renderUrl(page.enPath, page.path, page.enPath, page.lastmod, page.changefreq, page.priority),
-  ]);
-
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  const urls = [
+    ...pages.flatMap(([zh, en]) => [renderUrl(zh, zh, en), renderUrl(en, zh, en)]),
+    ...articles.flatMap(({ zh, en, published }) => [renderUrl(zh, zh, en, published), renderUrl(en, zh, en, published)]),
+  ];
+  return new Response(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${urls.join('\n')}
-</urlset>`;
-
-  return new Response(xml, {
-    headers: {
-      'Content-Type': 'application/xml; charset=utf-8',
-    },
-  });
+</urlset>`, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
 }

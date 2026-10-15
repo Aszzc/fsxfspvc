@@ -13,7 +13,7 @@ const isEn = locale === 'en';
 const photos = evidencePhotos.filter((item) =>
   item.area === area &&
   item.published &&
-  /^\d{4}-\d{2}-\d{2}$/.test(item.date) &&
+  (item.date ? /^\d{4}-\d{2}-\d{2}$/.test(item.date) : !!item.receivedAt && /^\d{4}-\d{2}-\d{2}$/.test(item.receivedAt)) &&
   /^[\w-]+\.(jpg|jpeg|webp|png)$/i.test(item.file) &&
   existsSync(join(process.cwd(), 'public', 'images', item.file))
 );
@@ -26,7 +26,10 @@ const photos = evidencePhotos.filter((item) =>
         {photos.map((photo) => (
           <figure>
             <img src={`/images/${photo.file}`} alt={isEn ? photo.captionEn : photo.captionZh} loading="lazy" />
-            <figcaption>{isEn ? photo.captionEn : photo.captionZh} · {photo.date}</figcaption>
+            <figcaption>
+              <strong>{isEn ? photo.captionEn : photo.captionZh}</strong>
+              <span>{photo.date ? (isEn ? `Photographed ${photo.date}` : `拍摄于 ${photo.date}`) : (isEn ? `Provided ${photo.receivedAt} · capture date unconfirmed` : `素材提供于 ${photo.receivedAt} · 拍摄日期待确认`)}</span>
+            </figcaption>
           </figure>
         ))}
       </div>
@@ -36,8 +39,12 @@ const photos = evidencePhotos.filter((item) =>
 <style>
   .evidence-section { background: var(--color-surface-alt); }
   .evidence-section h2 { color: var(--color-primary-dark); }
-  .evidence-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--sp-5); }
+  .evidence-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-5); }
+  .evidence-grid figure:first-child { grid-column: 1 / -1; }
   figure { margin: 0; background: #fff; border: 1px solid var(--color-border); }
   img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
-  figcaption { padding: var(--sp-3) var(--sp-4); color: var(--color-text-soft); font-size: var(--fs-sm); }
+  figure:first-child img { aspect-ratio: 16 / 9; }
+  figcaption { display: grid; gap: 2px; padding: var(--sp-3) var(--sp-4); color: var(--color-text-soft); font-size: var(--fs-sm); }
+  figcaption strong { color: var(--color-primary-dark); font-size: var(--fs-base); }
+  @media (max-width: 640px) { .evidence-grid { grid-template-columns: 1fr; } }
 </style>

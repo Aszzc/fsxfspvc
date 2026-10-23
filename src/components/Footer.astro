@@ -71,6 +71,7 @@ const pages = isEn
       <section>
         <h4>{isEn ? 'Contact' : '联系方式'}</h4>
         <p>{isEn ? 'Tel / WeChat' : '电话 / 微信'}：<a href={`tel:${phoneNumber}`}>{phoneNumber}</a></p>
+        <p>WhatsApp：<a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer">{siteConfig.whatsappNumber}</a></p>
         <p>{isEn ? 'Email' : '邮箱'}：<a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
         <p>{isEn ? 'Factory' : '工厂地址'}：{isEn ? 'Sanshui District, Foshan, Guangdong' : '广东佛山三水区'}</p>
         <p>{isEn ? 'Hours' : '业务时间'}：{isEn ? 'Mon-Sat 8:00-18:00' : '周一至周六 8:00-18:00'}</p>

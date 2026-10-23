@@ -14,13 +14,6 @@ const contactMethods = [
     desc: '工作时间内直接拨打电话，技术问题、采购问题都可以直接沟通。',
   },
   {
-    icon: 'whatsapp',
-    title: 'WhatsApp',
-    primary: siteConfig.whatsappNumber,
-    href: siteConfig.whatsappUrl,
-    desc: '点击打开 WhatsApp，与我们直接沟通。',
-  },
-  {
     icon: 'email',
     title: '邮箱',
     primary: siteConfig.email,
@@ -43,12 +36,11 @@ const inquiryList = [
 const svgIcons: Record<string, string> = {
   email: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="m3 7 9 7 9-7"></path></svg>`,
   phone: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>`,
-  whatsapp: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.8a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.3-4.7A8.5 8.5 0 1 1 20.5 11.8Z"></path><path d="M8.3 7.5c.2-.4.5-.4.8-.4h.5c.2 0 .4.1.5.4l.8 1.8c.1.2.1.4-.1.6l-.6.7c-.2.2-.2.4 0 .6.5.8 1.2 1.5 2 2 .2.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.5 0 .5-.2 1.1-.6 1.4-.5.4-1.1.6-1.7.5-1-.1-2.4-.7-3.8-1.9-1.6-1.4-2.5-3.2-2.7-4.2-.2-.7 0-1.3.3-1.7Z"></path></svg>`,
 };
 ---
 <BaseLayout
   title="联系我们"
-  description="佛山市三水湘发顺塑料有限公司联系方式：电话/微信 13450853338，WhatsApp +86 177 5126 1024，邮箱 17751261024@163.com。位于广东佛山三水，可电话、微信、WhatsApp 或邮件沟通。询价需提供使用场景、性能要求、规格用量等信息。"
+  description="佛山市三水湘发顺塑料有限公司联系方式：电话/微信 13450853338，邮箱 17751261024@163.com。位于广东佛山三水，可电话、微信或邮件沟通。询价需提供使用场景、性能要求、规格用量等信息。"
   breadcrumbs={[
     { name: '首页', href: '/' },
     { name: '联系我们', href: '/contact/' },
@@ -136,10 +128,6 @@ const svgIcons: Record<string, string> = {
               <span><a href={`tel:${phoneNumber}`}>{phoneNumber}</a></span>
             </li>
             <li>
-              <strong>WhatsApp</strong>
-              <span><a href={siteConfig.whatsappUrl} target="_blank" rel="noopener noreferrer">{siteConfig.whatsappNumber}</a></span>
-            </li>
-            <li>
               <strong>来厂看货</strong>
               <span>请提前电话预约，方便安排接待</span>
             </li>
@@ -192,7 +180,7 @@ const svgIcons: Record<string, string> = {
   /* 联系方式卡片 */
   .contact-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--sp-4);
   }
 

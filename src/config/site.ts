@@ -2,8 +2,6 @@ export const siteConfig = {
   url: 'https://xfspvc.com',
   phone: '13450853338',
   phoneInternational: '+86-13450853338',
-  whatsappNumber: '+86 177 5126 1024',
-  whatsappUrl: 'https://wa.me/8617751261024',
   email: '17751261024@163.com',
   addressZh: '广东省佛山市三水区',
   addressEn: 'Sanshui District, Foshan, Guangdong, China',

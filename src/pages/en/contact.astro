@@ -8,6 +8,7 @@ const phoneNumber = '13450853338';
 const contactMethods = [
   { icon: 'email', title: 'Email for inquiries', primary: siteConfig.email, href: `mailto:${siteConfig.email}`, desc: 'Send your application, target standard, expected volume and sample requirements.' },
   { icon: 'phone', title: 'Phone / WeChat', primary: '+86 134 5085 3338', href: `tel:${siteConfig.phoneInternational}`, desc: 'Use the same number for calls or add it manually in WeChat.' },
+  { icon: 'phone', title: 'WhatsApp', primary: '+86 177 5126 1024', href: `https://wa.me/${siteConfig.whatsapp.replace('+', '')}`, desc: 'Message us on WhatsApp with your application, photos or product requirements.' },
 ];
 
 const inquiryList = [
@@ -211,6 +212,7 @@ const svgIcons: Record<string, string> = {
   .info-list { list-style: none; padding: 0; margin: 0 0 var(--sp-5); }
   .info-list li { display: flex; padding: var(--sp-4) 0; border-bottom: 1px dashed var(--color-border); font-size: var(--fs-sm); color: var(--color-text-soft); align-items: flex-start; }
   .info-list li:last-child { border-bottom: none; }
+  .info-list li > span { min-width: 0; overflow-wrap: anywhere; }
   .info-list strong { width: 130px; color: var(--color-text); font-weight: 700; flex-shrink: 0; }
   .info-list a { color: var(--color-accent); font-weight: 700; font-feature-settings: 'tnum'; }
 

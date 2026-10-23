@@ -20,6 +20,7 @@ const contactMethods = [
     href: `mailto:${siteConfig.email}`,
     desc: '可发送线材用途、技术要求和样品资料。',
   },
+  { icon: 'phone', title: 'WhatsApp', primary: '+86 177 5126 1024', href: `https://wa.me/${siteConfig.whatsapp.replace('+', '')}`, desc: '可通过 WhatsApp 发送文字、照片和产品需求。' },
 ];
 
 const inquiryList = [
@@ -317,6 +318,8 @@ const svgIcons: Record<string, string> = {
   .info-list li:last-child {
     border-bottom: none;
   }
+
+  .info-list li > span { min-width: 0; overflow-wrap: anywhere; }
 
   .info-list strong {
     width: 130px;

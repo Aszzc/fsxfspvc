@@ -1,0 +1,52 @@
+---
+interface Props { locale?: 'zh' | 'en' }
+const { locale = 'zh' } = Astro.props;
+const isEn = locale === 'en';
+const items = [
+  ['pellets-white.jpg', 'PVC 胶粒样品', 'PVC compound pellets'],
+  ['pellets-blue.jpg', '彩色胶粒样品', 'Colored compound pellets'],
+  ['flat-wire-white.jpg', '排线样品', 'Flat cable sample'],
+  ['corrugated-tube-gray.jpg', '波纹管样品', 'Corrugated tube sample'],
+];
+---
+
+<section class="product-highlights section-tight" aria-labelledby="product-highlights-title">
+  <div class="container">
+    <div class="highlights-heading">
+      <div>
+        <div class="section-eyebrow">{isEn ? 'PRODUCTS IN VIEW' : '产品实物一览'}</div>
+        <h2 id="product-highlights-title">{isEn ? 'From compound pellets to finished forms' : '从胶粒到下游制品'}</h2>
+        <p>{isEn ? 'Factory-supplied sample photos. Appearance is illustrative; confirm grade and performance against the agreed specification.' : '工厂提供的样品照片，仅展示外观；产品牌号和性能以双方确认的技术规格为准。'}</p>
+      </div>
+      <a class="highlights-link" href={isEn ? '/en/products/' : '/products/'}>{isEn ? 'See all products and samples' : '查看产品目录与全部样品'} <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="highlights-grid">
+      {items.map(([file, zh, en]) => (
+        <figure>
+          <img src={`/images/products/${file}`} alt={isEn ? en : zh} loading="lazy" decoding="async" />
+          <figcaption>{isEn ? en : zh}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .product-highlights { background: #fff; border-bottom: 1px solid var(--color-border); }
+  .highlights-heading { display: flex; justify-content: space-between; align-items: end; gap: var(--sp-5); margin-bottom: var(--sp-5); }
+  .highlights-heading h2 { color: var(--color-primary-dark); font-size: clamp(26px, 3.5vw, 38px); margin: 0 0 var(--sp-2); }
+  .highlights-heading p { color: var(--color-text-soft); margin: 0; }
+  .highlights-link { flex: 0 0 auto; font-weight: 800; }
+  .highlights-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-4); }
+  figure { margin: 0; overflow: hidden; background: var(--color-bg); border: 1px solid var(--color-border); }
+  img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  figcaption { padding: 10px 14px; color: var(--color-text); font-size: var(--fs-sm); font-weight: 700; }
+  @media (max-width: 760px) {
+    .highlights-heading { align-items: flex-start; flex-direction: column; }
+    .highlights-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    figcaption { padding: 8px 10px; }
+  }
+
+  figure { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-xs); }
+  figcaption { background: #fff; }
+</style>

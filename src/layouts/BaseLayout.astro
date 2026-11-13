@@ -87,7 +87,7 @@ const allJsonLd = [orgLd, ...(breadcrumbLd ? [breadcrumbLd] : []), ...jsonLdArra
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0f3a32" />
+    <meta name="theme-color" content="#113c49" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <meta name="author" content={siteName} />
@@ -112,6 +112,7 @@ const allJsonLd = [orgLd, ...(breadcrumbLd ? [breadcrumbLd] : []), ...jsonLdArra
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
+    <a class="skip-link" href="#main">{isEn ? 'Skip to main content' : '跳转到主要内容'}</a>
     <Header locale={locale} brandShort={brandShort} />
     <main id="main">
       <slot />

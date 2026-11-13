@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionTitle from '../../components/SectionTitle.astro';
 import ProductDetail from '../../components/ProductDetail.astro';
+import ProductPhotoGallery from '../../components/ProductPhotoGallery.astro';
 
 const phoneNumber = '13450853338';
 
@@ -318,6 +319,10 @@ const products = [
     </div>
   </section>
 
+  <div class="container">
+    <ProductPhotoGallery locale="en" />
+  </div>
+
   <section class="section">
     <div class="container">
       {products.map((p) => (
@@ -420,9 +425,15 @@ const products = [
 
   @media (max-width: 720px) {
     .cat-nav {
-      flex-direction: column;
-      align-items: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 10px 12px;
     }
+
+    .cat-nav::-webkit-scrollbar { display: none; }
+    .cat-nav-title { flex: 0 0 auto; }
+    .cat-nav-link { flex: 0 0 auto; }
 
     .catalog-cta {
       grid-template-columns: 1fr;

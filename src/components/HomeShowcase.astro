@@ -1,0 +1,130 @@
+---
+interface Props { locale?: 'zh' | 'en' }
+const { locale = 'zh' } = Astro.props;
+const en = locale === 'en';
+const prefix = en ? '/en' : '';
+const products = [
+  { slug: 'insulation-70', image: 'pellets-white.jpg', zh: 'PVC 绝缘料', en: 'PVC insulation compound', descZh: '用于电线导体绝缘层，按用途和目标标准选择。', descEn: 'For wire insulation, selected to suit the application and target standard.' },
+  { slug: 'sheath', image: 'pellets-amber.jpg', zh: 'PVC 护套料', en: 'PVC sheath compound', descZh: '面向电源线、控制线等线缆外护套。', descEn: 'For outer jackets on power cords, control cables and more.' },
+  { slug: 'electronic', image: 'pellets-blue.jpg', zh: '电子线料', en: 'Electronic wire compound', descZh: '面向电子连接线与小规格线材加工。', descEn: 'For electronic leads and small-gauge wire processing.' },
+  { slug: 'plug', image: 'pellets-red.jpg', zh: '插头注塑料', en: 'Plug molding compound', descZh: '用于电源插头、线尾护套等注塑成型。', descEn: 'For injection molded plugs and strain reliefs.' },
+];
+const applications = [
+  { image: 'flat-wire-white.jpg', zh: '电线电缆', en: 'Wire & cable', descZh: '绝缘与护套材料', descEn: 'Insulation and sheathing', slug: 'insulation-70' },
+  { image: 'appliance-cable.jpg', zh: '家电与电子线材', en: 'Appliance & electronic wire', descZh: '内部配线与连接线', descEn: 'Internal and connecting wire', slug: 'electronic' },
+  { image: 'plug-cord.jpg', zh: '电源线与插头', en: 'Power cords & plugs', descZh: '线缆护套与注塑包胶', descEn: 'Cable jackets and molded ends', slug: 'plug' },
+  { image: 'corrugated-tube-gray.jpg', zh: '软管与异型材', en: 'Tubing & profiles', descZh: '挤出制品与定制应用', descEn: 'Extruded and custom applications', slug: 'modified' },
+];
+---
+<section class="home-hero">
+  <img src="/images/factory-pelletizing-workshop.jpg" alt={en ? 'Pelletizing equipment in the factory workshop' : '工厂车间造粒设备'} fetchpriority="high" />
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="eyebrow">XIANGFA SHUN · PVC COMPOUNDS</p>
+    <h1>{en ? 'PVC compounds for the products you make' : <>从一颗胶粒，<br class="hero-break" />到可靠的线缆应用</>}</h1>
+    <p class="hero-lead">{en ? 'Explore PVC compounds for wire insulation, cable sheathing, electronic wire and plug molding. Discuss your application and processing needs with our Foshan team.' : '专注 PVC 电线电缆料，提供绝缘料、护套料、电子线料及插头料，结合应用与加工需求沟通选料和试样。'}</p>
+    <div class="hero-actions"><a class="btn btn-phone btn-lg" href="#products">{en ? 'Explore products' : '探索产品'} <span aria-hidden="true">↗</span></a><a class="hero-link" href="#applications">{en ? 'Explore applications' : '了解行业应用'} <span aria-hidden="true">↓</span></a></div>
+  </div>
+  <span class="image-note">{en ? 'Factory workshop · photo date to be confirmed' : '本厂车间实拍 · 拍摄日期待确认'}</span>
+</section>
+<section class="home-section products" id="products">
+  <div class="container">
+    <div class="section-heading"><div><p class="eyebrow">OUR PRODUCTS / 01</p><h2>{en ? 'Find the right compound' : '以应用为起点，选择合适的材料'}</h2><p>{en ? 'From insulation to molding, explore our core PVC compound range.' : '从线缆绝缘到插头成型，探索湘发顺的 PVC 材料系列。'}</p></div><a class="text-link" href={`${prefix}/products/`}>{en ? 'All products' : '查看全部产品'} <span aria-hidden="true">↗</span></a></div>
+    <div class="product-grid">{products.map((p, i) => <a class="product-tile" href={`${prefix}/products/${p.slug}/`}><div class="product-image"><img src={`/images/products/${p.image}`} alt={en ? 'PVC pellet sample' : 'PVC 胶粒样品'} loading="lazy" /><span>0{i + 1}</span></div><div class="product-info"><div><small>PVC COMPOUND</small><h3>{en ? p.en : p.zh}</h3><p>{en ? p.descEn : p.descZh}</p></div><span class="arrow" aria-hidden="true">↗</span></div></a>)}</div>
+    <p class="caption">{en ? 'Sample photos show appearance only. Grades and performance are subject to agreed specifications.' : '图片为胶粒样品外观展示，具体牌号及性能以双方确认的技术规格为准。'}</p>
+  </div>
+</section>
+<section class="home-section applications" id="applications">
+  <div class="container"><div class="section-heading"><div><p class="eyebrow">APPLICATIONS / 02</p><h2>{en ? 'Materials made for real applications' : '材料，融入每一种应用'}</h2><p>{en ? 'Explore potential applications and discuss the right material for your process.' : '围绕不同制品与加工方式，寻找适合的材料方向。'}</p></div></div>
+    <div class="application-grid">{applications.map((a, i) => <a class="application-tile" href={`${prefix}/products/${a.slug}/`}><img src={`/images/products/${a.image}`} alt={en ? `${a.en} sample` : `${a.zh}样品`} loading="lazy" /><div class="app-shade"></div><div class="app-copy"><span>0{i + 1} / APPLICATION</span><h3>{en ? a.en : a.zh}</h3><p>{en ? a.descEn : a.descZh}</p></div><span class="app-arrow" aria-hidden="true">↗</span></a>)}</div>
+    <p class="caption">{en ? 'Finished-product samples illustrate possible applications; suitability should be confirmed for each project.' : '下游制品样品用于展示应用方向，具体适用性需结合项目确认。'}</p>
+  </div>
+</section>
+<section class="about-home"><div class="about-image"><img src="/images/factory-exterior-building.jpg" alt={en ? 'Xiangfa Shun factory exterior' : '湘发顺工厂外景'} loading="lazy" /></div><div class="about-copy"><p class="eyebrow">ABOUT XIANGFA SHUN / 03</p><h2>{en ? 'A manufacturing partner in Foshan' : '立足佛山，以材料连接制造'}</h2><p>{en ? 'Foshan Sanshui Xiangfa Shun Plastic Co., Ltd. supplies PVC wire and cable compounds. From application discussion to sample evaluation, we work with customers to identify a suitable direction.' : '佛山市三水湘发顺塑料有限公司提供 PVC 电线电缆料及改性配方。从用途沟通到样品验证，我们与客户一起寻找适合生产需求的材料方向。'}</p><a class="text-link light-link" href={`${prefix}/about/`}>{en ? 'About our company' : '了解湘发顺'} <span aria-hidden="true">↗</span></a></div></section>
+<section class="home-cta"><div class="container cta-inner"><div><p class="eyebrow">LET’S TALK</p><h2>{en ? 'Tell us what you are making.' : '从您的产品需求开始。'}</h2><p>{en ? 'Share your application, specifications and processing requirements for a sample or quotation.' : '告诉我们用途、规格与加工要求，沟通选料、试样或报价。'}</p></div><a class="btn btn-phone btn-lg" href={`${prefix}/tools/inquiry/`}>{en ? 'Send an inquiry' : '开始询价'} <span aria-hidden="true">↗</span></a></div></section>
+<style>
+.home-hero{height:min(650px,75vh);min-height:510px;position:relative;display:flex;align-items:center;background:#102c27;overflow:hidden}.home-hero>img,.hero-overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero-overlay{background:linear-gradient(90deg,rgba(6,30,26,.94) 0%,rgba(6,30,26,.74) 47%,rgba(6,30,26,.15) 100%)}.hero-content{position:relative;color:#fff}.eyebrow{color:#cf713f;font-size:12px;font-weight:800;letter-spacing:.16em;margin-bottom:18px}.hero-content .eyebrow{color:#ffb27d}.home-hero h1{font-size:clamp(40px,5.1vw,68px);line-height:1.13;max-width:760px;margin-bottom:22px;color:white}.hero-lead{max-width:620px;color:rgba(255,255,255,.85);font-size:18px;line-height:1.85}.hero-actions{display:flex;gap:30px;align-items:center;margin-top:32px}.hero-link{color:#fff;font-weight:700}.hero-link:hover{color:#ffb27d}.image-note{position:absolute;bottom:14px;right:24px;color:#fff;background:#142b28cc;padding:3px 8px;font-size:11px}.home-section{padding:90px 0}.products{background:#fff}.applications{background:#eef2ee}.section-heading{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:34px}.section-heading h2,.about-copy h2,.home-cta h2{font-size:clamp(30px,3.5vw,46px);color:#103b32;margin-bottom:14px}.section-heading p:not(.eyebrow){margin:0;color:#63716a}.text-link{font-size:14px;font-weight:800;white-space:nowrap;border-bottom:1px solid currentColor;padding-bottom:7px}.text-link span{margin-left:25px}.product-grid,.application-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.product-tile{color:inherit;display:block}.product-image{position:relative;overflow:hidden;background:#edf1ed}.product-image img{width:100%;aspect-ratio:1.13;object-fit:cover;transition:transform .4s}.product-tile:hover img,.application-tile:hover img{transform:scale(1.04)}.product-image>span{position:absolute;top:14px;left:16px;background:#fff;color:#23463c;font-size:11px;font-weight:800;padding:5px 9px}.product-info{display:flex;justify-content:space-between;gap:8px;padding:20px 2px 5px}.product-info small{font-size:10px;color:#a15c38;letter-spacing:.12em;font-weight:800}.product-info h3{font-size:21px;margin:8px 0;color:#123b32}.product-info p{font-size:14px;line-height:1.6;color:#68756e;margin:0}.arrow{font-size:24px;color:#c46331}.caption{font-size:12px;color:#78847d;margin:25px 0 0}.application-tile{position:relative;min-height:340px;overflow:hidden;color:#fff;background:#163a32}.application-tile img,.app-shade{position:absolute;width:100%;height:100%;inset:0;object-fit:cover;transition:transform .4s}.app-shade{background:linear-gradient(0deg,rgba(4,25,21,.92),rgba(4,25,21,.04) 80%)}.app-copy{position:absolute;bottom:25px;left:23px;right:20px}.app-copy span{font-size:10px;letter-spacing:.15em;color:#f6b38a}.app-copy h3{font-size:22px;color:#fff;margin:10px 0 5px}.app-copy p{font-size:14px;color:#ffffffc9;margin:0}.app-arrow{position:absolute;top:18px;right:20px;color:white;font-size:23px}.about-home{display:grid;grid-template-columns:1fr 1fr;background:#103b32;color:white}.about-image{min-height:420px}.about-image img{width:100%;height:100%;object-fit:cover}.about-copy{padding:clamp(45px,7vw,100px);align-self:center}.about-copy h2{color:#fff}.about-copy>p:not(.eyebrow){color:#d5e0d9;max-width:500px;line-height:1.9;margin-bottom:28px}.light-link{color:#fff}.home-cta{background:#f8f8f5;padding:70px 0}.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:30px}.home-cta h2{margin-bottom:10px}.home-cta p:not(.eyebrow){margin:0;color:#68756e}@media(max-width:850px){.product-grid,.application-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.home-section{padding:65px 0}.application-tile{min-height:300px}.about-home{grid-template-columns:1fr}.about-image{min-height:300px;max-height:400px}.about-copy{padding:50px 24px}}@media(max-width:560px){.home-hero{min-height:520px;height:auto}.hero-content{padding-top:70px;padding-bottom:90px}.home-hero h1{font-size:38px}.hero-lead{font-size:16px}.hero-actions{gap:18px;flex-wrap:wrap}.section-heading{align-items:start;flex-direction:column}.product-grid,.application-grid{gap:12px}.product-info h3{font-size:17px}.product-info p{font-size:13px}.application-tile{min-height:240px}.app-copy{left:14px;bottom:15px}.app-copy h3{font-size:18px}.app-copy p{font-size:12px}.cta-inner{align-items:start;flex-direction:column}.image-note{right:12px;font-size:10px}}
+
+/* Brighter, softer presentation with the product imagery in focus. */
+.home-hero { height: min(570px, 68vh); min-height: 470px; }
+.hero-overlay { background: linear-gradient(90deg, rgba(9, 47, 39, .88), rgba(13, 57, 46, .58) 50%, rgba(16, 56, 45, .08)); }
+.hero-actions .btn { box-shadow: 0 10px 24px rgba(107, 49, 20, .24); }
+.hero-link { transition: color .2s ease, transform .2s ease; }
+.hero-link:hover, .hero-link:focus-visible { transform: translateY(-2px); }
+.products { background: #fffdf9; }
+.applications { background: linear-gradient(145deg, #eef6ec, #f8f7ee); }
+.product-grid, .application-grid { gap: 22px; }
+.product-tile { overflow: hidden; border-radius: 22px; background: #fff; box-shadow: 0 8px 28px rgba(29, 70, 51, .09); border: 1px solid #edf1e8; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.product-tile:hover, .product-tile:focus-visible { transform: translateY(-6px); border-color: #c4ddcb; box-shadow: 0 18px 38px rgba(29, 70, 51, .16); }
+.product-image { background: #f1f5ee; }
+.product-image img, .application-tile img { transition: transform .45s ease; }
+.product-tile:focus-visible img, .application-tile:focus-visible img { transform: scale(1.04); }
+.product-image > span { border-radius: 999px; box-shadow: 0 4px 12px #163a3214; }
+.product-info { padding: 20px 20px 24px; }
+.product-info .arrow, .app-arrow { transition: transform .25s ease, background .25s ease; }
+.product-tile:hover .arrow, .product-tile:focus-visible .arrow, .application-tile:hover .app-arrow, .application-tile:focus-visible .app-arrow { transform: translate(4px, -4px); }
+.application-tile { border-radius: 22px; box-shadow: 0 10px 28px rgba(29, 70, 51, .13); transition: transform .25s ease, box-shadow .25s ease; }
+.application-tile:hover, .application-tile:focus-visible { transform: translateY(-5px); box-shadow: 0 18px 36px rgba(29, 70, 51, .22); }
+.app-shade { background: linear-gradient(0deg, rgba(4, 33, 25, .94), rgba(4, 33, 25, .32) 50%, rgba(4, 33, 25, .06)); }
+.app-arrow { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: rgba(255, 255, 255, .2); }
+.about-home { background: #164d40; }
+.about-image { overflow: hidden; }
+.about-image img { transition: transform .5s ease; }
+.about-home:hover .about-image img { transform: scale(1.025); }
+.home-cta { background: #fff9ef; }
+.cta-inner { border-radius: 26px; padding-top: 38px; padding-bottom: 38px; background: #f5e9d7; }
+#products, #applications { scroll-margin-top: 150px; }
+@media (max-width: 850px) { .product-grid, .application-grid { gap: 16px; } }
+@media (max-width: 560px) {
+  .home-hero { min-height: 440px; height: auto; }
+  .hero-content { padding-top: 56px; padding-bottom: 76px; }
+  .product-grid, .application-grid { gap: 12px; }
+  .product-tile, .application-tile { border-radius: 16px; }
+  .product-info { padding: 14px 12px 18px; }
+  .app-arrow { width: 32px; height: 32px; font-size: 18px; }
+  .cta-inner { width: calc(100% - 32px); padding: 28px 22px; }
+  #products, #applications { scroll-margin-top: 140px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .product-tile, .product-image img, .application-tile, .application-tile img, .product-info .arrow, .app-arrow, .about-image img, .hero-link { transition: none; }
+  .product-tile:hover, .product-tile:focus-visible, .application-tile:hover, .application-tile:focus-visible, .hero-link:hover, .hero-link:focus-visible { transform: none; }
+  .product-tile:hover img, .product-tile:focus-visible img, .application-tile:hover img, .application-tile:focus-visible img, .about-home:hover .about-image img, .product-tile:hover .arrow, .product-tile:focus-visible .arrow, .application-tile:hover .app-arrow, .application-tile:focus-visible .app-arrow { transform: none; }
+}
+
+/* Home adopts the same mineral teal and warm coral used throughout the site. */
+.home-hero { background: #123f4c; }
+.hero-overlay { background: linear-gradient(90deg, rgba(10, 45, 55, .91), rgba(14, 69, 72, .65) 52%, rgba(15, 73, 72, .12)); }
+.hero-content .eyebrow { color: #ffd3b5; }
+.eyebrow { color: #b8472d; }
+.section-heading h2, .about-copy h2, .home-cta h2, .product-info h3 { color: var(--color-primary-dark); }
+.products { background: #fffdfa; }
+.applications { background: linear-gradient(135deg, #e8f5f2, #f7f8ed); }
+.product-tile { border-color: #e2ece8; box-shadow: 0 8px 28px rgba(20, 72, 72, .09); }
+.product-tile:hover, .product-tile:focus-visible { border-color: #a8d2c8; box-shadow: 0 18px 38px rgba(20, 72, 72, .16); }
+.product-image { background: #edf5f3; }
+.product-info small, .arrow { color: #ad432c; }
+.application-tile { background: #174c52; }
+.app-shade { background: linear-gradient(0deg, rgba(8, 43, 50, .96), rgba(8, 43, 50, .34) 52%, rgba(8, 43, 50, .08)); }
+.about-home { background: #174e59; }
+.about-copy h2 { color: #fff; }
+.about-copy>p:not(.eyebrow) { color: #e1efeb; }
+.about-copy .eyebrow { color: #ffd1b0; }
+.home-cta { background: #fffaf2; }
+.cta-inner { background: linear-gradient(120deg, #ffefdf, #f3f4dd); }
+
+@media (max-width: 560px) {
+  :global(html[lang="en"]) .home-hero h1 { font-size: clamp(30px, 8vw, 38px); line-height: 1.12; }
+  :global(html[lang="en"]) .hero-lead { font-size: 15px; line-height: 1.65; }
+}
+
+@media (max-width: 380px) {
+  .application-grid { grid-template-columns: 1fr; }
+  .application-tile { min-height: 210px; }
+  .app-copy { left: 20px; bottom: 19px; }
+  .app-copy h3 { font-size: 20px; }
+  .app-copy p { font-size: 14px; }
+}
+
+@media (max-width: 560px) { .hero-break { display: none; } }
+</style>
+

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import ProductDetail from '../components/ProductDetail.astro';
+import ProductPhotoGallery from '../components/ProductPhotoGallery.astro';
 
 const phoneNumber = '13450853338';
 
@@ -328,6 +329,10 @@ const products = [
     </div>
   </section>
 
+  <div class="container">
+    <ProductPhotoGallery locale="zh" />
+  </div>
+
   <!-- 产品列表 -->
   <section class="section">
     <div class="container">
@@ -467,6 +472,10 @@ const products = [
     gap: var(--sp-6);
     align-items: start;
   }
+
+  .catalog-sidebar,
+  .catalog-sidebar-inner,
+  .catalog-content { min-width: 0; }
 
   .catalog-sidebar {
     position: sticky;
@@ -608,6 +617,8 @@ const products = [
     .catalog-toc {
       display: flex;
       max-height: none;
+      width: 100%;
+      min-width: 0;
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -628,10 +639,19 @@ const products = [
   }
 
   @media (max-width: 720px) {
+    .catalog-sidebar { top: 136px; }
+    .catalog-content .product-detail { scroll-margin-top: 148px; }
+
     .cat-nav {
-      flex-direction: column;
-      align-items: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 10px 12px;
     }
+
+    .cat-nav::-webkit-scrollbar { display: none; }
+    .cat-nav-title { flex: 0 0 auto; }
+    .cat-nav-link { flex: 0 0 auto; }
 
     .catalog-cta {
       grid-template-columns: 1fr;

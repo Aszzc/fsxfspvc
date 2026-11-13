@@ -34,6 +34,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <div class="container">
       <div class="empty-state">
         <h2>Job Requirements</h2>
+        <p>Job requirements have not been published yet. Please contact us for recruitment enquiries.</p>
+        <a class="btn btn-outline" href="/en/contact/">Contact us</a>
       </div>
     </div>
   </section>
@@ -45,7 +47,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
 
   .empty-state {
-    min-height: 220px;
+    max-width: 760px;
     padding: var(--sp-7);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
@@ -53,7 +55,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
 
   .empty-state h2 {
-    margin: 0;
+    margin: 0 0 var(--sp-3);
     color: var(--color-primary-dark);
     font-size: var(--fs-xl);
   }

@@ -1,0 +1,83 @@
+---
+interface Props {
+  locale?: 'zh' | 'en';
+}
+
+const { locale = 'zh' } = Astro.props;
+const isEn = locale === 'en';
+
+const pellets = [
+  ['pellets-white.jpg', '白色 PVC 胶粒', 'White PVC compound pellets'],
+  ['pellets-blue.jpg', '蓝色 PVC 胶粒', 'Blue PVC compound pellets'],
+  ['pellets-brown.jpg', '棕色 PVC 胶粒', 'Brown PVC compound pellets'],
+  ['pellets-clear.jpg', '透明 PVC 胶粒', 'Clear PVC compound pellets'],
+  ['pellets-yellow.jpg', '黄色 PVC 胶粒', 'Yellow PVC compound pellets'],
+  ['pellets-green.jpg', '绿色 PVC 胶粒', 'Green PVC compound pellets'],
+  ['pellets-amber.jpg', '琥珀色 PVC 胶粒', 'Amber PVC compound pellets'],
+  ['pellets-red.jpg', '红色 PVC 胶粒', 'Red PVC compound pellets'],
+];
+
+const samples = [
+  ['flat-wire-white.jpg', '白色排线', 'White flat cable'],
+  ['flat-wire-black.jpg', '黑色排线', 'Black flat cable'],
+  ['corrugated-tube-gray.jpg', '灰色波纹管', 'Gray corrugated tube'],
+  ['corrugated-tube-white.jpg', '白色波纹管', 'White corrugated tube'],
+  ['plug-cord.jpg', '插头电源线', 'Plug power cord'],
+  ['appliance-cable.jpg', '家电连接线样品', 'Appliance cable sample'],
+  ['computer-power-cord.jpg', '电脑电源连接线', 'Computer power cord'],
+  ['wear-strip-coil.jpg', '耐磨胶条（卷材样品）', 'Abrasion-resistant strip, coil sample'],
+  ['wear-strip-profile.jpg', '耐磨胶条（型材样品）', 'Abrasion-resistant strip, profile sample'],
+  ['vacuum-hose-fitting.jpg', '吸尘器软管连接件样品', 'Vacuum hose fitting sample'],
+  ['luggage-seal-profile.jpg', '行李箱密封胶条样品', 'Luggage sealing strip sample'],
+  ['profile-sample-black.jpg', '黑色异型材样品', 'Black profile sample'],
+];
+---
+
+<section class="photo-gallery section-tight" aria-labelledby="product-photos-title">
+  <div class="gallery-heading">
+    <div>
+      <div class="section-eyebrow">{isEn ? 'PRODUCT PHOTO RECORD' : '产品实物照片'}</div>
+      <h2 id="product-photos-title">{isEn ? 'Pellet and application samples' : '胶粒与下游制品样品'}</h2>
+      <p>{isEn
+        ? 'Photos supplied by the factory. They show sample appearances only; color does not identify a grade or confirm technical performance.'
+        : '照片由工厂提供，展示胶粒颜色及下游制品样貌；颜色不代表具体牌号，图片也不构成性能或认证证明。'}</p>
+    </div>
+  </div>
+
+  <h3>{isEn ? 'PVC compound pellets' : 'PVC 胶粒'}</h3>
+  <div class="photo-grid pellet-grid">
+    {pellets.map(([file, zh, en]) => (
+      <figure>
+        <img src={`/images/products/${file}`} alt={isEn ? en : zh} loading="lazy" decoding="async" />
+        <figcaption>{isEn ? en : zh}</figcaption>
+      </figure>
+    ))}
+  </div>
+
+  <h3 class="sample-title">{isEn ? 'Downstream product samples' : '下游制品样品'}</h3>
+  <div class="photo-grid sample-grid">
+    {samples.map(([file, zh, en]) => (
+      <figure>
+        <img src={`/images/products/${file}`} alt={isEn ? en : zh} loading="lazy" decoding="async" />
+        <figcaption>{isEn ? en : zh}</figcaption>
+      </figure>
+    ))}
+  </div>
+</section>
+
+<style>
+  .photo-gallery { margin-top: var(--sp-7); }
+  .gallery-heading { max-width: 760px; margin-bottom: var(--sp-5); }
+  .gallery-heading h2 { margin: var(--sp-2) 0; }
+  .gallery-heading p { text-wrap: pretty; color: var(--color-text-soft); margin: 0; line-height: 1.7; }
+  .photo-gallery h3 { margin: var(--sp-5) 0 var(--sp-3); font-size: var(--fs-lg); }
+  .photo-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-3); }
+  figure { margin: 0; min-width: 0; overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-border); }
+  figure img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--color-surface-alt); }
+  figcaption { padding: 10px 12px; color: var(--color-text); font-size: var(--fs-sm); line-height: 1.5; }
+  .sample-title { margin-top: var(--sp-6) !important; }
+  @media (max-width: 760px) { .photo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+
+  figure { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-xs); }
+  figcaption { background: #fff; }
+</style>

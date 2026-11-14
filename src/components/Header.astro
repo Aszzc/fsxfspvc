@@ -248,4 +248,16 @@ const altLabel = isEn ? '中文' : 'EN';
     .brand-name { font-size: 17px; letter-spacing: 0; }
     .header-actions .btn { padding: 9px 10px; font-size: 11px; }
   }
+
+  /* Match the desktop and tablet header to the mobile brand bar. */
+  @media (min-width: 721px) {
+    .site-header { background: #113c49; border-bottom-color: rgba(255,255,255,.12); }
+    .header-top { background: #0a303b; }
+    .brand, .brand:hover, .brand-name { color: #fff; }
+    .brand-sub { color: #c6dfdb; }
+    .primary-nav a { color: #e7f3ef; }
+    .primary-nav a:hover, .primary-nav a.is-active, .primary-nav a:focus-visible { background: #e5f3ef; color: #113c49; }
+    .lang-switch { color: #fff; background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.36); }
+    .lang-switch:hover, .lang-switch:focus-visible { color: #113c49; background: #fff; }
+  }
 </style>

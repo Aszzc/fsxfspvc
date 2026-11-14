@@ -150,12 +150,12 @@ const applications = [
 .product-grid::-webkit-scrollbar { display: none; }
 .carousel-controls { position: absolute; inset: 0; display: block; pointer-events: none; }
 .carousel-controls[hidden] { display: none; }
-.carousel-controls button { position: absolute; top: 34%; transform: translateY(-50%); z-index: 2; pointer-events: auto; background: rgba(13, 48, 54, .48); border: 1px solid rgba(255, 255, 255, .48); color: #fff; box-shadow: 0 4px 16px rgba(0, 0, 0, .14); backdrop-filter: blur(8px); }
+.carousel-controls button { width: 60px; height: 60px; font-size: 28px; position: absolute; top: 34%; transform: translateY(-50%); z-index: 2; pointer-events: auto; background: rgba(13, 48, 54, .48); border: 1px solid rgba(255, 255, 255, .48); color: #fff; box-shadow: 0 4px 16px rgba(0, 0, 0, .14); backdrop-filter: blur(8px); }
 .carousel-controls .carousel-prev { left: 12px; }
 .carousel-controls .carousel-next { right: 12px; }
 .carousel-controls button:hover:not(:disabled), .carousel-controls button:focus-visible { background: rgba(13, 48, 54, .82); color: #fff; }
 .carousel-controls button:disabled { opacity: .35; }
-@media (max-width: 560px) { .carousel-controls .carousel-prev { left: 8px; } .carousel-controls .carousel-next { right: 8px; } }
+@media (max-width: 560px) { .carousel-controls button { width: 52px; height: 52px; font-size: 25px; } .carousel-controls .carousel-prev { left: 8px; } .carousel-controls .carousel-next { right: 8px; } }
 </style>
 
 

@@ -30,7 +30,6 @@ const applications = [
   <div class="container">
     <div class="section-heading"><div><p class="eyebrow">OUR PRODUCTS / 01</p><h2>{en ? 'Find the right compound' : '以应用为起点，选择合适的材料'}</h2><p>{en ? 'From insulation to molding, explore our core PVC compound range.' : '从线缆绝缘到插头成型，探索湘发顺的 PVC 材料系列。'}</p></div><a class="text-link" href={`${prefix}/products/`}>{en ? 'All products' : '查看全部产品'} <span aria-hidden="true">↗</span></a></div>
     <div class="product-grid">{products.map((p, i) => <a class="product-tile" href={`${prefix}/products/${p.slug}/`}><div class="product-image"><img src={`/images/products/${p.image}`} alt={en ? 'PVC pellet sample' : 'PVC 胶粒样品'} loading="lazy" /><span>0{i + 1}</span></div><div class="product-info"><div><small>PVC COMPOUND</small><h3>{en ? p.en : p.zh}</h3><p>{en ? p.descEn : p.descZh}</p></div><span class="arrow" aria-hidden="true">↗</span></div></a>)}</div>
-    <p class="caption">{en ? 'Sample photos show appearance only. Grades and performance are subject to agreed specifications.' : '图片为胶粒样品外观展示，具体牌号及性能以双方确认的技术规格为准。'}</p>
   </div>
 </section>
 <section class="home-section applications" id="applications">

@@ -70,9 +70,12 @@ const pages = isEn
       </section>
       <section>
         <h4>{isEn ? 'Contact' : '联系方式'}</h4>
-        <p>{isEn ? 'Tel / WeChat' : '电话 / 微信'}：<a href={`tel:${phoneNumber}`}>{phoneNumber}</a></p>
+        <p>{isEn ? 'Contact' : '联系人'}：{siteConfig.contactName}</p>
+        <p>{isEn ? 'Phone' : '电话'}：<a href={`tel:${phoneNumber}`}>{phoneNumber}</a></p>
+        <p>WeChat：{siteConfig.wechat}</p>
+        <p>WhatsApp：<a href={`https://wa.me/${siteConfig.whatsapp.replace('+', '')}`}>+86 177 5126 1024</a></p>
         <p>{isEn ? 'Email' : '邮箱'}：<a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p>
-        <p>{isEn ? 'Factory' : '工厂地址'}：{isEn ? 'Sanshui District, Foshan, Guangdong' : '广东佛山三水区'}</p>
+        <p>{isEn ? 'Factory' : '工厂地址'}：{isEn ? siteConfig.addressEn : siteConfig.addressZh}</p>
         <p>{isEn ? 'Hours' : '业务时间'}：{isEn ? 'Mon-Sat 8:00-18:00' : '周一至周六 8:00-18:00'}</p>
       </section>
     </div>

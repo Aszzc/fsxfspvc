@@ -41,7 +41,7 @@ const svgIcons: Record<string, string> = {
 ---
 <BaseLayout
   title="联系我们"
-  description="佛山市三水湘发顺塑料有限公司联系方式：电话/微信 13450853338，邮箱 17751261024@163.com。位于广东佛山三水，可电话、微信或邮件沟通。询价需提供使用场景、性能要求、规格用量等信息。"
+  description="佛山市三水湘发顺塑料有限公司联系方式：电话 13450853338，微信 L13450853338，邮箱 17751261024@163.com。位于广东佛山三水，可电话、微信或邮件沟通。询价需提供使用场景、性能要求、规格用量等信息。"
   breadcrumbs={[
     { name: '首页', href: '/' },
     { name: '联系我们', href: '/contact/' },
@@ -58,7 +58,8 @@ const svgIcons: Record<string, string> = {
       url: 'https://xfspvc.com/',
       address: {
         '@type': 'PostalAddress',
-        addressRegion: '广东省',
+        streetAddress: 'Yuxi 工业园 A 栋 1 楼',
+    addressRegion: '广东省',
         addressLocality: '佛山市三水区',
         addressCountry: 'CN',
       },
@@ -76,7 +77,7 @@ const svgIcons: Record<string, string> = {
       <div class="section-eyebrow page-eyebrow">CONTACT</div>
       <h1>联系我们</h1>
       <p class="page-header-sub">
-        微信 / 电话同号，可发文字、照片、文件、视频、语音。
+        可通过电话、微信、WhatsApp 或邮件与我们联系。
       </p>
     </div>
   </section>
@@ -114,7 +115,7 @@ const svgIcons: Record<string, string> = {
           <ul class="info-list">
             <li>
               <strong>工厂地址</strong>
-              <span>广东佛山三水</span>
+              <span>{siteConfig.addressZh}</span>
             </li>
             <li>
               <strong>业务时间</strong>
@@ -125,9 +126,11 @@ const svgIcons: Record<string, string> = {
               <span><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></span>
             </li>
             <li>
-              <strong>电话 / 微信</strong>
+              <strong>电话</strong>
               <span><a href={`tel:${phoneNumber}`}>{phoneNumber}</a></span>
             </li>
+            <li><strong>微信</strong><span>{siteConfig.wechat}</span></li>
+            <li><strong>WhatsApp</strong><span><a href={`https://wa.me/${siteConfig.whatsapp.replace('+', '')}`}>+86 177 5126 1024</a></span></li>
             <li>
               <strong>来厂看货</strong>
               <span>请提前电话预约，方便安排接待</span>

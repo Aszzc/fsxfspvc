@@ -7,7 +7,7 @@ const phoneNumber = '13450853338';
 
 const contactMethods = [
   { icon: 'email', title: 'Email for inquiries', primary: siteConfig.email, href: `mailto:${siteConfig.email}`, desc: 'Send your application, target standard, expected volume and sample requirements.' },
-  { icon: 'phone', title: 'Phone / WeChat', primary: '+86 134 5085 3338', href: `tel:${siteConfig.phoneInternational}`, desc: 'Use the same number for calls or add it manually in WeChat.' },
+  { icon: 'phone', title: 'Phone', primary: '+86 134 5085 3338', href: `tel:${siteConfig.phoneInternational}`, desc: 'Call us to discuss your application and requirements.' },
   { icon: 'phone', title: 'WhatsApp', primary: '+86 177 5126 1024', href: `https://wa.me/${siteConfig.whatsapp.replace('+', '')}`, desc: 'Message us on WhatsApp with your application, photos or product requirements.' },
 ];
 
@@ -47,6 +47,7 @@ const svgIcons: Record<string, string> = {
       url: 'https://xfspvc.com/en/',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: '1st Floor, Building A, Yuxi Industrial Park',
         addressRegion: 'Guangdong',
         addressLocality: 'Sanshui District, Foshan',
         addressCountry: 'CN',
@@ -98,10 +99,12 @@ const svgIcons: Record<string, string> = {
         <div class="info-card">
           <h3>Factory Address / Business Hours</h3>
           <ul class="info-list">
-            <li><strong>Factory</strong><span>Sanshui District, Foshan, Guangdong, China</span></li>
+            <li><strong>Factory</strong><span>{siteConfig.addressEn}</span></li>
             <li><strong>Hours</strong><span>Mon - Sat · 8:00 - 18:00</span></li>
             <li><strong>Email</strong><span><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></span></li>
-            <li><strong>Tel / WeChat</strong><span><a href={`tel:${siteConfig.phoneInternational}`}>+86 134 5085 3338</a></span></li>
+            <li><strong>Phone</strong><span><a href={`tel:${siteConfig.phoneInternational}`}>+86 134 5085 3338</a></span></li>
+            <li><strong>WeChat</strong><span>{siteConfig.wechat}</span></li>
+            <li><strong>WhatsApp</strong><span><a href={`https://wa.me/${siteConfig.whatsapp.replace('+', '')}`}>+86 177 5126 1024</a></span></li>
             <li><strong>Visit factory</strong><span>Please call ahead to schedule.</span></li>
           </ul>
           <div class="info-cta">

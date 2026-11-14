@@ -52,7 +52,7 @@ const pages = isEn
   </div>
   <div class="container footer-main">
     <div class="footer-grid">
-      <section>
+      <section class="footer-about">
         <h3>{isEn ? 'Xiangfa Shun Plastic' : '湘发顺塑料'}</h3>
         <p>
           {isEn
@@ -60,15 +60,15 @@ const pages = isEn
             : '佛山 PVC 电线电缆料生产厂家，自有配方研发、混料、挤出造粒、筛分包装能力，服务线缆与电气制造客户。'}
         </p>
       </section>
-      <section>
+      <section class="footer-products">
         <h4>{isEn ? 'Products' : '产品目录'}</h4>
         {products.map(([label, href]) => <a href={href}>{label}</a>)}
       </section>
-      <section>
+      <section class="footer-company">
         <h4>{isEn ? 'Company' : '企业信息'}</h4>
         {pages.map(([label, href]) => <a href={href}>{label}</a>)}
       </section>
-      <section>
+      <section class="footer-contact">
         <h4>{isEn ? 'Contact' : '联系方式'}</h4>
         <p>{isEn ? 'Contact' : '联系人'}：{siteConfig.contactName}</p>
         <p>{isEn ? 'Phone' : '电话'}：<a href={`tel:${phoneNumber}`}>{phoneNumber}</a></p>
@@ -79,6 +79,11 @@ const pages = isEn
         <p>{isEn ? 'Hours' : '业务时间'}：{isEn ? 'Mon-Sat 8:00-18:00' : '周一至周六 8:00-18:00'}</p>
       </section>
     </div>
+    <nav class="footer-quick" aria-label={isEn ? 'Footer navigation' : '页脚导航'}>
+      <a href={isEn ? '/en/products/' : '/products/'}>{isEn ? 'Products' : '产品目录'}</a>
+      <a href={isEn ? '/en/about/' : '/about/'}>{isEn ? 'About' : '关于我们'}</a>
+      <a href={isEn ? '/en/contact/' : '/contact/'}>{isEn ? 'Contact' : '联系我们'}</a>
+    </nav>
     <div class="footer-bottom">
       <span>© {year} {isEn ? 'Foshan Sanshui Xiangfa Shun Plastic Co., Ltd.' : '佛山市三水湘发顺塑料有限公司'}</span>
       <span>xfspvc.com</span>
@@ -184,4 +189,22 @@ const pages = isEn
   .footer-cta { background: #174b54; }
   .footer-grid a { overflow-wrap: anywhere; transition: color .2s ease; }
   .footer-grid a:focus-visible { color: #fff; }
+
+  .footer-quick { display: none; }
+  :global(.home-page) .footer-cta { display: none; }
+  @media (max-width: 980px) {
+    .footer-cta, .footer-about p, .footer-grid .footer-products, .footer-grid .footer-company { display: none; }
+    .footer-main { padding-top: 28px; padding-bottom: 20px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 24px; }
+    .footer-grid section { gap: 7px; }
+    .footer-about h3, .footer-contact h4 { margin: 0 0 6px; }
+    .footer-contact p { font-size: 14px; line-height: 1.6; }
+    .footer-quick { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 24px; }
+    .footer-quick a { color: #e2f0ed; font-size: 14px; font-weight: 700; }
+    .footer-bottom { margin-top: 20px; }
+  }
+  @media (max-width: 620px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 18px; }
+    .footer-quick { margin-top: 22px; }
+  }
 </style>

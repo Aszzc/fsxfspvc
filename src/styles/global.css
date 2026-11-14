@@ -455,3 +455,11 @@ body.home-page #main { margin-top: calc(-1 * var(--home-header-height)); }
 body.home-page .home-hero { padding-top: var(--home-header-height); }
 @media (min-width: 721px) and (max-width: 980px) { body.home-page { --home-header-height: 160px; } }
 @media (max-width: 720px) { body.home-page { --home-header-height: 104px; } }
+
+@media (min-width: 721px) and (max-width: 980px) {
+  #main { scroll-margin-top: 100px; }
+  main .guide-block.guide-block, main .product-detail.product-detail { scroll-margin-top: 105px; }
+  main .catalog-sidebar.catalog-sidebar { top: 96px; }
+  main .catalog-content .product-detail.product-detail { scroll-margin-top: 170px; }
+  body.home-page { --home-header-height: 96px; }
+}

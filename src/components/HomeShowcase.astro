@@ -32,8 +32,11 @@ const applications = [
 </section>
 <section class="home-section products" id="products">
   <div class="container">
-    <div class="section-heading"><div><p class="eyebrow">OUR PRODUCTS / 01</p><h2>{en ? 'Find the right compound' : '以应用为起点，选择合适的材料'}</h2><p>{en ? 'From insulation to molding, explore our core PVC compound range.' : '从线缆绝缘到插头成型，探索湘发顺的 PVC 材料系列。'}</p></div><div class="product-heading-actions"><a class="text-link" href={`${prefix}/products/`}>{en ? 'All products' : '查看全部产品'} <span aria-hidden="true">↗</span></a><div class="carousel-controls" hidden><button type="button" class="carousel-prev" aria-label={en ? 'Previous products' : '查看上一组产品'} aria-controls="product-carousel">←</button><button type="button" class="carousel-next" aria-label={en ? 'Next products' : '查看下一组产品'} aria-controls="product-carousel">→</button></div></div></div>
+    <div class="section-heading"><div><p class="eyebrow">OUR PRODUCTS / 01</p><h2>{en ? 'Find the right compound' : '以应用为起点，选择合适的材料'}</h2><p>{en ? 'From insulation to molding, explore our core PVC compound range.' : '从线缆绝缘到插头成型，探索湘发顺的 PVC 材料系列。'}</p></div><div class="product-heading-actions"><a class="text-link" href={`${prefix}/products/`}>{en ? 'All products' : '查看全部产品'} <span aria-hidden="true">↗</span></a></div></div>
+    <div class="carousel-wrap">
     <div class="product-grid" id="product-carousel" aria-label={en ? 'Product categories' : '产品分类'}>{products.map((p, i) => <a class="product-tile" href={`${prefix}/products/${p.slug}/`}><div class="product-image"><img src={`/images/products/${p.image}`} alt={en ? 'PVC pellet sample' : 'PVC 胶粒样品'} loading="lazy" /><span>0{i + 1}</span></div><div class="product-info"><div><small>PVC COMPOUND</small><h3>{en ? p.en : p.zh}</h3><p>{en ? p.descEn : p.descZh}</p></div><span class="arrow" aria-hidden="true">↗</span></div></a>)}</div>
+    <div class="carousel-controls" hidden><button type="button" class="carousel-prev" aria-label={en ? 'Previous product' : '查看上一个产品'} aria-controls="product-carousel">←</button><button type="button" class="carousel-next" aria-label={en ? 'Next product' : '查看下一个产品'} aria-controls="product-carousel">→</button></div>
+    </div>
   </div>
 </section>
 <section class="home-section applications" id="applications">
@@ -140,6 +143,19 @@ const applications = [
 @media (max-width: 850px) { .product-grid { grid-template-columns: none; grid-auto-columns: calc((100% - 16px) / 2); gap: 16px; } }
 @media (max-width: 560px) { .product-heading-actions { width: 100%; justify-content: space-between; } .product-grid { grid-template-columns: none; grid-auto-columns: 78%; gap: 12px; } }
 @media (prefers-reduced-motion: reduce) { .product-grid { scroll-behavior: auto; } }
+
+/* Overlay controls keep the gallery clean while preserving touch scrolling. */
+.carousel-wrap { position: relative; }
+.product-grid { scrollbar-width: none; -ms-overflow-style: none; }
+.product-grid::-webkit-scrollbar { display: none; }
+.carousel-controls { position: absolute; inset: 0; display: block; pointer-events: none; }
+.carousel-controls[hidden] { display: none; }
+.carousel-controls button { position: absolute; top: 34%; transform: translateY(-50%); z-index: 2; pointer-events: auto; background: rgba(13, 48, 54, .48); border: 1px solid rgba(255, 255, 255, .48); color: #fff; box-shadow: 0 4px 16px rgba(0, 0, 0, .14); backdrop-filter: blur(8px); }
+.carousel-controls .carousel-prev { left: 12px; }
+.carousel-controls .carousel-next { right: 12px; }
+.carousel-controls button:hover:not(:disabled), .carousel-controls button:focus-visible { background: rgba(13, 48, 54, .82); color: #fff; }
+.carousel-controls button:disabled { opacity: .35; }
+@media (max-width: 560px) { .carousel-controls .carousel-prev { left: 8px; } .carousel-controls .carousel-next { right: 8px; } }
 </style>
 
 

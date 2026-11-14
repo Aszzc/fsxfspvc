@@ -440,3 +440,11 @@ main .guide-block.guide-block { scroll-margin-top: 125px; }
   main .catalog-sidebar.catalog-sidebar { top: 136px; }
   main .catalog-content .product-detail.product-detail { scroll-margin-top: 225px; }
 }
+
+/* Account for the compact mobile header at in-page destinations. */
+@media (max-width: 720px) {
+  #main { scroll-margin-top: 105px; }
+  main .guide-block.guide-block, main .product-detail.product-detail { scroll-margin-top: 110px; }
+  main .catalog-sidebar.catalog-sidebar { top: 106px; }
+  main .catalog-content .product-detail.product-detail { scroll-margin-top: 180px; }
+}

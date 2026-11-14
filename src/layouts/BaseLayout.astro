@@ -111,7 +111,7 @@ const allJsonLd = [orgLd, ...(breadcrumbLd ? [breadcrumbLd] : []), ...jsonLdArra
     <meta name="format-detection" content="telephone=yes" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body>
+  <body class={Astro.url.pathname === '/' || Astro.url.pathname === '/en/' ? 'home-page' : undefined}>
     <a class="skip-link" href="#main">{isEn ? 'Skip to main content' : '跳转到主要内容'}</a>
     <Header locale={locale} brandShort={brandShort} />
     <main id="main">

@@ -260,4 +260,23 @@ const altLabel = isEn ? '中文' : 'EN';
     .lang-switch { color: #fff; background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.36); }
     .lang-switch:hover, .lang-switch:focus-visible { color: #113c49; background: #fff; }
   }
+
+  /* The homepage header overlays the photograph and becomes solid when scrolling. */
+  :global(.home-page) .site-header { background: rgba(8, 39, 47, .32); border-bottom-color: rgba(255,255,255,.12); box-shadow: none; backdrop-filter: none; transition: background .2s ease, box-shadow .2s ease; }
+  :global(.home-page) .header-top { background: rgba(8, 39, 47, .28); }
+  :global(.home-page) .site-header.is-scrolled { background: rgba(17, 60, 73, .97); box-shadow: 0 5px 18px rgba(10, 48, 56, .16); backdrop-filter: blur(12px); }
 </style>
+
+<script>
+  const header = document.querySelector<HTMLElement>('.site-header');
+  if (header && document.body.classList.contains('home-page')) {
+    const updateHeader = () => {
+      document.body.style.setProperty('--home-header-height', `${header.offsetHeight}px`);
+      header.classList.toggle('is-scrolled', window.scrollY > 24);
+    };
+    updateHeader();
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    if ('ResizeObserver' in window) new ResizeObserver(updateHeader).observe(header);
+    else window.addEventListener('resize', updateHeader);
+  }
+</script>

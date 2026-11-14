@@ -463,3 +463,11 @@ body.home-page .home-hero { padding-top: var(--home-header-height); }
   main .catalog-content .product-detail.product-detail { scroll-margin-top: 170px; }
   body.home-page { --home-header-height: 96px; }
 }
+
+@media (max-width: 980px) {
+  #main { scroll-margin-top: 70px; }
+  main .guide-block.guide-block, main .product-detail.product-detail { scroll-margin-top: 70px; }
+  main .catalog-sidebar.catalog-sidebar { top: 60px; }
+  main .catalog-content .product-detail.product-detail { scroll-margin-top: 135px; }
+  body.home-page { --home-header-height: 56px; }
+}

@@ -8,6 +8,10 @@ const products = [
   { slug: 'sheath', image: 'pellets-amber.jpg', zh: 'PVC 护套料', en: 'PVC sheath compound', descZh: '面向电源线、控制线等线缆外护套。', descEn: 'For outer jackets on power cords, control cables and more.' },
   { slug: 'electronic', image: 'pellets-blue.jpg', zh: '电子线料', en: 'Electronic wire compound', descZh: '面向电子连接线与小规格线材加工。', descEn: 'For electronic leads and small-gauge wire processing.' },
   { slug: 'plug', image: 'pellets-red.jpg', zh: '插头注塑料', en: 'Plug molding compound', descZh: '用于电源插头、线尾护套等注塑成型。', descEn: 'For injection molded plugs and strain reliefs.' },
+  { slug: 'heat-resistant-105', image: 'pellets-brown.jpg', zh: '105℃ 耐高温料', en: '105°C heat-resistant compound', descZh: '面向耐温要求较高的绝缘与护套应用。', descEn: 'For insulation and sheathing with elevated temperature requirements.' },
+  { slug: 'cold-resistant', image: 'pellets-green.jpg', zh: '耐寒 PVC 料', en: 'Cold-resistant PVC compound', descZh: '面向低温使用环境的线缆材料。', descEn: 'Cable compounds for low-temperature applications.' },
+  { slug: 'transparent', image: 'pellets-clear.jpg', zh: '透明 PVC 料', en: 'Transparent PVC compound', descZh: '用于透明线材及其他透明软制品。', descEn: 'For transparent wire and other flexible products.' },
+  { slug: 'modified', image: 'pellets-yellow.jpg', zh: '改性 PVC 定制料', en: 'Custom modified PVC compound', descZh: '按用途与加工需求沟通配方及试样。', descEn: 'Discuss formulations and samples for your application and process.' },
 ];
 const applications = [
   { image: 'flat-wire-white.jpg', zh: '电线电缆', en: 'Wire & cable', descZh: '绝缘与护套材料', descEn: 'Insulation and sheathing', slug: 'insulation-70' },
@@ -28,8 +32,8 @@ const applications = [
 </section>
 <section class="home-section products" id="products">
   <div class="container">
-    <div class="section-heading"><div><p class="eyebrow">OUR PRODUCTS / 01</p><h2>{en ? 'Find the right compound' : '以应用为起点，选择合适的材料'}</h2><p>{en ? 'From insulation to molding, explore our core PVC compound range.' : '从线缆绝缘到插头成型，探索湘发顺的 PVC 材料系列。'}</p></div><a class="text-link" href={`${prefix}/products/`}>{en ? 'All products' : '查看全部产品'} <span aria-hidden="true">↗</span></a></div>
-    <div class="product-grid">{products.map((p, i) => <a class="product-tile" href={`${prefix}/products/${p.slug}/`}><div class="product-image"><img src={`/images/products/${p.image}`} alt={en ? 'PVC pellet sample' : 'PVC 胶粒样品'} loading="lazy" /><span>0{i + 1}</span></div><div class="product-info"><div><small>PVC COMPOUND</small><h3>{en ? p.en : p.zh}</h3><p>{en ? p.descEn : p.descZh}</p></div><span class="arrow" aria-hidden="true">↗</span></div></a>)}</div>
+    <div class="section-heading"><div><p class="eyebrow">OUR PRODUCTS / 01</p><h2>{en ? 'Find the right compound' : '以应用为起点，选择合适的材料'}</h2><p>{en ? 'From insulation to molding, explore our core PVC compound range.' : '从线缆绝缘到插头成型，探索湘发顺的 PVC 材料系列。'}</p></div><div class="product-heading-actions"><a class="text-link" href={`${prefix}/products/`}>{en ? 'All products' : '查看全部产品'} <span aria-hidden="true">↗</span></a><div class="carousel-controls" hidden><button type="button" class="carousel-prev" aria-label={en ? 'Previous products' : '查看上一组产品'} aria-controls="product-carousel">←</button><button type="button" class="carousel-next" aria-label={en ? 'Next products' : '查看下一组产品'} aria-controls="product-carousel">→</button></div></div></div>
+    <div class="product-grid" id="product-carousel" aria-label={en ? 'Product categories' : '产品分类'}>{products.map((p, i) => <a class="product-tile" href={`${prefix}/products/${p.slug}/`}><div class="product-image"><img src={`/images/products/${p.image}`} alt={en ? 'PVC pellet sample' : 'PVC 胶粒样品'} loading="lazy" /><span>0{i + 1}</span></div><div class="product-info"><div><small>PVC COMPOUND</small><h3>{en ? p.en : p.zh}</h3><p>{en ? p.descEn : p.descZh}</p></div><span class="arrow" aria-hidden="true">↗</span></div></a>)}</div>
   </div>
 </section>
 <section class="home-section applications" id="applications">
@@ -124,5 +128,42 @@ const applications = [
 }
 
 @media (max-width: 560px) { .hero-break { display: none; } }
+
+.product-heading-actions { display: flex; align-items: center; gap: 24px; }
+.carousel-controls { display: flex; gap: 8px; }
+.carousel-controls[hidden] { display: none; }
+.carousel-controls button { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid #c8ded8; border-radius: 50%; background: #fff; color: var(--color-primary); font-size: 22px; cursor: pointer; transition: background .2s ease, color .2s ease; }
+.carousel-controls button:hover:not(:disabled), .carousel-controls button:focus-visible { background: var(--color-primary); color: #fff; }
+.carousel-controls button:disabled { opacity: .35; cursor: default; }
+.product-grid { display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: calc((100% - 66px) / 4); gap: 22px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 4px 2px 20px; scrollbar-width: thin; scrollbar-color: #b3ccc5 transparent; }
+.product-tile { scroll-snap-align: start; min-width: 0; }
+@media (max-width: 850px) { .product-grid { grid-template-columns: none; grid-auto-columns: calc((100% - 16px) / 2); gap: 16px; } }
+@media (max-width: 560px) { .product-heading-actions { width: 100%; justify-content: space-between; } .product-grid { grid-template-columns: none; grid-auto-columns: 78%; gap: 12px; } }
+@media (prefers-reduced-motion: reduce) { .product-grid { scroll-behavior: auto; } }
 </style>
+
+
+<script>
+  const carousel = document.querySelector<HTMLElement>('#product-carousel');
+  const controls = document.querySelector<HTMLElement>('.carousel-controls');
+  const previous = controls?.querySelector<HTMLButtonElement>('.carousel-prev');
+  const next = controls?.querySelector<HTMLButtonElement>('.carousel-next');
+  if (carousel && controls && previous && next) {
+    const update = () => {
+      previous.disabled = carousel.scrollLeft <= 3;
+      next.disabled = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 1;
+    };
+    const move = (direction: number) => {
+      const card = carousel.querySelector<HTMLElement>('.product-tile');
+      const gap = parseFloat(getComputedStyle(carousel).columnGap) || 0;
+      if (card) carousel.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    };
+    previous.addEventListener('click', () => move(-1));
+    next.addEventListener('click', () => move(1));
+    carousel.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    controls.hidden = false;
+    update();
+  }
+</script>
 

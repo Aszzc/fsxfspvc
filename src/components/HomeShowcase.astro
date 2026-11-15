@@ -197,26 +197,53 @@ const applications = [
     const previous = controls?.querySelector<HTMLButtonElement>('.carousel-prev');
     const next = controls?.querySelector<HTMLButtonElement>('.carousel-next');
     if (!carousel || !controls || !previous || !next) return;
+    const cards = Array.from(carousel.querySelectorAll<HTMLElement>('.product-tile, .application-tile'));
+    if (!cards.length) return;
+    const makeCopy = (card: HTMLElement) => {
+      const copy = card.cloneNode(true) as HTMLElement;
+      copy.setAttribute('aria-hidden', 'true');
+      copy.tabIndex = -1;
+      return copy;
+    };
+    carousel.prepend(...cards.map(makeCopy));
+    carousel.append(...cards.map(makeCopy));
+
+    const metrics = () => {
+      const step = cards[0].getBoundingClientRect().width + (parseFloat(getComputedStyle(carousel).columnGap) || 0);
+      return { step, length: step * cards.length };
+    };
+    const jump = (left: number) => {
+      const oldBehavior = carousel.style.scrollBehavior;
+      carousel.style.scrollBehavior = 'auto';
+      carousel.scrollLeft = left;
+      carousel.style.scrollBehavior = oldBehavior;
+    };
     const update = () => {
-      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-      controls.hidden = maxScroll <= 1;
+      const { step, length } = metrics();
+      const gap = parseFloat(getComputedStyle(carousel).columnGap) || 0;
+      controls.hidden = length - gap <= carousel.clientWidth;
+      if (controls.hidden) jump(length);
+      else if (step) jump(length + ((carousel.scrollLeft - length) % length + length) % length);
     };
     const move = (direction: number) => {
-      const card = carousel.querySelector<HTMLElement>('.product-tile, .application-tile');
-      const gap = parseFloat(getComputedStyle(carousel).columnGap) || 0;
-      if (!card) return;
-      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-      const atStart = carousel.scrollLeft <= 3;
-      const atEnd = carousel.scrollLeft >= maxScroll - 3;
-      const target = direction < 0 && atStart ? maxScroll
-        : direction > 0 && atEnd ? 0
-        : carousel.scrollLeft + direction * (card.offsetWidth + gap);
-      carousel.scrollTo({ left: target, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      const { step } = metrics();
+      carousel.scrollTo({ left: carousel.scrollLeft + direction * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    };
+    let settleTimer: ReturnType<typeof setTimeout>;
+    const settle = () => {
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(() => {
+        const { length } = metrics();
+        if (!length) return;
+        if (carousel.scrollLeft < length - 1) jump(carousel.scrollLeft + length);
+        else if (carousel.scrollLeft >= 2 * length - 1) jump(carousel.scrollLeft - length);
+      }, 150);
     };
     previous.addEventListener('click', () => move(-1));
     next.addEventListener('click', () => move(1));
-    carousel.addEventListener('scroll', update, { passive: true });
+    carousel.addEventListener('scroll', settle, { passive: true });
     window.addEventListener('resize', update);
+    jump(metrics().length);
     update();
   });
 </script>

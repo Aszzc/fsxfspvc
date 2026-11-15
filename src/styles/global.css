@@ -110,6 +110,11 @@ p {
   padding-right: var(--container-pad);
 }
 
+/* Give wide screens more room without making normal desktop layouts wider. */
+@media (min-width: 1600px) {
+  :root { --container-max: min(88vw, 2200px); }
+}
+
 .skip-link {
   position: fixed;
   z-index: 1000;

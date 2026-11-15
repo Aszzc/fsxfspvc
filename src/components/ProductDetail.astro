@@ -157,6 +157,11 @@ const email = '17751261024@163.com';
     margin-bottom: var(--sp-5);
   }
 
+  @media (min-width: 1600px) {
+    .product-detail-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .product-detail-summary, .product-detail-specs p { max-width: 90ch; }
+  }
+
   .product-detail-block h4 {
     display: flex;
     align-items: center;

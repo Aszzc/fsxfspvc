@@ -70,6 +70,8 @@ const samples = [
   .gallery-heading p { text-wrap: pretty; color: var(--color-text-soft); margin: 0; line-height: 1.7; }
   .photo-gallery h3 { margin: var(--sp-5) 0 var(--sp-3); font-size: var(--fs-lg); }
   .photo-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-3); }
+  @media (min-width: 1600px) { .sample-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+  @media (min-width: 2300px) { .pellet-grid { grid-template-columns: repeat(8, minmax(0, 1fr)); } }
   figure { margin: 0; min-width: 0; overflow: hidden; background: var(--color-surface); border: 1px solid var(--color-border); }
   figure img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--color-surface-alt); }
   figcaption { padding: 10px 12px; color: var(--color-text); font-size: var(--fs-sm); line-height: 1.5; }

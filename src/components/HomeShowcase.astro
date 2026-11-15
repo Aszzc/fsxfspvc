@@ -197,20 +197,29 @@ const applications = [
     const previous = controls?.querySelector<HTMLButtonElement>('.carousel-prev');
     const next = controls?.querySelector<HTMLButtonElement>('.carousel-next');
     if (!carousel || !controls || !previous || !next) return;
+    const loops = carousel.classList.contains('product-grid');
     const update = () => {
-      previous.disabled = carousel.scrollLeft <= 3;
-      next.disabled = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 1;
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      controls.hidden = maxScroll <= 1;
+      previous.disabled = !loops && carousel.scrollLeft <= 3;
+      next.disabled = !loops && carousel.scrollLeft >= maxScroll - 1;
     };
     const move = (direction: number) => {
       const card = carousel.querySelector<HTMLElement>('.product-tile, .application-tile');
       const gap = parseFloat(getComputedStyle(carousel).columnGap) || 0;
-      if (card) carousel.scrollBy({ left: direction * (card.offsetWidth + gap), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      if (!card) return;
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      const atStart = carousel.scrollLeft <= 3;
+      const atEnd = carousel.scrollLeft >= maxScroll - 3;
+      const target = loops && direction < 0 && atStart ? maxScroll
+        : loops && direction > 0 && atEnd ? 0
+        : carousel.scrollLeft + direction * (card.offsetWidth + gap);
+      carousel.scrollTo({ left: target, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
     };
     previous.addEventListener('click', () => move(-1));
     next.addEventListener('click', () => move(1));
     carousel.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
-    controls.hidden = false;
     update();
   });
 </script>

@@ -28,7 +28,6 @@ const photos = evidencePhotos.filter((item) =>
             <img src={`/images/${photo.file}`} alt={isEn ? photo.captionEn : photo.captionZh} loading="lazy" />
             <figcaption>
               <strong>{isEn ? photo.captionEn : photo.captionZh}</strong>
-              <span>{photo.date ? (isEn ? `Photographed ${photo.date}` : `拍摄于 ${photo.date}`) : (isEn ? `Provided ${photo.receivedAt} · capture date unconfirmed` : `素材提供于 ${photo.receivedAt} · 拍摄日期待确认`)}</span>
             </figcaption>
           </figure>
         ))}

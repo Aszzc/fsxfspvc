@@ -1,6 +1,6 @@
 # 网站实拍图片拍摄清单
 
-首页已使用用户提供的车间造粒设备实拍 `factory-pelletizing-workshop.jpg`；关于我们和制造能力页面展示同一张车间照片及两张厂区外部照片：`factory-exterior-road.jpg`、`factory-exterior-building.jpg`。素材由用户于 2026-10-15 提供，拍摄日期尚未确认，页面明确区分“提供日期”和“拍摄日期”。旧版 AI 场景样图已移除。产品和质量控制页面仍缺少对应的实拍，不应以车间或建筑照片代替产品、检测证据。
+首页已使用用户提供的车间造粒设备实拍 `factory-pelletizing-workshop.jpg`；关于我们和制造能力页面展示同一张车间照片及两张厂区外部照片：`factory-exterior-road.jpg`、`factory-exterior-building.jpg`。素材由用户于 2026-10-15 提供，拍摄日期尚未确认；这些日期仅作内部记录，不在网站页面展示。旧版 AI 场景样图已移除。产品和质量控制页面仍缺少对应的实拍，不应以车间或建筑照片代替产品、检测证据。
 
 新增照片时，请提供原图、拍摄日期、地点/工序和可公开确认。首页主图引用位于 `src/pages/index.astro` 与 `src/pages/en/index.astro`；关于我们和制造能力的图库由 `src/components/EvidenceGallery.astro` 渲染，照片说明维护在 `src/data/evidence.ts`。拍摄日期核实后再填写 `date`，不要把收到文件的日期写成拍摄日期。公开前检查客户名称、订单、配方、个人信息及未经许可的商标。
 
